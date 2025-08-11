@@ -1,4 +1,6 @@
 
+import { Link } from "react-router-dom";
+
 const testimonials = [
   {
     quote: "The freshness of vegetables delivered by this farm is unmatched! My family's health has improved significantly since we started ordering from them.",
@@ -83,9 +85,11 @@ const Testimonials = () => {
         
         <div className="text-center mt-16">
           <p className="text-lg text-neutral-600 mb-6">Ready to experience farm-fresh quality?</p>
-          <button className="bg-amber-500 text-white px-8 py-4 rounded-full hover:bg-amber-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-            Start Your Order Today
-          </button>
+          <Link to="/order">
+            <button className="bg-amber-500 text-white px-8 py-4 rounded-full hover:bg-amber-600 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+              Start Your Order Today
+            </button>
+          </Link>
         </div>
       </div>
     </section>

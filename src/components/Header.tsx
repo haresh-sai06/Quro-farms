@@ -1,11 +1,18 @@
 import { motion } from "framer-motion";
-import { Menu, X, Leaf, ShoppingCart, Phone } from "lucide-react";
+import { Menu, X, Leaf, Phone } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import CartDropdown from "./CartDropdown";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const navLinks = ["Why Choose Us", "Products", "Reviews", "Contact"];
+  const navLinks = [
+    { name: "Why Choose Us", href: "/#whychooseus" },
+    { name: "Products", href: "/products" },
+    { name: "Reviews", href: "/#testimonials" },
+    { name: "Contact", href: "/#contact" }
+  ];
 
   return (
     <header
@@ -37,29 +44,19 @@ const Header = () => {
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <motion.a
-              key={link}
-              href={`#${link.toLowerCase().replace(" ", "")}`}
+              key={link.name}
+              href={link.href}
               className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
               whileHover={{ y: -2, color: "#86efac" }}
               transition={{ duration: 0.2 }}
             >
-              {link}
+              {link.name}
             </motion.a>
           ))}
 
           <div className="flex items-center gap-4">
-            {/* Shopping Cart with Bounce */}
-            <motion.button
-              className="relative p-2 text-neutral-100 hover:text-green-300 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 2 }}
-            >
-              <ShoppingCart className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                0
-              </span>
-            </motion.button>
+            {/* Shopping Cart Dropdown */}
+            <CartDropdown />
 
             {/* Order Now Button */}
             <motion.button
@@ -68,7 +65,7 @@ const Header = () => {
               whileTap={{ scale: 0.95 }}
             >
               <Phone className="w-4 h-4" />
-              Order Now
+              <Link to="/order">Order Now</Link>
             </motion.button>
           </div>
         </div>
@@ -97,16 +94,16 @@ const Header = () => {
         <div className="container-padding py-6 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
-              key={link}
-              href={`#${link.toLowerCase().replace(" ", "")}`}
+              key={link.name}
+              href={link.href}
               className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2"
             >
-              {link}
+              {link.name}
             </a>
           ))}
           <div className="flex gap-4 pt-4 border-t border-green-100/50">
             <button className="flex-1 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold">
-              Order Now
+              <Link to="/order">Order Now</Link>
             </button>
           </div>
         </div>
