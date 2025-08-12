@@ -3,7 +3,7 @@ import { Leaf, Phone, Mail, MapPin, Instagram, Facebook, Twitter } from "lucide-
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-green-900 to-green-800 text-white">
+    <footer id="contact" className="bg-gradient-to-b from-green-900 to-green-800 text-white">
       <div className="container-padding py-16">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
