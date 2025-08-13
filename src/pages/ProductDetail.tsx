@@ -361,24 +361,25 @@ const ProductDetail = () => {
                   </div>
 
                   {product.inStock && (
-                  <div className="flex items-center gap-4 mb-6">
-                    <span className="font-semibold text-lg">Quantity:</span>
-                    <div className="flex items-center gap-2 border-2 border-neutral-200 rounded-xl">
-                      <button
-                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                        className="p-3 hover:bg-neutral-50 transition-colors"
-                      >
-                        <Minus className="w-5 h-5" />
-                      </button>
-                      <span className="px-6 py-3 font-bold text-xl">{quantity}</span>
-                      <button
-                        onClick={() => setQuantity(quantity + 1)}
-                        className="p-3 hover:bg-neutral-50 transition-colors"
-                      >
-                        <Plus className="w-5 h-5" />
-                      </button>
+                    <div className="flex items-center gap-4 mb-6">
+                      <span className="font-semibold text-lg">Quantity:</span>
+                      <div className="flex items-center gap-2 border-2 border-neutral-200 rounded-xl">
+                        <button
+                          onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                          className="p-3 hover:bg-neutral-50 transition-colors"
+                        >
+                          <Minus className="w-5 h-5" />
+                        </button>
+                        <span className="px-6 py-3 font-bold text-xl">{quantity}</span>
+                        <button
+                          onClick={() => setQuantity(quantity + 1)}
+                          className="p-3 hover:bg-neutral-50 transition-colors"
+                        >
+                          <Plus className="w-5 h-5" />
+                        </button>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   <motion.button
                     onClick={handleAddToCart}
