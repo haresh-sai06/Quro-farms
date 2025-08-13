@@ -173,7 +173,9 @@ const ProductDetail = () => {
             <motion.div
               style={{ y, opacity }}
               className="w-full h-[120%] bg-cover bg-center"
-              style={{
+              style={{ 
+                y, 
+                opacity,
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${product.image})`
               }}
             />
