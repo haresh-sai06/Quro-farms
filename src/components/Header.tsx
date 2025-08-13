@@ -1,18 +1,31 @@
 import { motion } from "framer-motion";
 import { Menu, X, Leaf, Phone } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const navLinks = [
+  const location = useLocation();
+  
+  // Different nav links based on current page
+  const isProductsPage = location.pathname === '/products' || location.pathname.startsWith('/product/');
+  
+  const defaultNavLinks = [
     { name: "Why Choose Us", href: "/#features" },
     { name: "Products", href: "/products" },
     { name: "Reviews", href: "/#testimonials" },
     { name: "Contact", href: "/#contact" }
   ];
+  
+  const productsNavLinks = [
+    { name: "All Products", href: "/products" },
+    { name: "Vegetables", href: "/products?category=Vegetables" },
+    { name: "Fruits", href: "/products?category=Fruits" },
+    { name: "Contact", href: "/#contact" }
+  ];
+
+  const navLinks = isProductsPage ? productsNavLinks : defaultNavLinks;
 
   return (
     <header
