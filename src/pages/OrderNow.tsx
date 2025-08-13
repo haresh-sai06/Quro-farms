@@ -113,6 +113,7 @@ const OrderNow = () => {
                           <div className="flex-1">
                             <h3 className="font-semibold text-primary">{item.product.name}</h3>
                             <p className="text-green-600 font-bold">₹{item.product.discountedPrice}/{item.product.unit}</p>
+                            <p className="text-sm text-neutral-600">Qty: {item.quantity}</p>
                           </div>
                           <div className="flex items-center gap-2">
                             <button
@@ -121,7 +122,14 @@ const OrderNow = () => {
                             >
                               <Minus className="w-4 h-4" />
                             </button>
-                            <span className="w-8 text-center font-semibold">{item.quantity}</span>
+                            <input
+                              type="number"
+                              value={item.quantity}
+                              onChange={(e) => updateQuantity(item.product.id, parseInt(e.target.value) || 1)}
+                              className="w-16 text-center font-semibold border border-neutral-200 rounded px-2 py-1"
+                              min="1"
+                              max="10"
+                            />
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                               className="p-1 hover:bg-neutral-100 rounded-full transition-colors"
@@ -136,7 +144,7 @@ const OrderNow = () => {
                             </button>
                           </div>
                           <div className="text-right">
-                            <p className="font-bold">₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</p>
+                            <p className="font-bold text-green-600">₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</p>
                           </div>
                         </div>
                       ))}

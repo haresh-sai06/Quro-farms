@@ -2,11 +2,48 @@
 import { ArrowRight, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { products } from "../data/products";
+import { useCart } from "../hooks/useCart";
+import { toast } from "sonner";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import FlyToCartAnimation from "./FlyToCartAnimation";
 
 
 const ProductPreview = () => {
+  const { addToCart } = useCart();
+  const [flyAnimation, setFlyAnimation] = useState<{
+    isActive: boolean;
+    startPosition: { x: number; y: number };
+  }>({
+    isActive: false,
+    startPosition: { x: 0, y: 0 }
+  });
+
+  const handleAddToCart = (product: any, event: React.MouseEvent) => {
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+    const startPosition = {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+
+    const success = addToCart(product, 1);
+    if (success) {
+      setFlyAnimation({
+        isActive: true,
+        startPosition
+      });
+      toast.success(`Added ${product.name} to cart!`);
+    }
+  };
+
   return (
     <section className="py-20 container-padding bg-white">
+      <FlyToCartAnimation
+        isActive={flyAnimation.isActive}
+        startPosition={flyAnimation.startPosition}
+        onComplete={() => setFlyAnimation(prev => ({ ...prev, isActive: false }))}
+      />
+      
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
@@ -19,8 +56,12 @@ const ProductPreview = () => {
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {products.slice(0, 4).map((product, index) => (
-            <div 
+            <motion.div 
               key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
               className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-neutral-100 hover:-translate-y-3"
             >
               {/* Product Image */}
@@ -35,6 +76,13 @@ const ProductPreview = () => {
                     {product.badge}
                   </span>
                 </div>
+                {!product.inStock && (
+                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                    <span className="bg-red-500 text-white px-4 py-2 rounded-full font-bold">
+                      Out of Stock
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
               </div>
               
@@ -62,15 +110,29 @@ const ProductPreview = () => {
                   <span className="text-neutral-500 line-through text-lg">₹{product.originalPrice}</span>
                 </div>
                 
-                {/* Order Button */}
-                <Link to={`/product/${product.id}`}>
-                  <button className="w-full bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold flex items-center justify-center gap-2 group-hover:shadow-lg">
-                    View Details
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </Link>
+                {/* Action Buttons */}
+                <div className="flex gap-2">
+                  <motion.button
+                    onClick={(e) => handleAddToCart(product, e)}
+                    disabled={!product.inStock}
+                    className="flex-1 bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    whileHover={product.inStock ? { scale: 1.02 } : {}}
+                    whileTap={product.inStock ? { scale: 0.98 } : {}}
+                  >
+                    {product.inStock ? 'Add to Cart' : 'Out of Stock'}
+                  </motion.button>
+                  <Link to={`/product/${product.id}`}>
+                    <motion.button
+                      className="px-4 py-3 border-2 border-green-600 text-green-600 rounded-xl hover:bg-green-50 transition-all duration-300 font-semibold"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <ArrowRight className="w-4 h-4" />
+                    </motion.button>
+                  </Link>
+                </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
         

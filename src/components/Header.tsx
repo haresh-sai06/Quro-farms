@@ -56,7 +56,9 @@ const Header = () => {
 
           <div className="flex items-center gap-4">
             {/* Shopping Cart Dropdown */}
-            <CartDropdown />
+            <div data-cart-icon>
+              <CartDropdown />
+            </div>
 
             {/* Order Now Button */}
             <motion.button

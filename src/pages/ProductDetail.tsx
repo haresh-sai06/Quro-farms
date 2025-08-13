@@ -7,6 +7,7 @@ import { products } from "../data/products";
 import { useCart } from "../hooks/useCart";
 import Header from "../components/Header";
 import { toast } from "sonner";
+import FlyToCartAnimation from "../components/FlyToCartAnimation";
 
 const AnimatedSection = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
@@ -81,12 +82,13 @@ const StickyAddToCart = ({ product, quantity, setQuantity, onAddToCart }) => {
             
             <motion.button
               onClick={onAddToCart}
-              className="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-green-700 transition-colors"
+              disabled={!product.inStock}
+              className="bg-green-600 text-white px-6 py-3 rounded-xl font-semibold flex items-center gap-2 hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <ShoppingCart className="w-5 h-5" />
-              Add to Cart
+              {product.inStock ? 'Add to Cart' : 'Out of Stock'}
             </motion.button>
           </div>
         </div>
@@ -100,6 +102,13 @@ const ProductDetail = () => {
   const product = products.find(p => p.id === id);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const [flyAnimation, setFlyAnimation] = useState<{
+    isActive: boolean;
+    startPosition: { x: number; y: number };
+  }>({
+    isActive: false,
+    startPosition: { x: 0, y: 0 }
+  });
   const { scrollYProgress } = useScroll();
   
   const heroRef = useRef(null);
@@ -121,15 +130,42 @@ const ProductDetail = () => {
     );
   }
 
-  const handleAddToCart = () => {
-    addToCart(product, quantity);
-    toast.success(`Added ${quantity} ${product.unit} of ${product.name} to cart!`);
+  const handleAddToCart = (event?: React.MouseEvent) => {
+    if (!product.inStock) {
+      toast.error('This product is currently out of stock');
+      return;
+    }
+
+    let startPosition = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    
+    if (event) {
+      const rect = (event.target as HTMLElement).getBoundingClientRect();
+      startPosition = {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
+      };
+    }
+
+    const success = addToCart(product, quantity);
+    if (success) {
+      setFlyAnimation({
+        isActive: true,
+        startPosition
+      });
+      toast.success(`Added ${quantity} ${product.unit} of ${product.name} to cart!`);
+    }
   };
 
   return (
     <ParallaxProvider>
       <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
         <Header />
+        
+        <FlyToCartAnimation
+          isActive={flyAnimation.isActive}
+          startPosition={flyAnimation.startPosition}
+          onComplete={() => setFlyAnimation(prev => ({ ...prev, isActive: false }))}
+        />
         
         {/* Hero Section with Parallax */}
         <section ref={heroRef} className="relative h-screen overflow-hidden">
@@ -224,6 +260,13 @@ const ProductDetail = () => {
                   </div>
                   <div className="text-white/80">({product.reviews} reviews)</div>
                 </div>
+                {!product.inStock && (
+                  <div className="text-center">
+                    <div className="bg-red-500 text-white px-6 py-3 rounded-full font-bold">
+                      Out of Stock
+                    </div>
+                  </div>
+                )}
               </motion.div>
             </div>
           </div>
@@ -271,6 +314,13 @@ const ProductDetail = () => {
                         {product.badge}
                       </span>
                     </div>
+                    {!product.inStock && (
+                      <div className="absolute inset-0 bg-black/50 rounded-3xl flex items-center justify-center">
+                        <span className="bg-red-500 text-white px-6 py-3 rounded-full font-bold text-xl">
+                          Out of Stock
+                        </span>
+                      </div>
+                    )}
                   </motion.div>
                 </div>
                 
@@ -310,6 +360,7 @@ const ProductDetail = () => {
                     <p className="text-neutral-600 text-lg">per {product.unit}</p>
                   </div>
 
+                  {product.inStock && (
                   <div className="flex items-center gap-4 mb-6">
                     <span className="font-semibold text-lg">Quantity:</span>
                     <div className="flex items-center gap-2 border-2 border-neutral-200 rounded-xl">
@@ -384,16 +435,21 @@ const ProductDetail = () => {
                 {product.processingJourney.map((step, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    onClick={(e) => handleAddToCart(e)}
+                    disabled={!product.inStock}
+                    className="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-xl flex items-center justify-center gap-3 hover:bg-green-700 transition-colors shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
                     transition={{ delay: index * 0.2 }}
                     className={`flex items-center gap-8 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
                   >
                     <div className="flex-shrink-0">
-                      <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
+                    {product.inStock 
+                      ? `Add to Cart - ₹${(product.discountedPrice * quantity).toFixed(2)}`
+                      : 'Currently Out of Stock'
+                    }
                         {index + 1}
                       </div>
                     </div>
+                  )}
                     <div className="flex-1 bg-white p-6 rounded-2xl shadow-lg">
                       <p className="text-lg text-neutral-700">{step}</p>
                     </div>

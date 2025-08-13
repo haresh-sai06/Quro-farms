@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
 import OrderNow from "./pages/OrderNow";
+import StickyCartIcon from "./components/StickyCartIcon";
 
 const queryClient = new QueryClient();
 
@@ -15,6 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <StickyCartIcon />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

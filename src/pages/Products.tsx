@@ -1,17 +1,25 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Search, ShoppingCart } from "lucide-react";
+import { ArrowRight, Star, Search, ShoppingCart, Plus } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { products } from "../data/products";
 import { useCart } from "../hooks/useCart";
 import { toast } from "sonner";
+import FlyToCartAnimation from "../components/FlyToCartAnimation";
 
 
 const ProductsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
   const { addToCart } = useCart();
+  const [flyAnimation, setFlyAnimation] = useState<{
+    isActive: boolean;
+    startPosition: { x: number; y: number };
+  }>({
+    isActive: false,
+    startPosition: { x: 0, y: 0 }
+  });
   const categories = ["All", "Vegetables", "Fruits"];
 
   const filteredProducts = products.filter(product => 
@@ -19,14 +27,32 @@ const ProductsPage = () => {
     (selectedCategory === "All" || product.category === selectedCategory)
   );
 
-  const handleAddToCart = (product: any) => {
-    addToCart(product, 1);
-    toast.success(`Added ${product.name} to cart!`);
+  const handleAddToCart = (product: any, event: React.MouseEvent) => {
+    const rect = (event.target as HTMLElement).getBoundingClientRect();
+    const startPosition = {
+      x: rect.left + rect.width / 2,
+      y: rect.top + rect.height / 2
+    };
+
+    const success = addToCart(product, 1);
+    if (success) {
+      setFlyAnimation({
+        isActive: true,
+        startPosition
+      });
+      toast.success(`Added ${product.name} to cart!`);
+    }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       <Header />
+      
+      <FlyToCartAnimation
+        isActive={flyAnimation.isActive}
+        startPosition={flyAnimation.startPosition}
+        onComplete={() => setFlyAnimation(prev => ({ ...prev, isActive: false }))}
+      />
       
       <section className="pt-32 pb-20 container-padding">
         <div className="max-w-7xl mx-auto">
@@ -96,6 +122,13 @@ const ProductsPage = () => {
                       {product.badge}
                     </span>
                   </div>
+                  {!product.inStock && (
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                      <span className="bg-red-500 text-white px-4 py-2 rounded-full font-bold">
+                        Out of Stock
+                      </span>
+                    </div>
+                  )}
                 </div>
                 <div className="p-5">
                   <Link to={`/product/${product.id}`}>
@@ -117,13 +150,20 @@ const ProductsPage = () => {
                   </div>
                   <div className="flex gap-2">
                     <motion.button
-                      onClick={() => handleAddToCart(product)}
-                      className="flex-1 bg-green-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-700 transition-all"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.98 }}
+                      onClick={(e) => handleAddToCart(product, e)}
+                      disabled={!product.inStock}
+                      className="flex-1 bg-green-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed"
+                      whileHover={product.inStock ? { scale: 1.03 } : {}}
+                      whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >
-                      <ShoppingCart className="w-4 h-4" />
-                      Add to Cart
+                      {product.inStock ? (
+                        <>
+                          <Plus className="w-4 h-4" />
+                          Add to Cart
+                        </>
+                      ) : (
+                        'Out of Stock'
+                      )}
                     </motion.button>
                     <Link to={`/product/${product.id}`}>
                       <motion.button
@@ -131,7 +171,7 @@ const ProductsPage = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        View Details
+                        <ArrowRight className="w-4 h-4" />
                       </motion.button>
                     </Link>
                   </div>
