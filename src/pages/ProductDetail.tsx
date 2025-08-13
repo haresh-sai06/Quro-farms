@@ -435,21 +435,16 @@ const ProductDetail = () => {
                 {product.processingJourney.map((step, index) => (
                   <motion.div
                     key={index}
-                    onClick={(e) => handleAddToCart(e)}
-                    disabled={!product.inStock}
-                    className="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-xl flex items-center justify-center gap-3 hover:bg-green-700 transition-colors shadow-lg disabled:bg-gray-400 disabled:cursor-not-allowed"
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.2 }}
                     className={`flex items-center gap-8 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
                   >
                     <div className="flex-shrink-0">
-                    {product.inStock 
-                      ? `Add to Cart - ₹${(product.discountedPrice * quantity).toFixed(2)}`
-                      : 'Currently Out of Stock'
-                    }
+                      <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold">
                         {index + 1}
                       </div>
                     </div>
-                  )}
                     <div className="flex-1 bg-white p-6 rounded-2xl shadow-lg">
                       <p className="text-lg text-neutral-700">{step}</p>
                     </div>
