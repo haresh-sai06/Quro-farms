@@ -5,7 +5,7 @@ import { products } from "../data/products";
 import { useCart } from "../hooks/useCart";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FlyToCartAnimation from "./FlyToCartAnimation";
 
 

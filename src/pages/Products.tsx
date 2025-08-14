@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Star, Search, ShoppingCart, Plus } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { products } from "../data/products";
@@ -21,6 +21,11 @@ const ProductsPage = () => {
     startPosition: { x: 0, y: 0 }
   });
   const categories = ["All", "Vegetables", "Fruits"];
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const filteredProducts = products.filter(product => 
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
