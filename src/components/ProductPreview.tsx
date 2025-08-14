@@ -37,7 +37,7 @@ const ProductPreview = () => {
   };
 
   return (
-    <section className="py-20 container-padding bg-white">
+    <section id="products-preview" className="py-20 container-padding bg-white">
       <FlyToCartAnimation
         isActive={flyAnimation.isActive}
         startPosition={flyAnimation.startPosition}

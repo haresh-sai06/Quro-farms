@@ -43,7 +43,7 @@ const productCategories = [
 
 const Stats = () => {
   return (
-    <section id="products" className="py-20 container-padding bg-gradient-to-b from-green-50/50 to-white">
+    <section id="products-section" className="py-20 container-padding bg-gradient-to-b from-green-50/50 to-white">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
@@ -95,11 +95,11 @@ const Stats = () => {
         </div>
         
         <div className="text-center mt-16">
-          <Link to="/products">
+          <a href="#products-preview">
             <button className="bg-green-600 text-white px-10 py-4 rounded-full hover:bg-green-700 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
               View All Products
             </button>
-          </Link>
+          </a>
         </div>
       </div>
     </section>
