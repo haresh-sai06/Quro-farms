@@ -171,13 +171,12 @@ const ProductDetail = () => {
         <section ref={heroRef} className="relative h-screen overflow-hidden">
           <Parallax speed={-20} className="absolute inset-0">
             <motion.div
-              style={{ y, opacity }}
-              className="w-full h-[120%] bg-cover bg-center"
               style={{ 
                 y, 
                 opacity,
                 backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${product.image})`
               }}
+              className="w-full h-[120%] bg-cover bg-center"
             />
           </Parallax>
           
