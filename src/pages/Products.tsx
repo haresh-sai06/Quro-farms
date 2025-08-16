@@ -20,7 +20,7 @@ const ProductsPage = () => {
     isActive: false,
     startPosition: { x: 0, y: 0 }
   });
-  const categories = ["All", "Vegetables", "Fruits"];
+  const categories = ["All", "Oils", "Powders"];
 
   // Scroll to top when component mounts
   useEffect(() => {
@@ -176,7 +176,7 @@ const ProductsPage = () => {
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <ArrowRight className="w-4 h-4" />
+                        View Details
                       </motion.button>
                     </Link>
                   </div>

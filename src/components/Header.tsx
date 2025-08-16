@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Menu, X, Leaf, Phone } from "lucide-react";
+import { Menu, X, Leaf, Phone, Home } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
@@ -18,14 +18,7 @@ const Header = () => {
     { name: "Contact", href: "/#contact" }
   ];
   
-  const productsNavLinks = [
-    { name: "All Products", href: "/products" },
-    { name: "Vegetables", href: "/products?category=Vegetables" },
-    { name: "Fruits", href: "/products?category=Fruits" },
-    { name: "Contact", href: "/#contact" }
-  ];
-
-  const navLinks = isProductsPage ? productsNavLinks : defaultNavLinks;
+  const navLinks = defaultNavLinks;
 
   return (
     <header
@@ -55,17 +48,33 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <motion.a
-              key={link.name}
-              href={link.href}
-              className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
-              whileHover={{ y: -2, color: "#86efac" }}
-              transition={{ duration: 0.2 }}
-            >
-              {link.name}
-            </motion.a>
-          ))}
+          {isProductsPage ? (
+            // Products page navigation - just 3 icons
+            <>
+              <motion.a
+                href="/"
+                className="text-neutral-100 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
+                whileHover={{ y: -2, color: "#86efac" }}
+                transition={{ duration: 0.2 }}
+              >
+                <Home className="w-5 h-5" />
+                Home
+              </motion.a>
+            </>
+          ) : (
+            // Default navigation
+            navLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
+                whileHover={{ y: -2, color: "#86efac" }}
+                transition={{ duration: 0.2 }}
+              >
+                {link.name}
+              </motion.a>
+            ))
+          )}
 
           <div className="flex items-center gap-4">
             {/* Shopping Cart Dropdown */}
@@ -107,15 +116,25 @@ const Header = () => {
         transition={{ duration: 0.3 }}
       >
         <div className="container-padding py-6 flex flex-col gap-4">
-          {navLinks.map((link) => (
+          {isProductsPage ? (
             <a
-              key={link.name}
-              href={link.href}
-              className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2"
+              href="/"
+              className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2 flex items-center gap-2"
             >
-              {link.name}
+              <Home className="w-5 h-5" />
+              Home
             </a>
-          ))}
+          ) : (
+            navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2"
+              >
+                {link.name}
+              </a>
+            ))
+          )}
           <div className="flex gap-4 pt-4 border-t border-green-100/50">
             <button className="flex-1 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold">
               <Link to="/order">Order Now</Link>
