@@ -114,9 +114,11 @@ const Header = () => {
         initial={{ height: 0, opacity: 0 }}
         animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-          className="md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-green-100/50 shadow-lg"
+      >
         <div className="container-padding py-6 flex flex-col gap-4">
-            background: "rgba(255, 255, 255, 0.95)",
+          {isProductsPage ? (
+            <a
+              href="/"
               className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2 flex items-center gap-2"
             >
               <Home className="w-5 h-5" />
@@ -126,13 +128,13 @@ const Header = () => {
             navLinks.map((link) => (
               <a
                 key={link.name}
-                  className="text-green-800 hover:text-green-600 transition-colors font-medium py-2"
+                href={link.href}
                 className="text-green-800 hover:text-green-600 transition-colors font-medium py-2 flex items-center gap-2"
               >
                 {link.name}
               </a>
             ))
-            <div className="flex gap-4 pt-4 border-t border-green-200">
+          )}
           <div className="flex gap-4 pt-4 border-t border-green-100/50">
             <button className="flex-1 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold">
               <Link to="/order">Order Now</Link>

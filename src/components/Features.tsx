@@ -24,11 +24,11 @@ const features = [
     bgColor: "bg-amber-50",
   },
   {
-    title: "Certified Organic Sources",
-    description: "All our partner farms are certified organic, ensuring the highest quality and safety standards.",
-    icon: Heart,
-    color: "text-red-600",
-    bgColor: "bg-red-50",
+  title: "Freshly Harvested Guarantee",
+  description: "All our products are harvested in small batches and delivered fresh to your doorstep.",
+  icon: Leaf,
+  color: "text-green-600",
+  bgColor: "bg-green-50",
   },
 ];
 
@@ -41,7 +41,7 @@ const Features = () => {
             Why Choose Our <span className="text-green-600">Farm Products?</span>
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-            We're committed to bringing you the purest, healthiest produce directly from certified organic farms across India.
+            We're committed to bringing you the purest, healthiest produce directly from organic farms across India.
           </p>
         </div>
         

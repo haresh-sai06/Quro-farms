@@ -66,7 +66,7 @@ const Hero = () => {
       animate={controls}
       variants={containerVariants}
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center relative z-10 pt-8 pt-24">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center relative z-10 pt-8 pt-28">
         <div className="md:w-1/2 text-left">
           <motion.div
             ref={badgeRef}

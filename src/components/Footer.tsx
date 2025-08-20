@@ -15,7 +15,7 @@ const Footer = () => {
               <span className="text-2xl font-bold">Quro Farms</span>
             </div>
             <p className="text-green-100 text-lg leading-relaxed mb-6 max-w-md">
-              Bringing you 100% original, chemical-free farm products directly from certified organic farms across India to your doorstep.
+              Bringing you 100% original, chemical-free farm products directly from organic farms across India to your doorstep.
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-green-100">
@@ -90,12 +90,12 @@ const Footer = () => {
           
           <div className="text-center text-green-200">
             <p className="mb-2">
-              © 2024 Quro Farms. All rights reserved. | Made with ❤️ for healthy living
+              © 2025 Quro Farms. All rights reserved. | Made with ❤️ for healthy living
             </p>
             <p className="text-sm">
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a> • 
               <a href="#" className="hover:text-white transition-colors ml-2">Terms of Service</a> • 
-              <a href="#" className="hover:text-white transition-colors ml-2">Organic Certification</a>
+              <a href="#" className="hover:text-white transition-colors ml-2">Freshly Harvested</a>
             </p>
           </div>
         </div>

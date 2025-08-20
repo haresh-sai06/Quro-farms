@@ -403,7 +403,7 @@ const ProductDetail = () => {
                     </div>
                     <div className="text-center">
                       <Award className="w-8 h-8 text-green-600 mx-auto mb-2" />
-                      <p className="font-semibold">Certified Quality</p>
+                      <p className="font-semibold">Freshly Harvested</p>
                     </div>
                   </div>
                 </div>
