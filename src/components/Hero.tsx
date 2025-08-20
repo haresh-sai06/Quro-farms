@@ -4,8 +4,8 @@ import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
-import productpic from "../../dist/components/picture.jpeg";
-import backgroundImage from "../../dist/components/bg_img.jpg";
+import productpic from "../../public/components/picture.jpeg";
+import backgroundImage from "../../public/components/bg_img.jpg";
 import pic1 from "../../public/components/pic1.jpeg";
 import pic2 from "../../public/components/pic2.jpeg";
 
