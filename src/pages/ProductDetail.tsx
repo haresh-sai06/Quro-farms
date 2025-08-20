@@ -572,26 +572,6 @@ const ProductDetail = () => {
 
             {/* Certifications */}
             <AnimatedSection delay={1.0} className="mb-20">
-              <h2 className="text-4xl font-bold text-primary mb-12 text-center">Certifications</h2>
-              <div className="flex flex-wrap justify-center gap-6">
-                {product.certifications.map((cert, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center gap-3 bg-blue-50 text-blue-800 px-6 py-4 rounded-full shadow-lg"
-                  >
-                    <Award className="w-6 h-6" />
-                    <span className="font-bold">{cert}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </AnimatedSection>
-
-            {/* Farmer Story */}
-            <AnimatedSection delay={1.1} className="mb-20">
               <div className="bg-amber-50 p-12 rounded-3xl">
                 <div className="flex items-center gap-4 mb-8 justify-center">
                   <User className="w-10 h-10 text-amber-600" />
@@ -604,7 +584,7 @@ const ProductDetail = () => {
             </AnimatedSection>
 
             {/* Product Story */}
-            <AnimatedSection delay={1.2} className="mb-20">
+            <AnimatedSection delay={1.1} className="mb-20">
               <div className="bg-purple-50 p-12 rounded-3xl">
                 <h2 className="text-4xl font-bold text-primary mb-8 text-center">Our Product Story</h2>
                 <p className="text-xl text-center text-neutral-700 max-w-4xl mx-auto leading-relaxed">
@@ -614,7 +594,7 @@ const ProductDetail = () => {
             </AnimatedSection>
 
             {/* Customer Spotlight */}
-            <AnimatedSection delay={1.3} className="mb-20">
+            <AnimatedSection delay={1.2} className="mb-20">
               <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-12 rounded-3xl text-center">
                 <h2 className="text-4xl font-bold mb-8">Customer Spotlight</h2>
                 <blockquote className="text-2xl italic mb-8 max-w-4xl mx-auto leading-relaxed">
@@ -630,7 +610,7 @@ const ProductDetail = () => {
 
             {/* Limited Edition Appeal */}
             {product.limitedEditionAppeal && (
-              <AnimatedSection delay={1.4} className="mb-20">
+              <AnimatedSection delay={1.3} className="mb-20">
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className="bg-gradient-to-r from-amber-400 to-orange-500 text-white p-12 rounded-3xl text-center shadow-2xl"
@@ -645,7 +625,7 @@ const ProductDetail = () => {
             )}
 
             {/* Farm to Table Image */}
-            <AnimatedSection delay={1.5} className="mb-20">
+            <AnimatedSection delay={1.4} className="mb-20">
               <div className="relative">
                 <Parallax speed={-10}>
                   <motion.img

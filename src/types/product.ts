@@ -19,7 +19,6 @@ export interface Product {
   storageInstructions: string;
   customerUseCases: string[];
   sustainabilityImpact: string;
-  certifications: string[];
   farmerStory: string;
   productStory: string;
   healthBenefits: string[];

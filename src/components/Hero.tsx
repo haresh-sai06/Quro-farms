@@ -45,14 +45,14 @@ const Hero = () => {
   }, [controls, inView]);
 
   const animatedHeadline = [
-    "Pure",
-    "&",
-    "Chemical",
-    "Free",
-    "Farm",
+    "Fresh",
+    "Coconut",
+    "Products",
+    "From",
+    "Paradise",
     "to",
     "Your",
-    "Table",
+    "Home",
   ];
 
   return (
@@ -60,7 +60,7 @@ const Hero = () => {
       ref={ref}
       className="min-h-[100vh] container-padding text-primary overflow-hidden relative bg-cover bg-center flex items-center"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://4kwallpapers.com/images/wallpapers/agriculture-farm-land-countryside-aerial-view-green-2560x1440-3985.jpg')`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop')`,
       }}
       initial="hidden"
       animate={controls}
@@ -70,24 +70,20 @@ const Hero = () => {
         <div className="md:w-1/2 text-left">
           <motion.div
             ref={badgeRef}
-            className="inline-flex items-center gap-2 bg-green-100/80 backdrop-blur-sm text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6 shadow-md"
+            className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-green-800 px-6 py-3 rounded-full text-sm font-medium mb-6 shadow-lg border border-green-200"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
             <Leaf className="w-4 h-4" />
-            100% Original Farm Products
+            100% Natural Coconut Products
           </motion.div>
 
           <motion.h1 className="text-4xl md:text-7xl font-bold mb-6 leading-tight font-poppins flex flex-wrap gap-2">
             {animatedHeadline.map((word, i) => (
               <motion.span
                 key={i}
-                className={`inline-block bg-clip-text text-transparent text-shadow-lg ${
-                  i < 2
-                    ? "bg-gradient-to-r from-green-500 to-emerald-400"
-                    : "bg-gradient-to-r from-amber-500 to-yellow-300"
-                }`}
+                className="inline-block text-white text-shadow-lg drop-shadow-2xl"
                 variants={wordVariants}
               >
                 {word}
@@ -96,22 +92,21 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl bg-gradient-to-r from-green-500 via-yellow-400 to-orange-500 bg-clip-text text-transparent mb-8 max-w-lg leading-relaxed"
+            className="text-xl md:text-2xl text-white/90 mb-8 max-w-lg leading-relaxed text-shadow"
             initial={{ opacity: 0, y: 20 }}
             animate={{
               opacity: 1,
               y: 0,
-              textShadow: inView ? "0 0 8px rgba(255,255,255,0.3)" : "none",
             }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Direct from the farm to your doorstep. We deliver 100% natural,
-            healthy produce all over India without chemicals or preservatives.
+            Experience the tropical goodness of fresh coconuts and coconut products, 
+            sourced directly from pristine coconut groves and delivered to your doorstep.
           </motion.p>
 
           <div className="flex flex-col sm:flex-row gap-6 mb-16">
             <motion.button
-              className="bg-green-600 text-white px-8 py-4 rounded-full flex items-center gap-3 text-lg font-semibold shadow-lg"
+              className="bg-green-600 text-white px-8 py-4 rounded-full flex items-center gap-3 text-lg font-semibold shadow-xl hover:bg-green-700 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -121,7 +116,7 @@ const Hero = () => {
               </Link>
             </motion.button>
             <motion.button
-              className="bg-white/80 backdrop-blur-sm text-green-700 px-8 py-4 rounded-full border-2 border-green-200 text-lg font-semibold"
+              className="bg-white/90 backdrop-blur-sm text-green-700 px-8 py-4 rounded-full border-2 border-white/50 text-lg font-semibold hover:bg-white transition-colors shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -134,13 +129,53 @@ const Hero = () => {
 
         <div className="md:w-1/2 flex justify-center relative">
           <motion.img
-            src="/components/picture.jpeg"
-            alt="Vegetable Basket"
-            className="w-[400px] h-[400px] object-cover"
+            src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=500&h=500&fit=crop"
+            alt="Fresh Coconuts"
+            className="w-[400px] h-[400px] object-cover rounded-full shadow-2xl border-8 border-white/20 backdrop-blur-sm"
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 0.9, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 1 }}
           />
+          
+          {/* Floating coconut elements */}
+          <motion.div
+            animate={{ 
+              y: [0, -20, 0],
+              rotate: [0, 10, 0]
+            }}
+            transition={{ 
+              duration: 4,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="absolute -top-10 -right-10 w-20 h-20 opacity-30"
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=100&h=100&fit=crop" 
+              alt="Coconut" 
+              className="w-full h-full object-cover rounded-full"
+            />
+          </motion.div>
+          
+          <motion.div
+            animate={{ 
+              y: [0, 15, 0],
+              rotate: [0, -5, 0]
+            }}
+            transition={{ 
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
+            }}
+            className="absolute -bottom-5 -left-5 w-16 h-16 opacity-40"
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=80&h=80&fit=crop" 
+              alt="Coconut" 
+              className="w-full h-full object-cover rounded-full"
+            />
+          </motion.div>
         </div>
       </div>
     </motion.section>
