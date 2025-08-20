@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-green-100/50 shadow-sm"
+      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-green-100/50 shadow-sm"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`,
         backgroundSize: "cover",
@@ -105,7 +105,7 @@ const Header = () => {
 
       {/* Mobile Menu with Slide-in */}
       <motion.div
-        className="md:hidden absolute top-20 left-0 right-0 bg-white/10 backdrop-blur-md border-b border-green-100/50 shadow-lg"
+        className="md:hidden absolute top-20 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-green-100/50 shadow-lg"
         style={{
           backgroundImage: `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`,
           backgroundSize: "cover",

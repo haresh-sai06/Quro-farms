@@ -17,11 +17,11 @@ const features = [
     bgColor: "bg-blue-50",
   },
   {
-    title: "Farm-to-Home in 24-48 hrs",
-    description: "Lightning-fast delivery ensures maximum freshness. From harvest to your kitchen in just 1-2 days.",
-    icon: Truck,
-    color: "text-amber-600",
-    bgColor: "bg-amber-50",
+  title: "Farm-to-Home Delivery",
+  description: "Fresh produce delivered directly from our farms to your home within 6 working days, ensuring quality and care at every step.",
+  icon: Truck,
+  color: "text-orange-600",
+  bgColor: "bg-orange-50",
   },
   {
   title: "Freshly Harvested Guarantee",

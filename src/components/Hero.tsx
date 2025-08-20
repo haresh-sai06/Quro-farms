@@ -4,6 +4,10 @@ import { useEffect, useRef } from "react";
 import { useInView } from "react-intersection-observer";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
+import productpic from "../../dist/components/picture.jpeg";
+import backgroundImage from "../../dist/components/bg_img.jpg";
+import pic1 from "../../public/components/pic1.jpeg";
+import pic2 from "../../public/components/pic2.jpeg";
 
 const Hero = () => {
   const badgeRef = useRef(null);
@@ -45,28 +49,28 @@ const Hero = () => {
   }, [controls, inView]);
 
   const animatedHeadline = [
-    "Fresh",
-    "Coconut",
-    "Products",
-    "From",
-    "Paradise",
+    "Pure",
+    "&",
+    "Chemical",
+    "Free",
+    "Farm",
     "to",
     "Your",
-    "Home",
+    "Table",
   ];
 
   return (
     <motion.section
       ref={ref}
-      className="min-h-[100vh] container-padding text-primary overflow-hidden relative bg-cover bg-center flex items-center"
+      className="min-h-[100vh] container-padding text-primary overflow-hidden relative bg-center bg-cover flex items-center h-screen w-full"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop')`,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.2)), url('${backgroundImage}')`,
       }}
       initial="hidden"
       animate={controls}
       variants={containerVariants}
     >
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center relative z-10 pt-8 pt-28">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center relative z-10 pt-28">
         <div className="md:w-1/2 text-left">
           <motion.div
             ref={badgeRef}
@@ -100,8 +104,8 @@ const Hero = () => {
             }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Experience the tropical goodness of fresh coconuts and coconut products, 
-            sourced directly from pristine coconut groves and delivered to your doorstep.
+            Direct from the farm to your doorstep. We deliver 100% natural,
+            healthy produce all over India without chemicals or preservatives.
           </motion.p>
 
           <div className="flex flex-col sm:flex-row gap-6 mb-16">
@@ -129,7 +133,7 @@ const Hero = () => {
 
         <div className="md:w-1/2 flex justify-center relative">
           <motion.img
-            src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=500&h=500&fit=crop"
+            src={productpic}
             alt="Fresh Coconuts"
             className="w-[400px] h-[400px] object-cover rounded-full shadow-2xl border-8 border-white/20 backdrop-blur-sm"
             initial={{ opacity: 0, y: 50 }}
@@ -148,10 +152,10 @@ const Hero = () => {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="absolute -top-10 -right-10 w-20 h-20 opacity-30"
+            className="absolute -top-10 -right-10 w-20 h-20 opacity-70"
           >
             <img 
-              src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=100&h=100&fit=crop" 
+              src={pic1}
               alt="Coconut" 
               className="w-full h-full object-cover rounded-full"
             />
@@ -168,10 +172,10 @@ const Hero = () => {
               ease: "easeInOut",
               delay: 2
             }}
-            className="absolute -bottom-5 -left-5 w-16 h-16 opacity-40"
+            className="absolute -bottom-5 -left-5 w-16 h-16 opacity-70"
           >
             <img 
-              src="https://images.unsplash.com/photo-1587735243615-c03f25aaff15?w=80&h=80&fit=crop" 
+              src={pic2} 
               alt="Coconut" 
               className="w-full h-full object-cover rounded-full"
             />

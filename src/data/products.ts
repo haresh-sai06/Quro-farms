@@ -1,18 +1,22 @@
 import { Product } from '../types/product';
+import TurmericPowder from '../../public/components/pic1.jpeg';
+import PepperPowder from '../../public/components/pic2.jpeg';
+import CoconutOil from '../../public/components/pic3.jpeg';
+import MoringaPowder from '../../public/components/pic4.jpeg';
 
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Organic Heritage Tomatoes',
+    name: 'Organic Turmeric Powder',
     originalPrice: 120,
     discountedPrice: 85,
     unit: 'kg',
-    image: 'https://images.unsplash.com/photo-1465379944081-7f47de8d74ac?w=800&h=600&fit=crop',
+    image: TurmericPowder,
     rating: 4.8,
     reviews: 156,
     badge: 'Bestseller',
-    description: 'Premium heritage variety tomatoes grown using traditional organic methods',
-    category: 'Vegetables',
+    description: 'Pure, sun-dried turmeric roots stone-ground into a fine powder, known for its rich color and medicinal properties.',
+    category: 'Powders',
     features: ['Rich umami flavor', 'Firm texture', 'High lycopene content', 'Perfect for cooking'],
     processingJourney: [
       'Seeds planted in organic soil',
@@ -43,16 +47,16 @@ export const products: Product[] = [
   },
   {
     id: '2',
-    name: 'Premium Baby Spinach',
+    name: 'Premium Pepper Powder',
     originalPrice: 80,
     discountedPrice: 55,
     unit: 'bunch (250g)',
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=800&h=600&fit=crop',
+    image: PepperPowder,
     rating: 4.9,
     reviews: 203,
     badge: 'Organic',
-    description: 'Tender baby spinach leaves packed with iron and nutrients',
-    category: 'Vegetables',
+    description: 'Hand-picked black peppercorns from Western Ghats, freshly ground for bold aroma and sharp flavor.',
+    category: 'Powders',
     features: ['Tender leaves', 'Mild flavor', 'High iron content', 'Ready to eat'],
     processingJourney: [
       'Seeds sown in nutrient-rich organic beds',
@@ -83,16 +87,16 @@ export const products: Product[] = [
   },
   {
     id: '3',
-    name: 'Rainbow Carrots Mix',
+    name: 'Coconut Oil',
     originalPrice: 90,
     discountedPrice: 65,
-    unit: 'kg',
-    image: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=800&h=600&fit=crop',
+    unit: 'ml',
+    image: CoconutOil,
     rating: 4.7,
     reviews: 89,
     badge: 'Fresh',
-    description: 'Colorful mix of orange, purple, and yellow heritage carrots',
-    category: 'Vegetables',
+    description: 'Cold-pressed from fresh coconuts, retaining natural aroma and nutrients for cooking, skincare, and wellness.',
+    category: 'Oils',
     features: ['Sweet and crunchy', 'Vibrant colors', 'High beta-carotene', 'Perfect for roasting'],
     processingJourney: [
       'Heritage seeds planted in deep, sandy soil',
@@ -124,16 +128,16 @@ export const products: Product[] = [
   },
   {
     id: '4',
-    name: 'Artisan Fingerling Potatoes',
+    name: 'Moringa Powder',
     originalPrice: 70,
     discountedPrice: 50,
     unit: 'kg',
-    image: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&h=600&fit=crop',
+    image: MoringaPowder,
     rating: 4.6,
     reviews: 134,
     badge: 'Popular',
-    description: 'Small, waxy potatoes perfect for gourmet cooking',
-    category: 'Vegetables',
+    description: 'Nutrient-dense powder made from naturally dried moringa leaves, packed with vitamins, minerals, and antioxidants.',
+    category: 'Powders',
     features: ['Creamy texture', 'Thin skin', 'Holds shape when cooked', 'Naturally buttery flavor'],
     processingJourney: [
       'Planted in volcanic soil for mineral richness',

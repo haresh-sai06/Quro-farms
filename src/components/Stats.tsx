@@ -1,26 +1,26 @@
 
-import { Leaf, Apple, Truck, Users } from "lucide-react";
+import { Leaf, Apple, Truck, Users, Package, Droplet } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const productCategories = [
-  {
-    title: "Fresh Vegetables",
-    count: "150+",
-    description: "Varieties available",
-    icon: Leaf,
-    color: "text-green-600",
-    bgGradient: "from-green-100 to-green-50",
-    image: "https://images.unsplash.com/photo-1466721591366-2d5fba72006d"
-  },
-  {
-    title: "Organic Fruits",
-    count: "80+",
-    description: "Seasonal selections",
-    icon: Apple,
-    color: "text-red-500",
-    bgGradient: "from-red-100 to-red-50",
-    image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9"
-  },
+{
+  title: "Cold-Pressed Oils",
+  count: "20+",
+  description: "Pure and natural varieties",
+  icon: Droplet,
+  color: "text-yellow-600",
+  bgGradient: "from-yellow-100 to-yellow-50",
+  image: "https://images.unsplash.com/photo-1602526216433-7c2c0b1f9c71"
+},
+{
+  title: "Traditional Powders",
+  count: "15+",
+  description: "Spices, health mixes & more",
+  icon: Package,
+  color: "text-orange-600",
+  bgGradient: "from-orange-100 to-orange-50",
+  image: "https://images.unsplash.com/photo-1622819993165-04a1ac6f5dbb"
+},
   {
     title: "Cities Covered",
     count: "500+",
