@@ -50,7 +50,7 @@ const ProductPreview = () => {
             <span className="text-green-600">Featured</span> Products
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            Handpicked selection of our finest produce, delivered fresh from our partner farms.
+            Crafted with care and sourced from one trusted origin — delivering purity you can rely on.
           </p>
         </div>
         

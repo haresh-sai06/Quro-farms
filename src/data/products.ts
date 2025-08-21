@@ -3,6 +3,7 @@ import TurmericPowder from '../../public/components/pic1.jpeg';
 import PepperPowder from '../../public/components/pic2.jpeg';
 import CoconutOil from '../../public/components/pic3.jpeg';
 import MoringaPowder from '../../public/components/pic4.jpeg';
+import RawBananaPowder from '../../public/components/pic5.jpeg';
 
 export const products: Product[] = [
   {
@@ -168,16 +169,16 @@ export const products: Product[] = [
   },
   {
     id: '5',
-    name: 'Himalayan Strawberries',
+    name: 'Raw Banana Powder',
     originalPrice: 280,
     discountedPrice: 220,
     unit: '500g basket',
-    image: 'https://images.unsplash.com/photo-1518635015038-1f7f34fd1696?w=800&h=600&fit=crop',
+    image: RawBananaPowder,
     rating: 4.9,
     reviews: 245,
     badge: 'Seasonal',
-    description: 'Premium strawberries grown in the foothills of the Himalayas',
-    category: 'Fruits',
+    description: 'Wholesome and nutritious Raw Banana Powder, naturally processed to retain its fiber-rich goodness. Ideal for porridges, smoothies, and healthy cooking.',
+    category: 'Powder',
     features: ['Intensely sweet', 'Aromatic fragrance', 'Perfect size', 'Deep red color'],
     processingJourney: [
       'Grown at 2000m altitude for intense flavor',
@@ -209,7 +210,7 @@ export const products: Product[] = [
   },
   {
     id: '6',
-    name: 'Orchard Fresh Apples',
+    name: 'Arrow Root Powder',
     originalPrice: 200,
     discountedPrice: 150,
     unit: 'kg',
@@ -217,8 +218,48 @@ export const products: Product[] = [
     rating: 4.7,
     reviews: 178,
     badge: 'Organic',
-    description: 'Crisp, juicy apples from our heritage orchard',
-    category: 'Fruits',
+    description: 'Pure and easily digestible Arrowroot Powder, known for its soothing properties and perfect as a natural thickener for soups, sauces, and desserts.',
+    category: 'Powders',
+    features: ['Perfect crunch', 'Natural sweetness', 'Long shelf life', 'Versatile variety'],
+    processingJourney: [
+      'Grown on 50-year-old heritage trees',
+      'Naturally ripened on the tree',
+      'Hand-picked with care',
+      'Waxed with natural carnauba wax'
+    ],
+    whyChooseOurFarm: 'Our heritage orchard produces apples with complex flavors that only come from mature, well-established trees.',
+    uniqueSellingPoints: [
+      'Heritage orchard with 50+ year old trees',
+      'Complex flavor development',
+      'Traditional growing methods',
+      'Sustainable orchard management'
+    ],
+    seasonalAvailability: 'Fresh harvest September to November, cold storage available year-round',
+    pairingSuggestions: ['Cheddar cheese', 'Cinnamon', 'Caramel', 'Walnuts'],
+    storageInstructions: 'Store in refrigerator crisper drawer for up to 6 weeks',
+    customerUseCases: ['Fresh snacking', 'Baking', 'Juice making', 'Lunch boxes'],
+    sustainabilityImpact: 'Our orchard sequesters 15 tons of CO2 annually and provides habitat for beneficial insects',
+    farmerStory: 'Orchard keeper Lakshmi Devi has been caring for these trees for 30 years, knowing each tree\'s personality.',
+    productStory: 'Our orchard was planted by the farm founder\'s grandfather and represents three generations of apple growing expertise.',
+    healthBenefits: ['High in fiber', 'Natural antioxidants', 'Supports digestive health', 'Low glycemic index'],
+    recipeIdeas: ['Classic apple pie', 'Apple crisp', 'Waldorf salad', 'Homemade applesauce'],
+    ecoFriendlyPractices: ['Beneficial insect habitat', 'Composted orchard waste', 'Minimal spray program', 'Bird nesting boxes'],
+    customerSpotlight: '"The flavor reminds me of apples from my childhood - authentic and delicious!" - Long-time customer',
+    farmToTableImage: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=800&h=400&fit=crop',
+    inStock: true
+  },
+  {
+    id: '7',
+    name: 'Jack Fruit Powder',
+    originalPrice: 200,
+    discountedPrice: 150,
+    unit: 'kg',
+    image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop',
+    rating: 4.7,
+    reviews: 178,
+    badge: 'Organic',
+    description: 'Naturally sweet and fiber-rich Jackfruit Powder, a versatile superfood for smoothies, baking, and traditional recipes.',
+    category: 'Powders',
     features: ['Perfect crunch', 'Natural sweetness', 'Long shelf life', 'Versatile variety'],
     processingJourney: [
       'Grown on 50-year-old heritage trees',

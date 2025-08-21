@@ -41,7 +41,7 @@ const Features = () => {
             Why Choose Our <span className="text-green-600">Farm Products?</span>
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
-            We're committed to bringing you the purest, healthiest produce directly from organic farms across India.
+            We're committed to bringing you the purest, healthiest products made with care from our trusted farms.
           </p>
         </div>
         
