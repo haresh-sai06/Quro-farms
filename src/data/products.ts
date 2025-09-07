@@ -4,14 +4,16 @@ import PepperPowder from '../../public/components/pic2.jpeg';
 import CoconutOil from '../../public/components/pic3.jpeg';
 import MoringaPowder from '../../public/components/pic4.jpeg';
 import RawBananaPowder from '../../public/components/pic5.jpeg';
+import ArrowRootPowder from '../../public/components/pic6.jpeg';
+import JackFruitPowder from '../../public/components/pic7.jpeg';
 
 export const products: Product[] = [
   {
     id: '1',
     name: 'Organic Turmeric Powder',
-    originalPrice: 120,
-    discountedPrice: 85,
-    unit: 'kg',
+    originalPrice: 200,
+    discountedPrice: 120,
+    unit: '250 g',
     image: TurmericPowder,
     rating: 4.8,
     reviews: 156,
@@ -89,9 +91,9 @@ export const products: Product[] = [
   {
     id: '3',
     name: 'Coconut Oil',
-    originalPrice: 90,
-    discountedPrice: 65,
-    unit: 'ml',
+    originalPrice: 550,
+    discountedPrice: 525,
+    unit: 'ltr',
     image: CoconutOil,
     rating: 4.7,
     reviews: 89,
@@ -130,9 +132,9 @@ export const products: Product[] = [
   {
     id: '4',
     name: 'Moringa Powder',
-    originalPrice: 70,
-    discountedPrice: 50,
-    unit: 'kg',
+    originalPrice: 180,
+    discountedPrice: 130,
+    unit: '100 g',
     image: MoringaPowder,
     rating: 4.6,
     reviews: 134,
@@ -170,15 +172,15 @@ export const products: Product[] = [
   {
     id: '5',
     name: 'Raw Banana Powder',
-    originalPrice: 280,
-    discountedPrice: 220,
-    unit: '500g basket',
+    originalPrice: 300,
+    discountedPrice: 250,
+    unit: '250 g',
     image: RawBananaPowder,
     rating: 4.9,
     reviews: 245,
     badge: 'Seasonal',
     description: 'Wholesome and nutritious Raw Banana Powder, naturally processed to retain its fiber-rich goodness. Ideal for porridges, smoothies, and healthy cooking.',
-    category: 'Powder',
+    category: 'Powders',
     features: ['Intensely sweet', 'Aromatic fragrance', 'Perfect size', 'Deep red color'],
     processingJourney: [
       'Grown at 2000m altitude for intense flavor',
@@ -212,9 +214,9 @@ export const products: Product[] = [
     id: '6',
     name: 'Arrow Root Powder',
     originalPrice: 200,
-    discountedPrice: 150,
-    unit: 'kg',
-    image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop',
+    discountedPrice: 140,
+    unit: '100 g',
+    image: ArrowRootPowder,
     rating: 4.7,
     reviews: 178,
     badge: 'Organic',
@@ -251,10 +253,10 @@ export const products: Product[] = [
   {
     id: '7',
     name: 'Jack Fruit Powder',
-    originalPrice: 200,
-    discountedPrice: 150,
-    unit: 'kg',
-    image: 'https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800&h=600&fit=crop',
+    originalPrice: 300,
+    discountedPrice: 250,
+    unit: '250 g',
+    image: JackFruitPowder,
     rating: 4.7,
     reviews: 178,
     badge: 'Organic',

@@ -169,123 +169,120 @@ const ProductDetail = () => {
         
         {/* Hero Section with Parallax */}
         <section ref={heroRef} className="relative h-screen overflow-hidden">
-          <Parallax speed={-20} className="absolute inset-0">
-            <motion.div
-              style={{ 
-                y, 
-                opacity,
-                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${product.image})`
-              }}
-              className="w-full h-[120%] bg-cover bg-center"
-            />
-          </Parallax>
-          
-          {/* Floating Elements */}
-          <motion.div
-            animate={{ 
-              y: [0, -20, 0],
-              rotate: [0, 5, 0]
-            }}
-            transition={{ 
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-20 right-20 w-16 h-16 bg-green-400/20 rounded-full backdrop-blur-sm"
-          />
-          
-          <motion.div
-            animate={{ 
-              y: [0, 15, 0],
-              rotate: [0, -3, 0]
-            }}
-            transition={{ 
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 2
-            }}
-            className="absolute bottom-40 left-16 w-12 h-12 bg-amber-400/20 rounded-full backdrop-blur-sm"
-          />
+  <Parallax speed={-20} className="absolute inset-0">
+    <motion.div
+      style={{ 
+        y, 
+        opacity,
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${product.image})`,
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        transform: 'scale(1)' // normal scale
+      }}
+      className="w-full h-full"
+    />
+  </Parallax>
+  
+  {/* Floating Elements */}
+  <motion.div
+    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+    className="absolute top-20 right-20 w-16 h-16 bg-green-400/20 rounded-full backdrop-blur-sm"
+  />
+  
+  <motion.div
+    animate={{ y: [0, 15, 0], rotate: [0, -3, 0] }}
+    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+    className="absolute bottom-40 left-16 w-12 h-12 bg-amber-400/20 rounded-full backdrop-blur-sm"
+  />
 
-          {/* Hero Content */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-white z-10">
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.5 }}
-                className="mb-6"
-              >
-                <Link
-                  to="/products"
-                  className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors mb-8"
-                >
-                  <ArrowLeft className="w-5 h-5" />
-                  Back to Products
-                </Link>
-              </motion.div>
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.7 }}
-                className="text-6xl md:text-8xl font-bold mb-6 text-shadow-lg"
-              >
-                {product.name}
-              </motion.h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.9 }}
-                className="text-2xl md:text-3xl mb-8 text-shadow"
-              >
-                {product.description}
-              </motion.p>
-              
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-                className="flex items-center justify-center gap-6"
-              >
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-green-300">₹{product.discountedPrice}</div>
-                  <div className="text-lg text-white/80">per {product.unit}</div>
-                </div>
-                <div className="text-center">
-                  <div className="flex items-center gap-1 justify-center">
-                    <Star className="w-6 h-6 text-amber-400 fill-current" />
-                    <span className="text-2xl font-bold">{product.rating}</span>
-                  </div>
-                  <div className="text-white/80">({product.reviews} reviews)</div>
-                </div>
-                {!product.inStock && (
-                  <div className="text-center">
-                    <div className="bg-red-500 text-white px-6 py-3 rounded-full font-bold">
-                      Out of Stock
-                    </div>
-                  </div>
-                )}
-              </motion.div>
+  {/* Back to Products */}
+  <motion.div
+    initial={{ opacity: 0, y: 50 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1, delay: 0.5 }}
+    className="absolute top-24 left-10 z-30"
+  >
+    <Link
+      to="/products"
+      className="inline-flex items-center gap-2 text-white/80 hover:text-white transition-colors"
+    >
+      <ArrowLeft className="w-5 h-5" />
+      Back to Products
+    </Link>
+  </motion.div>
+
+  {/* Hero Content (inside glass card) */}
+  <div className="absolute inset-0 flex items-center justify-center px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-12 shadow-lg max-w-4xl text-center text-white z-10"
+    >
+      <motion.h1
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.7 }}
+        className="text-6xl md:text-8xl font-bold mb-6 text-shadow-lg"
+      >
+        {product.name}
+      </motion.h1>
+      
+      <motion.p
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.9 }}
+        className="text-2xl md:text-3xl mb-8 text-shadow"
+      >
+        {product.description}
+      </motion.p>
+      
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 1.1 }}
+        className="flex items-center justify-center gap-6 flex-wrap"
+      >
+        <div className="text-center">
+          <div className="text-4xl font-bold text-green-300">₹{product.discountedPrice}</div>
+          <div className="text-lg text-white/80">per {product.unit}</div>
+        </div>
+        
+        <div className="text-center">
+          <div className="flex items-center gap-1 justify-center">
+            <Star className="w-6 h-6 text-amber-400 fill-current" />
+            <span className="text-2xl font-bold">{product.rating}</span>
+          </div>
+          <div className="text-white/80">({product.reviews} reviews)</div>
+        </div>
+        
+        {!product.inStock && (
+          <div className="text-center">
+            <div className="bg-red-500 text-white px-6 py-3 rounded-full font-bold">
+              Out of Stock
             </div>
           </div>
-          
-          {/* Scroll Indicator */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
-          >
-            <div className="flex flex-col items-center">
-              <span className="text-sm mb-2">Scroll to explore</span>
-              <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-                <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
-              </div>
-            </div>
-          </motion.div>
-        </section>
+        )}
+      </motion.div>
+    </motion.div>
+  </div>
+
+  {/* Scroll Indicator */}
+  <motion.div
+    animate={{ y: [0, 10, 0] }}
+    transition={{ duration: 2, repeat: Infinity }}
+    className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+  >
+    <div className="flex flex-col items-center">
+      <span className="text-sm mb-2">Scroll to explore</span>
+      <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+        <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
+      </div>
+    </div>
+  </motion.div>
+</section>
+
 
         {/* Main Content */}
         <div className="relative bg-white">
