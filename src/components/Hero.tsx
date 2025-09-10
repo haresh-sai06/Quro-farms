@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import farmerImage from "/components/picture.jpeg";
 import farmImage from "/components/bg_img.jpg";
-import product1 from "/components/pic5.jpeg";
-import product2 from "/components/pic6.jpeg";
-import product3 from "/components/pic7.jpeg";
+import product1 from "/components/pic1.jpeg";
+import product2 from "/components/pic2.jpeg";
+import product3 from "/components/pic3.jpeg";
 
 const Hero = () => {
   const badgeRef = useRef(null);
@@ -62,15 +62,15 @@ const Hero = () => {
   ];
 
   const features = [
-    { icon: <Shield className="w-5 h-5" />, text: "100% Grown Naturally" },
+    { icon: <Shield className="w-5 h-5" />, text: "100% Organic Certified" },
     { icon: <Heart className="w-5 h-5" />, text: "Health Guaranteed" },
-    { icon: <Truck className="w-5 h-5" />, text: "Farm to Home Delivery" },
+    { icon: <Truck className="w-5 h-5" />, text: "Free Delivery Over ₹999" },
   ];
 
   return (
     <motion.section
       ref={ref}
-      className="min-h-screen container-padding text-primary overflow-hidden relative bg-center bg-cover flex items-center w-full pt-20"
+      className="min-h-screen container-padding text-primary overflow-hidden relative bg-center bg-cover flex items-center w-full pt-24 sm:pt-16 lg:pt-20"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('${farmImage}')`,
       }}
@@ -104,7 +104,6 @@ const Hero = () => {
         ))}
       </div>
 
-
       {/* Video Modal */}
       {showVideo && (
         <motion.div 
@@ -114,13 +113,13 @@ const Hero = () => {
           exit={{ opacity: 0 }}
         >
           <motion.div 
-            className="relative w-full max-w-4xl"
+            className="relative w-full max-w-2xl sm:max-w-4xl"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: "spring", damping: 25 }}
           >
             <button 
-              className="absolute -top-12 right-0 text-white text-3xl z-10 hover:text-green-300 transition-colors"
+              className="absolute -top-10 sm:-top-12 right-0 text-white text-2xl sm:text-3xl z-10 hover:text-green-300 transition-colors"
               onClick={() => setShowVideo(false)}
             >
               &times;
@@ -128,9 +127,9 @@ const Hero = () => {
             <div className="aspect-video bg-black rounded-xl overflow-hidden">
               <div className="w-full h-full flex items-center justify-center text-white bg-gradient-to-br from-green-900 to-green-700">
                 <div className="text-center">
-                  <Play className="w-16 h-16 mx-auto mb-4" />
-                  <p className="text-xl font-semibold">Farm Tour Video</p>
-                  <p className="text-sm mt-2">See how we grow our organic coconuts</p>
+                  <Play className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2 sm:mb-4" />
+                  <p className="text-lg sm:text-xl font-semibold">Farm Tour Video</p>
+                  <p className="text-sm">See how we grow our organic coconuts</p>
                 </div>
               </div>
             </div>
@@ -138,20 +137,20 @@ const Hero = () => {
         </motion.div>
       )}
 
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center relative z-10 px-4 gap-6">
-        <div className="lg:w-1/2 text-left">
+      <div className="max-w-7xl mx-auto flex flex-col items-center relative z-10 px-4 py-6 gap-6">
+        <div className="text-center">
           <motion.div
             ref={badgeRef}
-            className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4 shadow-lg border border-green-200"
+            className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-green-800 px-3 py-1 rounded-full text-sm font-medium mb-3 shadow-lg border border-green-200"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Leaf className="w-4 h-4" />
+            <Leaf className="w-3 h-3" />
             Certified Organic & Sustainable Farming
           </motion.div>
 
-          <motion.h1 className="text-3xl lg:text-5xl font-bold mb-4 leading-tight font-poppins flex flex-wrap gap-2">
+          <motion.h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-1 sm:gap-2">
             {animatedHeadline.map((word, i) => (
               <motion.span
                 key={i}
@@ -164,7 +163,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.p
-            className="text-lg lg:text-xl text-white/90 mb-6 max-w-md leading-relaxed text-shadow"
+            className="text-base sm:text-lg lg:text-xl text-white/90 mb-4 max-w-xs sm:max-w-md leading-relaxed text-shadow"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -173,13 +172,13 @@ const Hero = () => {
           </motion.p>
 
           <motion.div 
-            className="flex flex-wrap gap-3 mb-6"
+            className="flex flex-col sm:flex-row flex-wrap gap-3 mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7 }}
           >
             {features.map((feature, i) => (
-              <div key={i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
+              <div key={i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
                 <span className="text-green-300">{feature.icon}</span>
                 <span className="text-white text-sm">{feature.text}</span>
               </div>
@@ -188,32 +187,32 @@ const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-6">
             <motion.button
-              className="bg-green-600 text-white px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
+              className="bg-green-600 text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="absolute inset-0 bg-white/20 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
               <Link to="/products" className="flex items-center gap-2 relative z-10">
                 Shop Now
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
               </Link>
             </motion.button>
             <motion.button
-              className="bg-white/90 backdrop-blur-sm text-green-700 px-6 py-3 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
+              className="bg-white/90 backdrop-blur-sm text-green-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowVideo(true)}
             >
               <span className="absolute inset-0 bg-green-100 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
               <div className="flex items-center gap-2 relative z-10">
-                <Play className="w-4 h-4 fill-green-700 group-hover:scale-110 transition-transform" />
+                <Play className="w-3 h-3 fill-green-700 group-hover:scale-110 transition-transform" />
                 Farm Tour
               </div>
             </motion.button>
           </div>
         </div>
 
-        <div className="lg:w-1/2 flex flex-col items-center gap-6 mt-6 lg:mt-0">
+        <div className="w-full flex flex-col items-center gap-6">
           <motion.div 
             className="relative z-20"
             initial={{ opacity: 0, y: 50 }}
@@ -227,23 +226,23 @@ const Hero = () => {
               <img
                 src={farmerImage}
                 alt="Our Farmer"
-                className="w-[360px] h-[350px] object-cover rounded-2xl shadow-2xl border-4 border-white/30"
+                className="w-[200px] sm:w-[280px] h-[250px] sm:h-[350px] object-cover rounded-2xl shadow-2xl border-4 border-white/30"
               />
             </motion.div>
             <motion.div 
-              className="absolute -bottom-4 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-green-800 px-3 py-1 rounded-full text-center shadow-lg w-2/3"
+              className="absolute -bottom-3 sm:-bottom-4 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-green-800 px-2 py-1 rounded-full text-center shadow-lg w-1/2 sm:w-2/3"
               whileHover={{ scale: 1.05 }}
             >
-              <p className="text-sm font-semibold">Quro Farms – Our Natural Products</p>
-              <p className="text-xs">🌿 100% Natural | Farm Fresh | Preservative-Free</p>
+              <p className="text-xs sm:text-sm font-semibold">Rajesh, Our Lead Farmer</p>
+              <p className="text-xs">15+ years experience</p>
             </motion.div>
           </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-xs sm:max-w-sm">
             {[
-              { id: 'oil', src: product1, title: 'Raw Banana Powder', desc: 'Gut-friendly energy flour.' },
-              { id: 'water', src: product2, title: 'Arrow Root Powder', desc: 'Light & easy digestible starch.' },
-              { id: 'flour', src: product3, title: 'Jackfruit Powder', desc: 'Fiber-rich natural energy.' },
+              { id: 'oil', src: product1, title: 'Virgin Coconut Oil', desc: 'Cold-pressed, 100% pure', price: '₹499' },
+              { id: 'water', src: product2, title: 'Fresh Coconut Water', desc: 'No preservatives' },
+              { id: 'flour', src: product3, title: 'Organic Flour', desc: 'Gluten-free' },
             ].map((product, index) => (
               <motion.div
                 key={product.id}
@@ -283,6 +282,18 @@ const Hero = () => {
                 </div>
                 <h3 className="font-semibold text-green-800 text-xs">{product.title}</h3>
                 <p className="text-[10px] text-gray-600">{product.desc}</p>
+                {product.price && (
+                  <div className="flex items-center justify-between mt-1">
+                    <span className="font-bold text-green-700 text-xs">{product.price}</span>
+                    <motion.button 
+                      className="text-[10px] bg-green-100 text-green-800 px-1 py-1 rounded hover:bg-green-200 transition-colors"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      Add to Cart
+                    </motion.button>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
@@ -290,17 +301,17 @@ const Hero = () => {
       </div>
 
       <motion.div 
-        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-white flex flex-col items-center"
+        className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
       >
-        <span className="text-sm mb-1">Scroll to explore</span>
+        <span className="text-xs sm:text-sm mb-1">Scroll to explore</span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         >
-          <ArrowRight className="w-4 h-4 rotate-90" />
+          <ArrowRight className="w-3 sm:w-4 h-3 sm:h-4 rotate-90" />
         </motion.div>
       </motion.div>
     </motion.section>
