@@ -1,11 +1,11 @@
 import { Product } from '../types/product';
-import TurmericPowder from '../../public/components/pic1.jpeg';
-import PepperPowder from '../../public/components/pic2.jpeg';
-import CoconutOil from '../../public/components/pic3.jpeg';
-import MoringaPowder from '../../public/components/pic4.jpeg';
-import RawBananaPowder from '../../public/components/pic5.jpeg';
-import ArrowRootPowder from '../../public/components/pic6.jpeg';
-import JackFruitPowder from '../../public/components/pic7.jpeg';
+import TurmericPowder from '/components/pic1.jpeg';
+import PepperPowder from '/components/pic2.jpeg';
+import CoconutOil from '/components/pic3.jpeg';
+import MoringaPowder from '/components/pic4.jpeg';
+import RawBananaPowder from '/components/pic5.jpeg';
+import ArrowRootPowder from '/components/pic6.jpeg';
+import JackFruitPowder from '/components/pic7.jpeg';
 
 export const products: Product[] = [
   {

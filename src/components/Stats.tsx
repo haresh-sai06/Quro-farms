@@ -1,45 +1,50 @@
 
 import { Leaf, Apple, Truck, Users, Package, Droplet } from "lucide-react";
 import { Link } from "react-router-dom";
+import OilPicture from "/components/oil.webp";
+import PowderPicture from "/components/pic7.jpeg";
 
 const productCategories = [
-{
-  title: "Cold-Pressed Oils",
-  count: "20+",
-  description: "Pure and natural varieties",
-  icon: Droplet,
-  color: "text-yellow-600",
-  bgGradient: "from-yellow-100 to-yellow-50",
-  image: "https://images.unsplash.com/photo-1602526216433-7c2c0b1f9c71"
-},
-{
-  title: "Traditional Powders",
-  count: "15+",
-  description: "Spices, health mixes & more",
-  icon: Package,
-  color: "text-orange-600",
-  bgGradient: "from-orange-100 to-orange-50",
-  image: "https://images.unsplash.com/photo-1622819993165-04a1ac6f5dbb"
-},
   {
-    title: "Cities Covered",
-    count: "500+",
-    description: "Across India",
-    icon: Truck,
-    color: "text-blue-600",
-    bgGradient: "from-blue-100 to-blue-50",
+    title: "Farm-Fresh Products",
+    count: "8",
+    description: "Natural, organic powders & oils",
+    icon: Package,
+    color: "text-green-600",
+    bgGradient: "from-green-100 to-green-50",
     image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a"
   },
   {
-    title: "Happy Families",
-    count: "25K+",
-    description: "Trust our quality",
+    title: "Powders",
+    count: "5",
+    description: "Nutritious health mixes",
+    icon: Leaf,
+    color: "text-orange-600",
+    bgGradient: "from-orange-100 to-orange-50",
+    image: PowderPicture
+  },
+  {
+    title: "Cold-Pressed Oils",
+    count: "1",
+    description: "Pure & natural coconut oil",
+    icon: Droplet,
+    color: "text-yellow-600",
+    bgGradient: "from-yellow-100 to-yellow-50",
+    image: OilPicture
+  },
+  {
+    title: "Happy Customers",
+    count: "5K+",
+    description: "Trusted across India",
     icon: Users,
     color: "text-purple-600",
     bgGradient: "from-purple-100 to-purple-50",
     image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23"
-  },
+  }
 ];
+
+
+
 
 const Stats = () => {
   return (

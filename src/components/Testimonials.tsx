@@ -3,25 +3,25 @@ import { Link } from "react-router-dom";
 
 const testimonials = [
   {
-    quote: "The freshness of vegetables delivered by this farm is unmatched! My family's health has improved significantly since we started ordering from them.",
-    author: "Priya Sharma",
-    role: "Mother of 2, Mumbai",
+    quote: "Have been using products from Quro farm since inception! I love their organic Turmeric powder, Cold pressed coconut oil as well the moringa powder and can vouch for their awesome quality and produce .Even a pinch goes a long way in preparing any dish and for my family I’d choose nothing else.",
+    author: "Sonia Wala",
+    role: "Mumbai",
     avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop",
     rating: 5,
-    product: "Organic Vegetable Bundle"
+    product: ["Organic Turmeric Powder"]
   },
   {
-    quote: "Finally found a reliable source for chemical-free produce! The taste is so much better than store-bought vegetables. Highly recommended!",
-    author: "Rajesh Kumar",
-    role: "Health Enthusiast, Delhi",
+    quote: "Genuinely good products that have zero additives, you get the best turmeric, black pepper, raw banana powder and mornings powder straight from the source. Proud that it’s woman owned!",
+    author: "Geetika Sood",
+    role: "Delhi",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
     rating: 5,
     product: "Farm Fresh Fruits"
   },
   {
-    quote: "Ordering farm products online was skeptical at first, but the quality and packaging exceeded my expectations. Will definitely continue ordering!",
+    quote: "I recently switched to Quro Farms’ coconut oil and I can honestly say it’s the purest I’ve ever used. Their moringa powder also gives me an energy boost every morning. I recommend them to all my friends!",
     author: "Meera Patel",
-    role: "Working Professional, Bangalore",
+    role: "Bangalore",
     avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
     rating: 5,
     product: "Organic Grains & Pulses"
@@ -43,7 +43,7 @@ const Testimonials = () => {
         
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div 
+            <div  
               key={index} 
               className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-green-100 hover:-translate-y-2 relative overflow-hidden"
             >
@@ -62,18 +62,13 @@ const Testimonials = () => {
                 "{testimonial.quote}"
               </p>
               
-              {/* Product */}
+              {/* Product
               <div className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium mb-6 inline-block">
                 {testimonial.product}
-              </div>
+              </div> */}
               
               {/* Author */}
               <div className="flex items-center gap-4">
-                <img
-                  src={testimonial.avatar}
-                  alt={testimonial.author}
-                  className="w-14 h-14 rounded-full border-2 border-green-200"
-                />
                 <div>
                   <p className="font-bold text-primary text-lg">{testimonial.author}</p>
                   <p className="text-neutral-500 text-sm">{testimonial.role}</p>
