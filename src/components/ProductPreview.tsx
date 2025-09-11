@@ -1,5 +1,5 @@
 
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, Star, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { products } from "../data/products";
 import { useCart } from "../hooks/useCart";
@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import FlyToCartAnimation from "./FlyToCartAnimation";
+import { sendProductInquiry } from "../utils/whatsapp";
 
 
 const ProductPreview = () => {
@@ -34,6 +35,11 @@ const ProductPreview = () => {
       });
       toast.success(`Added ${product.name} to cart!`);
     }
+  };
+
+  const handleWhatsAppInquiry = (product: any) => {
+    sendProductInquiry(product.name, product.unit);
+    toast.success("Opening WhatsApp...");
   };
 
   return (
@@ -111,25 +117,38 @@ const ProductPreview = () => {
                 </div>
                 
                 {/* Action Buttons */}
-                <div className="flex gap-2">
-                  <motion.button
-                    onClick={(e) => handleAddToCart(product, e)}
-                    disabled={!product.inStock}
-                    className="flex-1 bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
-                    whileHover={product.inStock ? { scale: 1.02 } : {}}
-                    whileTap={product.inStock ? { scale: 0.98 } : {}}
-                  >
-                    {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                  </motion.button>
-                  <Link to={`/product/${product.id}`}>
+                <div className="space-y-2">
+                  <div className="flex gap-2">
                     <motion.button
-                      className="px-4 py-3 border-2 border-green-600 text-green-600 rounded-xl hover:bg-green-50 transition-all duration-300 font-semibold"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      onClick={(e) => handleAddToCart(product, e)}
+                      disabled={!product.inStock}
+                      className="flex-1 bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
+                      whileHover={product.inStock ? { scale: 1.02 } : {}}
+                      whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >
-                      <ArrowRight className="w-4 h-4" />
+                      {product.inStock ? 'Add to Cart' : 'Out of Stock'}
                     </motion.button>
-                  </Link>
+                    <Link to={`/product/${product.id}`}>
+                      <motion.button
+                        className="px-4 py-3 border-2 border-green-600 text-green-600 rounded-xl hover:bg-green-50 transition-all duration-300 font-semibold"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.button>
+                    </Link>
+                  </div>
+                  
+                  {/* WhatsApp Inquiry Button */}
+                  <motion.button
+                    onClick={() => handleWhatsAppInquiry(product)}
+                    className="w-full bg-green-500 text-white py-2 rounded-xl hover:bg-green-600 transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Quick WhatsApp
+                  </motion.button>
                 </div>
               </div>
             </motion.div>
