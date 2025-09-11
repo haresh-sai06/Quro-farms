@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Search, ShoppingCart, Plus } from "lucide-react";
+import { ArrowRight, Star, Search, ShoppingCart, Plus, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
@@ -7,6 +7,7 @@ import { products } from "../data/products";
 import { useCart } from "../hooks/useCart";
 import { toast } from "sonner";
 import FlyToCartAnimation from "../components/FlyToCartAnimation";
+import { sendProductInquiry } from "../utils/whatsapp";
 
 
 const ProductsPage = () => {
@@ -47,6 +48,11 @@ const ProductsPage = () => {
       });
       toast.success(`Added ${product.name} to cart!`);
     }
+  };
+
+  const handleWhatsAppInquiry = (product: any) => {
+    sendProductInquiry(product.name, product.unit);
+    toast.success("Opening WhatsApp...");
   };
 
   return (
@@ -157,7 +163,7 @@ const ProductsPage = () => {
                     <motion.button
                       onClick={(e) => handleAddToCart(product, e)}
                       disabled={!product.inStock}
-                      className="flex-1 bg-green-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed"
+                      className="flex-1 bg-green-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed mb-2"
                       whileHover={product.inStock ? { scale: 1.03 } : {}}
                       whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >
@@ -172,7 +178,7 @@ const ProductsPage = () => {
                     </motion.button>
                     <Link to={`/product/${product.id}`}>
                       <motion.button
-                        className="px-4 py-3 border-2 border-green-600 text-green-600 rounded-xl font-semibold hover:bg-green-50 transition-all"
+                        className="px-4 py-3 border-2 border-green-600 text-green-600 rounded-xl font-semibold hover:bg-green-50 transition-all mb-2"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -180,6 +186,17 @@ const ProductsPage = () => {
                       </motion.button>
                     </Link>
                   </div>
+                  
+                  {/* WhatsApp Inquiry Button */}
+                  <motion.button
+                    onClick={() => handleWhatsAppInquiry(product)}
+                    className="w-full bg-green-500 text-white py-2 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-green-600 transition-all text-sm"
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <MessageCircle className="w-4 h-4" />
+                    Quick WhatsApp Inquiry
+                  </motion.button>
                 </div>
               </motion.div>
             ))}

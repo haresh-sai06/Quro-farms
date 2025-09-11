@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
-import { ShoppingCart, Plus, Minus, Trash2, CreditCard, MapPin, Phone, User } from "lucide-react";
+import { ShoppingCart, Plus, Minus, Trash2, CreditCard, MapPin, Phone, User, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "../hooks/useCart";
 import Header from "../components/Header";
 import { toast } from "sonner";
+
+const WHATSAPP_PHONE_NUMBER = "919629002576"; // Add country code
 
 const OrderNow = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } = useCart();
@@ -26,6 +28,53 @@ const OrderNow = () => {
       ...customerInfo,
       [e.target.name]: e.target.value
     });
+  };
+
+  const generateWhatsAppMessage = () => {
+    if (cartItems.length === 0) {
+      return "Hello! I'm interested in your products.";
+    }
+
+    let message = "🛒 *Order Details:*\n\n";
+    
+    cartItems.forEach((item, index) => {
+      message += `${index + 1}. *${item.product.name}*\n`;
+      message += `   Quantity: ${item.quantity} ${item.product.unit}\n`;
+      message += `   Price: ₹${item.product.discountedPrice}/${item.product.unit}\n`;
+      message += `   Subtotal: ₹${(item.product.discountedPrice * item.quantity).toFixed(2)}\n\n`;
+    });
+
+    message += `💰 *Total Amount: ₹${finalTotal.toFixed(2)}*\n\n`;
+    
+    if (customerInfo.name || customerInfo.phone || customerInfo.address) {
+      message += "📋 *Customer Details:*\n";
+      if (customerInfo.name) message += `Name: ${customerInfo.name}\n`;
+      if (customerInfo.phone) message += `Phone: ${customerInfo.phone}\n`;
+      if (customerInfo.address) message += `Address: ${customerInfo.address}\n`;
+      if (customerInfo.city) message += `City: ${customerInfo.city}\n`;
+      if (customerInfo.pincode) message += `PIN: ${customerInfo.pincode}\n\n`;
+    }
+    
+    message += "Please confirm this order. Thank you! 🙏";
+    
+    return message;
+  };
+
+  const handleWhatsAppOrder = () => {
+    if (cartItems.length === 0) {
+      toast.error("Your cart is empty!");
+      return;
+    }
+
+    const message = generateWhatsAppMessage();
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, "_blank");
+    
+    // Show success message
+    toast.success("Redirecting to WhatsApp...");
   };
 
   const handleSubmitOrder = (e: React.FormEvent) => {
@@ -174,6 +223,18 @@ const OrderNow = () => {
                         <span>Total:</span>
                         <span>₹{finalTotal.toFixed(2)}</span>
                       </div>
+                      
+                      {/* WhatsApp Order Button */}
+                      <motion.button
+                        type="button"
+                        onClick={handleWhatsAppOrder}
+                        className="w-full bg-green-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-3 mt-4"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <MessageCircle className="w-5 h-5" />
+                        Order via WhatsApp
+                      </motion.button>
                     </div>
                   </>
                 )}
@@ -301,15 +362,28 @@ const OrderNow = () => {
                   <motion.button
                     type="submit"
                     disabled={cartItems.length === 0}
-                    className="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed"
+                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed mb-4"
                     whileHover={{ scale: cartItems.length > 0 ? 1.02 : 1 }}
                     whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
                   >
-                    {cartItems.length === 0 ? 'Cart is Empty' : `Place Order - ₹${finalTotal.toFixed(2)}`}
+                    {cartItems.length === 0 ? 'Cart is Empty' : `Place Traditional Order - ₹${finalTotal.toFixed(2)}`}
+                  </motion.button>
+                  
+                  {/* WhatsApp Order Button */}
+                  <motion.button
+                    type="button"
+                    onClick={handleWhatsAppOrder}
+                    disabled={cartItems.length === 0}
+                    className="w-full bg-green-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                    whileHover={{ scale: cartItems.length > 0 ? 1.02 : 1 }}
+                    whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    {cartItems.length === 0 ? 'Cart is Empty' : 'Order via WhatsApp'}
                   </motion.button>
 
                   <div className="text-center text-sm text-neutral-600">
-                    <p>By placing this order, you agree to our terms and conditions.</p>
+                    <p className="mt-4">Choose your preferred ordering method above.</p>
                     <p className="mt-2">
                       <span className="text-green-600 font-semibold">Free delivery</span> on orders above ₹500
                     </p>
