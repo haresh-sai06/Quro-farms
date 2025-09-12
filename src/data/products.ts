@@ -6,6 +6,10 @@ import MoringaPowder from '/components/pic4.jpeg';
 import RawBananaPowder from '/components/pic5.jpeg';
 import ArrowRootPowder from '/components/pic6.jpeg';
 import JackFruitPowder from '/components/pic7.jpeg';
+import CoconutFarm from '/components/coconutfarm.jpeg';
+import FarmImage from '/components/farmimage.jpeg';
+import TractorImage from '/components/tractorimage.jpeg';
+import Scenary from '/components/scenary.jpeg';
 
 export const products: Product[] = [
   {
@@ -45,7 +49,7 @@ export const products: Product[] = [
     recipeIdeas: ['Caprese salad', 'Homemade marinara sauce', 'Gazpacho soup', 'Bruschetta topping'],
     ecoFriendlyPractices: ['Rainwater harvesting', 'Composting', 'Natural pest control', 'Solar-powered irrigation'],
     customerSpotlight: '"These tomatoes transformed my cooking! The flavor is incredible." - Chef Maria S.',
-    farmToTableImage: 'https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5?w=800&h=400&fit=crop',
+    farmToTableImage: Scenary,
     inStock: true
   },
   {
@@ -85,7 +89,7 @@ export const products: Product[] = [
     recipeIdeas: ['Spinach and strawberry salad', 'Green smoothie', 'Palak paneer', 'Spinach quiche'],
     ecoFriendlyPractices: ['Hydroponic growing', 'LED grow lights', 'Recycled packaging', 'Minimal water usage'],
     customerSpotlight: '"My kids actually ask for salad now! The spinach is so fresh and mild." - Parent testimonial',
-    farmToTableImage: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=800&h=400&fit=crop',
+    farmToTableImage: TractorImage,
     inStock: true
   },
   {
@@ -125,8 +129,7 @@ export const products: Product[] = [
     recipeIdeas: ['Honey-glazed rainbow carrots', 'Colorful carrot soup', 'Raw carrot salad', 'Roasted vegetable medley'],
     ecoFriendlyPractices: ['Seed saving program', 'Crop rotation', 'Natural fertilizers', 'Pollinator-friendly farming'],
     customerSpotlight: '"These carrots are a conversation starter at every dinner party!" - Home chef review',
-    limitedEditionAppeal: 'Limited seasonal harvest - only 500kg available this season!',
-    farmToTableImage: 'https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=800&h=400&fit=crop',
+    farmToTableImage: CoconutFarm,
     inStock: true
   },
   {
@@ -166,7 +169,7 @@ export const products: Product[] = [
     recipeIdeas: ['Herb-roasted fingerlings', 'Warm potato salad', 'Crispy smashed potatoes', 'Potato gratin'],
     ecoFriendlyPractices: ['Cover cropping', 'Minimal tillage', 'Integrated pest management', 'Water conservation'],
     customerSpotlight: '"These potatoes elevated my home cooking to restaurant level!" - Food blogger',
-    farmToTableImage: 'https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=800&h=400&fit=crop',
+    farmToTableImage: TractorImage,
     inStock: true
   },
   {
@@ -206,8 +209,7 @@ export const products: Product[] = [
     recipeIdeas: ['Strawberry shortcake', 'Fresh berry compote', 'Chocolate-dipped strawberries', 'Strawberry smoothie'],
     ecoFriendlyPractices: ['Mountain spring irrigation', 'Natural pest control', 'Biodegradable packaging', 'Carbon-neutral transport'],
     customerSpotlight: '"These are the best strawberries I\'ve ever tasted - worth every penny!" - Gourmet customer',
-    limitedEditionAppeal: 'Exclusive mountain harvest - only 200 baskets available per week during season!',
-    farmToTableImage: 'https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=800&h=400&fit=crop',
+    farmToTableImage: FarmImage,
     inStock: true
   },
   {
@@ -247,7 +249,7 @@ export const products: Product[] = [
     recipeIdeas: ['Classic apple pie', 'Apple crisp', 'Waldorf salad', 'Homemade applesauce'],
     ecoFriendlyPractices: ['Beneficial insect habitat', 'Composted orchard waste', 'Minimal spray program', 'Bird nesting boxes'],
     customerSpotlight: '"The flavor reminds me of apples from my childhood - authentic and delicious!" - Long-time customer',
-    farmToTableImage: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=800&h=400&fit=crop',
+    farmToTableImage: Scenary,
     inStock: true
   },
   {
@@ -287,7 +289,7 @@ export const products: Product[] = [
     recipeIdeas: ['Classic apple pie', 'Apple crisp', 'Waldorf salad', 'Homemade applesauce'],
     ecoFriendlyPractices: ['Beneficial insect habitat', 'Composted orchard waste', 'Minimal spray program', 'Bird nesting boxes'],
     customerSpotlight: '"The flavor reminds me of apples from my childhood - authentic and delicious!" - Long-time customer',
-    farmToTableImage: 'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=800&h=400&fit=crop',
+    farmToTableImage: FarmImage,
     inStock: true
   }
 ];
