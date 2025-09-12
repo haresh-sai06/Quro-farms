@@ -47,7 +47,7 @@ const OrderNow = () => {
     
     cartItems.forEach((item) => {
       message += `📦 *${item.product.name}*\n`;
-      message += `   Quantity: ${item.quantity} ${item.product.unit}\n`;
+      message += `   Quantity: ${item.quantity}\n`;
       message += `   Price: ₹${item.product.discountedPrice}/${item.product.unit}\n`;
       message += `   Subtotal: ₹${(item.product.discountedPrice * item.quantity).toFixed(2)}\n\n`;
     });
