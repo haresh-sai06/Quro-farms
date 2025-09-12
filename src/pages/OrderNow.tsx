@@ -5,7 +5,7 @@ import { useCartContext } from "../context/CardContext"; // Updated to useCartCo
 import Header from "../components/Header";
 import { toast } from "sonner";
 
-const WHATSAPP_PHONE_NUMBER = "7558938256"; // Add country code
+const WHATSAPP_PHONE_NUMBER = "9629002576"; // Add country code
 
 const OrderNow = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock } = useCartContext();
