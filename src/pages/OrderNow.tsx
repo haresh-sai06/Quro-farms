@@ -1,33 +1,41 @@
 import { motion } from "framer-motion";
-import { ShoppingCart, Plus, Minus, Trash2, CreditCard, MapPin, Phone, User, MessageCircle } from "lucide-react";
+import { ShoppingCart, MessageCircle, MapPin, User } from "lucide-react";
 import { useState } from "react";
-import { useCart } from "../hooks/useCart";
+import { useCartContext } from "../context/CardContext"; // Updated to useCartContext
 import Header from "../components/Header";
 import { toast } from "sonner";
 
-const WHATSAPP_PHONE_NUMBER = "919629002576"; // Add country code
+const WHATSAPP_PHONE_NUMBER = "7558938256"; // Add country code
 
 const OrderNow = () => {
-  const { cartItems, updateQuantity, removeFromCart, getCartTotal, clearCart } = useCart();
+  const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock } = useCartContext();
   const [customerInfo, setCustomerInfo] = useState({
     name: '',
     email: '',
-    phone: '',
     address: '',
     city: '',
     pincode: '',
-    paymentMethod: 'cod'
   });
 
   const total = getCartTotal();
-  const deliveryFee = total > 500 ? 0 : 50;
-  const finalTotal = total + deliveryFee;
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setCustomerInfo({
       ...customerInfo,
       [e.target.name]: e.target.value
     });
+  };
+
+  const validateCustomerInfo = () => {
+    if (!customerInfo.name.trim()) {
+      toast.error("Please enter your full name");
+      return false;
+    }
+    if (!customerInfo.address.trim()) {
+      toast.error("Please enter your delivery address");
+      return false;
+    }
+    return true;
   };
 
   const generateWhatsAppMessage = () => {
@@ -35,28 +43,29 @@ const OrderNow = () => {
       return "Hello! I'm interested in your products.";
     }
 
-    let message = "🛒 *Order Details:*\n\n";
+    let message = `🛒 *Order Details (${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })})*\n\n`;
     
-    cartItems.forEach((item, index) => {
-      message += `${index + 1}. *${item.product.name}*\n`;
+    cartItems.forEach((item) => {
+      message += `📦 *${item.product.name}*\n`;
       message += `   Quantity: ${item.quantity} ${item.product.unit}\n`;
       message += `   Price: ₹${item.product.discountedPrice}/${item.product.unit}\n`;
       message += `   Subtotal: ₹${(item.product.discountedPrice * item.quantity).toFixed(2)}\n\n`;
     });
 
-    message += `💰 *Total Amount: ₹${finalTotal.toFixed(2)}*\n\n`;
+    message += `💰 *Total Amount: ₹${total.toFixed(2)}*\n`;
+    message += `🛍 *Total Items: ${getCartItemsCount()}*\n\n`;
     
-    if (customerInfo.name || customerInfo.phone || customerInfo.address) {
+    if (customerInfo.name || customerInfo.email || customerInfo.address || customerInfo.city || customerInfo.pincode) {
       message += "📋 *Customer Details:*\n";
       if (customerInfo.name) message += `Name: ${customerInfo.name}\n`;
-      if (customerInfo.phone) message += `Phone: ${customerInfo.phone}\n`;
+      if (customerInfo.email) message += `Email: ${customerInfo.email}\n`;
       if (customerInfo.address) message += `Address: ${customerInfo.address}\n`;
       if (customerInfo.city) message += `City: ${customerInfo.city}\n`;
       if (customerInfo.pincode) message += `PIN: ${customerInfo.pincode}\n\n`;
     }
     
     message += "Please confirm this order. Thank you! 🙏";
-    
+
     return message;
   };
 
@@ -65,45 +74,16 @@ const OrderNow = () => {
       toast.error("Your cart is empty!");
       return;
     }
+    if (!validateCustomerInfo()) {
+      return;
+    }
 
     const message = generateWhatsAppMessage();
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`;
     
-    // Open WhatsApp in new tab
     window.open(whatsappUrl, "_blank");
-    
-    // Show success message
-    toast.success("Redirecting to WhatsApp...");
-  };
-
-  const handleSubmitOrder = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (cartItems.length === 0) {
-      toast.error("Your cart is empty!");
-      return;
-    }
-
-    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
-      toast.error("Please fill in all required fields!");
-      return;
-    }
-
-    // Simulate order submission
-    toast.success("Order placed successfully! We'll contact you soon.");
-    clearCart();
-    
-    // Reset form
-    setCustomerInfo({
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      city: '',
-      pincode: '',
-      paymentMethod: 'cod'
-    });
+    toast.success("Opening WhatsApp to send your order...");
   };
 
   return (
@@ -117,29 +97,27 @@ const OrderNow = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">
               Complete Your <span className="text-green-600">Order</span>
             </h1>
-            <p className="text-xl text-neutral-600">
-              Fresh, organic produce delivered to your doorstep
-            </p>
+            <p className="text-neutral-600">You have {getCartItemsCount()} item(s) in your cart</p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Order Summary */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-primary mb-6 flex items-center gap-3">
+              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary mb-6 flex items-center gap-3">
                   <ShoppingCart className="w-6 h-6" />
                   Order Summary
                 </h2>
 
                 {cartItems.length === 0 ? (
-                  <div className="text-center py-12">
+                  <div className="text-center py-10">
                     <ShoppingCart className="w-16 h-16 text-neutral-300 mx-auto mb-4" />
                     <p className="text-neutral-500 text-lg">Your cart is empty</p>
                     <a
@@ -153,148 +131,117 @@ const OrderNow = () => {
                   <>
                     <div className="space-y-4 mb-6">
                       {cartItems.map((item) => (
-                        <div key={item.product.id} className="flex items-center gap-4 p-4 border border-neutral-200 rounded-xl">
+                        <div key={item.product.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 border border-neutral-200 rounded-xl">
                           <img
                             src={item.product.image}
                             alt={item.product.name}
-                            className="w-16 h-16 object-cover rounded-lg"
+                            className="w-16 h-16 object-cover rounded-lg flex-shrink-0"
                           />
-                          <div className="flex-1">
-                            <h3 className="font-semibold text-primary">{item.product.name}</h3>
-                            <p className="text-green-600 font-bold">₹{item.product.discountedPrice}/{item.product.unit}</p>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-primary text-sm sm:text-base truncate">{item.product.name}</h3>
+                            <p className="text-green-600 font-bold text-sm sm:text-base">₹{item.product.discountedPrice}/{item.product.unit}</p>
                             <p className="text-sm text-neutral-600">Qty: {item.quantity}</p>
                           </div>
-                          <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2 w-full sm:w-auto sm:ml-auto">
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                              className="p-1 hover:bg-neutral-100 rounded-full transition-colors"
+                              disabled={item.quantity <= 1}
+                              className="p-1 hover:bg-neutral-100 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                             >
-                              <Minus className="w-4 h-4" />
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18 12H6" />
+                              </svg>
                             </button>
                             <input
                               type="number"
                               value={item.quantity}
-                              onChange={(e) => updateQuantity(item.product.id, parseInt(e.target.value) || 1)}
-                              className="w-16 text-center font-semibold border border-neutral-200 rounded px-2 py-1"
+                              onChange={(e) => {
+                                const qty = parseInt(e.target.value) || 1;
+                                if (checkStock(item.product, qty - item.quantity)) {
+                                  updateQuantity(item.product.id, qty);
+                                }
+                              }}
+                              className="w-16 text-center font-semibold border border-neutral-200 rounded px-2 py-1 text-sm"
                               min="1"
                               max="10"
                             />
                             <button
-                              onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                              className="p-1 hover:bg-neutral-100 rounded-full transition-colors"
+                              onClick={() => {
+                                if (checkStock(item.product, 1)) {
+                                  updateQuantity(item.product.id, item.quantity + 1);
+                                }
+                              }}
+                              disabled={!item.product.inStock}
+                              className="p-1 hover:bg-neutral-100 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                             >
-                              <Plus className="w-4 h-4" />
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                              </svg>
                             </button>
                             <button
                               onClick={() => removeFromCart(item.product.id)}
-                              className="p-1 hover:bg-red-100 rounded-full transition-colors ml-2"
+                              className="p-1 hover:bg-red-100 rounded-full transition-colors ml-2 flex-shrink-0"
                             >
-                              <Trash2 className="w-4 h-4 text-red-500" />
+                              <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5-4h4M4 7h16" />
+                              </svg>
                             </button>
                           </div>
-                          <div className="text-right">
-                            <p className="font-bold text-green-600">₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</p>
+                          <div className="text-right w-full sm:w-auto mt-2 sm:mt-0">
+                            <p className="font-bold text-green-600 text-sm sm:text-base">₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</p>
                           </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className="border-t border-neutral-200 pt-4 space-y-2">
-                      <div className="flex justify-between">
-                        <span>Subtotal:</span>
-                        <span className="font-semibold">₹{total.toFixed(2)}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span>Delivery Fee:</span>
-                        <span className="font-semibold">
-                          {deliveryFee === 0 ? (
-                            <span className="text-green-600">FREE</span>
-                          ) : (
-                            `₹${deliveryFee}`
-                          )}
-                        </span>
-                      </div>
-                      {total < 500 && (
-                        <p className="text-sm text-amber-600">
-                          Add ₹{(500 - total).toFixed(2)} more for free delivery!
-                        </p>
-                      )}
-                      <div className="flex justify-between text-xl font-bold text-primary border-t border-neutral-200 pt-2">
+                    <div className="border-t border-neutral-200 pt-4">
+                      <div className="flex justify-between text-xl font-bold text-primary">
                         <span>Total:</span>
-                        <span>₹{finalTotal.toFixed(2)}</span>
+                        <span>₹{total.toFixed(2)}</span>
                       </div>
-                      
-                      {/* WhatsApp Order Button */}
-                      <motion.button
-                        type="button"
-                        onClick={handleWhatsAppOrder}
-                        className="w-full bg-green-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-3 mt-4"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <MessageCircle className="w-5 h-5" />
-                        Order via WhatsApp
-                      </motion.button>
                     </div>
                   </>
                 )}
               </div>
             </motion.div>
 
-            {/* Customer Information Form */}
+            {/* Customer Information */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-primary mb-6">Delivery Information</h2>
+              <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary mb-6">Delivery Information</h2>
 
-                <form onSubmit={handleSubmitOrder} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
-                        <User className="w-4 h-4 inline mr-2" />
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={customerInfo.name}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
-                        placeholder="Enter your full name"
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-semibold text-primary mb-2">
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={customerInfo.email}
-                        onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
-                        placeholder="Enter your email"
-                      />
-                    </div>
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">
+                      <User className="w-4 h-4 inline mr-2" />
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={customerInfo.name}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                      placeholder="Enter your full name"
+                      required
+                    />
                   </div>
 
                   <div>
                     <label className="block text-sm font-semibold text-primary mb-2">
-                      <Phone className="w-4 h-4 inline mr-2" />
-                      Phone Number *
+                      Email
                     </label>
                     <input
-                      type="tel"
-                      name="phone"
-                      value={customerInfo.phone}
+                      type="email"
+                      name="email"
+                      value={customerInfo.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
-                      placeholder="Enter your phone number"
-                      required
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                      placeholder="Enter your email"
                     />
                   </div>
 
@@ -308,13 +255,13 @@ const OrderNow = () => {
                       value={customerInfo.address}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors resize-none text-sm"
                       placeholder="Enter your complete address"
                       required
                     />
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-semibold text-primary mb-2">
                         City
@@ -324,7 +271,7 @@ const OrderNow = () => {
                         name="city"
                         value={customerInfo.city}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
+                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
                         placeholder="Enter your city"
                       />
                     </div>
@@ -337,58 +284,24 @@ const OrderNow = () => {
                         name="pincode"
                         value={customerInfo.pincode}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
+                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
                         placeholder="Enter PIN code"
                       />
                     </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-primary mb-2">
-                      <CreditCard className="w-4 h-4 inline mr-2" />
-                      Payment Method
-                    </label>
-                    <select
-                      name="paymentMethod"
-                      value={customerInfo.paymentMethod}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors"
-                    >
-                      <option value="cod">Cash on Delivery</option>
-                      <option value="online">Online Payment (UPI/Card)</option>
-                    </select>
-                  </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={cartItems.length === 0}
-                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed mb-4"
-                    whileHover={{ scale: cartItems.length > 0 ? 1.02 : 1 }}
-                    whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
-                  >
-                    {cartItems.length === 0 ? 'Cart is Empty' : `Place Traditional Order - ₹${finalTotal.toFixed(2)}`}
-                  </motion.button>
-                  
-                  {/* WhatsApp Order Button */}
                   <motion.button
                     type="button"
                     onClick={handleWhatsAppOrder}
                     disabled={cartItems.length === 0}
-                    className="w-full bg-green-500 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-600 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                    className="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                     whileHover={{ scale: cartItems.length > 0 ? 1.02 : 1 }}
                     whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
                   >
                     <MessageCircle className="w-5 h-5" />
                     {cartItems.length === 0 ? 'Cart is Empty' : 'Order via WhatsApp'}
                   </motion.button>
-
-                  <div className="text-center text-sm text-neutral-600">
-                    <p className="mt-4">Choose your preferred ordering method above.</p>
-                    <p className="mt-2">
-                      <span className="text-green-600 font-semibold">Free delivery</span> on orders above ₹500
-                    </p>
-                  </div>
-                </form>
+                </div>
               </div>
             </motion.div>
           </div>

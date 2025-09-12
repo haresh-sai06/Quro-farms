@@ -50,11 +50,6 @@ const ProductsPage = () => {
     }
   };
 
-  const handleWhatsAppInquiry = (product: any) => {
-    sendProductInquiry(product.name, product.unit);
-    toast.success("Opening WhatsApp...");
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       <Header />
@@ -186,17 +181,6 @@ const ProductsPage = () => {
                       </motion.button>
                     </Link>
                   </div>
-                  
-                  {/* WhatsApp Inquiry Button */}
-                  <motion.button
-                    onClick={() => handleWhatsAppInquiry(product)}
-                    className="w-full bg-green-500 text-white py-2 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-green-600 transition-all text-sm"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    Quick WhatsApp Inquiry
-                  </motion.button>
                 </div>
               </motion.div>
             ))}

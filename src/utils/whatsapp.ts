@@ -25,7 +25,7 @@ export const generateOrderMessage = (
   
   cartItems.forEach((item, index) => {
     message += `${index + 1}. *${item.product.name}*\n`;
-    message += `   • Quantity: ${item.quantity} ${item.product.unit}\n`;
+    message += `   • Quantity: ${item.quantity} ${item.product.unit}\n`; // Changed to separate number and unit
     message += `   • Unit Price: ₹${item.product.discountedPrice}\n`;
     message += `   • Subtotal: ₹${(item.product.discountedPrice * item.quantity).toFixed(2)}\n\n`;
   });

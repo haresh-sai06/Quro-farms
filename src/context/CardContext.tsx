@@ -1,52 +1,76 @@
-import { useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Product, CartItem } from '../types/product';
 import { toast } from 'sonner';
 
 const CART_STORAGE_KEY = 'quro-farms-cart';
 const SAVED_FOR_LATER_KEY = 'quro-farms-saved-for-later';
 
-export const useCart = () => {
+interface CartContextType {
+  cartItems: CartItem[];
+  savedForLater: CartItem[];
+  addToCart: (product: Product, quantity?: number) => boolean;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
+  saveForLater: (productId: string) => void;
+  moveToCart: (productId: string) => void;
+  removeSavedItem: (productId: string) => void;
+  getCartTotal: () => number;
+  getCartItemsCount: () => number;
+  getItemSubtotal: (item: CartItem) => number;
+  checkStock: (product: Product, requestedQuantity: number) => boolean;
+}
+
+const CartContext = createContext<CartContextType | undefined>(undefined);
+
+export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [savedForLater, setSavedForLater] = useState<CartItem[]>([]);
-   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load cart from localStorage on mount
+  // Load cart from localStorage on mount (client-side only)
   useEffect(() => {
-    const savedCart = localStorage.getItem(CART_STORAGE_KEY);
-    const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
-    console.log('Raw localStorage cart:', savedCart); // Temp debug
-    if (savedCart) {
-      try {
-        const parsed = JSON.parse(savedCart);
-        console.log('Parsed cart:', parsed); // Temp debug
-        setCartItems(parsed);
-      } catch (error) {
-        console.error('Error loading cart from localStorage:', error);
+    if (typeof window !== 'undefined') {
+      const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+      const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
+      if (savedCart) {
+        try {
+          const parsed = JSON.parse(savedCart);
+          setCartItems(parsed);
+        } catch (error) {
+          console.error('Error loading cart from localStorage:', error);
+        }
       }
-    }
-    if (savedItems) {
-      try {
-        const parsed = JSON.parse(savedItems);
-        console.log('Parsed saved items:', parsed); // Temp debug
-        setSavedForLater(parsed);
-      } catch (error) {
-        console.error('Error loading saved items from localStorage:', error);
+      if (savedItems) {
+        try {
+          const parsed = JSON.parse(savedItems);
+          setSavedForLater(parsed);
+        } catch (error) {
+          console.error('Error loading saved items from localStorage:', error);
+        }
       }
+      setIsLoaded(true);
     }
   }, []);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (isLoaded && typeof window !== 'undefined') {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+    }
+  }, [cartItems, isLoaded]);
 
   // Save "saved for later" items to localStorage
   useEffect(() => {
-    localStorage.setItem(SAVED_FOR_LATER_KEY, JSON.stringify(savedForLater));
-  }, [savedForLater]);
+    if (isLoaded && typeof window !== 'undefined') {
+      localStorage.setItem(SAVED_FOR_LATER_KEY, JSON.stringify(savedForLater));
+    }
+  }, [savedForLater, isLoaded]);
 
-  // Periodically check for changes in localStorage every 5 seconds
+  // Periodically check for changes in localStorage
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const interval = setInterval(() => {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
       const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
@@ -54,7 +78,6 @@ export const useCart = () => {
         try {
           const parsedCart = JSON.parse(savedCart);
           if (JSON.stringify(parsedCart) !== JSON.stringify(cartItems)) {
-            console.log('Cart updated from localStorage:', parsedCart); // Debug
             setCartItems(parsedCart);
           }
         } catch (error) {
@@ -65,7 +88,6 @@ export const useCart = () => {
         try {
           const parsedItems = JSON.parse(savedItems);
           if (JSON.stringify(parsedItems) !== JSON.stringify(savedForLater)) {
-            console.log('Saved items updated from localStorage:', parsedItems); // Debug
             setSavedForLater(parsedItems);
           }
         } catch (error) {
@@ -74,7 +96,6 @@ export const useCart = () => {
       }
     }, 2500);
 
-    // Cleanup interval on unmount
     return () => clearInterval(interval);
   }, [cartItems, savedForLater]);
 
@@ -96,7 +117,6 @@ export const useCart = () => {
   };
 
   const addToCart = (product: Product, quantity: number = 1) => {
-    console.log('Adding to cart:', product, quantity); // Temp debug
     if (!checkStock(product, quantity)) {
       return false;
     }
@@ -206,19 +226,33 @@ export const useCart = () => {
     return item.product.discountedPrice * item.quantity;
   };
 
-  return {
-    cartItems,
-    savedForLater,
-    addToCart,
-    removeFromCart,
-    updateQuantity,
-    clearCart,
-    saveForLater,
-    moveToCart,
-    removeSavedItem,
-    getCartTotal,
-    getCartItemsCount,
-    getItemSubtotal,
-    checkStock,
-  };
+  return (
+    <CartContext.Provider
+      value={{
+        cartItems,
+        savedForLater,
+        addToCart,
+        removeFromCart,
+        updateQuantity,
+        clearCart,
+        saveForLater,
+        moveToCart,
+        removeSavedItem,
+        getCartTotal,
+        getCartItemsCount,
+        getItemSubtotal,
+        checkStock,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+export const useCartContext = () => {
+  const context = useContext(CartContext);
+  if (!context) {
+    throw new Error('useCartContext must be used within a CartProvider');
+  }
+  return context;
 };

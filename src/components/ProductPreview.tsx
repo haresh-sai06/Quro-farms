@@ -37,11 +37,6 @@ const ProductPreview = () => {
     }
   };
 
-  const handleWhatsAppInquiry = (product: any) => {
-    sendProductInquiry(product.name, product.unit);
-    toast.success("Opening WhatsApp...");
-  };
-
   return (
     <section id="products-preview" className="py-20 container-padding bg-white">
       <FlyToCartAnimation
@@ -138,17 +133,6 @@ const ProductPreview = () => {
                       </motion.button>
                     </Link>
                   </div>
-                  
-                  {/* WhatsApp Inquiry Button */}
-                  <motion.button
-                    onClick={() => handleWhatsAppInquiry(product)}
-                    className="w-full bg-green-500 text-white py-2 rounded-xl hover:bg-green-600 transition-all duration-300 font-medium flex items-center justify-center gap-2 text-sm"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    Quick WhatsApp
-                  </motion.button>
                 </div>
               </div>
             </motion.div>

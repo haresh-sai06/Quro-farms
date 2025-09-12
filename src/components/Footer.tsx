@@ -1,5 +1,6 @@
 
-import { Leaf, Phone, Mail, MapPin, Instagram, Facebook, Twitter } from "lucide-react";
+import { Leaf, Phone, Mail, MapPin, Instagram, Facebook, Twitter} from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -20,11 +21,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-green-100">
                 <Phone className="w-5 h-5 text-green-300" />
-                <span>+91 98765 43210</span>
+                <span>+91 75589 38256</span>
               </div>
               <div className="flex items-center gap-3 text-green-100">
                 <Mail className="w-5 h-5 text-green-300" />
-                <span>hello@qurofarms.in</span>
+                <span>Qurofarms@gmail.com</span>
               </div>
               <div className="flex items-center gap-3 text-green-100">
                 <MapPin className="w-5 h-5 text-green-300" />
@@ -77,14 +78,14 @@ const Footer = () => {
           
           {/* Social Links */}
           <div className="flex justify-center gap-6 mb-8">
-            <a href="#" className="bg-green-700 p-3 rounded-full hover:bg-green-600 transition-colors">
+            <a href="https://www.instagram.com/qurofarms/" className="bg-green-700 p-3 rounded-full hover:bg-green-600 transition-colors">
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="#" className="bg-green-700 p-3 rounded-full hover:bg-green-600 transition-colors">
+            <a href="https://www.facebook.com/profile.php?id=61552061092675&mibextid=ZbWKwL" className="bg-green-700 p-3 rounded-full hover:bg-green-600 transition-colors">
               <Facebook className="w-5 h-5" />
             </a>
-            <a href="#" className="bg-green-700 p-3 rounded-full hover:bg-green-600 transition-colors">
-              <Twitter className="w-5 h-5" />
+            <a href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20know%20more%20about%20your%20products" className="bg-green-700 p-3 rounded-full hover:bg-green-600 transition-colors">
+              <FaWhatsapp className="w-5 h-5" />
             </a>
           </div>
           
