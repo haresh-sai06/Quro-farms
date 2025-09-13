@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 const WHATSAPP_PHONE_NUMBER = "9629002576"; // Add country code
 
-const OrderNow = () => {
+const OrderNow: React.FC = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock } = useCartContext();
   const [customerInfo, setCustomerInfo] = useState({
     name: '',

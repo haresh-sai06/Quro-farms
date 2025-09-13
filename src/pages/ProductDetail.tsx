@@ -9,7 +9,7 @@ import Header from "../components/Header";
 import { toast } from "sonner";
 import FlyToCartAnimation from "../components/FlyToCartAnimation";
 
-const AnimatedSection = ({ children, className = "", delay = 0 }) => {
+const AnimatedSection: React.FC<{ children: React.ReactNode; className?: string; delay?: number }> = ({ children, className = "", delay = 0 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -26,7 +26,7 @@ const AnimatedSection = ({ children, className = "", delay = 0 }) => {
   );
 };
 
-const StickyAddToCart = ({ product, quantity, setQuantity, onAddToCart }) => {
+const StickyAddToCart: React.FC<{ product: any; quantity: number; setQuantity: (q: number) => void; onAddToCart: () => void }> = ({ product, quantity, setQuantity, onAddToCart }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
