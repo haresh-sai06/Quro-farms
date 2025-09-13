@@ -147,7 +147,7 @@ const ProductPreview = () => {
               <ArrowRight className="w-5 h-5" />
             </button>
           </Link>
-          <p className="text-neutral-600 mt-4">Over 200+ farm-fresh products available</p>
+          <p className="text-neutral-600 mt-4">Other farm-fresh products also available</p>
         </div>
       </div>
     </section>

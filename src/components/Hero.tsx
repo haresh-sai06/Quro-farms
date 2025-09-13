@@ -62,9 +62,9 @@ const Hero = () => {
   ];
 
   const features = [
-    { icon: <Shield className="w-5 h-5" />, text: "100% Organic Certified" },
+    { icon: <Shield className="w-5 h-5" />, text: "100% Organically Grown" },
     { icon: <Heart className="w-5 h-5" />, text: "Health Guaranteed" },
-    { icon: <Truck className="w-5 h-5" />, text: "Free Delivery Over ₹999" },
+    { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
   ];
 
   return (
@@ -129,7 +129,7 @@ const Hero = () => {
                 <div className="text-center">
                   <Play className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2 sm:mb-4" />
                   <p className="text-lg sm:text-xl font-semibold">Farm Tour Video</p>
-                  <p className="text-sm">See how we grow our organic coconuts</p>
+                  <p className="text-sm">See how we grow our organic products</p>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@ const Hero = () => {
               transition={{ duration: 0.5 }}
             >
               <Leaf className="w-3 h-3" />
-              Certified Organic & Sustainable Farming
+              100% Organic & Sustainable Farming
             </motion.div>
 
             <motion.h1 className="text-2xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-1">
@@ -170,7 +170,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh coconut products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh organic products, harvested sustainably and delivered directly to your doorstep across India.
             </motion.p>
 
             <motion.div 
@@ -254,7 +254,7 @@ const Hero = () => {
               transition={{ duration: 0.5 }}
             >
               <Leaf className="w-3 h-3" />
-              Certified Organic & Sustainable Farming
+              100% Organic & Sustainable Farming
             </motion.div>
 
             <motion.h1 className="text-3xl lg:text-5xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-2">
@@ -275,7 +275,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh coconut products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh organic products, harvested sustainably and delivered directly to your doorstep across India.
             </motion.p>
 
             <motion.div 
@@ -333,7 +333,7 @@ const Hero = () => {
                 <img
                   src={farmerImage}
                   alt="Our Farmer"
-                  className="w-[280px] h-[350px] object-cover rounded-2xl shadow-2xl border-4 border-white/30"
+                  className="w-[500px] h-[320px] object-cover rounded-2xl shadow-2xl border-4 border-white/30"
                 />
               </motion.div>
               <motion.div 

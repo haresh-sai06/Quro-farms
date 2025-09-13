@@ -7,7 +7,7 @@ import PowderPicture from "/components/pic7.jpeg";
 const productCategories = [
   {
     title: "Farm-Fresh Products",
-    count: "8",
+    count: "6",
     description: "Natural, organic powders & oils",
     icon: Package,
     color: "text-green-600",
