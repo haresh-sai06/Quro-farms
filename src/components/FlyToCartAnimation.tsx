@@ -8,15 +8,14 @@ interface FlyToCartAnimationProps {
   onComplete: () => void;
 }
 
-const FlyToCartAnimation = ({ isActive, startPosition, onComplete }: FlyToCartAnimationProps) => {
-  const [cartPosition, setCartPosition] = useState({ x: 0, y: 0 });
+const FlyToCartAnimation: React.FC<FlyToCartAnimationProps> = ({ isActive, startPosition, onComplete }) => {
+  const [cartIconPosition, setCartIconPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    // Get cart icon position
     const cartIcon = document.querySelector('[data-cart-icon]');
     if (cartIcon) {
       const rect = cartIcon.getBoundingClientRect();
-      setCartPosition({
+      setCartIconPosition({
         x: rect.left + rect.width / 2,
         y: rect.top + rect.height / 2
       });
@@ -34,8 +33,8 @@ const FlyToCartAnimation = ({ isActive, startPosition, onComplete }: FlyToCartAn
             opacity: 1
           }}
           animate={{
-            x: cartPosition.x,
-            y: cartPosition.y,
+            x: cartIconPosition.x,
+            y: cartIconPosition.y,
             scale: 0.3,
             opacity: 0.8
           }}

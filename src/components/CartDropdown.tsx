@@ -4,31 +4,31 @@ import { useState, useRef, useEffect } from "react";
 import { useCart } from "../hooks/useCart";
 import { Link } from "react-router-dom";
 
-const CartDropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const { 
-    cartItems, 
-    savedForLater, 
-    updateQuantity, 
-    removeFromCart, 
-    saveForLater, 
-    moveToCart, 
-    removeSavedItem, 
-    clearCart, 
-    getCartTotal, 
-    getCartItemsCount, 
-    getItemSubtotal 
+const CartDropdown: React.FC = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const {
+    cartItems,
+    savedForLater,
+    updateQuantity,
+    removeFromCart,
+    saveForLater,
+    moveToCart,
+    removeSavedItem,
+    clearCart,
+    getCartTotal,
+    getCartItemsCount,
+    getItemSubtotal,
   } = useCart();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const itemCount = getCartItemsCount();
-  const total = getCartTotal();
+  const cartTotal = getCartTotal();
 
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
+        setIsDropdownOpen(false);
       }
     };
 
@@ -46,7 +46,7 @@ const CartDropdown = () => {
     <div className="relative" ref={dropdownRef}>
       {/* Cart Icon with Badge */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className="relative p-2 text-neutral-100 hover:text-green-300 transition-colors"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -67,7 +67,7 @@ const CartDropdown = () => {
       </motion.button>
 
       <AnimatePresence>
-        {isOpen && (
+        {isDropdownOpen && (
           <>
             {/* Backdrop */}
             <motion.div
@@ -75,7 +75,7 @@ const CartDropdown = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-40 bg-black/20"
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsDropdownOpen(false)}
             />
             
             {/* Dropdown */}
@@ -104,7 +104,7 @@ const CartDropdown = () => {
                     </motion.button>
                   )}
                   <button
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => setIsDropdownOpen(false)}
                     className="p-1 hover:bg-neutral-100 rounded-full transition-colors"
                   >
                     <X className="w-5 h-5 text-neutral-500" />
@@ -126,7 +126,7 @@ const CartDropdown = () => {
                       <p className="text-neutral-500 mb-4">Your cart is empty</p>
                       <Link
                         to="/products"
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => setIsDropdownOpen(false)}
                         className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors"
                       >
                         Continue Shopping
@@ -278,17 +278,17 @@ const CartDropdown = () => {
                   <div className="flex justify-between items-center mb-4">
                     <span className="font-bold text-lg text-primary">Total:</span>
                     <motion.span 
-                      key={total}
+                      key={cartTotal}
                       initial={{ scale: 1.2 }}
                       animate={{ scale: 1 }}
                       className="font-bold text-xl text-green-600"
                     >
-                      ₹{total.toFixed(2)}
+                      ₹{cartTotal.toFixed(2)}
                     </motion.span>
                   </div>
                   <Link
                     to="/order"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => setIsDropdownOpen(false)}
                     className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold text-center block hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
                   >
                     <Package className="w-4 h-4" />

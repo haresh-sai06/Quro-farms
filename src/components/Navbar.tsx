@@ -4,23 +4,19 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
-  // Different nav links based on current page
   const isProductsPage =
     location.pathname === "/products" ||
     location.pathname.startsWith("/product/");
 
-  const defaultNavLinks = [
+  const navLinks = [
     { name: "Why Choose Us", href: "/#features" },
     { name: "Products", href: "/products" },
     { name: "Reviews", href: "/#testimonials" },
     { name: "Contact", href: "/#contact" },
   ];
-
-  const navLinks = defaultNavLinks;
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
