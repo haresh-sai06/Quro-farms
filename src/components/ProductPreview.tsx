@@ -1,4 +1,3 @@
-
 import { ArrowRight, Star, MessageCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { products } from "../data/products";
@@ -9,29 +8,28 @@ import { useState, useEffect } from "react";
 import FlyToCartAnimation from "./FlyToCartAnimation";
 import { sendProductInquiry } from "../utils/whatsapp";
 
-
-const ProductPreview = () => {
+const ProductPreview: React.FC = () => {
   const { addToCart } = useCart();
   const [flyAnimation, setFlyAnimation] = useState<{
     isActive: boolean;
     startPosition: { x: number; y: number };
   }>({
     isActive: false,
-    startPosition: { x: 0, y: 0 }
+    startPosition: { x: 0, y: 0 },
   });
 
   const handleAddToCart = (product: any, event: React.MouseEvent) => {
     const rect = (event.target as HTMLElement).getBoundingClientRect();
     const startPosition = {
       x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2
+      y: rect.top + rect.height / 2,
     };
 
     const success = addToCart(product, 1);
     if (success) {
       setFlyAnimation({
         isActive: true,
-        startPosition
+        startPosition,
       });
       toast.success(`Added ${product.name} to cart!`);
     }
@@ -42,9 +40,9 @@ const ProductPreview = () => {
       <FlyToCartAnimation
         isActive={flyAnimation.isActive}
         startPosition={flyAnimation.startPosition}
-        onComplete={() => setFlyAnimation(prev => ({ ...prev, isActive: false }))}
+        onComplete={() => setFlyAnimation((prev) => ({ ...prev, isActive: false }))}
       />
-      
+
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
@@ -54,10 +52,10 @@ const ProductPreview = () => {
             Crafted with care and sourced from one trusted origin — delivering purity you can rely on.
           </p>
         </div>
-        
+
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {products.slice(0, 4).map((product, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -67,7 +65,7 @@ const ProductPreview = () => {
             >
               {/* Product Image */}
               <div className="relative overflow-hidden">
-                <img 
+                <img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
@@ -86,7 +84,7 @@ const ProductPreview = () => {
                 )}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300"></div>
               </div>
-              
+
               {/* Product Info */}
               <div className="p-6">
                 <h3 className="font-bold text-xl mb-2 text-primary group-hover:text-green-600 transition-colors">
@@ -95,7 +93,7 @@ const ProductPreview = () => {
                 <p className="text-neutral-600 text-sm mb-3 leading-relaxed">
                   {product.description}
                 </p>
-                
+
                 {/* Rating */}
                 <div className="flex items-center gap-2 mb-4">
                   <div className="flex items-center gap-1">
@@ -104,13 +102,13 @@ const ProductPreview = () => {
                   </div>
                   <span className="text-neutral-500 text-sm">({product.reviews} reviews)</span>
                 </div>
-                
+
                 {/* Price */}
                 <div className="flex items-center gap-3 mb-4">
                   <span className="text-2xl font-bold text-green-600">₹{product.discountedPrice}/{product.unit}</span>
                   <span className="text-neutral-500 line-through text-lg">₹{product.originalPrice}</span>
                 </div>
-                
+
                 {/* Action Buttons */}
                 <div className="space-y-2">
                   <div className="flex gap-2">
@@ -138,7 +136,7 @@ const ProductPreview = () => {
             </motion.div>
           ))}
         </div>
-        
+
         {/* View All Products CTA */}
         <div className="text-center">
           <Link to="/products">

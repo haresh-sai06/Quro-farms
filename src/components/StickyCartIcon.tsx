@@ -3,15 +3,14 @@ import { ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useCart } from "../hooks/useCart";
 
-const StickyCartIcon = () => {
+const StickyCartIcon: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { getCartItemsCount } = useCart();
   const itemCount = getCartItemsCount();
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsVisible(scrollY > 200);
+      setIsVisible(window.scrollY > 200);
     };
 
     window.addEventListener('scroll', handleScroll);
