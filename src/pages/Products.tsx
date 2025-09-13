@@ -90,12 +90,12 @@ const ProductsPage = () => {
               />
             </div>
             <div className="flex gap-2">
-              {categories.map(category => (
+              {categories.map((category) => (
                 <button
                   key={category}
                   className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
-                    selectedCategory === category 
-                      ? "bg-green-600 text-white" 
+                    selectedCategory === category
+                      ? "bg-green-600 text-white"
                       : "bg-white border border-neutral-200 text-neutral-600 hover:bg-green-50"
                   }`}
                   onClick={() => setSelectedCategory(category)}
@@ -108,13 +108,13 @@ const ProductsPage = () => {
 
           {/* Products Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {filteredProducts.map((product, index) => (
+            {filteredProducts.map((product) => (
               <motion.div
-                key={index}
+                key={product.id}
                 className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 border border-neutral-100"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{ y: -10 }}
               >
                 <div className="relative overflow-hidden rounded-t-2xl">

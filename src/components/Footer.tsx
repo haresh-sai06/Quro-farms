@@ -1,8 +1,7 @@
-
 import { Leaf, Phone, Mail, MapPin, Instagram, Facebook, Twitter} from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer id="contact" className="bg-gradient-to-b from-green-900 to-green-800 text-white">
       <div className="container-padding py-16">

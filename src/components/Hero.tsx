@@ -11,11 +11,11 @@ import product2 from "/components/pic6.jpeg";
 import product3 from "/components/pic7.jpeg";
 
 const Hero = () => {
-  const badgeRef = useRef(null);
-  const [ref, inView] = useInView({ threshold: 0.1 });
-  const controls = useAnimation();
-  const [showVideo, setShowVideo] = useState(false);
-  const [hoveredProduct, setHoveredProduct] = useState(null);
+  const badgeRef = useRef<HTMLDivElement | null>(null);
+  const [sectionRef, isSectionInView] = useInView({ threshold: 0.1 });
+  const animationControls = useAnimation();
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [activeProductId, setActiveProductId] = useState<string | null>(null);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -28,7 +28,7 @@ const Hero = () => {
     },
   };
 
-  const wordVariants: Variants = {
+  const headlineWordVariants: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
       opacity: 1,
@@ -47,11 +47,10 @@ const Hero = () => {
         ease: "sine.inOut",
       });
     }
+    if (isSectionInView) animationControls.start("visible");
+  }, [animationControls, isSectionInView]);
 
-    if (inView) controls.start("visible");
-  }, [controls, inView]);
-
-  const animatedHeadline = [
+  const headlineWords = [
     "From",
     "Our",
     "Organic",
@@ -61,7 +60,7 @@ const Hero = () => {
     "Home",
   ];
 
-  const features = [
+  const heroFeatures = [
     { icon: <Shield className="w-5 h-5" />, text: "100% Organically Grown" },
     { icon: <Heart className="w-5 h-5" />, text: "Health Guaranteed" },
     { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
@@ -69,13 +68,13 @@ const Hero = () => {
 
   return (
     <motion.section
-      ref={ref}
+      ref={sectionRef}
       className="min-h-screen container-padding text-primary overflow-hidden relative bg-center bg-cover flex items-center w-full pt-24 sm:pt-16 lg:pt-20"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('${farmImage}')`,
       }}
       initial="hidden"
-      animate={controls}
+      animate={animationControls}
       variants={containerVariants}
     >
       {/* Animated background elements */}
@@ -105,7 +104,7 @@ const Hero = () => {
       </div>
 
       {/* Video Modal */}
-      {showVideo && (
+      {isVideoModalOpen && (
         <motion.div 
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
           initial={{ opacity: 0 }}
@@ -120,7 +119,8 @@ const Hero = () => {
           >
             <button 
               className="absolute -top-10 sm:-top-12 right-0 text-white text-2xl sm:text-3xl z-10 hover:text-green-300 transition-colors"
-              onClick={() => setShowVideo(false)}
+              onClick={() => setIsVideoModalOpen(false)}
+              aria-label="Close video modal"
             >
               &times;
             </button>
@@ -137,7 +137,7 @@ const Hero = () => {
         </motion.div>
       )}
 
-<div className="max-w-7xl mx-auto relative z-10 px-4 py-6 gap-6">
+      <div className="max-w-7xl mx-auto relative z-10 px-4 py-6 gap-6">
         {/* Mobile View: Vertical Stack */}
         <div className="flex flex-col items-center sm:hidden">
           <div className="text-center mb-6">
@@ -153,11 +153,11 @@ const Hero = () => {
             </motion.div>
 
             <motion.h1 className="text-2xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-1">
-              {animatedHeadline.map((word, i) => (
+              {headlineWords.map((word, i) => (
                 <motion.span
-                  key={i}
+                  key={word + i}
                   className="inline-block text-white text-shadow-lg drop-shadow-2xl"
-                  variants={wordVariants}
+                  variants={headlineWordVariants}
                 >
                   {word}
                 </motion.span>
@@ -179,8 +179,8 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
             >
-              {features.map((feature, i) => (
-                <div key={i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+              {heroFeatures.map((feature, i) => (
+                <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
                   <span className="text-green-300">{feature.icon}</span>
                   <span className="text-white text-sm">{feature.text}</span>
                 </div>
@@ -203,7 +203,7 @@ const Hero = () => {
                 className="bg-white/90 backdrop-blur-sm text-green-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setShowVideo(true)}
+                onClick={() => setIsVideoModalOpen(true)}
               >
                 <span className="absolute inset-0 bg-green-100 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
                 <div className="flex items-center gap-2 relative z-10">
@@ -238,8 +238,8 @@ const Hero = () => {
                 <p className="text-sm font-semibold">Quro Farms</p>
                 <p className="text-xs">🌿 100% Natural</p>
               </motion.div>
-            </motion.div>\
-        </div>
+            </motion.div>
+          </div>
         </div>
 
 
@@ -258,11 +258,11 @@ const Hero = () => {
             </motion.div>
 
             <motion.h1 className="text-3xl lg:text-5xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-2">
-              {animatedHeadline.map((word, i) => (
+              {headlineWords.map((word, i) => (
                 <motion.span
-                  key={i}
+                  key={word + i}
                   className="inline-block text-white text-shadow-lg drop-shadow-2xl"
-                  variants={wordVariants}
+                  variants={headlineWordVariants}
                 >
                   {word}
                 </motion.span>
@@ -284,8 +284,8 @@ const Hero = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
             >
-              {features.map((feature, i) => (
-                <div key={i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+              {heroFeatures.map((feature, i) => (
+                <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
                   <span className="text-green-300">{feature.icon}</span>
                   <span className="text-white text-sm">{feature.text}</span>
                 </div>
@@ -308,7 +308,7 @@ const Hero = () => {
                 className="bg-white/90 backdrop-blur-sm text-green-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setShowVideo(true)}
+                onClick={() => setIsVideoModalOpen(true)}
               >
                 <span className="absolute inset-0 bg-green-100 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
                 <div className="flex items-center gap-2 relative z-10">
@@ -350,20 +350,20 @@ const Hero = () => {
                 { id: 'oil', src: product1, title: 'Raw Banana Powder', desc: 'Gut-friendly energy flour.' },
                 { id: 'water', src: product2, title: 'Arrow Root Powder', desc: 'Light & easy digestible starch.' },
                 { id: 'flour', src: product3, title: 'Jackfruit Powder', desc: 'Fiber-rich natural energy.' },
-              ].map((product, index) => (
+              ].map((product) => (
                 <motion.div
                   key={product.id}
                   className="bg-white/95 backdrop-blur-sm p-2 rounded-xl shadow-md border-2 border-green-100"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 + (index * 0.2) }}
+                  transition={{ duration: 0.8, delay: 1 }}
                   whileHover={{ 
                     scale: 1.05,
                     boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.2)",
                     transition: { duration: 0.3 }
                   }}
-                  onHoverStart={() => setHoveredProduct(product.id)}
-                  onHoverEnd={() => setHoveredProduct(null)}
+                  onHoverStart={() => setActiveProductId(product.id)}
+                  onHoverEnd={() => setActiveProductId(null)}
                 >
                   <div className="relative overflow-hidden rounded-lg mb-1">
                     <img 
@@ -371,7 +371,7 @@ const Hero = () => {
                       alt={product.title} 
                       className="w-full h-16 object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    {hoveredProduct === product.id && (
+                    {activeProductId === product.id && (
                       <motion.div 
                         className="absolute inset-0 bg-green-900/40 flex items-center justify-center"
                         initial={{ opacity: 0 }}
