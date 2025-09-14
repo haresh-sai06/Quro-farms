@@ -1,71 +1,75 @@
-# Welcome to your GPT Engineer project
+Quro Farms E-Commerce
+Welcome to the Quro Farms E-Commerce repository! This project is a web application built to sell organic farm products, featuring a shopping cart, order management, and WhatsApp integration for order placement.
+Table of Contents
 
-## Project info
+Overview
+Features
+Tech Stack
+Installation
+Usage
+Contributing
+License
+Contact
 
-**URL**: https://run.gptengineer.app/projects/c4d7c99e-db91-46fa-abad-06b6949efbd5/improve
+Overview
+Quro Farms is an online platform designed to deliver fresh, organic products directly from farms to customers' doorsteps. The application allows users to browse products, add them to a cart, and place orders via WhatsApp for a seamless shopping experience.
+Features
 
-## How can I edit this code?
+Product Browsing: View a catalog of organic farm products.
+Shopping Cart: Add, update, or remove items with quantity controls.
+Order Summary: Review cart items on the Order Now page.
+Customer Details: Input name, email, address, city, and PIN code for delivery.
+WhatsApp Integration: Send order details directly to a WhatsApp number.
+Local Storage: Persist cart data across sessions.
+Responsive Design: Optimized for both mobile and desktop views.
 
-There are several ways of editing your application.
+Tech Stack
 
-**Use GPT Engineer**
+Frontend: React, TypeScript, Framer Motion, Tailwind CSS
+State Management: Custom hooks (e.g., useCart)
+Libraries: Lucide React (icons), Sonner (toasts)
+APIs: WhatsApp API for order messaging
+Build Tools: Vite (assumed based on HMR context)
 
-Simply visit the GPT Engineer project at [GPT Engineer](https://gptengineer.app/projects/c4d7c99e-db91-46fa-abad-06b6949efbd5/improve) and start prompting.
+Installation
 
-Changes made via gptengineer.app will be committed automatically to this repo.
+Clone the Repository
+git clone https://github.com/your-username/quro-farms.git
+cd quro-farms
 
-**Use your preferred IDE**
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in the GPT Engineer UI.
+Install Dependencies
+npm install
+# or
+yarn install
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+Set Up Environment Variables
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Create a .env file in the root directory.
+Add the WhatsApp phone number (e.g., WHATSAPP_PHONE_NUMBER=919629002576).
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Run the Application
 npm run dev
-```
+# or
+yarn dev
 
-**Edit a file directly in GitHub**
+Open http://localhost:5173 (or the port specified by Vite) in your browser.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
 
-**Use GitHub Codespaces**
+Usage
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Browse Products: Navigate to the products page to explore available items.
+Add to Cart: Click "Add to Cart" on product cards to save items.
+Order Now: Go to the "Order Now" page to review your cart, fill in delivery details, and send the order via WhatsApp.
+Cart Persistence: Cart items are saved locally and reloaded on page refresh.
 
-## What technologies are used for this project?
 
-This project is built with .
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
+Contact
+For questions or support, please open an issue or reach out to:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-All GPT Engineer projects can be deployed directly via the GPT Engineer app.
-
-Simply visit your project at [GPT Engineer](https://gptengineer.app/projects/c4d7c99e-db91-46fa-abad-06b6949efbd5/improve) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.gptengineer.app/tips-tricks/custom-domain/)
+Email: shareshsainaath@gmail.com
+GitHub: haresh-sai06
