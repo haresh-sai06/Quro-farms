@@ -115,7 +115,7 @@ const ProductPreview: React.FC = () => {
                     <motion.button
                       onClick={(e) => handleAddToCart(product, e)}
                       disabled={!product.inStock}
-                      className="flex-1 bg-green-600 text-white py-3 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
+                      className="flex-1 btn-custom-color text-white py-3 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
                       whileHover={product.inStock ? { scale: 1.02 } : {}}
                       whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >

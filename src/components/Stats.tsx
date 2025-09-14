@@ -108,7 +108,7 @@ const Stats: React.FC = () => {
 
 				<div className="text-center mt-16">
 					<Link to="/products">
-						<button className="bg-green-600 text-white px-10 py-4 rounded-full hover:bg-green-700 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+						<button className="btn-custom-color text-white px-10 py-4 rounded-full hover:bg-green-700 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
 							View All Products
 						</button>
 					</Link>

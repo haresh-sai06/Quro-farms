@@ -164,7 +164,7 @@ const OrderNow: React.FC = () => {
                     <p className="text-neutral-500 text-lg">Your cart is empty</p>
                     <a
                       href="/products"
-                      className="inline-block mt-4 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors"
+                      className="inline-block mt-4 btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors"
                     >
                       Browse Products
                     </a>
@@ -352,7 +352,7 @@ const OrderNow: React.FC = () => {
                     type="button"
                     onClick={handleWhatsAppOrder}
                     disabled={cartItems.length === 0}
-                    className="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                    className="w-full btn-custom-color text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                     whileHover={{ scale: cartItems.length > 0 ? 1.02 : 1 }}
                     whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
                   >

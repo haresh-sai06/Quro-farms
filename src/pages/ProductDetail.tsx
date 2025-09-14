@@ -83,7 +83,7 @@ const StickyAddToCart: React.FC<{ product: any; quantity: number; setQuantity: (
             <motion.button
               onClick={onAddToCart}
               disabled={!product.inStock}
-              className="bg-green-600 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold flex items-center gap-1 sm:gap-2 text-xs sm:text-base hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="btn-custom-color text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold flex items-center gap-1 sm:gap-2 text-xs sm:text-base hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -288,7 +288,7 @@ const ProductDetail = () => {
         <div className="relative bg-white">
           {/* Progress Bar */}
           <motion.div
-            className="fixed top-0 left-0 right-0 h-1 bg-green-600 z-50 origin-left"
+            className="fixed top-0 left-0 right-0 h-1 btn-custom-color z-50 origin-left"
             style={{ scaleX: scrollYProgress }}
           />
 
@@ -381,7 +381,7 @@ const ProductDetail = () => {
 
                   <motion.button
                     onClick={handleAddToCart}
-                    className="w-full bg-green-600 text-white py-2 sm:py-4 rounded-xl font-bold text-base sm:text-xl flex items-center justify-center gap-2 sm:gap-3 hover:bg-green-700 transition-colors shadow-lg"
+                    className="w-full btn-custom-color text-white py-2 sm:py-4 rounded-xl font-bold text-base sm:text-xl flex items-center justify-center gap-2 sm:gap-3 hover:bg-green-700 transition-colors shadow-lg"
                     whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -440,7 +440,7 @@ const ProductDetail = () => {
                     className={`flex items-center gap-2 sm:gap-8 ${index % 2 === 1 ? 'flex-row-reverse' : ''}`}
                   >
                     <div className="flex-shrink-0">
-                      <div className="w-10 sm:w-16 h-10 sm:h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-base sm:text-xl font-bold">
+                      <div className="w-10 sm:w-16 h-10 sm:h-16 btn-custom-color text-white rounded-full flex items-center justify-center text-base sm:text-xl font-bold">
                         {index + 1}
                       </div>
                     </div>

@@ -127,7 +127,7 @@ const CartDropdown: React.FC = () => {
                       <Link
                         to="/products"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors"
+                        className="inline-flex items-center gap-2 btn-custom-color text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors"
                       >
                         Continue Shopping
                         <ArrowRight className="w-4 h-4" />
@@ -250,7 +250,7 @@ const CartDropdown: React.FC = () => {
                           <div className="flex gap-1">
                             <motion.button
                               onClick={() => moveToCart(item.product.id)}
-                              className="text-xs bg-green-600 text-white px-2 py-1 rounded hover:bg-green-700 transition-colors"
+                              className="text-xs btn-custom-color text-white px-2 py-1 rounded hover:bg-green-700 transition-colors"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                             >
@@ -289,7 +289,7 @@ const CartDropdown: React.FC = () => {
                   <Link
                     to="/order"
                     onClick={() => setIsDropdownOpen(false)}
-                    className="w-full bg-green-600 text-white py-3 rounded-xl font-semibold text-center block hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                    className="w-full btn-custom-color text-white py-3 rounded-xl font-semibold text-center block hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
                   >
                     <Package className="w-4 h-4" />
                     Checkout

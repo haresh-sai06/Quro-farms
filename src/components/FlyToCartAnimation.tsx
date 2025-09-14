@@ -53,7 +53,7 @@ const FlyToCartAnimation: React.FC<FlyToCartAnimationProps> = ({ isActive, start
             top: 0
           }}
         >
-          <div className="bg-green-600 text-white p-2 rounded-full shadow-lg">
+          <div className="btn-custom-color text-white p-2 rounded-full shadow-lg">
             <ShoppingCart className="w-6 h-6" />
           </div>
         </motion.div>

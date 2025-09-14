@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
             >
               <Link
                 to="/order"
-                className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+                className="btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 Order Now
@@ -140,7 +140,7 @@ const Navbar: React.FC = () => {
           >
             <ShoppingCart className="w-6 h-6" />
             {/* Cart count badge */}
-            <span className="absolute -top-1 -right-1 bg-green-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 btn-custom-color text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
               2
             </span>
           </motion.button>
@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   to="/order"
-                  className="w-full bg-green-600 text-white px-6 py-4 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center justify-center gap-2"
+                  className="w-full btn-custom-color text-white px-6 py-4 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center justify-center gap-2"
                   onClick={closeMenu}
                 >
                   <Phone className="w-4 h-4" />

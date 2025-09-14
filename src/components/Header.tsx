@@ -106,7 +106,7 @@ const Header: React.FC = () => {
             >
               <Link
                 to="/order"
-                className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+                className="btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 Order Now
@@ -164,7 +164,7 @@ const Header: React.FC = () => {
               <div className="flex gap-4 pt-4 border-t border-green-100/50">
                 <Link
                   to="/order"
-                  className="flex-1 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold text-center"
+                  className="flex-1 btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold text-center"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Order Now

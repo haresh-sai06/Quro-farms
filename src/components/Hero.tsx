@@ -192,7 +192,7 @@ const Hero = () => {
             <div className="flex flex-col items-center justify-center w-full"> {/* Centers the button group */}
   <div className="flex flex-col gap-3 mb-6 w-fit md:w-1/2 lg:w-1/3"> {/* Reduced width for the button container */}
     <motion.button
-      className="bg-green-600 text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
+      className="btn-custom-color text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -299,7 +299,7 @@ const Hero = () => {
 
             <div className="flex flex-row gap-4 mb-6 py-10">
               <motion.button
-                className="bg-green-600 text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
+                className="btn-custom-color text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

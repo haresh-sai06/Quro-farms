@@ -95,7 +95,7 @@ const ProductsPage = () => {
                   key={category}
                   className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
                     selectedCategory === category
-                      ? "bg-green-600 text-white"
+                      ? "btn-custom-color text-white"
                       : "bg-white border border-neutral-200 text-neutral-600 hover:bg-green-50"
                   }`}
                   onClick={() => setSelectedCategory(category)}
@@ -158,7 +158,7 @@ const ProductsPage = () => {
                     <motion.button
                       onClick={(e) => handleAddToCart(product, e)}
                       disabled={!product.inStock}
-                      className="flex-1 bg-green-600 text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed mb-2"
+                      className="flex-1 btn-custom-color text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed mb-2"
                       whileHover={product.inStock ? { scale: 1.03 } : {}}
                       whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >
