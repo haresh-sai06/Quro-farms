@@ -61,7 +61,7 @@ const Hero = () => {
   ];
 
   const heroFeatures = [
-    { icon: <Shield className="w-5 h-5" />, text: "100% Organically Grown" },
+    { icon: <Shield className="w-5 h-5" />, text: "100% Naturally Grown" },
     { icon: <Heart className="w-5 h-5" />, text: "Health Guaranteed" },
     { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
   ];
@@ -149,7 +149,7 @@ const Hero = () => {
               transition={{ duration: 0.5 }}
             >
               <Leaf className="w-3 h-3" />
-              100% Organic & Sustainable Farming
+              100% Natural & Sustainable Farming
             </motion.div>
 
             <motion.h1 className="text-2xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-1">
@@ -170,48 +170,53 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh organic products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh natural products, harvested sustainably and delivered directly to your doorstep across India.
             </motion.p>
 
-            <motion.div 
-              className="flex flex-col flex-wrap gap-2 mb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-            >
-              {heroFeatures.map((feature, i) => (
-                <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                  <span className="text-green-300">{feature.icon}</span>
-                  <span className="text-white text-sm">{feature.text}</span>
-                </div>
-              ))}
-            </motion.div>
+            <div className="flex justify-center w-full"> {/* Centers the feature list */}
+  <motion.div 
+    className="flex flex-col flex-wrap gap-2 mb-4 w-fit md:w-1/2" /* Reduced width for the container */
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ delay: 0.7 }}
+  >
+    {heroFeatures.map((feature, i) => (
+      <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+        <span className="text-green-300">{feature.icon}</span>
+        <span className="text-white text-sm">{feature.text}</span>
+      </div>
+    ))}
+  </motion.div>
+</div>
 
-            <div className="flex flex-col gap-3 mb-6">
-              <motion.button
-                className="bg-green-600 text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span className="absolute inset-0 bg-white/20 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
-                <Link to="/products" className="flex items-center gap-2 relative z-10">
-                  Shop Now
-                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </motion.button>
-              <motion.button
-                className="bg-white/90 backdrop-blur-sm text-green-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsVideoModalOpen(true)}
-              >
-                <span className="absolute inset-0 bg-green-100 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
-                <div className="flex items-center gap-2 relative z-10">
-                  <Play className="w-3 h-3 fill-green-700 group-hover:scale-110 transition-transform" />
-                  Farm Tour
-                </div>
-              </motion.button>
-            </div>
+            <div className="flex flex-col items-center justify-center w-full"> {/* Centers the button group */}
+  <div className="flex flex-col gap-3 mb-6 w-fit md:w-1/2 lg:w-1/3"> {/* Reduced width for the button container */}
+    <motion.button
+      className="bg-green-600 text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <span className="absolute inset-0 bg-white/20 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
+      <Link to="/products" className="flex items-center gap-2 relative z-10">
+        Shop Now
+        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+      </Link>
+    </motion.button>
+
+    <motion.button
+      className="bg-white/90 backdrop-blur-sm text-green-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => setIsVideoModalOpen(true)}
+    >
+      <span className="absolute inset-0 bg-green-100 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
+      <div className="flex items-center gap-2 relative z-10">
+        <Play className="w-3 h-3 fill-green-700 group-hover:scale-110 transition-transform" />
+        Farm Tour
+      </div>
+    </motion.button>
+  </div>
+</div>
           </div>
 
           <div className="w-full flex flex-col items-center gap-6">
@@ -254,7 +259,7 @@ const Hero = () => {
               transition={{ duration: 0.5 }}
             >
               <Leaf className="w-3 h-3" />
-              100% Organic & Sustainable Farming
+              100% Natural & Sustainable Farming
             </motion.div>
 
             <motion.h1 className="text-3xl lg:text-5xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-2">
@@ -275,7 +280,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh organic products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh natural products, harvested sustainably and delivered directly to your doorstep across India.
             </motion.p>
 
             <motion.div 

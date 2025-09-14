@@ -3,6 +3,7 @@ import { Menu, X, Leaf, Phone, Home, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
+import LogoImage from "../../public/image.png"; // Assuming image.png is directly in public
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,54 +46,61 @@ const Navbar: React.FC = () => {
       transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
     >
       <nav className="container-padding mx-auto flex h-20 items-center justify-between">
-        {/* Animated Logo */}
-        <motion.a
-          href="/"
+        {/* Animated Logo - ONLY Image */}
+        <Link
+          to="/"
           className={`flex items-center gap-3 text-2xl font-bold transition-colors duration-300 ${
             isMenuOpen ? "text-green-700" : "text-primary"
           }`}
-          whileHover={{ scale: 1.05 }}
           onClick={closeMenu}
         >
           <motion.div
-            className="bg-green-600 p-2 rounded-xl"
+            className="w-12 h-12 relative" // Container for the image, adjust size as needed
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.5 }}
           >
-            <Leaf className="w-6 h-6 text-white" />
+            <img
+              src={LogoImage}
+              alt="Quro Farms Logo"
+              className="w-full h-full object-contain"
+            />
           </motion.div>
-          <span className={isMenuOpen ? "text-green-700" : "text-green-700"}>
-            Quro Farms
-          </span>
-        </motion.a>
+          {/* Removed: <span className={isMenuOpen ? "text-green-700" : "text-green-700"}>Quro Farms</span> */}
+        </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {isProductsPage ? (
             // Products page navigation - just home icon
             <>
-              <motion.a
-                href="/"
-                className="text-neutral-100 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
+              <motion.div
                 whileHover={{ y: -2, color: "#86efac" }}
                 transition={{ duration: 0.2 }}
               >
-                <Home className="w-5 h-5" />
-                Home
-              </motion.a>
+                <Link
+                  to="/"
+                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
+                >
+                  <Home className="w-5 h-5" />
+                  Home
+                </Link>
+              </motion.div>
             </>
           ) : (
             // Default navigation
             navLinks.map((link) => (
-              <motion.a
+              <motion.div
                 key={link.name}
-                href={link.href}
-                className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
                 whileHover={{ y: -2, color: "#86efac" }}
                 transition={{ duration: 0.2 }}
               >
-                {link.name}
-              </motion.a>
+                <Link
+                  to={link.href}
+                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))
           )}
 
@@ -103,17 +111,21 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Order Now Button */}
-            <motion.button
-              className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+            <motion.div
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0px 5px 15px rgba(0, 128, 0, 0.3)",
               }}
               whileTap={{ scale: 0.95 }}
             >
-              <Phone className="w-4 h-4" />
-              <Link to="/order">Order Now</Link>
-            </motion.button>
+              <Link
+                to="/order"
+                className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Order Now
+              </Link>
+            </motion.div>
           </div>
         </div>
 
@@ -182,48 +194,58 @@ const Navbar: React.FC = () => {
           >
             <div className="container-padding py-6 space-y-4">
               {isProductsPage ? (
-                <motion.a
-                  href="/"
-                  className="block text-green-700 hover:text-green-600 transition-colors font-medium py-3 flex items-center gap-2 border-b border-green-100 last:border-b-0"
-                  onClick={closeMenu}
+                <motion.div
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ duration: 0.3 }}
                   whileHover={{ x: 5 }}
                 >
-                  <Home className="w-5 h-5" />
-                  Home
-                </motion.a>
+                  <Link
+                    to="/"
+                    className="block text-green-700 hover:text-green-600 transition-colors font-medium py-3 flex items-center gap-2 border-b border-green-100 last:border-b-0"
+                    onClick={closeMenu}
+                  >
+                    <Home className="w-5 h-5" />
+                    Home
+                  </Link>
+                </motion.div>
               ) : (
                 navLinks.map((link, index) => (
-                  <motion.a
+                  <motion.div
                     key={link.name}
-                    href={link.href}
-                    className="block text-green-700 hover:text-green-600 transition-colors font-medium py-3 border-b border-green-100 last:border-b-0"
-                    onClick={closeMenu}
                     initial={{ x: -20, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     whileHover={{ x: 5 }}
                   >
-                    {link.name}
-                  </motion.a>
+                    <Link
+                      to={link.href}
+                      className="block text-green-700 hover:text-green-600 transition-colors font-medium py-3 border-b border-green-100 last:border-b-0"
+                      onClick={closeMenu}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
                 ))
               )}
 
               {/* Mobile Order Button */}
-              <motion.button
-                className="w-full bg-green-600 text-white px-6 py-4 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center justify-center gap-2"
-                onClick={closeMenu}
+              <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.3, delay: 0.4 }}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <Phone className="w-4 h-4" />
-                <Link to="/order">Order Now</Link>
-              </motion.button>
+                <Link
+                  to="/order"
+                  className="w-full bg-green-600 text-white px-6 py-4 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center justify-center gap-2"
+                  onClick={closeMenu}
+                >
+                  <Phone className="w-4 h-4" />
+                  Order Now
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}

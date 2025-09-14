@@ -147,7 +147,7 @@ const Hero = () => {
             variants={itemVariants}
           >
             <Leaf className="w-5 h-5" />
-            🥥 100% Natural Coconut Products
+            100% Natural Farm Products
           </motion.div>
 
           <motion.h1 

@@ -5,13 +5,14 @@ import { useCartContext } from "../context/CardContext"; // Updated to useCartCo
 import Header from "../components/Header";
 import { toast } from "sonner";
 
-const WHATSAPP_PHONE_NUMBER = "9629002576"; // Add country code
+const WHATSAPP_PHONE_NUMBER = "9629002576"; // Add country code (missing +91)
 
 const OrderNow: React.FC = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock } = useCartContext();
   const [customerInfo, setCustomerInfo] = useState({
     name: '',
     email: '',
+    phone: '', // Added phone field
     address: '',
     city: '',
     pincode: '',
@@ -27,14 +28,54 @@ const OrderNow: React.FC = () => {
   };
 
   const validateCustomerInfo = () => {
+    // Name validation
     if (!customerInfo.name.trim()) {
       toast.error("Please enter your full name");
       return false;
     }
+
+    // Email validation (must end with .com)
+    if (!customerInfo.email.trim()) {
+      toast.error("Please enter your email address");
+      return false;
+    }
+    if (!customerInfo.email.toLowerCase().endsWith(".com")) {
+      toast.error("Email must end with .com");
+      return false;
+    }
+
+    // Phone validation (10-digit integer)
+    if (!customerInfo.phone.trim()) {
+      toast.error("Please enter your phone number");
+      return false;
+    }
+    const phoneRegex = /^\d{10}$/;
+    if (!phoneRegex.test(customerInfo.phone)) {
+      toast.error("Phone number must be a 10-digit number");
+      return false;
+    }
+
+    // Address validation
     if (!customerInfo.address.trim()) {
       toast.error("Please enter your delivery address");
       return false;
     }
+
+    // City validation (if provided)
+    if (customerInfo.city.trim() && !customerInfo.city.trim().length) {
+      toast.error("City cannot be empty if entered");
+      return false;
+    }
+
+    // PIN code validation (if provided, must be 6 digits)
+    if (customerInfo.pincode.trim()) {
+      const pincodeRegex = /^\d{6}$/;
+      if (!pincodeRegex.test(customerInfo.pincode)) {
+        toast.error("PIN code must be a 6-digit number");
+        return false;
+      }
+    }
+
     return true;
   };
 
@@ -55,10 +96,11 @@ const OrderNow: React.FC = () => {
     message += `💰 *Total Amount: ₹${total.toFixed(2)}*\n`;
     message += `🛍 *Total Items: ${getCartItemsCount()}*\n\n`;
     
-    if (customerInfo.name || customerInfo.email || customerInfo.address || customerInfo.city || customerInfo.pincode) {
+    if (customerInfo.name || customerInfo.email || customerInfo.phone || customerInfo.address || customerInfo.city || customerInfo.pincode) {
       message += "📋 *Customer Details:*\n";
       if (customerInfo.name) message += `Name: ${customerInfo.name}\n`;
       if (customerInfo.email) message += `Email: ${customerInfo.email}\n`;
+      if (customerInfo.phone) message += `Phone: ${customerInfo.phone}\n`;
       if (customerInfo.address) message += `Address: ${customerInfo.address}\n`;
       if (customerInfo.city) message += `City: ${customerInfo.city}\n`;
       if (customerInfo.pincode) message += `PIN: ${customerInfo.pincode}\n\n`;
@@ -80,7 +122,7 @@ const OrderNow: React.FC = () => {
 
     const message = generateWhatsAppMessage();
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/+91${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`; // Added +91 for India
     
     window.open(whatsappUrl, "_blank");
     toast.success("Opening WhatsApp to send your order...");
@@ -233,7 +275,22 @@ const OrderNow: React.FC = () => {
 
                   <div>
                     <label className="block text-sm font-semibold text-primary mb-2">
-                      Email
+                      Phone Number *
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={customerInfo.phone}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                      placeholder="Enter your 10-digit phone number"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-primary mb-2">
+                      Email *
                     </label>
                     <input
                       type="email"
@@ -241,7 +298,8 @@ const OrderNow: React.FC = () => {
                       value={customerInfo.email}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
-                      placeholder="Enter your email"
+                      placeholder="Enter your email (must end with .com)"
+                      required
                     />
                   </div>
 
@@ -285,7 +343,7 @@ const OrderNow: React.FC = () => {
                         value={customerInfo.pincode}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
-                        placeholder="Enter PIN code"
+                        placeholder="Enter 6-digit PIN code"
                       />
                     </div>
                   </div>

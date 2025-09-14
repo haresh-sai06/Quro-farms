@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const testimonialsList = [
 	{
 		quote: "Have been using products from Quro farm since inception! I love their organic Turmeric powder, Cold pressed coconut oil as well the moringa powder and can vouch for their awesome quality and produce .Even a pinch goes a long way in preparing any dish and for my family I’d choose nothing else.",
-		author: "Sonia Wala",
+		author: "Sonia Walia",
 		role: "Mumbai",
 		avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop",
 		rating: 5,
@@ -60,11 +60,6 @@ const Testimonials: React.FC = () => {
 								{testimonial.quote}
 							</blockquote>
 							<div className="flex items-center gap-3 mt-4">
-								<img
-									src={testimonial.avatar}
-									alt={testimonial.author}
-									className="w-10 h-10 rounded-full object-cover"
-								/>
 								<div>
 									<p className="font-semibold text-green-700">
 										{testimonial.author}

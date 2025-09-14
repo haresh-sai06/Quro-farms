@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
               <span className="text-2xl font-bold">Quro Farms</span>
             </div>
             <p className="text-green-100 text-lg leading-relaxed mb-6 max-w-md">
-              Bringing you 100% original, chemical-free farm products directly from organic farms across India to your doorstep.
+              Bringing you 100% natural, chemical-free farm products directly from our farms across India to your doorstep.
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-green-100">

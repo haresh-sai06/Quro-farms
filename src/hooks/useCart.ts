@@ -5,20 +5,27 @@ import { toast } from 'sonner';
 const CART_STORAGE_KEY = 'quro-farms-cart';
 const SAVED_FOR_LATER_KEY = 'quro-farms-saved-for-later';
 
+// A custom logging function that is active only in development
+const log = (...args) => {
+  if (process.env.NODE_ENV === 'development') {
+    console.log(...args);
+  }
+};
+
 export const useCart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [savedForLater, setSavedForLater] = useState<CartItem[]>([]);
-   const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // Load cart from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem(CART_STORAGE_KEY);
     const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
-    console.log('Raw localStorage cart:', savedCart); // Temp debug
+    log('Raw localStorage cart:', savedCart); // Using the new log function
     if (savedCart) {
       try {
         const parsed = JSON.parse(savedCart);
-        console.log('Parsed cart:', parsed); // Temp debug
+        log('Parsed cart:', parsed); // Using the new log function
         setCartItems(parsed);
       } catch (error) {
         console.error('Error loading cart from localStorage:', error);
@@ -27,7 +34,7 @@ export const useCart = () => {
     if (savedItems) {
       try {
         const parsed = JSON.parse(savedItems);
-        console.log('Parsed saved items:', parsed); // Temp debug
+        log('Parsed saved items:', parsed); // Using the new log function
         setSavedForLater(parsed);
       } catch (error) {
         console.error('Error loading saved items from localStorage:', error);
@@ -54,7 +61,7 @@ export const useCart = () => {
         try {
           const parsedCart = JSON.parse(savedCart);
           if (JSON.stringify(parsedCart) !== JSON.stringify(cartItems)) {
-            console.log('Cart updated from localStorage:', parsedCart); // Debug
+            log('Cart updated from localStorage:', parsedCart); // Using the new log function
             setCartItems(parsedCart);
           }
         } catch (error) {
@@ -65,7 +72,7 @@ export const useCart = () => {
         try {
           const parsedItems = JSON.parse(savedItems);
           if (JSON.stringify(parsedItems) !== JSON.stringify(savedForLater)) {
-            console.log('Saved items updated from localStorage:', parsedItems); // Debug
+            log('Saved items updated from localStorage:', parsedItems); // Using the new log function
             setSavedForLater(parsedItems);
           }
         } catch (error) {
@@ -96,7 +103,7 @@ export const useCart = () => {
   };
 
   const addToCart = (product: Product, quantity: number = 1) => {
-    console.log('Adding to cart:', product, quantity); // Temp debug
+    log('Adding to cart:', product, quantity); // Using the new log function
     if (!checkStock(product, quantity)) {
       return false;
     }

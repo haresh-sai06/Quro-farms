@@ -1,13 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Leaf, Phone, Home } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
+import LogoImage from "../../public/components/image.png"; // Assuming image.png is directly in public
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const isProductsPage = location.pathname === '/products' || location.pathname.startsWith('/product/');
+  const isProductsPage =
+    location.pathname === "/products" ||
+    location.pathname.startsWith("/product/");
+
   const navLinks = [
     { name: "Why Choose Us", href: "/#features" },
     { name: "Products", href: "/products" },
@@ -16,80 +20,102 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-green-100/50 shadow-sm"
+    <motion.header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isMenuOpen
+          ? "bg-white shadow-lg"
+          : "bg-white/10 backdrop-blur-md border-b border-green-100/50 shadow-sm"
+      }`}
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`,
+        backgroundImage: !isMenuOpen
+          ? `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`
+          : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
     >
       <nav className="container-padding mx-auto flex h-20 items-center justify-between">
-        {/* Animated Logo */}
-        <motion.a
-          href="/"
-          className="flex items-center gap-3 text-2xl font-bold text-primary"
-          whileHover={{ scale: 1.05 }}
+        {/* Animated Logo - ONLY Image, using Link */}
+        <Link
+          to="/"
+          className="flex items-center gap-3 text-2xl font-bold text-primary" // 'gap-3' will still apply spacing if there were other elements.
         >
           <motion.div
-            className="bg-green-600 p-2 rounded-xl"
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.5 }}
-          >
-            <Leaf className="w-6 h-6 text-white" />
-          </motion.div>
-          <span className="text-green-700">Quro Farms</span>
-        </motion.a>
+  className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center p-1"
+  style={{ backgroundColor: '#86bd55ff' }} // Use this custom color instead of the previous green class
+  whileHover={{ rotate: 360 }}
+  transition={{ duration: 0.5 }}
+>
+  <img
+    src={LogoImage}
+    alt="Quro Farms Logo"
+    className="w-full h-full object-cover"
+  />
+</motion.div>
+          
+        </Link>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Navigation (rest of the component unchanged) */}
         <div className="hidden md:flex items-center gap-8">
           {isProductsPage ? (
-            // Products page navigation - just 3 icons
             <>
-              <motion.a
-                href="/"
-                className="text-neutral-100 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
+              <motion.div
                 whileHover={{ y: -2, color: "#86efac" }}
                 transition={{ duration: 0.2 }}
               >
-                <Home className="w-5 h-5" />
-                Home
-              </motion.a>
+                <Link
+                  to="/"
+                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
+                >
+                  <Home className="w-5 h-5" />
+                  Home
+                </Link>
+              </motion.div>
             </>
           ) : (
-            // Default navigation
             navLinks.map((link) => (
-              <motion.a
+              <motion.div
                 key={link.name}
-                href={link.href}
-                className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
                 whileHover={{ y: -2, color: "#86efac" }}
                 transition={{ duration: 0.2 }}
               >
-                {link.name}
-              </motion.a>
+                <Link
+                  to={link.href}
+                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))
           )}
 
           <div className="flex items-center gap-4">
-            {/* Shopping Cart Dropdown */}
             <div data-cart-icon>
               <CartDropdown />
             </div>
 
-            {/* Order Now Button */}
-            <motion.button
-              className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
-              whileHover={{ scale: 1.05, boxShadow: "0px 5px 15px rgba(0, 128, 0, 0.3)" }}
+            <motion.div
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0px 5px 15px rgba(0, 128, 0, 0.3)",
+              }}
               whileTap={{ scale: 0.95 }}
             >
-              <Phone className="w-4 h-4" />
-              <Link to="/order">Order Now</Link>
-            </motion.button>
+              <Link
+                to="/order"
+                className="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Order Now
+              </Link>
+            </motion.div>
           </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Menu Toggle (rest of the component unchanged) */}
         <button
           className="md:hidden text-neutral-100 p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -98,46 +124,57 @@ const Header: React.FC = () => {
         </button>
       </nav>
 
-      {/* Mobile Menu with Slide-in */}
-      <motion.div
-        className="md:hidden absolute top-20 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-green-100/50 shadow-lg"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: isMenuOpen ? "auto" : 0, opacity: isMenuOpen ? 1 : 0 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="container-padding py-6 flex flex-col gap-4">
-          {isProductsPage ? (
-            <a
-              href="/"
-              className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2 flex items-center gap-2"
-            >
-              <Home className="w-5 h-5" />
-              Home
-            </a>
-          ) : (
-            navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-green-800 hover:text-green-600 transition-colors font-medium py-2 flex items-center gap-2"
-              >
-                {link.name}
-              </a>
-            ))
-          )}
-          <div className="flex gap-4 pt-4 border-t border-green-100/50">
-            <button className="flex-1 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold">
-              <Link to="/order">Order Now</Link>
-            </button>
-          </div>
-        </div>
-      </motion.div>
-    </header>
+      {/* Mobile Menu (rest of the component unchanged) */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            className="md:hidden absolute top-20 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-green-100/50 shadow-lg"
+            style={{
+              backgroundImage: `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="container-padding py-6 flex flex-col gap-4">
+              {isProductsPage ? (
+                <Link
+                  to="/"
+                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2 flex items-center gap-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <Home className="w-5 h-5" />
+                  Home
+                </Link>
+              ) : (
+                navLinks.map((link) => (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    className="text-green-800 hover:text-green-600 transition-colors font-medium py-2 flex items-center gap-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))
+              )}
+              <div className="flex gap-4 pt-4 border-t border-green-100/50">
+                <Link
+                  to="/order"
+                  className="flex-1 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Order Now
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 

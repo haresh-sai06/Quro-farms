@@ -201,7 +201,7 @@ const ProductDetail = () => {
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 1, delay: 0.5 }}
-    className="absolute top-20 sm:top-24 left-4 sm:left-10 z-30"
+    className="absolute top-24 sm:top-24 left-4 sm:left-10 z-30"
   >
     <Link
       to="/products"
@@ -392,7 +392,7 @@ const ProductDetail = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 p-3 sm:p-6 bg-green-50 rounded-2xl">
                     <div className="text-center">
                       <Shield className="w-6 sm:w-8 h-6 sm:h-8 text-green-600 mx-auto mb-1 sm:mb-2" />
-                      <p className="font-semibold text-sm sm:text-base">100% Organic</p>
+                      <p className="font-semibold text-sm sm:text-base">100% Natural</p>
                     </div>
                     <div className="text-center">
                       <Truck className="w-6 sm:w-8 h-6 sm:h-8 text-green-600 mx-auto mb-1 sm:mb-2" />
@@ -564,19 +564,6 @@ const ProductDetail = () => {
                     </motion.div>
                   ))}
                 </div>
-              </div>
-            </AnimatedSection>
-
-            {/* Certifications */}
-            <AnimatedSection delay={1.0} className="mb-12 sm:mb-20">
-              <div className="bg-amber-50 p-4 sm:p-12 rounded-2xl sm:rounded-3xl">
-                <div className="flex items-center gap-2 sm:gap-4 mb-4 sm:mb-8 justify-center">
-                  <User className="w-6 sm:w-10 h-6 sm:h-10 text-amber-600" />
-                  <h2 className="text-2xl sm:text-4xl font-bold text-primary">Meet Our Farmer</h2>
-                </div>
-                <p className="text-base sm:text-xl text-center text-neutral-700 max-w-xs sm:max-w-4xl mx-auto leading-relaxed">
-                  {product.farmerStory}
-                </p>
               </div>
             </AnimatedSection>
 

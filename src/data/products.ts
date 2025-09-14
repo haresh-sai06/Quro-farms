@@ -150,7 +150,7 @@ export const products: Product[] = [
     uniqueSellingPoints: [
       'High vitamin and mineral content',
       'Shade-dried for nutrient retention',
-      'Organic and additive-free',
+      'Natural and additive-free',
       'Supports local farmers'
     ],
     seasonalAvailability: 'Available year-round, peak quality from March to June',
@@ -248,7 +248,7 @@ export const products: Product[] = [
       'Easily digestible powder',
       'Natural thickener',
       'Soothing properties',
-      'Organic and additive-free'
+      'Natural and additive-free'
     ],
     processingJourney: [
       'Harvest arrowroot tubers',
