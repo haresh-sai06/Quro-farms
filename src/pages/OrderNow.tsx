@@ -1,22 +1,23 @@
 import { motion } from "framer-motion";
-import { ShoppingCart, MessageCircle, MapPin, User } from "lucide-react";
+import { ShoppingCart, MessageCircle, MapPin, User, X } from "lucide-react"; // Added X for close button
 import { useState } from "react";
-import { useCartContext } from "../context/CardContext"; // Updated to useCartContext
+import { useCartContext } from "../context/CardContext";
 import Header from "../components/Header";
 import { toast } from "sonner";
 
-const WHATSAPP_PHONE_NUMBER = "9629002576"; // Add country code (missing +91)
+const WHATSAPP_PHONE_NUMBER = "919629002576"; // Corrected with country code +91
 
 const OrderNow: React.FC = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock } = useCartContext();
   const [customerInfo, setCustomerInfo] = useState({
     name: '',
     email: '',
-    phone: '', // Added phone field
+    phone: '',
     address: '',
     city: '',
     pincode: '',
   });
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
 
   const total = getCartTotal();
 
@@ -28,23 +29,14 @@ const OrderNow: React.FC = () => {
   };
 
   const validateCustomerInfo = () => {
-    // Name validation
     if (!customerInfo.name.trim()) {
       toast.error("Please enter your full name");
-      return false;
-    }
-
-    // Email validation (must end with .com)
-    if (!customerInfo.email.trim()) {
-      toast.error("Please enter your email address");
       return false;
     }
     if (!customerInfo.email.toLowerCase().endsWith(".com")) {
       toast.error("Email must end with .com");
       return false;
     }
-
-    // Phone validation (10-digit integer)
     if (!customerInfo.phone.trim()) {
       toast.error("Please enter your phone number");
       return false;
@@ -54,20 +46,14 @@ const OrderNow: React.FC = () => {
       toast.error("Phone number must be a 10-digit number");
       return false;
     }
-
-    // Address validation
     if (!customerInfo.address.trim()) {
       toast.error("Please enter your delivery address");
       return false;
     }
-
-    // City validation (if provided)
     if (customerInfo.city.trim() && !customerInfo.city.trim().length) {
       toast.error("City cannot be empty if entered");
       return false;
     }
-
-    // PIN code validation (if provided, must be 6 digits)
     if (customerInfo.pincode.trim()) {
       const pincodeRegex = /^\d{6}$/;
       if (!pincodeRegex.test(customerInfo.pincode)) {
@@ -75,7 +61,6 @@ const OrderNow: React.FC = () => {
         return false;
       }
     }
-
     return true;
   };
 
@@ -119,13 +104,17 @@ const OrderNow: React.FC = () => {
     if (!validateCustomerInfo()) {
       return;
     }
+    setIsModalOpen(true); // Open confirmation modal
+  };
 
+  const confirmOrder = () => {
     const message = generateWhatsAppMessage();
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/+91${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`; // Added +91 for India
+    const whatsappUrl = `https://wa.me/+91${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`;
     
     window.open(whatsappUrl, "_blank");
     toast.success("Opening WhatsApp to send your order...");
+    setIsModalOpen(false); // Close modal after opening WhatsApp
   };
 
   return (
@@ -164,7 +153,7 @@ const OrderNow: React.FC = () => {
                     <p className="text-neutral-500 text-lg">Your cart is empty</p>
                     <a
                       href="/products"
-                      className="inline-block mt-4 btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors"
+                      className="inline-block mt-4 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors"
                     >
                       Browse Products
                     </a>
@@ -352,7 +341,7 @@ const OrderNow: React.FC = () => {
                     type="button"
                     onClick={handleWhatsAppOrder}
                     disabled={cartItems.length === 0}
-                    className="w-full btn-custom-color text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                    className="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                     whileHover={{ scale: cartItems.length > 0 ? 1.02 : 1 }}
                     whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
                   >
@@ -365,6 +354,79 @@ const OrderNow: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Order Confirmation Modal */}
+      {isModalOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          onClick={() => setIsModalOpen(false)} // Close on backdrop click
+        >
+          <motion.div
+            initial={{ scale: 0.7, y: 50 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.7, y: 50 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full max-h-[80vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-primary">Confirm Your Order</h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-neutral-500 hover:text-neutral-700 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="space-y-4 mb-6">
+              <h3 className="font-semibold text-primary">Order Summary</h3>
+              {cartItems.map((item) => (
+                <div key={item.product.id} className="flex justify-between items-center">
+                  <span>{item.product.name} (x{item.quantity})</span>
+                  <span>₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</span>
+                </div>
+              ))}
+              <div className="border-t pt-2">
+                <div className="flex justify-between font-bold text-primary">
+                  <span>Total:</span>
+                  <span>₹{total.toFixed(2)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4 mb-6">
+              <h3 className="font-semibold text-primary">Customer Details</h3>
+              <p><strong>Name:</strong> {customerInfo.name}</p>
+              <p><strong>Phone:</strong> {customerInfo.phone}</p>
+              <p><strong>Email:</strong> {customerInfo.email}</p>
+              <p><strong>Address:</strong> {customerInfo.address}</p>
+              <p><strong>City:</strong> {customerInfo.city || 'N/A'}</p>
+              <p><strong>PIN:</strong> {customerInfo.pincode || 'N/A'}</p>
+            </div>
+
+            <div className="flex justify-end gap-4">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="px-4 py-2 bg-neutral-200 text-neutral-800 rounded-xl hover:bg-neutral-300 transition-colors"
+              >
+                Cancel
+              </button>
+              <motion.button
+                onClick={confirmOrder}
+                className="px-4 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <MessageCircle className="w-5 h-5" />
+                Confirm Order
+              </motion.button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </div>
   );
 };

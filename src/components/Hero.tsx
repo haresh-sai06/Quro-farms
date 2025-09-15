@@ -62,7 +62,7 @@ const Hero = () => {
 
   const heroFeatures = [
     { icon: <Shield className="w-5 h-5" />, text: "100% Naturally Grown" },
-    { icon: <Heart className="w-5 h-5" />, text: "Health Guaranteed" },
+    { icon: <Heart className="w-5 h-5" />, text: "Freshly Harvested" },
     { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
   ];
 
@@ -189,10 +189,10 @@ const Hero = () => {
   </motion.div>
 </div>
 
-            <div className="flex flex-col items-center justify-center w-full"> {/* Centers the button group */}
+            <div className="flex flex-col items-center justify-center w-full py-6"> {/* Centers the button group */}
   <div className="flex flex-col gap-3 mb-6 w-fit md:w-1/2 lg:w-1/3"> {/* Reduced width for the button container */}
     <motion.button
-      className="btn-custom-color text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
+      className="btn-custom-color text-white px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
@@ -203,7 +203,7 @@ const Hero = () => {
       </Link>
     </motion.button>
 
-    <motion.button
+    {/* <motion.button
       className="bg-white/90 backdrop-blur-sm text-green-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -214,7 +214,7 @@ const Hero = () => {
         <Play className="w-3 h-3 fill-green-700 group-hover:scale-110 transition-transform" />
         Farm Tour
       </div>
-    </motion.button>
+    </motion.button> */}
   </div>
 </div>
           </div>
@@ -299,7 +299,7 @@ const Hero = () => {
 
             <div className="flex flex-row gap-4 mb-6 py-10">
               <motion.button
-                className="btn-custom-color text-white px-5 py-2 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
+                className="btn-custom-color text-white px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-green-700 transition-colors relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -309,7 +309,7 @@ const Hero = () => {
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.button>
-              <motion.button
+              {/* <motion.button
                 className="bg-white/90 backdrop-blur-sm text-green-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -320,7 +320,7 @@ const Hero = () => {
                   <Play className="w-3 h-3 fill-green-700 group-hover:scale-110 transition-transform" />
                   Farm Tour
                 </div>
-              </motion.button>
+              </motion.button> */}
             </div>
           </div>
 

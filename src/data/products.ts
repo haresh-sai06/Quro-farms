@@ -87,7 +87,7 @@ export const products: Product[] = [
     ],
     processingJourney: [
       'Harvest mature farm coconuts',
-      'Grate fresh coconut flesh',
+      'Prepare coconut for pressing',
       'Cold-press for pure oil',
       'Filter for natural clarity'
     ],
