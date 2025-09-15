@@ -1,5 +1,5 @@
 Quro Farms E-Commerce:
-Welcome to the Quro Farms E-Commerce repository! This project is a web application built to sell organic farm products, featuring a shopping cart, order management, and WhatsApp integration for order placement.
+Welcome to the Quro Farms E-Commerce repository! This project is a web application built to sell natural farm products, featuring a shopping cart, order management, and WhatsApp integration for order placement.
 
 Table of Contents:
 -> Overview
@@ -11,10 +11,10 @@ Table of Contents:
 -> Contact
 
 Overview: 
-Quro Farms is an online platform designed to deliver fresh, organic products directly from farms to customers' doorsteps. The application allows users to browse products, add them to a cart, and place orders via WhatsApp for a seamless shopping experience.
+Quro Farms is an online platform designed to deliver fresh, natural products directly from farms to customers' doorsteps. The application allows users to browse products, add them to a cart, and place orders via WhatsApp for a seamless shopping experience.
 
 Features:
-Product Browsing: View a catalog of organic farm products.
+Product Browsing: View a catalog of natural farm products.
 Shopping Cart: Add, update, or remove items with quantity controls.
 Order Summary: Review cart items on the Order Now page.
 Customer Details: Input name, email, address, city, and PIN code for delivery.

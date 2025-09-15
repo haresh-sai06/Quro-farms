@@ -7,7 +7,7 @@ const productCategories = [
 	{
 		title: "Farm-Fresh Products",
 		count: "6",
-		description: "Natural, organic powders & oils",
+		description: "Natural, natural powders & oils",
 		icon: Package,
 		color: "text-green-600",
 		bgGradient: "from-green-100 to-green-50",

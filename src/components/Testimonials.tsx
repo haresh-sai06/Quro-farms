@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 const testimonialsList = [
 	{
-		quote: "Have been using products from Quro farm since inception! I love their organic Turmeric powder, Cold pressed coconut oil as well the moringa powder and can vouch for their awesome quality and produce .Even a pinch goes a long way in preparing any dish and for my family I’d choose nothing else.",
+		quote: "Have been using products from Quro farm since inception! I love their natural Turmeric powder, Cold pressed coconut oil as well the moringa powder and can vouch for their awesome quality and produce .Even a pinch goes a long way in preparing any dish and for my family I’d choose nothing else.",
 		author: "Sonia Walia",
 		role: "Mumbai",
 		avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=100&h=100&fit=crop",
 		rating: 5,
-		product: ["Organic Turmeric Powder"],
+		product: ["Turmeric Powder"],
 	},
 	{
 		quote: "Genuinely good products that have zero additives, you get the best turmeric, raw banana powder and mornings powder straight from the source. Proud that it’s woman owned!",
@@ -23,7 +23,7 @@ const testimonialsList = [
 		role: "Bangalore",
 		avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop",
 		rating: 5,
-		product: "Organic Grains & Pulses",
+		product: "Natural Grains & Pulses",
 	},
 ];
 

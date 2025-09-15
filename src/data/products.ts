@@ -14,7 +14,7 @@ import Scenary from '/components/scenary.jpeg';
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Organic Turmeric Powder',
+    name: 'Turmeric Powder',
     originalPrice: 200,
     discountedPrice: 120,
     unit: '250 g',
@@ -22,21 +22,21 @@ export const products: Product[] = [
     rating: 4.8,
     reviews: 156,
     badge: 'Bestseller',
-    description: 'Vibrant organic turmeric powder enhances wellness. Farm-fresh, potent, and versatile for daily use.',
+    description: 'Vibrant natural turmeric powder enhances wellness. Farm-fresh, potent, and versatile for daily use.',
     category: 'Powders',
     features: [
-      'Pure organic turmeric powder',
+      'Pure natural turmeric powder',
       'High curcumin, anti-inflammatory',
       'Versatile for cooking, skincare',
       'Sustainably farmed, additive-free'
     ],
     processingJourney: [
-      'Hand-pick organic turmeric rhizomes',
+      'Hand-pick natural turmeric rhizomes',
       'Wash with natural spring water',
       'Sun-dry for vibrant color',
       'Stone-grind into fine powder'
     ],
-    whyChooseOurFarm: 'Our family farm in Kerala uses sustainable organic methods to grow turmeric, ensuring purity and potency.',
+    whyChooseOurFarm: 'Our family farm in Kerala uses sustainable natural methods to grow turmeric, ensuring purity and potency.',
     uniqueSellingPoints: [
       'Zero chemical pesticides',
       'High curcumin content',
@@ -45,11 +45,11 @@ export const products: Product[] = [
     ],
     seasonalAvailability: 'Available year-round, peak quality from January to March',
     pairingSuggestions: ['Ginger', 'Black pepper', 'Honey', 'Warm milk'],
-    storageInstructions: 'Store organic turmeric powder airtight, cool, dry.',
+    storageInstructions: 'Store natural turmeric powder airtight, cool, dry.',
     customerUseCases: ['Golden lattes', 'Curries', 'Face masks', 'Herbal teas'],
-    sustainabilityImpact: 'Our organic practices reduce environmental impact and support local biodiversity.',
-    farmerStory: 'Rajesh, our lead farmer, carries forward a 50-year tradition of organic turmeric cultivation in Kerala.',
-    productStory: 'Our organic turmeric powder grows in Kerala’s rich soil, hand-harvested using sustainable methods. Stone-ground for purity, it delivers farm-fresh curcumin power to your kitchen.',
+    sustainabilityImpact: 'Our natural practices reduce environmental impact and support local biodiversity.',
+    farmerStory: 'Rajesh, our lead farmer, carries forward a 50-year tradition of natural turmeric cultivation in Kerala.',
+    productStory: 'Our natural turmeric powder grows in Kerala’s rich soil, hand-harvested using sustainable methods. Stone-ground for purity, it delivers farm-fresh curcumin power to your kitchen.',
     healthBenefits: [
       'Boosts immunity naturally',
       'Reduces inflammation effectively',
@@ -57,13 +57,13 @@ export const products: Product[] = [
       'Enhances skin glow'
     ],
     recipeIdeas: [
-      'Golden Latte: Organic turmeric powder in warm milk.',
-      'Spiced Curry: Flavor with organic turmeric powder.',
-      'Face Mask: Glow with organic turmeric powder mix.',
-      'Herbal Tea: Steep organic turmeric powder daily.'
+      'Golden Latte: natural turmeric powder in warm milk.',
+      'Spiced Curry: Flavor with natural turmeric powder.',
+      'Face Mask: Glow with natural turmeric powder mix.',
+      'Herbal Tea: Steep natural turmeric powder daily.'
     ],
-    ecoFriendlyPractices: ['Organic farming', 'Solar drying', 'Compost fertilization', 'Rainwater harvesting'],
-    customerSpotlight: 'Sarah loves our organic turmeric powder for her lattes, easing joint pain noticeably. "The fresh, vibrant taste is unmatched, and I trust its farm-to-table purity."',
+    ecoFriendlyPractices: ['natural farming', 'Solar drying', 'Compost fertilization', 'Rainwater harvesting'],
+    customerSpotlight: 'Sarah loves our natural turmeric powder for her lattes, easing joint pain noticeably. "The fresh, vibrant taste is unmatched, and I trust its farm-to-table purity."',
     farmToTableImage: Scenary,
     inStock: true
   },
@@ -91,7 +91,7 @@ export const products: Product[] = [
       'Cold-press for pure oil',
       'Filter for natural clarity'
     ],
-    whyChooseOurFarm: 'Our coastal groves produce coconuts using organic methods, ensuring pure, high-quality oil.',
+    whyChooseOurFarm: 'Our coastal groves produce coconuts using natural methods, ensuring pure, high-quality oil.',
     uniqueSellingPoints: [
       'Cold-pressed for nutrient retention',
       'No additives or preservatives',
@@ -102,9 +102,9 @@ export const products: Product[] = [
     pairingSuggestions: ['Curry spices', 'Vanilla', 'Shea butter', 'Coffee'],
     storageInstructions: 'Store coconut oil sealed, room temperature.',
     customerUseCases: ['Cooking stir-fries', 'Skincare', 'Hair nourishment', 'Energy snacks'],
-    sustainabilityImpact: 'Our organic coconut farming supports coastal ecosystems and reduces chemical runoff.',
+    sustainabilityImpact: 'Our natural coconut farming supports coastal ecosystems and reduces chemical runoff.',
     farmerStory: 'Amit, our coconut farmer, hand-selects mature coconuts for the best oil quality.',
-    productStory: 'Our coconut oil comes from coastal groves, cold-pressed from fresh nuts. Grown organically, it’s pure nourishment from farm to bottle.',
+    productStory: 'Our coconut oil comes from coastal groves, cold-pressed from fresh nuts. Grown naturalally, it’s pure nourishment from farm to bottle.',
     healthBenefits: [
       'Boosts heart health',
       'Enhances skin moisture',
@@ -117,7 +117,7 @@ export const products: Product[] = [
       'Energy Bites: Mix coconut oil snacks.',
       'Coffee Boost: Blend coconut oil brew.'
     ],
-    ecoFriendlyPractices: ['Organic farming', 'Cold-pressing', 'Eco-friendly packaging', 'Community farming'],
+    ecoFriendlyPractices: ['natural farming', 'Cold-pressing', 'Eco-friendly packaging', 'Community farming'],
     customerSpotlight: 'Lisa swears by our coconut oil for cooking and skincare, loving its purity. "My hair shines, and meals taste tropical!"',
     farmToTableImage: CoconutFarm,
     inStock: true
@@ -132,7 +132,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviews: 134,
     badge: 'Popular',
-    description: 'Organic moringa powder fuels wellness naturally. Farm-fresh, vitamin-rich for smoothies, teas.',
+    description: 'natural moringa powder fuels wellness naturally. Farm-fresh, vitamin-rich for smoothies, teas.',
     category: 'Powders',
     features: [
       'Nutrient-dense moringa powder',
@@ -155,11 +155,11 @@ export const products: Product[] = [
     ],
     seasonalAvailability: 'Available year-round, peak quality from March to June',
     pairingSuggestions: ['Spinach', 'Lemon', 'Honey', 'Banana'],
-    storageInstructions: 'Keep organic moringa powder airtight, refrigerated.',
+    storageInstructions: 'Keep natural moringa powder airtight, refrigerated.',
     customerUseCases: ['Smoothies', 'Teas', 'Energy balls', 'Pesto sauces'],
     sustainabilityImpact: 'Our moringa farming promotes soil health and supports sustainable agriculture.',
     farmerStory: 'Suresh, our moringa expert, ensures leaves are picked at peak freshness for optimal nutrition.',
-    productStory: 'Our organic moringa powder grows on nutrient-rich farms, hand-picked for potency. Gently dried and ground, it’s a superfood from our fields to you.',
+    productStory: 'Our natural moringa powder grows on nutrient-rich farms, hand-picked for potency. Gently dried and ground, it’s a superfood from our fields to you.',
     healthBenefits: [
       'Boosts energy naturally',
       'Strengthens immune system',
@@ -167,13 +167,13 @@ export const products: Product[] = [
       'Enhances skin, hair'
     ],
     recipeIdeas: [
-      'Green Smoothie: Blend organic moringa powder.',
-      'Herbal Tea: Steep organic moringa powder.',
+      'Green Smoothie: Blend natural moringa powder.',
+      'Herbal Tea: Steep natural moringa powder.',
       'Energy Balls: Roll with moringa powder.',
       'Pesto Sauce: Mix moringa powder twist.'
     ],
-    ecoFriendlyPractices: ['Organic cultivation', 'Shade drying', 'Eco-friendly packaging', 'Water conservation'],
-    customerSpotlight: 'Raj boosts his smoothies with organic moringa powder, feeling energized daily. "The farm-fresh taste is amazing, and it’s helped my immunity."',
+    ecoFriendlyPractices: ['natural cultivation', 'Shade drying', 'Eco-friendly packaging', 'Water conservation'],
+    customerSpotlight: 'Raj boosts his smoothies with natural moringa powder, feeling energized daily. "The farm-fresh taste is amazing, and it’s helped my immunity."',
     farmToTableImage: TractorImage,
     inStock: true
   },
@@ -193,7 +193,7 @@ export const products: Product[] = [
       'Fiber-rich banana powder',
       'Gluten-free baking alternative',
       'Supports gut health',
-      'Organically grown purity'
+      'naturalally grown purity'
     ],
     processingJourney: [
       'Harvest green bananas',
@@ -201,7 +201,7 @@ export const products: Product[] = [
       'Dehydrate at low temperatures',
       'Grind into smooth powder'
     ],
-    whyChooseOurFarm: 'Our organic farms produce high-quality green bananas, processed naturally to retain nutrients.',
+    whyChooseOurFarm: 'Our natural farms produce high-quality green bananas, processed naturally to retain nutrients.',
     uniqueSellingPoints: [
       'Gluten-free and fiber-rich',
       'Low-temperature dehydration',
@@ -214,7 +214,7 @@ export const products: Product[] = [
     customerUseCases: ['Pancakes', 'Smoothies', 'Energy bars', 'Soup thickener'],
     sustainabilityImpact: 'Our banana farming supports local ecosystems and reduces waste through sustainable practices.',
     farmerStory: 'Tenzin, our banana farmer, carefully selects green bananas for optimal powder quality.',
-    productStory: 'Our raw banana powder is made from green bananas grown on organic farms, dehydrated to preserve nutrients. It’s a versatile, gluten-free superfood.',
+    productStory: 'Our raw banana powder is made from green bananas grown on natural farms, dehydrated to preserve nutrients. It’s a versatile, gluten-free superfood.',
     healthBenefits: [
       'Improves gut health',
       'Stabilizes blood sugar',
@@ -227,7 +227,7 @@ export const products: Product[] = [
       'Energy Bars: Mix raw banana powder.',
       'Soup Thickener: Use raw banana powder.'
     ],
-    ecoFriendlyPractices: ['Organic farming', 'Low-energy dehydration', 'Composting waste', 'Sustainable sourcing'],
+    ecoFriendlyPractices: ['natural farming', 'Low-energy dehydration', 'Composting waste', 'Sustainable sourcing'],
     customerSpotlight: '"This banana powder is a game-changer for my gluten-free baking!" - Home baker testimonial',
     farmToTableImage: FarmImage,
     inStock: true
@@ -241,7 +241,7 @@ export const products: Product[] = [
     image: ArrowRootPowder,
     rating: 4.7,
     reviews: 178,
-    badge: 'Organic',
+    badge: 'natural',
     description: 'Pure and easily digestible Arrowroot Powder, known for its soothing properties and perfect as a natural thickener for soups, sauces, and desserts.',
     category: 'Powders',
     features: [
@@ -256,7 +256,7 @@ export const products: Product[] = [
       'Dry at low temperatures',
       'Grind into fine powder'
     ],
-    whyChooseOurFarm: 'Our organic farms produce high-quality arrowroot with sustainable practices, ensuring purity and potency.',
+    whyChooseOurFarm: 'Our natural farms produce high-quality arrowroot with sustainable practices, ensuring purity and potency.',
     uniqueSellingPoints: [
       'Gentle on digestion',
       'Versatile for culinary use',
@@ -269,7 +269,7 @@ export const products: Product[] = [
     customerUseCases: ['Soup thickening', 'Sauces', 'Desserts', 'Gluten-free baking'],
     sustainabilityImpact: 'Our arrowroot farming promotes soil health and sustainable agriculture.',
     farmerStory: 'Lakshmi, our arrowroot farmer, ensures tubers are harvested at peak quality for the best powder.',
-    productStory: 'Our arrowroot powder is sourced from organic farms, processed naturally to retain its soothing properties.',
+    productStory: 'Our arrowroot powder is sourced from natural farms, processed naturally to retain its soothing properties.',
     healthBenefits: [
       'Supports digestive health',
       'Gluten-free alternative',
@@ -282,7 +282,7 @@ export const products: Product[] = [
       'Sauces: Thicken with arrowroot powder.',
       'Baking: Use in gluten-free recipes.'
     ],
-    ecoFriendlyPractices: ['Organic farming', 'Low-energy processing', 'Eco-friendly packaging', 'Composting'],
+    ecoFriendlyPractices: ['natural farming', 'Low-energy processing', 'Eco-friendly packaging', 'Composting'],
     customerSpotlight: '"This arrowroot powder is perfect for my sensitive stomach and makes amazing sauces!" - Customer review',
     farmToTableImage: Scenary,
     inStock: true
@@ -296,14 +296,14 @@ export const products: Product[] = [
     image: JackFruitPowder,
     rating: 4.7,
     reviews: 178,
-    badge: 'Organic',
+    badge: 'natural',
     description: 'Naturally sweet and fiber-rich Jackfruit Powder, a versatile superfood for smoothies, baking, and traditional recipes.',
     category: 'Powders',
     features: [
       'Fiber-rich superfood',
       'Naturally sweet flavor',
       'Versatile for recipes',
-      'Organically grown'
+      'naturalally grown'
     ],
     processingJourney: [
       'Harvest ripe jackfruit',
@@ -311,7 +311,7 @@ export const products: Product[] = [
       'Dehydrate at low temperatures',
       'Grind into fine powder'
     ],
-    whyChooseOurFarm: 'Our organic jackfruit is grown sustainably, ensuring a high-quality, nutrient-rich powder.',
+    whyChooseOurFarm: 'Our natural jackfruit is grown sustainably, ensuring a high-quality, nutrient-rich powder.',
     uniqueSellingPoints: [
       'High fiber content',
       'Natural sweetness',
@@ -324,7 +324,7 @@ export const products: Product[] = [
     customerUseCases: ['Smoothies', 'Baking', 'Traditional desserts', 'Energy bars'],
     sustainabilityImpact: 'Our jackfruit farming supports local communities and reduces food waste.',
     farmerStory: 'Ravi, our jackfruit farmer, hand-selects ripe fruits for optimal flavor and nutrition.',
-    productStory: 'Our jackfruit powder is made from organically grown jackfruit, dehydrated to preserve its natural sweetness and nutrients.',
+    productStory: 'Our jackfruit powder is made from naturalally grown jackfruit, dehydrated to preserve its natural sweetness and nutrients.',
     healthBenefits: [
       'Supports digestive health',
       'Rich in fiber',
@@ -337,7 +337,7 @@ export const products: Product[] = [
       'Energy Bars: Mix with jackfruit powder.',
       'Baking: Add to cakes and cookies.'
     ],
-    ecoFriendlyPractices: ['Organic farming', 'Low-energy dehydration', 'Sustainable sourcing', 'Community support'],
+    ecoFriendlyPractices: ['natural farming', 'Low-energy dehydration', 'Sustainable sourcing', 'Community support'],
     customerSpotlight: '"This jackfruit powder adds a unique sweetness to my baking!" - Home chef testimonial',
     farmToTableImage: FarmImage,
     inStock: true

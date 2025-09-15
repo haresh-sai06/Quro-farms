@@ -56,8 +56,8 @@ html {
   animation: float 6s ease-in-out infinite;
 }
 
-/* Organic shapes for cards */
-.organic-shape {
+/* natural shapes for cards */
+.natural-shape {
   border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 }
 

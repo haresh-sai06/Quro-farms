@@ -53,7 +53,7 @@ const Hero = () => {
   const headlineWords = [
     "From",
     "Our",
-    "Organic",
+    "Natural",
     "Farms",
     "To",
     "Your",
@@ -129,7 +129,7 @@ const Hero = () => {
                 <div className="text-center">
                   <Play className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2 sm:mb-4" />
                   <p className="text-lg sm:text-xl font-semibold">Farm Tour Video</p>
-                  <p className="text-sm">See how we grow our organic products</p>
+                  <p className="text-sm">See how we grow our natural products</p>
                 </div>
               </div>
             </div>
