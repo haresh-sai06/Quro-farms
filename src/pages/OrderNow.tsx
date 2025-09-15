@@ -5,7 +5,7 @@ import { useCartContext } from "../context/CardContext";
 import Header from "../components/Header";
 import { toast } from "sonner";
 
-const WHATSAPP_PHONE_NUMBER = "919629002576"; // Corrected with country code +91
+const WHATSAPP_PHONE_NUMBER = "9629002576"; // Corrected with country code +91
 
 const OrderNow: React.FC = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock } = useCartContext();
