@@ -12,7 +12,7 @@ export interface Product {
   category: string;
   features: string[];
   processingJourney: string[];
-  whyChooseOurFarm: string;
+  whyChooseOurProduct: string;
   uniqueSellingPoints: string[];
   seasonalAvailability: string;
   pairingSuggestions: string[];

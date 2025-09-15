@@ -36,7 +36,7 @@ export const products: Product[] = [
       'Sun-dry for vibrant color',
       'Stone-grind into fine powder'
     ],
-    whyChooseOurFarm: 'Our family farm in Kerala uses sustainable natural methods to grow turmeric, ensuring purity and potency.',
+    whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
       'Zero chemical pesticides',
       'High curcumin content',
@@ -91,7 +91,7 @@ export const products: Product[] = [
       'Cold-press for pure oil',
       'Filter for natural clarity'
     ],
-    whyChooseOurFarm: 'Our coastal groves produce coconuts using natural methods, ensuring pure, high-quality oil.',
+    whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
       'Cold-pressed for nutrient retention',
       'No additives or preservatives',
@@ -104,7 +104,7 @@ export const products: Product[] = [
     customerUseCases: ['Cooking stir-fries', 'Skincare', 'Hair nourishment', 'Energy snacks'],
     sustainabilityImpact: 'Our natural coconut farming supports coastal ecosystems and reduces chemical runoff.',
     farmerStory: 'Amit, our coconut farmer, hand-selects mature coconuts for the best oil quality.',
-    productStory: 'Our coconut oil comes from coastal groves, cold-pressed from fresh nuts. Grown naturalally, it’s pure nourishment from farm to bottle.',
+    productStory: 'Our coconut oil comes from coastal groves, cold-pressed from fresh nuts. Grown naturally, it’s pure nourishment from farm to bottle.',
     healthBenefits: [
       'Boosts heart health',
       'Enhances skin moisture',
@@ -146,7 +146,7 @@ export const products: Product[] = [
       'Shade-dry for nutrient retention',
       'Grind into fine powder'
     ],
-    whyChooseOurFarm: 'Our nutrient-rich farms produce moringa with high potency, harvested sustainably for maximum benefits.',
+    whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
       'High vitamin and mineral content',
       'Shade-dried for nutrient retention',
@@ -201,7 +201,7 @@ export const products: Product[] = [
       'Dehydrate at low temperatures',
       'Grind into smooth powder'
     ],
-    whyChooseOurFarm: 'Our natural farms produce high-quality green bananas, processed naturally to retain nutrients.',
+    whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
       'Gluten-free and fiber-rich',
       'Low-temperature dehydration',
@@ -256,7 +256,7 @@ export const products: Product[] = [
       'Dry at low temperatures',
       'Grind into fine powder'
     ],
-    whyChooseOurFarm: 'Our natural farms produce high-quality arrowroot with sustainable practices, ensuring purity and potency.',
+    whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
       'Gentle on digestion',
       'Versatile for culinary use',
@@ -311,7 +311,7 @@ export const products: Product[] = [
       'Dehydrate at low temperatures',
       'Grind into fine powder'
     ],
-    whyChooseOurFarm: 'Our natural jackfruit is grown sustainably, ensuring a high-quality, nutrient-rich powder.',
+    whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
       'High fiber content',
       'Natural sweetness',
@@ -324,7 +324,7 @@ export const products: Product[] = [
     customerUseCases: ['Smoothies', 'Baking', 'Traditional desserts', 'Energy bars'],
     sustainabilityImpact: 'Our jackfruit farming supports local communities and reduces food waste.',
     farmerStory: 'Ravi, our jackfruit farmer, hand-selects ripe fruits for optimal flavor and nutrition.',
-    productStory: 'Our jackfruit powder is made from naturalally grown jackfruit, dehydrated to preserve its natural sweetness and nutrients.',
+    productStory: 'Our jackfruit powder is made from naturally grown jackfruit, dehydrated to preserve its natural sweetness and nutrients.',
     healthBenefits: [
       'Supports digestive health',
       'Rich in fiber',

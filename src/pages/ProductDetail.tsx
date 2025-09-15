@@ -455,9 +455,9 @@ const ProductDetail = () => {
             {/* Why Choose Our Farm */}
             <AnimatedSection delay={0.4} className="mb-12 sm:mb-20">
               <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-4 sm:p-12 rounded-2xl sm:rounded-3xl">
-                <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-8 text-center">Why Choose Our Farm</h2>
+                <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-8 text-center">Why Choose Our Product</h2>
                 <p className="text-base sm:text-xl leading-relaxed text-center max-w-xs sm:max-w-4xl mx-auto">
-                  {product.whyChooseOurFarm}
+                  {product.whyChooseOurProduct}
                 </p>
               </div>
             </AnimatedSection>
