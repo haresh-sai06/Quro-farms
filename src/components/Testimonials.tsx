@@ -10,9 +10,9 @@ const testimonialsList = [
 		product: ["Turmeric Powder"],
 	},
 	{
-		quote: "Genuinely good products that have zero additives, you get the best turmeric, raw banana powder and mornings powder straight from the source. Proud that it’s woman owned!",
-		author: "Geetika Sood",
-		role: "Delhi",
+		quote: "Great products,highly recommended.passion and perseverance are paying off- great job vidya🎉🎉👍👍",
+		author: "Uma Sethu",
+		role: "Kerala",
 		avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
 		rating: 5,
 		product: "Farm Fresh Fruits",
