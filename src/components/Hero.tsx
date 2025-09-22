@@ -141,16 +141,6 @@ const Hero = () => {
         {/* Mobile View: Vertical Stack */}
         <div className="flex flex-col items-center sm:hidden">
           <div className="text-center mb-6">
-            <motion.div
-              ref={badgeRef}
-              className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-green-800 px-3 py-1 rounded-full text-sm font-medium mb-3 shadow-lg border border-green-200"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Leaf className="w-3 h-3" />
-              100% Natural & Sustainable Farming
-            </motion.div>
 
             <motion.h1 className="text-2xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-1">
               {headlineWords.map((word, i) => (
@@ -182,7 +172,7 @@ const Hero = () => {
   >
     {heroFeatures.map((feature, i) => (
       <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-        <span className="text-green-300">{feature.icon}</span>
+        <span className="text-yellow-400">{feature.icon}</span>
         <span className="text-white text-sm">{feature.text}</span>
       </div>
     ))}
@@ -237,7 +227,7 @@ const Hero = () => {
                 />
               </motion.div>
               <motion.div 
-                className="absolute -bottom-3 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-green-800 px-2 py-1 rounded-full text-center shadow-lg w-1/2"
+                className="absolute -bottom-3 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-yellow-800 px-2 py-1 rounded-full text-center shadow-lg w-1/2"
                 whileHover={{ scale: 1.05 }}
               >
                 <p className="text-sm font-semibold">Quro Farms</p>
@@ -251,16 +241,6 @@ const Hero = () => {
         {/* Desktop View: Side-by-Side Layout */}
         <div className="hidden sm:flex sm:flex-row justify-between items-center w-full">
           <div className="w-1/2 text-center pr-4">
-            <motion.div
-              ref={badgeRef}
-              className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-sm text-green-800 px-3 py-1 rounded-full text-sm font-medium mb-3 shadow-lg border border-green-200"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Leaf className="w-3 h-3" />
-              100% Natural & Sustainable Farming
-            </motion.div>
 
             <motion.h1 className="text-3xl lg:text-5xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-2">
               {headlineWords.map((word, i) => (
@@ -291,7 +271,7 @@ const Hero = () => {
             >
               {heroFeatures.map((feature, i) => (
                 <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                  <span className="text-green-300">{feature.icon}</span>
+                  <span className="text-yellow-400">{feature.icon}</span>
                   <span className="text-white text-sm">{feature.text}</span>
                 </div>
               ))}
@@ -342,7 +322,7 @@ const Hero = () => {
                 />
               </motion.div>
               <motion.div 
-                className="absolute -bottom-4 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-green-800 px-4 py-2 rounded-full text-center shadow-lg w-2/3"
+                className="absolute -bottom-4 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-yellow-800 px-4 py-2 rounded-full text-center shadow-lg w-2/3"
                 whileHover={{ scale: 1.05 }}
               >
                 <p className="text-sm font-semibold">Quro Farms – Our Natural Products</p>
@@ -350,7 +330,7 @@ const Hero = () => {
               </motion.div>
             </motion.div>
 
-            <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
+            {/* <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
               {[
                 { id: 'oil', src: product1, title: 'Raw Banana Powder', desc: 'Gut-friendly energy flour.' },
                 { id: 'water', src: product2, title: 'Arrow Root Powder', desc: 'Light & easy digestible starch.' },
@@ -396,7 +376,7 @@ const Hero = () => {
                   <p className="text-[10px] text-gray-600">{product.desc}</p>
                 </motion.div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

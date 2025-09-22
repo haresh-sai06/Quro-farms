@@ -45,8 +45,8 @@ const ProductPreview: React.FC = () => {
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
-            <span className="text-green-600">Featured</span> Products
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-700">
+            <span className="text-yellow-600">Featured</span> Products
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
             Crafted with care and sourced from one trusted origin — delivering purity you can rely on.
@@ -71,7 +71,7 @@ const ProductPreview: React.FC = () => {
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3">
-                  <span className="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                  <span className="bg-yellow-400 text-white px-3 py-1 rounded-full text-xs font-bold">
                     {product.badge}
                   </span>
                 </div>
@@ -87,7 +87,7 @@ const ProductPreview: React.FC = () => {
 
               {/* Product Info */}
               <div className="p-6">
-                <h3 className="font-bold text-xl mb-2 text-primary group-hover:text-green-600 transition-colors">
+                <h3 className="font-bold text-xl mb-2 text-primary group-hover:text-yellow-600 transition-colors">
                   {product.name}
                 </h3>
                 <p className="text-neutral-600 text-sm mb-3 leading-relaxed">
@@ -105,7 +105,7 @@ const ProductPreview: React.FC = () => {
 
                 {/* Price */}
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-2xl font-bold text-green-600">₹{product.discountedPrice}/{product.unit}</span>
+                  <span className="text-2xl font-bold text-yellow-800">₹{product.discountedPrice}/{product.unit}</span>
                   <span className="text-neutral-500 line-through text-lg">₹{product.originalPrice}</span>
                 </div>
 

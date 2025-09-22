@@ -40,9 +40,9 @@ const Features: React.FC = () => {
 		<section id="features" className="py-20 container-padding bg-white">
 			<div className="max-w-6xl mx-auto">
 				<div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
+					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-700">
 						Why Choose Our{" "}
-						<span className="text-green-600">Farm Products?</span>
+						<span className="text-yellow-600">Farm Products?</span>
 					</h2>
 					<p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
 						We're committed to bringing you the purest, healthiest products made

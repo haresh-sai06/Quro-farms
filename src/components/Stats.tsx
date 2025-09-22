@@ -50,9 +50,9 @@ const Stats: React.FC = () => {
 		>
 			<div className="max-w-6xl mx-auto">
 				<div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
+					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-700">
 						Our{" "}
-						<span className="text-green-600">Product Range</span>
+						<span className="text-yellow-600">Product Range</span>
 					</h2>
 					<p className="text-xl text-neutral-600 max-w-3xl mx-auto">
 						Discover our extensive collection of farm-fresh produce, delivered
