@@ -22,7 +22,10 @@ export interface Product {
   farmerStory: string;
   productStory: string;
   healthBenefits: string[];
-  recipeIdeas: string[];
+  recipeIdeas: {
+    name: string;
+    method: string;
+  }[];
   ecoFriendlyPractices: string[];
   customerSpotlight: string;
   limitedEditionAppeal?: string;

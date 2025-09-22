@@ -97,6 +97,40 @@ const StickyAddToCart: React.FC<{ product: any; quantity: number; setQuantity: (
   );
 };
 
+const FloatingBackButton: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsVisible(scrollY > 200); // Show button when scrolled down 200px
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ 
+        opacity: isVisible ? 1 : 0, 
+        y: isVisible ? 0 : 50 
+      }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      className="fixed bottom-4 right-4 z-50"
+    >
+      <Link
+        to="/products"
+        className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 transition-colors"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span className="text-sm font-semibold">Back to Products</span>
+      </Link>
+    </motion.div>
+  );
+};
+
 const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find(p => p.id === id);
@@ -169,120 +203,126 @@ const ProductDetail = () => {
         
         {/* Hero Section with Parallax */}
         <section ref={heroRef} className="relative h-screen overflow-hidden">
-  <Parallax speed={-20} className="absolute inset-0">
-    <motion.div
-      style={{ 
-        y, 
-        opacity,
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${product.image})`,
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        transform: 'scale(1)' // normal scale
-      }}
-      className="w-full h-full"
-    />
-  </Parallax>
-  
-  {/* Floating Elements */}
-  <motion.div
-    animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-    className="absolute top-16 sm:top-20 right-4 sm:right-20 w-12 sm:w-16 h-12 sm:h-16 bg-green-400/20 rounded-full backdrop-blur-sm"
-  />
-  
-  <motion.div
-    animate={{ y: [0, 15, 0], rotate: [0, -3, 0] }}
-    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-    className="absolute bottom-32 sm:bottom-40 left-4 sm:left-16 w-10 sm:w-12 h-10 sm:h-12 bg-amber-400/20 rounded-full backdrop-blur-sm"
-  />
+          <Parallax speed={-20} className="absolute inset-0">
+            <motion.div
+              style={{ 
+                y, 
+                opacity,
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1)), url(${product.image})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                transform: 'scale(1)' // normal scale
+              }}
+              className="w-full h-full"
+            />
+          </Parallax>
+          
+          {/* Floating Elements */}
+          <motion.div
+            animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-16 sm:top-20 right-4 sm:right-20 w-12 sm:w-16 h-12 sm:h-16 bg-green-400/20 rounded-full backdrop-blur-sm"
+          />
+          
+          <motion.div
+            animate={{ y: [0, 15, 0], rotate: [0, -3, 0] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-32 sm:bottom-40 left-4 sm:left-16 w-10 sm:w-12 h-10 sm:h-12 bg-amber-400/20 rounded-full backdrop-blur-sm"
+          />
 
-  {/* Back to Products */}
-  <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 0.5 }}
-    className="absolute top-24 sm:top-24 left-4 sm:left-10 z-30"
-  >
-    <Link
-      to="/products"
-      className="inline-flex items-center gap-1 sm:gap-2 text-white/80 hover:text-white transition-colors"
-    >
-      <ArrowLeft className="w-4 sm:w-5 h-4 sm:h-5" />
-      <span className="text-xs sm:text-base">Back to Products</span>
-    </Link>
-  </motion.div>
+          {/* New Floating Element - Right Bottom */}
+          <motion.div
+            animate={{ y: [0, 10, 0], rotate: [0, 3, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute bottom-16 sm:bottom-20 right-4 sm:right-16 w-10 sm:w-12 h-10 sm:h-12 bg-blue-400/20 rounded-full backdrop-blur-sm"
+          />
 
-  {/* Hero Content (inside glass card) */}
-  <div className="absolute inset-0 flex items-center justify-center px-2 sm:px-4">
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-8 md:p-12 shadow-lg max-w-xs sm:max-w-4xl text-center text-white z-10"
-    >
-      <motion.h1
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.7 }}
-        className="text-3xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-6 text-shadow-lg"
-      >
-        {product.name}
-      </motion.h1>
-      
-      <motion.p
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.9 }}
-        className="text-base sm:text-2xl md:text-3xl mb-4 sm:mb-8 text-shadow"
-      >
-        {product.description}
-      </motion.p>
-      
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 1.1 }}
-        className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 flex-wrap"
-      >
-        <div className="text-center">
-          <div className="text-2xl sm:text-4xl font-bold text-green-300">₹{product.discountedPrice}</div>
-          <div className="text-sm sm:text-lg text-white/80">per {product.unit}</div>
-        </div>
-        
-        <div className="text-center">
-          <div className="flex items-center gap-1 justify-center">
-            <Star className="w-4 sm:w-6 h-4 sm:h-6 text-amber-400 fill-current" />
-            <span className="text-lg sm:text-2xl font-bold">{product.rating}</span>
+          {/* Back to Products */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="absolute top-24 sm:top-24 left-4 sm:left-10 z-30"
+          >
+            <Link
+              to="/products"
+              className="inline-flex items-center gap-1 sm:gap-2 text-white/80 hover:text-white transition-colors"
+            >
+              <ArrowLeft className="w-4 sm:w-5 h-4 sm:h-5" />
+              <span className="text-xs sm:text-base">Back to Products</span>
+            </Link>
+          </motion.div>
+
+          {/* Hero Content (inside glass card) */}
+          <div className="absolute inset-0 flex items-center justify-center px-2 sm:px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-8 md:p-12 shadow-lg max-w-xs sm:max-w-4xl text-center text-white z-10"
+            >
+              <motion.h1
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.7 }}
+                className="text-3xl sm:text-6xl md:text-8xl font-bold mb-3 sm:mb-6 text-shadow-lg"
+              >
+                {product.name}
+              </motion.h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 0.9 }}
+                className="text-base sm:text-2xl md:text-3xl mb-4 sm:mb-8 text-shadow"
+              >
+                {product.description}
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 1.1 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 flex-wrap"
+              >
+                <div className="text-center">
+                  <div className="text-2xl sm:text-4xl font-bold text-green-300">₹{product.discountedPrice}</div>
+                  <div className="text-sm sm:text-lg text-white/80">per {product.unit}</div>
+                </div>
+                
+                <div className="text-center">
+                  <div className="flex items-center gap-1 justify-center">
+                    <Star className="w-4 sm:w-6 h-4 sm:h-6 text-amber-400 fill-current" />
+                    <span className="text-lg sm:text-2xl font-bold">{product.rating}</span>
+                  </div>
+                  <div className="text-white/80 text-xs sm:text-base">({product.reviews} reviews)</div>
+                </div>
+                
+                {!product.inStock && (
+                  <div className="text-center">
+                    <div className="bg-red-500 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base">
+                      Out of Stock
+                    </div>
+                  </div>
+                )}
+              </motion.div>
+            </motion.div>
           </div>
-          <div className="text-white/80 text-xs sm:text-base">({product.reviews} reviews)</div>
-        </div>
-        
-        {!product.inStock && (
-          <div className="text-center">
-            <div className="bg-red-500 text-white px-3 sm:px-6 py-2 sm:py-3 rounded-full font-bold text-sm sm:text-base">
-              Out of Stock
+
+          {/* Scroll Indicator */}
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-white"
+          >
+            <div className="flex flex-col items-center">
+              <span className="text-xs sm:text-sm mb-1 sm:mb-2">Scroll to explore</span>
+              <div className="w-4 sm:w-6 h-6 sm:h-10 border-2 border-white rounded-full flex justify-center">
+                <div className="w-1 sm:w-1 h-2 sm:h-3 bg-white rounded-full mt-1 sm:mt-2"></div>
+              </div>
             </div>
-          </div>
-        )}
-      </motion.div>
-    </motion.div>
-  </div>
-
-  {/* Scroll Indicator */}
-  <motion.div
-    animate={{ y: [0, 10, 0] }}
-    transition={{ duration: 2, repeat: Infinity }}
-    className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 text-white"
-  >
-    <div className="flex flex-col items-center">
-      <span className="text-xs sm:text-sm mb-1 sm:mb-2">Scroll to explore</span>
-      <div className="w-4 sm:w-6 h-6 sm:h-10 border-2 border-white rounded-full flex justify-center">
-        <div className="w-1 sm:w-1 h-2 sm:h-3 bg-white rounded-full mt-1 sm:mt-2"></div>
-      </div>
-    </div>
-  </motion.div>
-</section>
-
+          </motion.div>
+        </section>
 
         {/* Main Content */}
         <div className="relative bg-white">
@@ -388,21 +428,6 @@ const ProductDetail = () => {
                     <ShoppingCart className="w-4 sm:w-6 h-4 sm:h-6" />
                     Add to Cart - ₹{(product.discountedPrice * quantity).toFixed(2)}
                   </motion.button>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4 p-3 sm:p-6 bg-green-50 rounded-2xl">
-                    <div className="text-center">
-                      <Shield className="w-6 sm:w-8 h-6 sm:h-8 text-green-600 mx-auto mb-1 sm:mb-2" />
-                      <p className="font-semibold text-sm sm:text-base">100% Natural</p>
-                    </div>
-                    <div className="text-center">
-                      <Truck className="w-6 sm:w-8 h-6 sm:h-8 text-green-600 mx-auto mb-1 sm:mb-2" />
-                      <p className="font-semibold text-sm sm:text-base">Fresh Delivery</p>
-                    </div>
-                    <div className="text-center">
-                      <Award className="w-6 sm:w-8 h-6 sm:h-8 text-green-600 mx-auto mb-1 sm:mb-2" />
-                      <p className="font-semibold text-sm sm:text-base">Freshly Harvested</p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </AnimatedSection>
@@ -422,6 +447,26 @@ const ProductDetail = () => {
                   >
                     <Sparkles className="w-5 sm:w-8 h-5 sm:h-8 text-green-600 mx-auto mb-2 sm:mb-4" />
                     <p className="font-semibold text-primary text-sm sm:text-base">{feature}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </AnimatedSection>
+
+            {/* Health Benefits */}
+            <AnimatedSection delay={0.7} className="mb-12 sm:mb-20">
+              <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-12 text-center">Health Benefits</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+                {product.healthBenefits.map((benefit, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className="bg-red-50 p-3 sm:p-6 rounded-2xl text-center shadow-lg flex flex-col items-center justify-between h-full"
+                  >
+                    <Heart className="w-5 sm:w-8 h-5 sm:h-8 text-red-500 mx-auto mb-2 sm:mb-4" />
+                    <p className="font-semibold text-primary text-sm sm:text-base flex-grow">{benefit}</p>
                   </motion.div>
                 ))}
               </div>
@@ -449,16 +494,6 @@ const ProductDetail = () => {
                     </div>
                   </motion.div>
                 ))}
-              </div>
-            </AnimatedSection>
-
-            {/* Why Choose Our Farm */}
-            <AnimatedSection delay={0.4} className="mb-12 sm:mb-20">
-              <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-4 sm:p-12 rounded-2xl sm:rounded-3xl">
-                <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-8 text-center">Why Choose Our Product</h2>
-                <p className="text-base sm:text-xl leading-relaxed text-center max-w-xs sm:max-w-4xl mx-auto">
-                  {product.whyChooseOurProduct}
-                </p>
               </div>
             </AnimatedSection>
 
@@ -502,45 +537,29 @@ const ProductDetail = () => {
               </div>
             </AnimatedSection>
 
-            {/* Health Benefits */}
-            <AnimatedSection delay={0.7} className="mb-12 sm:mb-20">
-              <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-12 text-center">Health Benefits</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
-                {product.healthBenefits.map((benefit, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05 }}
-                    className="bg-red-50 p-2 sm:p-6 rounded-2xl text-center shadow-lg"
-                  >
-                    <Heart className="w-5 sm:w-8 h-5 sm:h-8 text-red-500 mx-auto mb-1 sm:mb-4" />
-                    <p className="font-semibold text-primary text-sm sm:text-base">{benefit}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </AnimatedSection>
-
             {/* Recipe Ideas */}
-            <AnimatedSection delay={0.8} className="mb-12 sm:mb-20">
-              <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-12 text-center">Recipe Ideas</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-8">
-                {product.recipeIdeas.map((recipe, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
-                    className="bg-white p-2 sm:p-8 rounded-2xl shadow-lg border border-neutral-200"
-                  >
-                    <h4 className="text-base sm:text-xl font-bold text-primary mb-2 sm:mb-4">{recipe}</h4>
-                    <p className="text-neutral-600 text-sm sm:text-base">Perfect for showcasing the natural flavors of our {product.name.toLowerCase()}.</p>
-                  </motion.div>
-                ))}
-              </div>
-            </AnimatedSection>
+<AnimatedSection delay={0.8} className="mb-12 sm:mb-20">
+  <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-12 text-center">Recipe Ideas</h2>
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-8">
+    {product.recipeIdeas.map((recipe, index) => (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay: index * 0.1 }}
+        whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(0,0,0,0.1)" }}
+        className="bg-white p-2 sm:p-8 rounded-2xl shadow-lg border border-neutral-200"
+      >
+        <h4 className="text-base sm:text-xl font-bold text-primary mb-2 sm:mb-4">
+          {recipe.name}
+        </h4>
+        <p className="text-neutral-600 text-sm sm:text-base">
+          {recipe.method}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+</AnimatedSection>
 
             {/* Sustainability Impact */}
             <AnimatedSection delay={0.9} className="mb-12 sm:mb-20">
@@ -564,16 +583,6 @@ const ProductDetail = () => {
                     </motion.div>
                   ))}
                 </div>
-              </div>
-            </AnimatedSection>
-
-            {/* Product Story */}
-            <AnimatedSection delay={1.1} className="mb-12 sm:mb-20">
-              <div className="bg-purple-50 p-4 sm:p-12 rounded-2xl sm:rounded-3xl">
-                <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 sm:mb-8 text-center">Our Product Story</h2>
-                <p className="text-base sm:text-xl text-center text-neutral-700 max-w-xs sm:max-w-4xl mx-auto leading-relaxed">
-                  {product.productStory}
-                </p>
               </div>
             </AnimatedSection>
 
@@ -638,6 +647,9 @@ const ProductDetail = () => {
           setQuantity={setQuantity}
           onAddToCart={handleAddToCart}
         />
+
+        {/* Floating Back to Products Button */}
+        <FloatingBackButton />
       </div>
     </ParallaxProvider>
   );
