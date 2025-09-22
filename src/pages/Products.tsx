@@ -158,7 +158,7 @@ const ProductsPage = () => {
                     <motion.button
                       onClick={(e) => handleAddToCart(product, e)}
                       disabled={!product.inStock}
-                      className="flex-1 btn-custom-color text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-yellow-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed mb-2"
+                      className="flex-1 btn-custom-color text-black py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-yellow-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed mb-2"
                       whileHover={product.inStock ? { scale: 1.03 } : {}}
                       whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >

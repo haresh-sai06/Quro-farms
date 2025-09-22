@@ -23,8 +23,8 @@ const Header: React.FC = () => {
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isMenuOpen
-          ? "bg-white shadow-lg"
-          : "bg-white/10 backdrop-blur-md border-b border-yellow-100/50 shadow-sm"
+          ? "bg-yellow-100 shadow-lg"
+          : "bg-yellow/10 backdrop-blur-md border-b border-yellow-100/50 shadow-sm"
       }`}
       style={{
         backgroundImage: !isMenuOpen

@@ -83,7 +83,7 @@ const StickyAddToCart: React.FC<{ product: any; quantity: number; setQuantity: (
             <motion.button
               onClick={onAddToCart}
               disabled={!product.inStock}
-              className="btn-custom-color text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold flex items-center gap-1 sm:gap-2 text-xs sm:text-base hover:bg-yellow-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="btn-custom-color text-black px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold flex items-center gap-1 sm:gap-2 text-xs sm:text-base hover:bg-yellow-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

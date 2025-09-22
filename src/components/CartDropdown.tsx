@@ -47,7 +47,7 @@ const CartDropdown: React.FC = () => {
       {/* Cart Icon with Badge */}
       <motion.button
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="relative p-2 text-neutral-100 hover:text-yellow-300 transition-colors"
+        className="relative p-2 text-black hover:text-yellow-300 transition-colors"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -58,7 +58,7 @@ const CartDropdown: React.FC = () => {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold"
+              className="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold"
             >
               {itemCount > 99 ? '99+' : itemCount}
             </motion.span>
@@ -127,7 +127,7 @@ const CartDropdown: React.FC = () => {
                       <Link
                         to="/products"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="inline-flex items-center gap-2 btn-custom-color text-white px-6 py-2 rounded-full hover:bg-yellow-700 transition-colors"
+                        className="inline-flex items-center gap-2 btn-custom-color text-button px-6 py-2 rounded-full hover:bg-yellow-700 transition-colors"
                       >
                         Continue Shopping
                         <ArrowRight className="w-4 h-4" />

@@ -102,19 +102,19 @@ const Footer: React.FC = () => {
           <div className="flex justify-center gap-6 mb-8">
             <a
               href="https://www.instagram.com/qurofarms/"
-              className="bg-yellow-700 p-3 rounded-full transition-colors"
+              className="bg-amber-500 p-3 rounded-full transition-colors"
             >
               <Instagram className="w-5 h-5" />
             </a>
             <a
               href="https://www.facebook.com/profile.php?id=61552061092675&mibextid=ZbWKwL"
-              className="bg-yellow-700 p-3 rounded-full transition-colors"
+              className="bg-amber-500 p-3 rounded-full transition-colors"
             >
               <Facebook className="w-5 h-5" />
             </a>
             <a
               href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20know%20more%20about%20your%20products"
-              className="bg-yellow-700 p-3 rounded-full transition-colors"
+              className="bg-amber-500 p-3 rounded-full transition-colors"
             >
               <FaWhatsapp className="w-5 h-5" />
             </a>
