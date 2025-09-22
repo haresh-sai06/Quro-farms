@@ -33,7 +33,7 @@ const StickyCartIcon: React.FC = () => {
         >
           <motion.button
             onClick={scrollToTop}
-            className="relative btn-custom-color text-white p-4 rounded-full shadow-2xl hover:bg-green-700 transition-colors"
+            className="relative btn-custom-color text-white p-4 rounded-full shadow-2xl hover:bg-yellow-700 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             animate={{ 

@@ -51,7 +51,7 @@ const ProductsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
       <Header />
       
       <FlyToCartAnimation
@@ -69,7 +69,7 @@ const ProductsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl md:text-6xl font-extrabold text-green-800 mb-6">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-yellow-800 mb-6">
               Our <span className="text-amber-500">Farm-Fresh</span> Products
             </h1>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
@@ -84,7 +84,7 @@ const ProductsPage = () => {
               <input
                 type="text"
                 placeholder="Search products..."
-                className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:border-green-500"
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-neutral-200 focus:outline-none focus:border-yellow-500"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -96,7 +96,7 @@ const ProductsPage = () => {
                   className={`px-4 py-2 rounded-full font-semibold transition-all duration-300 ${
                     selectedCategory === category
                       ? "btn-custom-color text-white"
-                      : "bg-white border border-neutral-200 text-neutral-600 hover:bg-green-50"
+                      : "bg-white border border-neutral-200 text-neutral-600 hover:bg-yellow-50"
                   }`}
                   onClick={() => setSelectedCategory(category)}
                 >
@@ -138,7 +138,7 @@ const ProductsPage = () => {
                 </div>
                 <div className="p-5">
                   <Link to={`/product/${product.id}`}>
-                    <h3 className="font-bold text-lg text-green-800 group-hover:text-amber-500 transition-colors cursor-pointer">
+                    <h3 className="font-bold text-lg text-yellow-800 group-hover:text-amber-500 transition-colors cursor-pointer">
                       {product.name}
                     </h3>
                   </Link>
@@ -151,14 +151,14 @@ const ProductsPage = () => {
                     <span className="text-neutral-500 text-sm">({product.reviews} reviews)</span>
                   </div>
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="text-xl font-bold text-green-600">₹{product.discountedPrice}/{product.unit}</span>
+                    <span className="text-xl font-bold text-yellow-600">₹{product.discountedPrice}/{product.unit}</span>
                     <span className="text-neutral-400 line-through">₹{product.originalPrice}</span>
                   </div>
                   <div className="flex gap-2">
                     <motion.button
                       onClick={(e) => handleAddToCart(product, e)}
                       disabled={!product.inStock}
-                      className="flex-1 btn-custom-color text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-green-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed mb-2"
+                      className="flex-1 btn-custom-color text-white py-3 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-yellow-700 transition-all disabled:bg-gray-400 disabled:cursor-not-allowed mb-2"
                       whileHover={product.inStock ? { scale: 1.03 } : {}}
                       whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >
@@ -173,7 +173,7 @@ const ProductsPage = () => {
                     </motion.button>
                     <Link to={`/product/${product.id}`}>
                       <motion.button
-                        className="px-4 py-3 border-2 border-green-600 text-green-600 rounded-xl font-semibold hover:bg-green-50 transition-all mb-2"
+                        className="px-4 py-3 border-2 border-yellow-600 text-yellow-600 rounded-xl font-semibold hover:bg-yellow-50 transition-all mb-2"
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
                       >

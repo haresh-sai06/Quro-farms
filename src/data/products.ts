@@ -31,10 +31,10 @@ export const products: Product[] = [
     'Sustainably farmed, additive-free'
   ],
   processingJourney: [
-    'Hand-pick natural turmeric rhizomes',
-    'Wash with natural spring water',
-    'Sun-dry for vibrant color',
-    'Stone-grind into fine powder'
+    'Sowing and Harvesting.',
+    'Boiling in water.',
+    'Drying in the sun.',
+    'Powdering.'
   ],
   whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
   uniqueSellingPoints: [

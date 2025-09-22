@@ -143,7 +143,7 @@ const Hero = () => {
         <div className="lg:w-1/2 text-left mb-12 lg:mb-0">
           <motion.div
             ref={badgeRef}
-            className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-sm text-green-800 px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-xl border border-green-200"
+            className="inline-flex items-center gap-3 bg-white/95 backdrop-blur-sm text-yellow-800 px-6 py-3 rounded-full text-sm font-medium mb-8 shadow-xl border border-yellow-200"
             variants={itemVariants}
           >
             <Leaf className="w-5 h-5" />
@@ -198,7 +198,7 @@ const Hero = () => {
             variants={itemVariants}
           >
             <motion.button
-              className="group bg-gradient-to-r from-green-600 to-green-700 text-white px-10 py-5 rounded-full flex items-center gap-4 text-lg font-semibold shadow-2xl hover:shadow-green-500/25 transition-all duration-300"
+              className="group bg-gradient-to-r from-yellow-600 to-yellow-700 text-white px-10 py-5 rounded-full flex items-center gap-4 text-lg font-semibold shadow-2xl hover:shadow-yellow-500/25 transition-all duration-300"
               whileHover={{ 
                 scale: 1.05,
                 boxShadow: "0 25px 50px rgba(34, 197, 94, 0.3)"
@@ -239,7 +239,7 @@ const Hero = () => {
               <div className="text-sm text-white/80">Coconut Varieties</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
-              <div className="text-3xl font-bold text-green-300">🥥 100%</div>
+              <div className="text-3xl font-bold text-yellow-300">🥥 100%</div>
               <div className="text-sm text-white/80">Fresh & Natural</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20">
@@ -273,7 +273,7 @@ const Hero = () => {
             
             {/* Glowing effect */}
             <motion.div
-              className="absolute inset-0 rounded-full bg-gradient-to-r from-green-400/20 to-amber-400/20 blur-xl"
+              className="absolute inset-0 rounded-full bg-gradient-to-r from-yellow-400/20 to-amber-400/20 blur-xl"
               animate={{
                 scale: [1, 1.1, 1],
                 opacity: [0.5, 0.8, 0.5]

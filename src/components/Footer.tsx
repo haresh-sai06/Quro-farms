@@ -40,27 +40,27 @@ const Footer: React.FC = () => {
         <div className="col-span-1 md:col-span-2 flex flex-col items-center text-center">
           <div className="flex items-center justify-center gap-3 mb-6">
             <div className="bg-white p-2 rounded-xl">
-              <Leaf className="w-6 h-6 text-green-600" />
+              <Leaf className="w-6 h-6 text-yellow-600" />
             </div>
             <span className="text-2xl font-bold">Quro Farms</span>
           </div>
 
-          <p className="text-green-100 text-black text-lg leading-relaxed mb-6 max-w-md mx-auto">
+          <p className="text-black text-lg leading-relaxed mb-6 max-w-md mx-auto">
             Bringing you 100% natural, chemical-free farm products directly from
             our farms across India to your doorstep.
           </p>
 
           <div className="space-y-3 w-full max-w-sm">
             <div className="flex items-center justify-center gap-3 text-black">
-              <Phone className="w-5 h-5 text-green-800" />
+              <Phone className="w-5 h-5 text-yellow-800" />
               <span>+91 75589 38256</span>
             </div>
             <div className="flex items-center justify-center gap-3 text-black">
-              <Mail className="w-5 h-5 text-green-800" />
+              <Mail className="w-5 h-5 text-yellow-800" />
               <span>Qurofarms@gmail.com</span>
             </div>
             <div className="flex items-center justify-center gap-3 text-black">
-              <MapPin className="w-5 h-5 text-green-800" />
+              <MapPin className="w-5 h-5 text-yellow-800" />
               <span>Delivering Pan India</span>
             </div>
           </div>
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-3 rounded-full text-primary bg-white border-0 focus:outline-none focus:ring-2 focus:ring-green-300"
+                className="flex-1 px-4 py-3 rounded-full text-primary bg-white border-0 focus:outline-none focus:ring-2 focus:ring-yellow-300"
               />
               <button
                 onClick={handleSubscribe}
@@ -102,19 +102,19 @@ const Footer: React.FC = () => {
           <div className="flex justify-center gap-6 mb-8">
             <a
               href="https://www.instagram.com/qurofarms/"
-              className="bg-green-700 p-3 rounded-full transition-colors"
+              className="bg-yellow-700 p-3 rounded-full transition-colors"
             >
               <Instagram className="w-5 h-5" />
             </a>
             <a
               href="https://www.facebook.com/profile.php?id=61552061092675&mibextid=ZbWKwL"
-              className="bg-green-700 p-3 rounded-full transition-colors"
+              className="bg-yellow-700 p-3 rounded-full transition-colors"
             >
               <Facebook className="w-5 h-5" />
             </a>
             <a
               href="https://wa.me/919876543210?text=Hi%20I%20want%20to%20know%20more%20about%20your%20products"
-              className="bg-green-700 p-3 rounded-full transition-colors"
+              className="bg-yellow-700 p-3 rounded-full transition-colors"
             >
               <FaWhatsapp className="w-5 h-5" />
             </a>

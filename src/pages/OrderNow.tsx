@@ -118,7 +118,7 @@ const OrderNow: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
       <Header />
       
       <section className="pt-32 pb-20 container-padding">
@@ -128,8 +128,8 @@ const OrderNow: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center mb-12"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-primary mb-4">
-              Complete Your <span className="text-green-600">Order</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-yellow-700 mb-4">
+              Complete Your <span className="text-yellow-600">Order</span>
             </h1>
             <p className="text-neutral-600">You have {getCartItemsCount()} item(s) in your cart</p>
           </motion.div>
@@ -153,7 +153,7 @@ const OrderNow: React.FC = () => {
                     <p className="text-neutral-500 text-lg">Your cart is empty</p>
                     <a
                       href="/products"
-                      className="inline-block mt-4 bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors"
+                      className="inline-block mt-4 bg-yellow-600 text-white px-6 py-3 rounded-full hover:bg-yellow-700 transition-colors"
                     >
                       Browse Products
                     </a>
@@ -170,7 +170,7 @@ const OrderNow: React.FC = () => {
                           />
                           <div className="flex-1 min-w-0">
                             <h3 className="font-semibold text-primary text-sm sm:text-base truncate">{item.product.name}</h3>
-                            <p className="text-green-600 font-bold text-sm sm:text-base">₹{item.product.discountedPrice}/{item.product.unit}</p>
+                            <p className="text-yellow-600 font-bold text-sm sm:text-base">₹{item.product.discountedPrice}/{item.product.unit}</p>
                             <p className="text-sm text-neutral-600">Qty: {item.quantity}</p>
                           </div>
                           <div className="flex items-center gap-2 w-full sm:w-auto sm:ml-auto">
@@ -219,7 +219,7 @@ const OrderNow: React.FC = () => {
                             </button>
                           </div>
                           <div className="text-right w-full sm:w-auto mt-2 sm:mt-0">
-                            <p className="font-bold text-green-600 text-sm sm:text-base">₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</p>
+                            <p className="font-bold text-yellow-600 text-sm sm:text-base">₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</p>
                           </div>
                         </div>
                       ))}
@@ -256,7 +256,7 @@ const OrderNow: React.FC = () => {
                       name="name"
                       value={customerInfo.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-yellow-500 transition-colors text-sm"
                       placeholder="Enter your full name"
                       required
                     />
@@ -271,7 +271,7 @@ const OrderNow: React.FC = () => {
                       name="phone"
                       value={customerInfo.phone}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-yellow-500 transition-colors text-sm"
                       placeholder="Enter your 10-digit phone number"
                       required
                     />
@@ -286,7 +286,7 @@ const OrderNow: React.FC = () => {
                       name="email"
                       value={customerInfo.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-yellow-500 transition-colors text-sm"
                       placeholder="Enter your email (must end with .com)"
                       required
                     />
@@ -302,7 +302,7 @@ const OrderNow: React.FC = () => {
                       value={customerInfo.address}
                       onChange={handleInputChange}
                       rows={3}
-                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors resize-none text-sm"
+                      className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-yellow-500 transition-colors resize-none text-sm"
                       placeholder="Enter your complete address"
                       required
                     />
@@ -318,7 +318,7 @@ const OrderNow: React.FC = () => {
                         name="city"
                         value={customerInfo.city}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-yellow-500 transition-colors text-sm"
                         placeholder="Enter your city"
                       />
                     </div>
@@ -331,7 +331,7 @@ const OrderNow: React.FC = () => {
                         name="pincode"
                         value={customerInfo.pincode}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-green-500 transition-colors text-sm"
+                        className="w-full px-4 py-3 border border-neutral-200 rounded-xl focus:outline-none focus:border-yellow-500 transition-colors text-sm"
                         placeholder="Enter 6-digit PIN code"
                       />
                     </div>
@@ -341,7 +341,7 @@ const OrderNow: React.FC = () => {
                     type="button"
                     onClick={handleWhatsAppOrder}
                     disabled={cartItems.length === 0}
-                    className="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-green-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
+                    className="w-full bg-yellow-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-yellow-700 transition-colors disabled:bg-neutral-300 disabled:cursor-not-allowed flex items-center justify-center gap-3"
                     whileHover={{ scale: cartItems.length > 0 ? 1.02 : 1 }}
                     whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
                   >
@@ -416,7 +416,7 @@ const OrderNow: React.FC = () => {
               </button>
               <motion.button
                 onClick={confirmOrder}
-                className="px-4 py-2 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-colors flex items-center gap-2"
+                className="px-4 py-2 bg-yellow-600 text-white rounded-xl hover:bg-yellow-700 transition-colors flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

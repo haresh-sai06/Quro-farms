@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Leaf, Phone, Home } from "lucide-react";
+import { Menu, X, Phone, Home } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
@@ -24,11 +24,11 @@ const Header: React.FC = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isMenuOpen
           ? "bg-white shadow-lg"
-          : "bg-white/10 backdrop-blur-md border-b border-green-100/50 shadow-sm"
+          : "bg-white/10 backdrop-blur-md border-b border-yellow-100/50 shadow-sm"
       }`}
       style={{
         backgroundImage: !isMenuOpen
-          ? `linear-gradient(rgba(246, 205, 92, 0.3), rgba(246, 205, 92, 0.5)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`
+          ? `linear-gradient(rgba(246, 205, 92, 0.6), rgba(246, 205, 92, 0.7)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`
           : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -38,53 +38,50 @@ const Header: React.FC = () => {
       transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
     >
       <nav className="container-padding mx-auto flex h-20 items-center justify-between">
-        {/* Animated Logo - ONLY Image, using Link */}
+        {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-3 text-2xl font-bold text-primary" // 'gap-3' will still apply spacing if there were other elements.
+          className="flex items-center gap-3 text-2xl font-bold text-black"
         >
           <motion.div
-  className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center p-1"
-  style={{ backgroundColor: '#f6cd5c' }} // Use this custom color instead of the previous green class
-  whileHover={{ rotate: 360 }}
-  transition={{ duration: 0.5 }}
->
-  <img
-    src={LogoImage}
-    alt="Quro Farms Logo"
-    className="w-full h-full object-cover"
-  />
-</motion.div>
-          
+            className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center p-1"
+            style={{ backgroundColor: "#f6cd5c" }}
+            whileHover={{ rotate: 360 }}
+            transition={{ duration: 0.5 }}
+          >
+            <img
+              src={LogoImage}
+              alt="Quro Farms Logo"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </Link>
 
-        {/* Desktop Navigation (rest of the component unchanged) */}
+        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {isProductsPage ? (
-            <>
-              <motion.div
-                whileHover={{ y: -2, color: "#86efac" }}
-                transition={{ duration: 0.2 }}
+            <motion.div
+              whileHover={{ y: -2, color: "#f6cd5c" }}
+              transition={{ duration: 0.2 }}
+            >
+              <Link
+                to="/"
+                className="text-black hover:text-yellow-300 transition-colors font-medium flex items-center gap-2"
               >
-                <Link
-                  to="/"
-                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
-                >
-                  <Home className="w-5 h-5" />
-                  Home
-                </Link>
-              </motion.div>
-            </>
+                <Home className="w-5 h-5" />
+                Home
+              </Link>
+            </motion.div>
           ) : (
             navLinks.map((link) => (
               <motion.div
                 key={link.name}
-                whileHover={{ y: -2, color: "#86efac" }}
+                whileHover={{ y: -2, color: "#f6cd5c" }}
                 transition={{ duration: 0.2 }}
               >
                 <Link
                   to={link.href}
-                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
+                  className="text-black hover:text-yellow-300 transition-colors font-medium"
                 >
                   {link.name}
                 </Link>
@@ -100,13 +97,13 @@ const Header: React.FC = () => {
             <motion.div
               whileHover={{
                 scale: 1.05,
-                boxShadow: "0px 5px 15px rgba(0, 128, 0, 0.3)",
+                boxShadow: "0px 5px 15px rgba(246, 205, 92, 1)",
               }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
                 to="/order"
-                className="btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+                className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-600 transition-colors font-semibold flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 Order Now
@@ -115,22 +112,22 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Toggle (rest of the component unchanged) */}
+        {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-neutral-100 p-2"
+          className="md:hidden text-black p-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </nav>
 
-      {/* Mobile Menu (rest of the component unchanged) */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden absolute top-20 left-0 right-0 bg-white/90 backdrop-blur-md border-b border-green-100/50 shadow-lg"
+            className="md:hidden absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-md border-b border-yellow-100/50 shadow-lg"
             style={{
-              backgroundImage: `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`,
+              backgroundImage: `linear-gradient(rgba(246, 205, 92, 0.4), rgba(246, 205, 92, 0.4)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -143,7 +140,7 @@ const Header: React.FC = () => {
               {isProductsPage ? (
                 <Link
                   to="/"
-                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium py-2 flex items-center gap-2"
+                  className="text-black hover:text-yellow-300 transition-colors font-medium py-2 flex items-center gap-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Home className="w-5 h-5" />
@@ -154,17 +151,17 @@ const Header: React.FC = () => {
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="text-green-800 hover:text-green-600 transition-colors font-medium py-2 flex items-center gap-2"
+                    className="text-black hover:text-yellow-300 transition-colors font-medium py-2 flex items-center gap-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
                   </Link>
                 ))
               )}
-              <div className="flex gap-4 pt-4 border-t border-green-100/50">
+              <div className="flex gap-4 pt-4 border-t border-yellow-100/50">
                 <Link
                   to="/order"
-                  className="flex-1 btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold text-center"
+                  className="flex-1 bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-600 transition-colors font-semibold text-center"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Order Now

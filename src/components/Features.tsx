@@ -6,8 +6,8 @@ const featuresList = [
 		description:
 			"Our products are cultivated using traditional, sustainable farming methods without any artificial interventions.",
 		icon: Leaf,
-		color: "text-green-600",
-		bgColor: "bg-green-50",
+		color: "text-yellow-600",
+		bgColor: "bg-yellow-50",
 	},
 	{
 		title: "No Harmful Chemicals",
@@ -30,8 +30,8 @@ const featuresList = [
 		description:
 			"All our products are harvested in small batches and delivered fresh to your doorstep.",
 		icon: Leaf,
-		color: "text-green-600",
-		bgColor: "bg-green-50",
+		color: "text-yellow-600",
+		bgColor: "bg-yellow-50",
 	},
 ];
 
@@ -60,7 +60,7 @@ const Features: React.FC = () => {
 									<feature.icon className={`w-8 h-8 ${feature.color}`} />
 								</div>
 								<div className="flex-1">
-									<h3 className="font-bold text-2xl mb-3 text-primary group-hover:text-green-700 transition-colors">
+									<h3 className="font-bold text-2xl mb-3 text-primary group-hover:text-yellow-700 transition-colors">
 										{feature.title}
 									</h3>
 									<p className="text-neutral-600 mb-2">

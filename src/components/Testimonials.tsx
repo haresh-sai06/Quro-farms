@@ -29,11 +29,11 @@ const testimonialsList = [
 
 const Testimonials: React.FC = () => {
 	return (
-		<section id="testimonials" className="py-20 container-padding bg-gradient-to-b from-amber-50/30 to-green-50/30">
+		<section id="testimonials" className="py-20 container-padding bg-gradient-to-b from-amber-50/30 to-yellow-50/30">
 			<div className="max-w-6xl mx-auto">
 				<div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary">
-						What Our <span className="text-green-600">Customers Say</span>
+					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-700">
+						What Our <span className="text-yellow-600">Customers Say</span>
 					</h2>
 					<p className="text-xl text-neutral-600 max-w-3xl mx-auto">
 						Join thousands of families across India who trust us for their daily fresh produce needs.
@@ -43,10 +43,10 @@ const Testimonials: React.FC = () => {
 					{testimonialsList.map((testimonial) => (
 						<div
 							key={testimonial.author}
-							className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-green-100 hover:-translate-y-2 relative overflow-hidden"
+							className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-yellow-100 hover:-translate-y-2 relative overflow-hidden"
 						>
 							{/* Decorative element */}
-							<div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-200 to-amber-200 rounded-bl-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
+							<div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-yellow-200 to-amber-200 rounded-bl-full opacity-20 group-hover:opacity-30 transition-opacity"></div>
 							{/* Rating Stars */}
 							<div className="flex gap-1 mb-4">
 								{[...Array(testimonial.rating)].map((_, i) => (
@@ -61,7 +61,7 @@ const Testimonials: React.FC = () => {
 							</blockquote>
 							<div className="flex items-center gap-3 mt-4">
 								<div>
-									<p className="font-semibold text-green-700">
+									<p className="font-semibold text-black">
 										{testimonial.author}
 									</p>
 									<p className="text-xs text-neutral-500">

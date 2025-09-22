@@ -9,8 +9,8 @@ const productCategories = [
 		count: "6",
 		description: "Natural, natural powders & oils",
 		icon: Package,
-		color: "text-green-600",
-		bgGradient: "from-green-100 to-green-50",
+		color: "text-yellow-600",
+		bgGradient: "from-yellow-100 to-yellow-50",
 		image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a",
 	},
 	{
@@ -46,7 +46,7 @@ const Stats: React.FC = () => {
 	return (
 		<section
 			id="products-section"
-			className="py-20 container-padding bg-gradient-to-b from-green-50/50 to-white"
+			className="py-20 container-padding bg-gradient-to-b from-yellow-50/50 to-white"
 		>
 			<div className="max-w-6xl mx-auto">
 				<div className="text-center mb-16">
@@ -108,7 +108,7 @@ const Stats: React.FC = () => {
 
 				<div className="text-center mt-16">
 					<Link to="/products">
-						<button className="btn-custom-color text-white px-10 py-4 rounded-full hover:bg-green-700 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+						<button className="btn-custom-color text-black px-10 py-4 rounded-full hover:bg-yellow-700 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
 							View All Products
 						</button>
 					</Link>

@@ -47,7 +47,7 @@ const StickyAddToCart: React.FC<{ product: any; quantity: number; setQuantity: (
         opacity: isVisible ? 1 : 0 
       }}
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-green-100 shadow-2xl"
+      className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-yellow-100 shadow-2xl"
     >
       <div className="container-padding py-3 sm:py-4">
         <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0">
@@ -59,7 +59,7 @@ const StickyAddToCart: React.FC<{ product: any; quantity: number; setQuantity: (
             />
             <div>
               <h3 className="font-bold text-primary text-sm sm:text-base">{product.name}</h3>
-              <p className="text-green-600 font-bold text-xs sm:text-base">₹{product.discountedPrice}/{product.unit}</p>
+              <p className="text-yellow-600 font-bold text-xs sm:text-base">₹{product.discountedPrice}/{product.unit}</p>
             </div>
           </div>
           
@@ -83,7 +83,7 @@ const StickyAddToCart: React.FC<{ product: any; quantity: number; setQuantity: (
             <motion.button
               onClick={onAddToCart}
               disabled={!product.inStock}
-              className="btn-custom-color text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold flex items-center gap-1 sm:gap-2 text-xs sm:text-base hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
+              className="btn-custom-color text-white px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold flex items-center gap-1 sm:gap-2 text-xs sm:text-base hover:bg-yellow-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -122,7 +122,7 @@ const FloatingBackButton: React.FC = () => {
     >
       <Link
         to="/products"
-        className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 transition-colors"
+        className="flex items-center gap-2 bg-yellow-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-yellow-700 transition-colors"
       >
         <ArrowLeft className="w-5 h-5" />
         <span className="text-sm font-semibold">Back to Products</span>
@@ -152,11 +152,11 @@ const ProductDetail = () => {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+      <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
         <Header />
         <div className="pt-24 sm:pt-32 pb-20 container-padding text-center">
           <h1 className="text-2xl font-bold text-primary mb-4">Product not found</h1>
-          <Link to="/products" className="text-green-600 hover:underline">
+          <Link to="/products" className="text-yellow-600 hover:underline">
             Back to Products
           </Link>
         </div>
@@ -192,7 +192,7 @@ const ProductDetail = () => {
 
   return (
     <ParallaxProvider>
-      <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
+      <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">
         <Header />
         
         <FlyToCartAnimation
@@ -221,7 +221,7 @@ const ProductDetail = () => {
           <motion.div
             animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-16 sm:top-20 right-4 sm:right-20 w-12 sm:w-16 h-12 sm:h-16 bg-green-400/20 rounded-full backdrop-blur-sm"
+            className="absolute top-16 sm:top-20 right-4 sm:right-20 w-12 sm:w-16 h-12 sm:h-16 bg-yellow-400/20 rounded-full backdrop-blur-sm"
           />
           
           <motion.div
@@ -286,7 +286,7 @@ const ProductDetail = () => {
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 flex-wrap"
               >
                 <div className="text-center">
-                  <div className="text-2xl sm:text-4xl font-bold text-green-300">₹{product.discountedPrice}</div>
+                  <div className="text-2xl sm:text-4xl font-bold text-yellow-300">₹{product.discountedPrice}</div>
                   <div className="text-sm sm:text-lg text-white/80">per {product.unit}</div>
                 </div>
                 
@@ -389,9 +389,9 @@ const ProductDetail = () => {
 
                   <div className="space-y-2 sm:space-y-4">
                     <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-2 sm:gap-4">
-                      <span className="text-2xl sm:text-4xl font-bold text-green-600">₹{product.discountedPrice}</span>
+                      <span className="text-2xl sm:text-4xl font-bold text-yellow-600">₹{product.discountedPrice}</span>
                       <span className="text-lg sm:text-2xl text-neutral-400 line-through">₹{product.originalPrice}</span>
-                      <span className="bg-green-100 text-green-800 px-2 sm:px-3 py-1 sm:py-1 rounded-full font-semibold text-xs sm:text-base">
+                      <span className="bg-yellow-100 text-yellow-800 px-2 sm:px-3 py-1 sm:py-1 rounded-full font-semibold text-xs sm:text-base">
                         {Math.round(((product.originalPrice - product.discountedPrice) / product.originalPrice) * 100)}% OFF
                       </span>
                     </div>
@@ -421,7 +421,7 @@ const ProductDetail = () => {
 
                   <motion.button
                     onClick={handleAddToCart}
-                    className="w-full btn-custom-color text-white py-2 sm:py-4 rounded-xl font-bold text-base sm:text-xl flex items-center justify-center gap-2 sm:gap-3 hover:bg-green-700 transition-colors shadow-lg"
+                    className="w-full btn-custom-color text-white py-2 sm:py-4 rounded-xl font-bold text-base sm:text-xl flex items-center justify-center gap-2 sm:gap-3 hover:bg-yellow-700 transition-colors shadow-lg"
                     whileHover={{ scale: 1.02, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -443,9 +443,9 @@ const ProductDetail = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className="bg-gradient-to-br from-green-50 to-green-100 p-3 sm:p-6 rounded-2xl text-center shadow-lg"
+                    className="bg-gradient-to-br from-yellow-50 to-yellow-100 p-3 sm:p-6 rounded-2xl text-center shadow-lg"
                   >
-                    <Sparkles className="w-5 sm:w-8 h-5 sm:h-8 text-green-600 mx-auto mb-2 sm:mb-4" />
+                    <Sparkles className="w-5 sm:w-8 h-5 sm:h-8 text-yellow-600 mx-auto mb-2 sm:mb-4" />
                     <p className="font-semibold text-primary text-sm sm:text-base">{feature}</p>
                   </motion.div>
                 ))}
@@ -508,9 +508,9 @@ const ProductDetail = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ scale: 1.02 }}
-                    className="flex items-start gap-2 sm:gap-4 bg-white p-2 sm:p-6 rounded-2xl shadow-lg border-l-4 border-green-600"
+                    className="flex items-start gap-2 sm:gap-4 bg-white p-2 sm:p-6 rounded-2xl shadow-lg border-l-4 border-yellow-600"
                   >
-                    <Leaf className="w-5 sm:w-8 h-5 sm:h-8 text-green-600 flex-shrink-0 mt-1" />
+                    <Leaf className="w-5 sm:w-8 h-5 sm:h-8 text-yellow-600 flex-shrink-0 mt-1" />
                     <p className="text-sm sm:text-lg text-neutral-700">{point}</p>
                   </motion.div>
                 ))}
@@ -563,7 +563,7 @@ const ProductDetail = () => {
 
             {/* Sustainability Impact */}
             <AnimatedSection delay={0.9} className="mb-12 sm:mb-20">
-              <div className="bg-gradient-to-r from-green-100 to-blue-100 p-4 sm:p-12 rounded-2xl sm:rounded-3xl">
+              <div className="bg-gradient-to-r from-yellow-100 to-blue-100 p-4 sm:p-12 rounded-2xl sm:rounded-3xl">
                 <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 sm:mb-8 text-center">Sustainability Impact</h2>
                 <p className="text-base sm:text-xl text-center text-neutral-700 mb-4 sm:mb-12 max-w-xs sm:max-w-4xl mx-auto">
                   {product.sustainabilityImpact}
@@ -578,7 +578,7 @@ const ProductDetail = () => {
                       transition={{ delay: index * 0.1 }}
                       className="bg-white/80 backdrop-blur-sm p-2 sm:p-6 rounded-2xl text-center shadow-lg"
                     >
-                      <Leaf className="w-5 sm:w-8 h-5 sm:h-8 text-green-600 mx-auto mb-1 sm:mb-4" />
+                      <Leaf className="w-5 sm:w-8 h-5 sm:h-8 text-yellow-600 mx-auto mb-1 sm:mb-4" />
                       <p className="font-semibold text-primary text-sm sm:text-base">{practice}</p>
                     </motion.div>
                   ))}
@@ -588,7 +588,7 @@ const ProductDetail = () => {
 
             {/* Customer Spotlight */}
             <AnimatedSection delay={1.2} className="mb-12 sm:mb-20">
-              <div className="bg-gradient-to-r from-green-600 to-green-700 text-white p-4 sm:p-12 rounded-2xl sm:rounded-3xl text-center">
+              <div className="bg-gradient-to-r from-yellow-600 to-yellow-700 text-white p-4 sm:p-12 rounded-2xl sm:rounded-3xl text-center">
                 <h2 className="text-2xl sm:text-4xl font-bold mb-4 sm:mb-8">Customer Spotlight</h2>
                 <blockquote className="text-base sm:text-2xl italic mb-4 sm:mb-8 max-w-xs sm:max-w-4xl mx-auto leading-relaxed">
                   {product.customerSpotlight}

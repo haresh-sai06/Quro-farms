@@ -47,7 +47,7 @@ const CartDropdown: React.FC = () => {
       {/* Cart Icon with Badge */}
       <motion.button
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-        className="relative p-2 text-neutral-100 hover:text-green-300 transition-colors"
+        className="relative p-2 text-neutral-100 hover:text-yellow-300 transition-colors"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -58,7 +58,7 @@ const CartDropdown: React.FC = () => {
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0, opacity: 0 }}
-              className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold"
+              className="absolute -top-1 -right-1 bg-yellow-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold"
             >
               {itemCount > 99 ? '99+' : itemCount}
             </motion.span>
@@ -87,7 +87,7 @@ const CartDropdown: React.FC = () => {
               className="absolute right-0 top-12 w-96 bg-white rounded-2xl shadow-2xl border border-neutral-200 z-50 max-h-[80vh] overflow-hidden"
             >
               {/* Header */}
-              <div className="p-4 border-b border-neutral-200 flex items-center justify-between bg-gradient-to-r from-green-50 to-green-100">
+              <div className="p-4 border-b border-neutral-200 flex items-center justify-between bg-gradient-to-r from-yellow-50 to-yellow-100">
                 <h3 className="font-bold text-lg text-primary flex items-center gap-2">
                   <ShoppingCart className="w-5 h-5" />
                   Shopping Cart ({itemCount})
@@ -127,7 +127,7 @@ const CartDropdown: React.FC = () => {
                       <Link
                         to="/products"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="inline-flex items-center gap-2 btn-custom-color text-white px-6 py-2 rounded-full hover:bg-green-700 transition-colors"
+                        className="inline-flex items-center gap-2 btn-custom-color text-white px-6 py-2 rounded-full hover:bg-yellow-700 transition-colors"
                       >
                         Continue Shopping
                         <ArrowRight className="w-4 h-4" />
@@ -157,7 +157,7 @@ const CartDropdown: React.FC = () => {
                             <h4 className="font-semibold text-sm text-primary truncate mb-1">
                               {item.product.name}
                             </h4>
-                            <p className="text-green-600 font-bold text-sm mb-2">
+                            <p className="text-yellow-600 font-bold text-sm mb-2">
                               ₹{item.product.discountedPrice}/{item.product.unit}
                             </p>
                             
@@ -192,7 +192,7 @@ const CartDropdown: React.FC = () => {
                             </div>
                             
                             {/* Subtotal */}
-                            <p className="text-sm font-bold text-green-700">
+                            <p className="text-sm font-bold text-yellow-700">
                               Subtotal: ₹{getItemSubtotal(item).toFixed(2)}
                             </p>
                           </div>
@@ -245,12 +245,12 @@ const CartDropdown: React.FC = () => {
                           />
                           <div className="flex-1 min-w-0">
                             <p className="text-xs font-medium text-primary truncate">{item.product.name}</p>
-                            <p className="text-xs text-green-600">₹{item.product.discountedPrice}</p>
+                            <p className="text-xs text-yellow-600">₹{item.product.discountedPrice}</p>
                           </div>
                           <div className="flex gap-1">
                             <motion.button
                               onClick={() => moveToCart(item.product.id)}
-                              className="text-xs btn-custom-color text-white px-2 py-1 rounded hover:bg-green-700 transition-colors"
+                              className="text-xs btn-custom-color text-white px-2 py-1 rounded hover:bg-yellow-700 transition-colors"
                               whileHover={{ scale: 1.05 }}
                               whileTap={{ scale: 0.95 }}
                             >
@@ -274,14 +274,14 @@ const CartDropdown: React.FC = () => {
 
               {/* Footer */}
               {cartItems.length > 0 && (
-                <div className="p-4 bg-gradient-to-r from-green-50 to-green-100 border-t border-neutral-200">
+                <div className="p-4 bg-gradient-to-r from-yellow-50 to-yellow-100 border-t border-neutral-200">
                   <div className="flex justify-between items-center mb-4">
                     <span className="font-bold text-lg text-primary">Total:</span>
                     <motion.span 
                       key={cartTotal}
                       initial={{ scale: 1.2 }}
                       animate={{ scale: 1 }}
-                      className="font-bold text-xl text-green-600"
+                      className="font-bold text-xl text-yellow-600"
                     >
                       ₹{cartTotal.toFixed(2)}
                     </motion.span>
@@ -289,7 +289,7 @@ const CartDropdown: React.FC = () => {
                   <Link
                     to="/order"
                     onClick={() => setIsDropdownOpen(false)}
-                    className="w-full btn-custom-color text-white py-3 rounded-xl font-semibold text-center block hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                    className="w-full btn-custom-color text-white py-3 rounded-xl font-semibold text-center block hover:bg-yellow-700 transition-colors flex items-center justify-center gap-2"
                   >
                     <Package className="w-4 h-4" />
                     Checkout

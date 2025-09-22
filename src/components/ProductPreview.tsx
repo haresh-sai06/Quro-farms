@@ -115,7 +115,7 @@ const ProductPreview: React.FC = () => {
                     <motion.button
                       onClick={(e) => handleAddToCart(product, e)}
                       disabled={!product.inStock}
-                      className="flex-1 btn-custom-color text-white py-3 rounded-xl hover:bg-green-700 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
+                      className="flex-1 btn-custom-color text-white py-3 rounded-xl hover:bg-yellow-700 transition-all duration-300 font-semibold disabled:bg-gray-400 disabled:cursor-not-allowed"
                       whileHover={product.inStock ? { scale: 1.02 } : {}}
                       whileTap={product.inStock ? { scale: 0.98 } : {}}
                     >
@@ -123,7 +123,7 @@ const ProductPreview: React.FC = () => {
                     </motion.button>
                     <Link to={`/product/${product.id}`}>
                       <motion.button
-                        className="px-4 py-3 border-2 border-green-600 text-green-600 rounded-xl hover:bg-green-50 transition-all duration-300 font-semibold"
+                        className="px-4 py-3 border-2 border-yellow-600 text-yellow-600 rounded-xl hover:bg-yellow-50 transition-all duration-300 font-semibold"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
@@ -140,7 +140,7 @@ const ProductPreview: React.FC = () => {
         {/* View All Products CTA */}
         <div className="text-center">
           <Link to="/products">
-            <button className="bg-amber-500 text-white px-12 py-4 rounded-full hover:bg-amber-600 transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-3 mx-auto">
+            <button className="btn-custom-color text-black px-12 py-4 rounded-full hover:bg-yellow-600 transition-all duration-300 font-bold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-3 mx-auto">
               View All Products
               <ArrowRight className="w-5 h-5" />
             </button>

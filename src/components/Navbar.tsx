@@ -31,8 +31,8 @@ const Navbar: React.FC = () => {
     <motion.header
   className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     isMenuOpen
-      ? "bg-white shadow-lg"
-      : "bg-[rgba(246,205,92,1)] shadow-sm"
+      ? "bg-white shadow-sm"
+      : "bg-[rgba(247, 181, 0, 1)] shadow-sm"
   }`}
   initial={{ y: -100 }}
   animate={{ y: 0 }}
@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
         <Link
           to="/"
           className={`flex items-center gap-3 text-2xl font-bold transition-colors duration-300 ${
-            isMenuOpen ? "text-green-700" : "text-primary"
+            isMenuOpen ? "text-yellow-700" : "text-primary"
           }`}
           onClick={closeMenu}
         >
@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
   <img src={LogoImage} alt="Quro Farms Logo" className="w-full h-full object-contain" />
 </motion.div>
 
-          {/* Removed: <span className={isMenuOpen ? "text-green-700" : "text-green-700"}>Quro Farms</span> */}
+          {/* Removed: <span className={isMenuOpen ? "text-yellow-700" : "text-yellow-700"}>Quro Farms</span> */}
         </Link>
 
         {/* Desktop Navigation */}
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   to="/"
-                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium flex items-center gap-2"
+                  className="text-neutral-100 hover:text-yellow-300 transition-colors font-medium flex items-center gap-2"
                 >
                   <Home className="w-5 h-5" />
                   Home
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   to={link.href}
-                  className="text-neutral-100 hover:text-green-300 transition-colors font-medium"
+                  className="text-neutral-100 hover:text-yellow-300 transition-colors font-medium"
                 >
                   {link.name}
                 </Link>
@@ -111,7 +111,7 @@ const Navbar: React.FC = () => {
             >
               <Link
                 to="/order"
-                className="btn-custom-color text-white px-6 py-3 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center gap-2"
+                className="btn-custom-color text-white px-6 py-3 rounded-full hover:bg-yellow-700 transition-colors font-semibold flex items-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 Order Now
@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center gap-3 md:hidden">
           {/* Mobile Shopping Cart Icon */}
           <motion.button
-            className="relative flex items-center justify-center text-neutral-100 hover:text-green-300 transition-colors p-2 rounded-lg hover:bg-white/20"
+            className="relative flex items-center justify-center text-neutral-100 hover:text-yellow-300 transition-colors p-2 rounded-lg hover:bg-white/20"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             title="Shopping Cart"
@@ -139,7 +139,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Toggle */}
           <motion.button
             className={`p-2 rounded-lg transition-colors duration-300 ${
-              isMenuOpen ? "text-green-700 bg-green-50" : "text-neutral-100"
+              isMenuOpen ? "text-yellow-700 bg-yellow-50" : "text-neutral-100"
             }`}
             onClick={toggleMenu}
             whileHover={{ scale: 1.1 }}
@@ -176,7 +176,7 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            className="md:hidden bg-white border-t border-green-100 shadow-lg"
+            className="md:hidden bg-white border-t border-yellow-100 shadow-lg"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -193,7 +193,7 @@ const Navbar: React.FC = () => {
                 >
                   <Link
                     to="/"
-                    className="block text-green-700 hover:text-green-600 transition-colors font-medium py-3 flex items-center gap-2 border-b border-green-100 last:border-b-0"
+                    className="block text-yellow-700 hover:text-yellow-600 transition-colors font-medium py-3 flex items-center gap-2 border-b border-yellow-100 last:border-b-0"
                     onClick={closeMenu}
                   >
                     <Home className="w-5 h-5" />
@@ -211,7 +211,7 @@ const Navbar: React.FC = () => {
                   >
                     <Link
                       to={link.href}
-                      className="block text-green-700 hover:text-green-600 transition-colors font-medium py-3 border-b border-green-100 last:border-b-0"
+                      className="block text-yellow-700 hover:text-yellow-600 transition-colors font-medium py-3 border-b border-yellow-100 last:border-b-0"
                       onClick={closeMenu}
                     >
                       {link.name}
@@ -230,7 +230,7 @@ const Navbar: React.FC = () => {
               >
                 <Link
                   to="/order"
-                  className="w-full btn-custom-color text-white px-6 py-4 rounded-full hover:bg-green-700 transition-colors font-semibold flex items-center justify-center gap-2"
+                  className="w-full btn-custom-color text-white px-6 py-4 rounded-full hover:bg-yellow-700 transition-colors font-semibold flex items-center justify-center gap-2"
                   onClick={closeMenu}
                 >
                   <Phone className="w-4 h-4" />
