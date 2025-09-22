@@ -26,7 +26,7 @@
   }
 
   .btn-custom-color {
-    background-color: #86bd55ff;
+    background-color: rgba(246, 205, 92);
   }
 }
 
@@ -98,10 +98,10 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #16a34a;
+  background: rgba(246, 205, 92);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #15803d;
+  background: rgba(246, 205, 92);
 }
