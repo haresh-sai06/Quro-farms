@@ -28,7 +28,7 @@ const Header: React.FC = () => {
       }`}
       style={{
         backgroundImage: !isMenuOpen
-          ? `linear-gradient(rgba(0, 128, 0, 0.3), rgba(0, 128, 0, 0.3)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`
+          ? `linear-gradient(rgba(246, 205, 92, 0.3), rgba(246, 205, 92, 0.5)), url('https://images.unsplash.com/photo-1500595046743-4c3542c2a7f5')`
           : "none",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -45,7 +45,7 @@ const Header: React.FC = () => {
         >
           <motion.div
   className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center p-1"
-  style={{ backgroundColor: '#86bd55ff' }} // Use this custom color instead of the previous green class
+  style={{ backgroundColor: '#f6cd5c' }} // Use this custom color instead of the previous green class
   whileHover={{ rotate: 360 }}
   transition={{ duration: 0.5 }}
 >
