@@ -1,6 +1,6 @@
 import { CartItem } from '../types/product';
 
-export const WHATSAPP_PHONE_NUMBER = "7558938256"; // Add country code (91 for India)
+export const WHATSAPP_PHONE_NUMBER = "7558938256"; 
 
 export interface CustomerInfo {
   name?: string;
