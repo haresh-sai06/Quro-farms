@@ -82,8 +82,8 @@ export const products: Product[] = [
     features: [
       'Cold-pressed coconut oil',
       'Multi-purpose for cooking',
-      'High MCTs, energy boost',
-      'Sustainable, additive-free oil'
+      'Sustainable',
+      'additive-free oil'
     ],
     processingJourney: [
       'Coconut Cutting & Drying',
@@ -172,7 +172,7 @@ export const products: Product[] = [
       { name: 'Energy Balls', method: 'Mix moringa powder with oats and dates, roll into healthy bites.' },
       { name: 'Pesto Sauce', method: 'Add moringa powder to basil pesto for a superfood twist.' }
     ],
-    ecoFriendlyPractices: ['genuine cultivation', 'Shade drying', 'Eco-friendly packaging', 'Water conservation'],
+    ecoFriendlyPractices: ['genuine cultivation', 'Shade drying', 'Eco-friendly packaging', 'Organic fertilization'],
     customerSpotlight: 'Raj boosts his smoothies with genuine moringa powder, feeling energized daily. "The farm-fresh taste is amazing, and it’s helped my immunity."',
     farmToTableImage: TractorImage,
     inStock: true

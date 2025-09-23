@@ -141,7 +141,6 @@ const Hero = () => {
         {/* Mobile View: Vertical Stack */}
         <div className="flex flex-col items-center sm:hidden">
           <div className="text-center mb-6">
-
             <motion.h1 className="text-2xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-1">
               {headlineWords.map((word, i) => (
                 <motion.span
@@ -164,52 +163,39 @@ const Hero = () => {
             </motion.p>
 
             <div className="flex justify-center w-full"> {/* Centers the feature list */}
-  <motion.div 
-    className="flex flex-col flex-wrap gap-2 mb-4 w-fit md:w-1/2" /* Reduced width for the container */
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ delay: 0.7 }}
-  >
-    {heroFeatures.map((feature, i) => (
-      <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-        <span className="text-yellow-400">{feature.icon}</span>
-        <span className="text-white text-sm">{feature.text}</span>
-      </div>
-    ))}
-  </motion.div>
-</div>
+              <motion.div 
+                className="flex flex-col flex-wrap gap-2 mb-4 w-fit md:w-1/2" /* Reduced width for the container */
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.7 }}
+              >
+                {heroFeatures.map((feature, i) => (
+                  <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
+                    <span className="text-yellow-400">{feature.icon}</span>
+                    <span className="text-white text-sm">{feature.text}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
 
-            <div className="flex flex-col items-center justify-center w-full py-6"> {/* Centers the button group */}
-  <div className="flex flex-col gap-3 mb-6 w-fit md:w-1/2 lg:w-1/3"> {/* Reduced width for the button container */}
-    <motion.button
-      className="btn-custom-color text-black px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-yellow-700 transition-colors relative overflow-hidden group"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <span className="absolute inset-0 bg-white/20 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
-      <Link to="/products" className="flex items-center gap-2 relative z-10">
-        Shop Now
-        <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
-      </Link>
-    </motion.button>
-
-    {/* <motion.button
-      className="bg-white/90 backdrop-blur-sm text-yellow-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => setIsVideoModalOpen(true)}
-    >
-      <span className="absolute inset-0 bg-yellow-100 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
-      <div className="flex items-center gap-2 relative z-10">
-        <Play className="w-3 h-3 fill-green-700 group-hover:scale-110 transition-transform" />
-        Farm Tour
-      </div>
-    </motion.button> */}
-  </div>
-</div>
+            <div className="flex flex-col items-center justify-center w-full py-3"> {/* Reduced py-6 to py-3 */}
+              <div className="flex flex-col gap-3 mb-2 w-fit md:w-1/2 lg:w-1/3"> {/* Reduced mb-6 to mb-2 */}
+                <motion.button
+                  className="btn-custom-color text-black px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-yellow-700 transition-colors relative overflow-hidden group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <span className="absolute inset-0 bg-white/20 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
+                  <Link to="/products" className="flex items-center gap-2 relative z-10">
+                    Shop Now
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </motion.button>
+              </div>
+            </div>
           </div>
 
-          <div className="w-full flex flex-col items-center gap-6">
+          <div className="w-full flex flex-col items-center gap-2"> {/* Reduced gap-6 to gap-2 */}
             <motion.div 
               className="relative z-20"
               initial={{ opacity: 0, y: 50 }}
@@ -227,21 +213,19 @@ const Hero = () => {
                 />
               </motion.div>
               <motion.div 
-                className="absolute -bottom-3 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-yellow-800 px-2 py-1 rounded-full text-center shadow-lg w-1/2"
+                className="absolute -bottom-10 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-yellow-800 px-1 py-2 rounded-full text-center shadow-lg w-1/2"
                 whileHover={{ scale: 1.05 }}
               >
-                <p className="text-sm font-semibold">Quro Farms</p>
-                <p className="text-xs">🌿 100% Pure</p>
+                <p className="text-sm font-semibold">Quro Farms – Our Authentic Products</p>
+                <p className="text-xs">🌿 Farm Fresh</p>
               </motion.div>
             </motion.div>
           </div>
         </div>
 
-
         {/* Desktop View: Side-by-Side Layout */}
         <div className="hidden sm:flex sm:flex-row justify-between items-center w-full">
           <div className="w-1/2 text-center pr-4">
-
             <motion.h1 className="text-3xl lg:text-5xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-2">
               {headlineWords.map((word, i) => (
                 <motion.span
@@ -277,7 +261,7 @@ const Hero = () => {
               ))}
             </motion.div>
 
-            <div className="flex flex-row gap-4 mb-6 py-10">
+            <div className="flex flex-row gap-4 mb-2 py-4"> {/* Reduced py-10 to py-4, mb-6 to mb-2 */}
               <motion.button
                 className="btn-custom-color text-black px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-yellow-700 transition-colors relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
@@ -289,22 +273,10 @@ const Hero = () => {
                   <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.button>
-              {/* <motion.button
-                className="bg-white/90 backdrop-blur-sm text-yellow-700 px-5 py-2 rounded-full border-2 border-white/50 text-base font-semibold hover:bg-white transition-colors shadow-lg relative overflow-hidden group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsVideoModalOpen(true)}
-              >
-                <span className="absolute inset-0 bg-yellow-100 group-hover:scale-150 transition-transform duration-500 opacity-0 group-hover:opacity-100"></span>
-                <div className="flex items-center gap-2 relative z-10">
-                  <Play className="w-3 h-3 fill-green-700 group-hover:scale-110 transition-transform" />
-                  Farm Tour
-                </div>
-              </motion.button> */}
             </div>
           </div>
 
-          <div className="w-1/2 flex flex-col items-center gap-6">
+          <div className="w-1/2 flex flex-col items-center gap-2"> {/* Reduced gap-6 to gap-2 */}
             <motion.div 
               className="relative z-20"
               initial={{ opacity: 0, y: 50 }}
@@ -329,54 +301,6 @@ const Hero = () => {
                 <p className="text-xs">🌿 Farm Fresh | Preservative-Free</p>
               </motion.div>
             </motion.div>
-
-            {/* <div className="grid grid-cols-3 gap-4 w-full max-w-sm">
-              {[
-                { id: 'oil', src: product1, title: 'Raw Banana Powder', desc: 'Gut-friendly energy flour.' },
-                { id: 'water', src: product2, title: 'Arrow Root Powder', desc: 'Light & easy digestible starch.' },
-                { id: 'flour', src: product3, title: 'Jackfruit Powder', desc: 'Fiber-rich natural energy.' },
-              ].map((product) => (
-                <motion.div
-                  key={product.id}
-                  className="bg-white/95 backdrop-blur-sm p-2 rounded-xl shadow-md border-2 border-green-100"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 1 }}
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.2)",
-                    transition: { duration: 0.3 }
-                  }}
-                  onHoverStart={() => setActiveProductId(product.id)}
-                  onHoverEnd={() => setActiveProductId(null)}
-                >
-                  <div className="relative overflow-hidden rounded-lg mb-1">
-                    <img 
-                      src={product.src} 
-                      alt={product.title} 
-                      className="w-full h-16 object-cover transition-transform duration-500 hover:scale-110"
-                    />
-                    {activeProductId === product.id && (
-                      <motion.div 
-                        className="absolute inset-0 bg-yellow-900/40 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                      >
-                        <motion.button 
-                          className="bg-white text-yellow-800 px-2 py-1 rounded-full text-xs font-semibold"
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          Quick View
-                        </motion.button>
-                      </motion.div>
-                    )}
-                  </div>
-                  <h3 className="font-semibold text-yellow-800 text-xs">{product.title}</h3>
-                  <p className="text-[10px] text-gray-600">{product.desc}</p>
-                </motion.div>
-              ))}
-            </div> */}
           </div>
         </div>
       </div>
