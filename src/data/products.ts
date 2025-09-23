@@ -57,9 +57,9 @@ export const products: Product[] = [
       'Enhances skin glow'
     ],
     recipeIdeas: [
-      { name: 'Golden Latte', method: 'Stir turmeric powder into warm milk for a soothing latte.' },
+      { name: 'Golden Milk (Haldi Doodh)', method: 'A soothing bedtime drink made with warm milk and turmeric for immunity.' },
+      { name: 'Turmeric Rasam', method: 'A tangy South Indian soup flavored with tamarind, turmeric, and spices.' },
       { name: 'Spiced Curry', method: 'Add turmeric powder to curries for rich color and flavor.' },
-      { name: 'Face Mask', method: 'Mix turmeric powder with honey or yogurt for a wholesome glow.' },
       { name: 'Herbal Tea', method: 'Steep turmeric powder in hot water with ginger for daily wellness.' }
     ],
     ecoFriendlyPractices: ['wholesome farming', 'Solar drying', 'Compost fertilization', 'Rainwater harvesting'],
@@ -112,10 +112,10 @@ export const products: Product[] = [
       'Strengthens immunity authentically'
     ],
     recipeIdeas: [
-      { name: 'Stir-Fry', method: 'Toss veggies in hot pan with coconut oil for a quick stir-fry.' },
-      { name: 'Moisturizer', method: 'Apply a small amount of coconut oil directly to skin for hydration.' },
-      { name: 'Energy Bites', method: 'Mix oats, nuts, and coconut oil into bite-sized snacks.' },
-      { name: 'Coffee Boost', method: 'Stir a spoon of coconut oil into hot coffee for extra energy.' }
+      { name: 'Kerala Avial', method: 'A mixed vegetable curry cooked in coconut oil and flavored with curry leaves.' },
+      { name: 'Kerala Fish Curry', method: 'Spicy, tangy fish curry simmered in coconut oil with coconut milk and tamarind.' },
+      { name: 'Cabbage Thoran', method: 'Finely chopped cabbage stir-fried with coconut oil, grated coconut, and green chilies.' },
+      { name: 'Kerala Puttu & Kadala Curry', method: 'Steamed rice flour cakes served with black chickpea curry tempered in coconut oil.' }
     ],
     ecoFriendlyPractices: ['authentic farming', 'Cold-pressing', 'Eco-friendly packaging', 'Community farming'],
     customerSpotlight: 'Lisa swears by our coconut oil for cooking and skincare, loving its authenticity. "My hair shines, and meals taste tropical!"',
@@ -167,10 +167,11 @@ export const products: Product[] = [
       'Enhances skin, hair'
     ],
     recipeIdeas: [
-      { name: 'Green Smoothie', method: 'Blend moringa powder with banana and spinach for a nutrient boost.' },
-      { name: 'Herbal Tea', method: 'Steep moringa powder in hot water with honey for a calming tea.' },
-      { name: 'Energy Balls', method: 'Mix moringa powder with oats and dates, roll into healthy bites.' },
-      { name: 'Pesto Sauce', method: 'Add moringa powder to basil pesto for a superfood twist.' }
+      { name: 'Moringa Idli/Dosa', method: 'Traditional South Indian breakfast infused with moringa powder in the batter.' },
+      { name: 'Moringa Rasam', method: 'A South Indian tamarind-based soup enriched with moringa powder.' },
+      { name: 'Moringa Chutney', method: 'A tangy chutney blended with coconut, spices, and moringa powder.' },
+      { name: 'Moringa Lassi', method: 'A probiotic-rich yogurt drink flavored with moringa for cooling refreshment.' },
+      { name: 'Moringa Tea', method: 'A soothing herbal tea brewed with moringa powder for daily wellness.' }
     ],
     ecoFriendlyPractices: ['genuine cultivation', 'Shade drying', 'Eco-friendly packaging', 'Organic fertilization'],
     customerSpotlight: 'Raj boosts his smoothies with genuine moringa powder, feeling energized daily. "The farm-fresh taste is amazing, and it’s helped my immunity."',
@@ -222,10 +223,10 @@ export const products: Product[] = [
       'Boosts potassium intake'
     ],
     recipeIdeas: [
-      { name: 'Pancakes', method: 'Use raw banana powder as gluten-free flour for fluffy pancakes.' },
-      { name: 'Smoothie', method: 'Blend raw banana powder into smoothies for extra fiber and nutrition.' },
-      { name: 'Energy Bars', method: 'Mix raw banana powder with nuts and honey to make healthy bars.' },
-      { name: 'Soup Thickener', method: 'Stir raw banana powder into soups for a fresh thickener.' }
+      { name: 'Raw Banana Vada', method: 'Crispy savory fritters made with raw banana powder and spices.' },
+      { name: 'Raw Banana Porridge', method: 'Healthy breakfast porridge cooked with milk, jaggery, and banana powder.' },
+      { name: 'Raw Banana Halwa', method: 'A sweet dessert made with raw banana powder, jaggery, and ghee.' },
+      { name: 'Raw Banana Roti', method: 'Nutritious flatbreads made from raw banana powder and whole wheat flour.' }
     ],
     ecoFriendlyPractices: ['fresh farming', 'Low-energy dehydration', 'Composting waste', 'Sustainable sourcing'],
     customerSpotlight: '"This banana powder is a game-changer for my gluten-free baking!" - Home baker testimonial',
@@ -277,11 +278,10 @@ export const products: Product[] = [
       'Provides gentle energy'
     ],
     recipeIdeas: [
-      { name: 'Soup Thickener', method: 'Add arrowroot powder to soups for a smooth, creamy texture.' },
-      { name: 'Puddings', method: 'Mix arrowroot powder with milk or coconut milk for light, digestible puddings.' },
-      { name: 'Sauces', method: 'Use arrowroot powder to thicken sweet or savory sauces without cloudiness.' },
-      { name: 'Gluten-Free Baking', method: 'Blend arrowroot powder with other flours for soft, fluffy baked goods.' },
-      { name: 'Fruit Jelly', method: 'Combine fruit juice with arrowroot powder for a clear, authentic jelly.' }
+      { name: 'Arrowroot Kheer', method: 'Creamy Indian pudding cooked with milk, sugar, and arrowroot powder.' },
+      { name: 'Arrowroot Pakoras', method: 'Crispy fritters where arrowroot powder adds a perfect light coating.' },
+      { name: 'Arrowroot Soup Thickener', method: 'Used as a natural thickening agent in soups and gravies.' },
+      { name: 'Arrowroot Ladoo', method: 'Energy balls made with arrowroot powder, nuts, and jaggery.' }
     ],
     ecoFriendlyPractices: ['authentic farming', 'Low-energy processing', 'Eco-friendly packaging', 'Composting'],
     customerSpotlight: '"This arrowroot powder is perfect for my sensitive stomach and makes amazing sauces!" - Customer review',
@@ -333,10 +333,10 @@ export const products: Product[] = [
       'Antioxidant properties'
     ],
     recipeIdeas: [
-      { name: 'Smoothie Booster', method: 'Blend jackfruit powder into your favorite smoothie for a fruity boost.' },
-      { name: 'Desserts', method: 'Use jackfruit powder in traditional sweets for honest flavor and color.' },
-      { name: 'Energy Bars', method: 'Mix jackfruit powder with nuts, oats, and honey to make healthy energy bars.' },
-      { name: 'Baking', method: 'Add jackfruit powder to cakes and cookies for a tropical twist.' }
+      { name: 'Jackfruit Lassi', method: 'Refreshing yogurt drink flavored with jackfruit powder.' },
+      { name: 'Jackfruit Sweet Paniyaram', method: 'Soft, bite-sized dumplings with a jackfruit powder-infused batter.' },
+      { name: 'Jackfruit Adai', method: 'Lentil crepe with a hint of jackfruit powder for flavor and nutrition.' },
+      { name: 'Jackfruit Chutney Powder', method: 'Spicy-sweet dry chutney mix using roasted jackfruit powder.' }
     ],
     ecoFriendlyPractices: ['honest farming', 'Low-energy dehydration', 'Sustainable sourcing', 'Community support'],
     customerSpotlight: '"This jackfruit powder adds a unique sweetness to my baking!" - Home chef testimonial',

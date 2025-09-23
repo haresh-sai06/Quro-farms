@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Home } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import CartDropdown from "./CartDropdown";
 import LogoImage from "../../public/components/image.png"; // Assuming image.png is directly in public
@@ -13,11 +13,48 @@ const Header: React.FC = () => {
     location.pathname.startsWith("/product/");
 
   const navLinks = [
-    { name: "Why Choose Us", href: "/#features" },
+    { name: "Why Choose Us", href: "#features", targetId: "features" },
     { name: "Products", href: "/products" },
-    { name: "Reviews", href: "/#testimonials" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Reviews", href: "#testimonials", targetId: "testimonials" },
+    { name: "Contact", href: "#contact", targetId: "contact" },
   ];
+
+  // Enhanced smooth scroll function with hash detection
+  const scrollToSection = (targetId: string) => {
+    const element = document.getElementById(targetId);
+    if (element) {
+      const headerHeight = 80; // Adjust if header height changes
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+      setIsMenuOpen(false); // Close mobile menu
+    } else {
+      console.warn(`Target element #${targetId} not found`); // Debug log
+    }
+  };
+
+  // Handle hash changes for autoscroll (e.g., direct URL access like /#features)
+  useEffect(() => {
+    const hash = location.hash.replace('#', '');
+    if (hash && navLinks.some(link => link.targetId === hash)) {
+      // Small delay to ensure DOM is ready
+      setTimeout(() => scrollToSection(hash), 100);
+    }
+  }, [location.hash]);
+
+  // Handle click for anchor links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId?: string) => {
+    if (targetId) {
+      e.preventDefault();
+      scrollToSection(targetId);
+    } else {
+      setIsMenuOpen(false); // Close menu for route changes
+    }
+  };
 
   return (
     <motion.header
@@ -81,7 +118,8 @@ const Header: React.FC = () => {
               >
                 <Link
                   to={link.href}
-                  className="text-black hover:text-yellow-300 transition-colors font-medium"
+                  className="text-black hover:text-yellow-300 transition-colors font-medium cursor-pointer"
+                  onClick={(e) => handleNavClick(e, link.targetId)}
                 >
                   {link.name}
                 </Link>
@@ -104,6 +142,7 @@ const Header: React.FC = () => {
               <Link
                 to="/order"
                 className="bg-yellow-500 text-black px-6 py-3 rounded-full hover:bg-yellow-600 transition-colors font-semibold flex items-center gap-2"
+                onClick={() => setIsMenuOpen(false)}
               >
                 <Phone className="w-4 h-4" />
                 Order Now
@@ -151,8 +190,8 @@ const Header: React.FC = () => {
                   <Link
                     key={link.name}
                     to={link.href}
-                    className="text-black hover:text-yellow-300 transition-colors font-medium py-2 flex items-center gap-2"
-                    onClick={() => setIsMenuOpen(false)}
+                    className="text-black hover:text-yellow-300 transition-colors font-medium py-2 flex items-center gap-2 cursor-pointer"
+                    onClick={(e) => handleNavClick(e, link.targetId)}
                   >
                     {link.name}
                   </Link>
