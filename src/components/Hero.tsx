@@ -53,7 +53,7 @@ const Hero = () => {
   const headlineWords = [
     "From",
     "Our",
-    "Natural",
+    "Pure",
     "Farms",
     "To",
     "Your",
@@ -61,7 +61,7 @@ const Hero = () => {
   ];
 
   const heroFeatures = [
-    { icon: <Shield className="w-5 h-5" />, text: "100% Naturally Grown" },
+    { icon: <Shield className="w-5 h-5" />, text: "Cultivated with Care" },
     { icon: <Heart className="w-5 h-5" />, text: "Freshly Harvested" },
     { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
   ];
@@ -129,7 +129,7 @@ const Hero = () => {
                 <div className="text-center">
                   <Play className="w-12 sm:w-16 h-12 sm:h-16 mx-auto mb-2 sm:mb-4" />
                   <p className="text-lg sm:text-xl font-semibold">Farm Tour Video</p>
-                  <p className="text-sm">See how we grow our natural products</p>
+                  <p className="text-sm">See how we grow our products</p>
                 </div>
               </div>
             </div>
@@ -160,7 +160,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh natural products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep across India.
             </motion.p>
 
             <div className="flex justify-center w-full"> {/* Centers the feature list */}
@@ -231,7 +231,7 @@ const Hero = () => {
                 whileHover={{ scale: 1.05 }}
               >
                 <p className="text-sm font-semibold">Quro Farms</p>
-                <p className="text-xs">🌿 100% Natural</p>
+                <p className="text-xs">🌿 100% Pure</p>
               </motion.div>
             </motion.div>
           </div>
@@ -260,7 +260,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh natural products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep across India.
             </motion.p>
 
             <motion.div 
@@ -325,8 +325,8 @@ const Hero = () => {
                 className="absolute -bottom-4 left-0 right-0 mx-auto bg-white/90 backdrop-blur-sm text-yellow-800 px-4 py-2 rounded-full text-center shadow-lg w-2/3"
                 whileHover={{ scale: 1.05 }}
               >
-                <p className="text-sm font-semibold">Quro Farms – Our Natural Products</p>
-                <p className="text-xs">🌿 100% Natural | Farm Fresh | Preservative-Free</p>
+                <p className="text-sm font-semibold">Quro Farms – Our Authentic Products</p>
+                <p className="text-xs">🌿 Farm Fresh | Preservative-Free</p>
               </motion.div>
             </motion.div>
 

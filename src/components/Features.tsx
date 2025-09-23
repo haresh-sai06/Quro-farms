@@ -2,7 +2,7 @@ import { Leaf, Heart, Truck, Shield } from "lucide-react";
 
 const featuresList = [
 	{
-		title: "Grown Naturally",
+		title: "Grown Traditionally",
 		description:
 			"Our products are cultivated using traditional, sustainable farming methods without any artificial interventions.",
 		icon: Leaf,

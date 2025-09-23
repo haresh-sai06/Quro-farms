@@ -7,7 +7,7 @@ const productCategories = [
 	{
 		title: "Farm-Fresh Products",
 		count: "6",
-		description: "Natural, natural powders & oils",
+		description: "Wholesome powders & oils",
 		icon: Package,
 		color: "text-yellow-600",
 		bgGradient: "from-yellow-100 to-yellow-50",
@@ -16,7 +16,7 @@ const productCategories = [
 	{
 		title: "Powders",
 		count: "5",
-		description: "Nutritious health mixes",
+		description: "Nutritious wellness blends",
 		icon: Leaf,
 		color: "text-orange-600",
 		bgGradient: "from-orange-100 to-orange-50",
@@ -25,7 +25,7 @@ const productCategories = [
 	{
 		title: "Cold-Pressed Oils",
 		count: "1",
-		description: "Pure & natural coconut oil",
+		description: "Pure & unrefined coconut oil",
 		icon: Droplet,
 		color: "text-yellow-600",
 		bgGradient: "from-yellow-100 to-yellow-50",
