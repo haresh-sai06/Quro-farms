@@ -82,14 +82,14 @@ const Header: React.FC = () => {
         >
           <motion.div
             className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center p-1"
-            style={{ backgroundColor: "#f6cd5c" }}
+            style={{ backgroundColor: "#ffe395ff" }}
             whileHover={{ rotate: 360 }}
             transition={{ duration: 0.5 }}
           >
             <img
               src={LogoImage}
               alt="Quro Farms Logo"
-              className="w-full h-full object-cover"
+              className="w-16 h-16 object-cover"
             />
           </motion.div>
         </Link>
