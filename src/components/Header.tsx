@@ -89,7 +89,7 @@ const Header: React.FC = () => {
             <img
               src={LogoImage}
               alt="Quro Farms Logo"
-              className="w-16 h-16 object-cover"
+              className="w-full h-full object-cover -translate-y-0.5"
             />
           </motion.div>
         </Link>
