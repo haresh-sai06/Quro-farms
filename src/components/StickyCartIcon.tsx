@@ -2,11 +2,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useCart } from "../hooks/useCart";
+import { useNavigate } from "react-router-dom";
 
 const StickyCartIcon: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const { getCartItemsCount } = useCart();
   const itemCount = getCartItemsCount();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,8 +19,8 @@ const StickyCartIcon: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleCartClick = () => {
+    navigate('/order');
   };
 
   return (
@@ -32,7 +34,7 @@ const StickyCartIcon: React.FC = () => {
           className="fixed bottom-6 right-6 z-40"
         >
           <motion.button
-            onClick={scrollToTop}
+            onClick={handleCartClick}
             className="relative btn-custom-color text-white p-4 rounded-full shadow-2xl hover:bg-yellow-700 transition-colors"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}

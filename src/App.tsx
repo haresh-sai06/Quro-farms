@@ -18,7 +18,6 @@ const App = () => (
       <Toaster />
       <Sonner />
       <CartProvider>
-        <StickyCartIcon />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -26,6 +25,7 @@ const App = () => (
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/order" element={<OrderNow />} />
           </Routes>
+          <StickyCartIcon />
         </BrowserRouter>
       </CartProvider>
     </TooltipProvider>
