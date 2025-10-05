@@ -230,6 +230,10 @@ const OrderNow: React.FC = () => {
                         <span>Total:</span>
                         <span>₹{total.toFixed(2)}</span>
                       </div>
+                      <div>
+                        <h3 className="text-sm text-neutral-600 mt-2 text-bold">* Note:</h3>
+                        <p className="text-sm text-neutral-500 mt-1">Additional courier taxes will be charged for orders outside Kerala and Tamil Nadu</p>
+                      </div>
                     </div>
                   </>
                 )}
