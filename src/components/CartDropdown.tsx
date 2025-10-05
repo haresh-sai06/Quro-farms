@@ -84,7 +84,7 @@ const CartDropdown: React.FC = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="absolute right-0 top-12 w-96 bg-white rounded-2xl shadow-2xl border border-neutral-200 z-50 max-h-[80vh] overflow-hidden"
+              className="fixed md:absolute inset-x-0 md:inset-x-auto top-20 md:top-12 md:right-0 w-full md:w-96 max-w-md md:max-w-none mx-auto md:mx-0 bg-white rounded-2xl shadow-2xl border border-neutral-200 z-50 max-h-[80vh] overflow-hidden"
             >
               {/* Header */}
               <div className="p-4 border-b border-neutral-200 flex items-center justify-between bg-gradient-to-r from-yellow-50 to-yellow-100">

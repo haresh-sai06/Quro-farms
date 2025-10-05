@@ -8,9 +8,10 @@ import LogoImage from "../../public/components/image.png"; // Assuming image.png
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-  const isProductsPage =
+  const isSpecialPage =
     location.pathname === "/products" ||
-    location.pathname.startsWith("/product/");
+    location.pathname.startsWith("/product/") ||
+    location.pathname === "/order";
 
   const navLinks = [
     { name: "Why Choose Us", href: "#features", targetId: "features" },
@@ -21,20 +22,24 @@ const Header: React.FC = () => {
 
   // Enhanced smooth scroll function with hash detection
   const scrollToSection = (targetId: string) => {
-    const element = document.getElementById(targetId);
-    if (element) {
-      const headerHeight = 80; // Adjust if header height changes
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - headerHeight;
+    const menuWasOpen = isMenuOpen;
+    setIsMenuOpen(false);
+    const delay = menuWasOpen ? 300 : 0;
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        const headerHeight = 80; // Adjust if header height changes
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerHeight;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-      setIsMenuOpen(false); // Close mobile menu
-    } else {
-      console.warn(`Target element #${targetId} not found`); // Debug log
-    }
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      } else {
+        console.warn(`Target element #${targetId} not found`); // Debug log
+      }
+    }, delay);
   };
 
   // Handle hash changes for autoscroll (e.g., direct URL access like /#features)
@@ -96,7 +101,7 @@ const Header: React.FC = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          {isProductsPage ? (
+          {isSpecialPage ? (
             <motion.div
               whileHover={{ y: -2, color: "#f6cd5c" }}
               transition={{ duration: 0.2 }}
@@ -151,13 +156,18 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-black p-2"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile Navigation Icons */}
+        <div className="md:hidden flex items-center gap-4">
+          <div data-cart-icon>
+            <CartDropdown />
+          </div>
+          <button
+            className="text-black p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
@@ -176,7 +186,7 @@ const Header: React.FC = () => {
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             <div className="container-padding py-6 flex flex-col gap-4">
-              {isProductsPage ? (
+              {isSpecialPage ? (
                 <Link
                   to="/"
                   className="text-black hover:text-yellow-300 transition-colors font-medium py-2 flex items-center gap-2"
