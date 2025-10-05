@@ -21,11 +21,11 @@ export const useCart = () => {
   useEffect(() => {
     const savedCart = localStorage.getItem(CART_STORAGE_KEY);
     const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
-    log('Raw localStorage cart:', savedCart); // Using the new log function
+    log('Raw localStorage cart:', savedCart);
     if (savedCart) {
       try {
         const parsed = JSON.parse(savedCart);
-        log('Parsed cart:', parsed); // Using the new log function
+        log('Parsed cart:', parsed);
         setCartItems(parsed);
       } catch (error) {
         console.error('Error loading cart from localStorage:', error);
@@ -34,56 +34,91 @@ export const useCart = () => {
     if (savedItems) {
       try {
         const parsed = JSON.parse(savedItems);
-        log('Parsed saved items:', parsed); // Using the new log function
+        log('Parsed saved items:', parsed);
         setSavedForLater(parsed);
       } catch (error) {
         console.error('Error loading saved items from localStorage:', error);
       }
     }
+    setIsLoaded(true);
   }, []);
 
-  // Save cart to localStorage whenever it changes
+  // Save cart to localStorage whenever it changes (only after loaded to avoid initial empty saves)
   useEffect(() => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (isLoaded) {
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+    }
+  }, [cartItems, isLoaded]);
 
-  // Save "saved for later" items to localStorage
+  // Save "saved for later" items to localStorage (only after loaded)
   useEffect(() => {
-    localStorage.setItem(SAVED_FOR_LATER_KEY, JSON.stringify(savedForLater));
-  }, [savedForLater]);
+    if (isLoaded) {
+      localStorage.setItem(SAVED_FOR_LATER_KEY, JSON.stringify(savedForLater));
+    }
+  }, [savedForLater, isLoaded]);
 
-  // Periodically check for changes in localStorage every 5 seconds
+  // Listen for storage events from other tabs/windows (for cross-tab sync)
   useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === CART_STORAGE_KEY) {
+        try {
+          const parsedCart = e.newValue ? JSON.parse(e.newValue) : [];
+          log('Cart updated from storage event:', parsedCart);
+          setCartItems(parsedCart);
+        } catch (error) {
+          console.error('Error parsing cart from storage event:', error);
+        }
+      }
+      if (e.key === SAVED_FOR_LATER_KEY) {
+        try {
+          const parsedItems = e.newValue ? JSON.parse(e.newValue) : [];
+          log('Saved items updated from storage event:', parsedItems);
+          setSavedForLater(parsedItems);
+        } catch (error) {
+          console.error('Error parsing saved items from storage event:', error);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
+
+  // Poll localStorage every 2.5 seconds for updates (for same-tab sync and faster refresh)
+  useEffect(() => {
+    if (!isLoaded) return;
+
     const interval = setInterval(() => {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
       const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
+
       if (savedCart) {
         try {
           const parsedCart = JSON.parse(savedCart);
           if (JSON.stringify(parsedCart) !== JSON.stringify(cartItems)) {
-            log('Cart updated from localStorage:', parsedCart); // Using the new log function
+            log('Cart refreshed from localStorage poll:', parsedCart);
             setCartItems(parsedCart);
           }
         } catch (error) {
-          console.error('Error parsing cart from localStorage:', error);
+          console.error('Error parsing cart from localStorage poll:', error);
         }
       }
+
       if (savedItems) {
         try {
           const parsedItems = JSON.parse(savedItems);
           if (JSON.stringify(parsedItems) !== JSON.stringify(savedForLater)) {
-            log('Saved items updated from localStorage:', parsedItems); // Using the new log function
+            log('Saved items refreshed from localStorage poll:', parsedItems);
             setSavedForLater(parsedItems);
           }
         } catch (error) {
-          console.error('Error parsing saved items from localStorage:', error);
+          console.error('Error parsing saved items from localStorage poll:', error);
         }
       }
     }, 2500);
 
-    // Cleanup interval on unmount
     return () => clearInterval(interval);
-  }, [cartItems, savedForLater]);
+  }, [cartItems, savedForLater, isLoaded]);
 
   const checkStock = (product: Product, requestedQuantity: number): boolean => {
     const currentCartQuantity = cartItems.find(item => item.product.id === product.id)?.quantity || 0;
@@ -103,7 +138,7 @@ export const useCart = () => {
   };
 
   const addToCart = (product: Product, quantity: number = 1) => {
-    log('Adding to cart:', product, quantity); // Using the new log function
+    log('Adding to cart:', product, quantity);
     if (!checkStock(product, quantity)) {
       return false;
     }
@@ -137,7 +172,8 @@ export const useCart = () => {
     }
 
     const product = cartItems.find(item => item.product.id === productId)?.product;
-    if (product && !checkStock(product, quantity - (cartItems.find(item => item.product.id === productId)?.quantity || 0))) {
+    const currentQuantity = cartItems.find(item => item.product.id === productId)?.quantity || 0;
+    if (product && !checkStock(product, quantity - currentQuantity)) {
       return;
     }
     setCartItems(prevItems =>
@@ -216,6 +252,7 @@ export const useCart = () => {
   return {
     cartItems,
     savedForLater,
+    isLoaded,
     addToCart,
     removeFromCart,
     updateQuantity,
