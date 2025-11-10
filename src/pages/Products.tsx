@@ -73,7 +73,7 @@ const ProductsPage = () => {
               Our <span className="text-amber-500">Farm-Fresh</span> Products
             </h1>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              Discover our wide range of naturally produced, handpicked daily from trusted local farms.
+              Every root tells a story of care, purity, and trust. From our farms to you, only the best of nature.
             </p>
           </motion.div>
 
