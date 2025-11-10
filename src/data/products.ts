@@ -102,20 +102,20 @@ export const products: Product[] = [
     pairingSuggestions: ['Curry spices', 'Vanilla', 'Shea butter', 'Coffee'],
     storageInstructions: 'Store coconut oil sealed, room temperature.',
     customerUseCases: ['Cooking stir-fries', 'Skincare', 'Hair nourishment', 'Energy snacks'],
-    sustainabilityImpact: 'Our authentic coconut farming supports coastal ecosystems and reduces chemical runoff.',
+    sustainabilityImpact: 'Our authentic coconut farming supports ecosystems and reduces chemical runoff.',
     farmerStory: 'Amit, our coconut farmer, hand-selects mature coconuts for the best oil quality.',
     productStory: 'Our coconut oil comes from coastal groves, cold-pressed from fresh nuts. Grown authentically, it’s pure nourishment from farm to bottle.',
     healthBenefits: [
       'Boosts heart health',
       'Enhances skin moisture',
-      'Supports weight loss',
+      'Rich in Antioxidants',
       'Strengthens immunity authentically'
     ],
     recipeIdeas: [
-      { name: 'Kerala Avial', method: 'A mixed vegetable curry cooked in coconut oil and flavored with curry leaves.' },
-      { name: 'Kerala Fish Curry', method: 'Spicy, tangy fish curry simmered in coconut oil with coconut milk and tamarind.' },
+      { name: 'Avial', method: 'A mixed vegetable curry cooked in coconut oil and flavored with curry leaves.' },
+      { name: 'Fish Curry', method: 'Spicy, tangy fish curry simmered in coconut oil with coconut milk and tamarind.' },
       { name: 'Cabbage Thoran', method: 'Finely chopped cabbage stir-fried with coconut oil, grated coconut, and green chilies.' },
-      { name: 'Kerala Puttu & Kadala Curry', method: 'Steamed rice flour cakes served with black chickpea curry tempered in coconut oil.' }
+      { name: 'Puttu & Kadala Curry', method: 'Steamed rice flour cakes served with black chickpea curry tempered in coconut oil.' }
     ],
     ecoFriendlyPractices: ['authentic farming', 'Cold-pressing', 'Eco-friendly packaging', 'Community farming'],
     customerSpotlight: 'Lisa swears by our coconut oil for cooking and skincare, loving its authenticity. "My hair shines, and meals taste tropical!"',
@@ -135,11 +135,11 @@ export const products: Product[] = [
     description: 'Genuine moringa powder fuels wellness genuinely. Farm-fresh, vitamin-rich for smoothies, teas.',
     category: 'Powders',
     features: [
-      'Branch Cutting & Washing',
-      'Leaf Separation & Cleaning',
-      'Shade Drying Carefully',
-      'Powdering into Smooth Form'
-    ],
+  'Handpicked from our Farms',
+  'Shade-Dried to Preserve Natural Goodness',
+  'Finely Ground for a Smooth, Fresh Texture',
+  'Packed with Care to Lock in Purity'
+],
     processingJourney: [
       'Pick young moringa leaves',
       'Wash with fresh water',
@@ -150,8 +150,8 @@ export const products: Product[] = [
     uniqueSellingPoints: [
       'High vitamin and mineral content',
       'Shade-dried for nutrient retention',
-      'Genuine and additive-free',
-      'Supports local farmers'
+      'Additive-free',
+      'Single-sourced farm freshness'
     ],
     seasonalAvailability: 'Available year-round, peak quality from March to June',
     pairingSuggestions: ['Spinach', 'Lemon', 'Honey', 'Banana'],
@@ -167,9 +167,8 @@ export const products: Product[] = [
       'Enhances skin, hair'
     ],
     recipeIdeas: [
-      { name: 'Moringa Idli/Dosa', method: 'Traditional South Indian breakfast infused with moringa powder in the batter.' },
+      { name: 'Moringa Idli/Dosa', method: 'Traditional breakfast infused with moringa powder in the batter.' },
       { name: 'Moringa Rasam', method: 'A South Indian tamarind-based soup enriched with moringa powder.' },
-      { name: 'Moringa Chutney', method: 'A tangy chutney blended with coconut, spices, and moringa powder.' },
       { name: 'Moringa Lassi', method: 'A probiotic-rich yogurt drink flavored with moringa for cooling refreshment.' },
       { name: 'Moringa Tea', method: 'A soothing herbal tea brewed with moringa powder for daily wellness.' }
     ],
@@ -193,8 +192,8 @@ export const products: Product[] = [
     features: [
       'Fiber-rich banana powder',
       'Gluten-free baking alternative',
-      'Supports gut health',
-      'Freshly grown purity'
+      'No Additives or Preservatives, 100% Natural',
+      'Made from Select, Fully Ripened Bananas'
     ],
     processingJourney: [
       'Cleaning & Peeling Thoroughly',
@@ -206,7 +205,7 @@ export const products: Product[] = [
     uniqueSellingPoints: [
       'Gluten-free and fiber-rich',
       'Low-temperature dehydration',
-      'Sustainably sourced',
+      'Hygienically Processed',
       'Versatile for cooking and baking'
     ],
     seasonalAvailability: 'Available year-round, peak harvest from July to October',
@@ -219,16 +218,28 @@ export const products: Product[] = [
     healthBenefits: [
       'Improves gut health',
       'Stabilizes blood sugar',
-      'Aids weight management',
+      'Ideal for Infant Nutrition',
       'Boosts potassium intake'
     ],
     recipeIdeas: [
-      { name: 'Raw Banana Vada', method: 'Crispy savory fritters made with raw banana powder and spices.' },
-      { name: 'Raw Banana Porridge', method: 'Healthy breakfast porridge cooked with milk, jaggery, and banana powder.' },
-      { name: 'Raw Banana Halwa', method: 'A sweet dessert made with raw banana powder, jaggery, and ghee.' },
-      { name: 'Raw Banana Roti', method: 'Nutritious flatbreads made from raw banana powder and whole wheat flour.' }
-    ],
-    ecoFriendlyPractices: ['fresh farming', 'Low-energy dehydration', 'Composting waste', 'Sustainable sourcing'],
+  { 
+    name: 'Banana Oatmeal Cookies', 
+    method: 'Wholesome cookies made with banana powder, oats, honey, and butter for a naturally sweet and nutritious snack.' 
+  },
+  { 
+    name: 'Raw Banana Porridge', 
+    method: 'Healthy breakfast porridge cooked with milk, jaggery, and banana powder for a comforting start to the day.' 
+  },
+  { 
+    name: 'Banana White Sauce', 
+    method: 'A creamy white sauce prepared with banana powder, milk, butter, and a touch of flour—perfect for pastas or savory dishes.' 
+  },
+  { 
+    name: 'Raw Banana Roti', 
+    method: 'Nutritious flatbreads made from banana powder and whole wheat flour, ideal for a wholesome meal.' 
+  }
+],
+    ecoFriendlyPractices: ['fresh farming', 'Low-energy dehydration', 'Composting waste', 'Nutrient Preservation Techniques'],
     customerSpotlight: '"This banana powder is a game-changer for my gluten-free baking!" - Home baker testimonial',
     farmToTableImage: FarmImage,
     inStock: true
@@ -247,7 +258,7 @@ export const products: Product[] = [
     category: 'Powders',
     features: [
       'Easily digestible powder',
-      'Wholesome thickener',
+      'Gluten-free alternative',
       'Soothing properties',
       'Authentic and additive-free'
     ],
@@ -273,18 +284,31 @@ export const products: Product[] = [
     productStory: 'Our arrowroot powder is sourced from authentic farms, processed authentically to retain its soothing properties.',
     healthBenefits: [
       'Supports digestive health',
-      'Gluten-free alternative',
+      'helps cure UTI',
       'Soothes stomach discomfort',
       'Provides gentle energy'
     ],
-    recipeIdeas: [
-      { name: 'Arrowroot Kheer', method: 'Creamy Indian pudding cooked with milk, sugar, and arrowroot powder.' },
-      { name: 'Arrowroot Pakoras', method: 'Crispy fritters where arrowroot powder adds a perfect light coating.' },
-      { name: 'Arrowroot Soup Thickener', method: 'Used as a natural thickening agent in soups and gravies.' },
-      { name: 'Arrowroot Ladoo', method: 'Energy balls made with arrowroot powder, nuts, and jaggery.' }
-    ],
+recipeIdeas: [
+  { 
+    name: 'Arrowroot Kheer', 
+    method: 'A light and creamy pudding cooked with water, sugar, and arrowroot powder for a smooth texture.' 
+  },
+  { 
+    name: 'Arrowroot Pancakes', 
+    method: 'Soft, gluten-free pancakes made with arrowroot powder, jaggery, and a hint of cardamom — perfect for a wholesome breakfast.' 
+  },
+  { 
+    name: 'Arrowroot Soup Thickener', 
+    method: 'Used as a natural thickening agent in soups and gravies, adding a silky smooth consistency without altering flavor.' 
+  },
+  { 
+    name: 'Arrowroot Lassi', 
+    method: 'Cooked in water to a light liquid form and blended with buttermilk, salt, and a tempering of your choice for a cooling, probiotic drink.' 
+  }
+],
+
     ecoFriendlyPractices: ['authentic farming', 'Low-energy processing', 'Eco-friendly packaging', 'Composting'],
-    customerSpotlight: '"This arrowroot powder is perfect for my sensitive stomach and makes amazing sauces!" - Customer review',
+    customerSpotlight: '"This arrowroot powder is perfect for my sensitive stomach and makes amazing sauces!"',
     farmToTableImage: Scenary,
     inStock: true
   },
@@ -298,13 +322,13 @@ export const products: Product[] = [
     rating: 4.7,
     reviews: 178,
     badge: 'Authentic',
-    description: 'Honestly sweet and fiber-rich Jackfruit Powder, a versatile superfood for smoothies, baking, and traditional recipes.',
+    description: 'Fiber-rich Jackfruit Powder, a versatile superfood for smoothies, baking, and traditional recipes.',
     category: 'Powders',
     features: [
       'Fiber-rich superfood',
-      'Honestly sweet flavor',
+      'Plant-Based Nutrition Source',
       'Versatile for recipes',
-      'Honestly grown'
+      'Authentic and additive-free'
     ],
     processingJourney: [
       'Careful Procurement & Selection',
@@ -315,9 +339,9 @@ export const products: Product[] = [
     whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
       'High fiber content',
-      'Honest sweetness',
+      'Supports Digestive Wellness',
       'Sustainably sourced',
-      'Versatile for sweet and savory dishes'
+      'Rich in Essential Nutrients for Everyday Health'
     ],
     seasonalAvailability: 'Available year-round, peak harvest from April to July',
     pairingSuggestions: ['Coconut', 'Cardamom', 'Honey', 'Nuts'],
@@ -329,17 +353,30 @@ export const products: Product[] = [
     healthBenefits: [
       'Supports digestive health',
       'Rich in fiber',
-      'Provides honest energy',
+      'Supports blood sugar management',
       'Antioxidant properties'
     ],
-    recipeIdeas: [
-      { name: 'Jackfruit Lassi', method: 'Refreshing yogurt drink flavored with jackfruit powder.' },
-      { name: 'Jackfruit Sweet Paniyaram', method: 'Soft, bite-sized dumplings with a jackfruit powder-infused batter.' },
-      { name: 'Jackfruit Adai', method: 'Lentil crepe with a hint of jackfruit powder for flavor and nutrition.' },
-      { name: 'Jackfruit Chutney Powder', method: 'Spicy-sweet dry chutney mix using roasted jackfruit powder.' }
-    ],
-    ecoFriendlyPractices: ['honest farming', 'Low-energy dehydration', 'Sustainable sourcing', 'Community support'],
-    customerSpotlight: '"This jackfruit powder adds a unique sweetness to my baking!" - Home chef testimonial',
+   recipeIdeas: [
+  { 
+    name: 'Jackfruit Dosa', 
+    method: 'Add a spoon of jackfruit powder to dosa batter for extra nutrition and a soft texture.' 
+  },
+  { 
+    name: 'Jackfruit Sweet Paniyaram', 
+    method: 'Soft, bite-sized dumplings made with a jackfruit powder-infused batter for added fiber and flavor.' 
+  },
+  { 
+    name: 'Jackfruit Adai', 
+    method: 'Lentil crepes enriched with jackfruit powder, making them more filling and nutrient-dense.' 
+  },
+  { 
+    name: 'Jackfruit Roti', 
+    method: 'Mix jackfruit powder into wheat flour to prepare soft, wholesome rotis rich in fiber and minerals.' 
+  }
+],
+
+    ecoFriendlyPractices: ['Fresh farming methods', 'Low-energy dehydration', 'Sustainable sourcing', 'Community support'],
+    customerSpotlight: '"This jackfruit powder adds a healthy boost to my everyday meals!"',
     farmToTableImage: FarmImage,
     inStock: true
   }
