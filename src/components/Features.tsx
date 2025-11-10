@@ -20,7 +20,7 @@ const featuresList = [
 	{
 		title: "Farm-to-Home Delivery",
 		description:
-			"Fresh produce delivered directly from our farms to your home within 6 working days, ensuring quality and care at every step.",
+			"Produced and delivered directly from our farms to your home, ensuring quality and care at every step.",
 		icon: Truck,
 		color: "text-orange-600",
 		bgColor: "bg-orange-50",
