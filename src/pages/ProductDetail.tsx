@@ -555,10 +555,10 @@ const ProductDetail = () => {
             <AnimatedSection delay={0.6} className="mb-12 sm:mb-20">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-12">
                 <div className="bg-amber-50 p-4 sm:p-8 rounded-2xl">
-                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-6">
+                  {/* <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-6">
                     <Clock className="w-5 sm:w-8 h-5 sm:h-8 text-amber-600" />
                     <h3 className="text-xl sm:text-2xl font-bold text-primary">Seasonal Availability</h3>
-                  </div>
+                  </div> */}
                   <p className="text-sm sm:text-lg text-neutral-700">{product.seasonalAvailability}</p>
                 </div>
                 <div className="bg-blue-50 p-4 sm:p-8 rounded-2xl">
