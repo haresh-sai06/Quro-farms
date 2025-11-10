@@ -62,7 +62,7 @@ const Hero = () => {
 
   const heroFeatures = [
     { icon: <Shield className="w-5 h-5" />, text: "Cultivated with Care" },
-    { icon: <Heart className="w-5 h-5" />, text: "Freshly Harvested" },
+    { icon: <Heart className="w-5 h-5" />, text: "Purity in Everyroot" },
     { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
   ];
 
@@ -159,7 +159,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep.
             </motion.p>
 
             <div className="flex justify-center w-full"> {/* Centers the feature list */}
@@ -244,7 +244,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep across India.
+              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep.
             </motion.p>
 
             <motion.div 
