@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
 
           <p className="text-black text-lg leading-relaxed mb-6 max-w-md mx-auto">
             Bringing you 100% natural, chemical-free farm products directly from
-            our farms across India to your doorstep.
+            our farms to your doorstep.
           </p>
 
           <div className="space-y-3 w-full max-w-sm">
