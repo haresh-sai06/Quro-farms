@@ -62,8 +62,7 @@ const Hero = () => {
 
   const heroFeatures = [
     { icon: <Shield className="w-5 h-5" />, text: "Cultivated with Care" },
-    { icon: <Heart className="w-5 h-5" />, text: "Purity in Everyroot" },
-    { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
+    { icon: <Heart className="w-5 h-5" />, text: "Purity in Everyroot" }
   ];
 
   return (

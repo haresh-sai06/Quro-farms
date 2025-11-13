@@ -16,14 +16,6 @@ const featuresList = [
 		icon: Shield,
 		color: "text-blue-600",
 		bgColor: "bg-blue-50",
-	},
-	{
-		title: "Farm-to-Home Delivery",
-		description:
-			"Produced and delivered directly from our farms to your home, ensuring quality and care at every step.",
-		icon: Truck,
-		color: "text-orange-600",
-		bgColor: "bg-orange-50",
 	}
 ];
 
