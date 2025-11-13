@@ -24,15 +24,7 @@ const featuresList = [
 		icon: Truck,
 		color: "text-orange-600",
 		bgColor: "bg-orange-50",
-	},
-	{
-		title: "Freshly Harvested Guarantee",
-		description:
-			"All our products are harvested in small batches and delivered fresh to your doorstep.",
-		icon: Leaf,
-		color: "text-yellow-600",
-		bgColor: "bg-yellow-50",
-	},
+	}
 ];
 
 const Features: React.FC = () => {

@@ -90,7 +90,7 @@ const OrderNow: React.FC = () => {
       if (customerInfo.city) message += `City: ${customerInfo.city}\n`;
       if (customerInfo.pincode) message += `PIN: ${customerInfo.pincode}\n\n`;
     }
-    
+    message += "Additional courier charges  apply.\n\n";
     message += "Please confirm this order. Thank you! 🙏";
 
     return message;
@@ -232,7 +232,7 @@ const OrderNow: React.FC = () => {
                       </div>
                       <div>
                         <h3 className="text-sm text-neutral-600 mt-2 text-bold">* Note:</h3>
-                        <p className="text-sm text-neutral-500 mt-1">Additional courier taxes will be charged for orders outside Kerala and Tamil Nadu</p>
+                        <p className="text-sm text-neutral-500 mt-1">Additional courier charges will be applied.</p>
                       </div>
                     </div>
                   </>
@@ -397,6 +397,7 @@ const OrderNow: React.FC = () => {
                 <div className="flex justify-between font-bold text-primary">
                   <span>Total:</span>
                   <span>₹{total.toFixed(2)}</span>
+                  <span>Courier charges will apply</span>
                 </div>
               </div>
             </div>

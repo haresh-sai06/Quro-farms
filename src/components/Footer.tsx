@@ -138,12 +138,6 @@ const Footer: React.FC = () => {
                 Terms of Service
               </a>{" "}
               •
-              <a
-                href="#"
-                className="hover:text-black transition-colors ml-2"
-              >
-                Freshly Harvested
-              </a>
             </p>
           </div>
         </div>
