@@ -231,8 +231,7 @@ const OrderNow: React.FC = () => {
                         <span>₹{total.toFixed(2)}</span>
                       </div>
                       <div>
-                        <h3 className="text-sm text-neutral-600 mt-2 text-bold">* Note:</h3>
-                        <p className="text-sm text-neutral-500 mt-1">Additional courier taxes will be charged for orders outside Kerala and Tamil Nadu</p>
+                        <p className="text-sm text-neutral-500 mt-1">Shipping charges may apply*</p>
                       </div>
                     </div>
                   </>
@@ -350,7 +349,7 @@ const OrderNow: React.FC = () => {
                     whileTap={{ scale: cartItems.length > 0 ? 0.98 : 1 }}
                   >
                     <MessageCircle className="w-5 h-5" />
-                    {cartItems.length === 0 ? 'Cart is Empty' : 'Order via WhatsApp'}
+                    {cartItems.length === 0 ? 'Cart is Empty' : 'Review Order Details'}
                   </motion.button>
                 </div>
               </div>
@@ -416,7 +415,7 @@ const OrderNow: React.FC = () => {
                 onClick={() => setIsModalOpen(false)}
                 className="px-4 py-2 bg-neutral-200 text-neutral-800 rounded-xl hover:bg-neutral-300 transition-colors"
               >
-                Cancel
+                Back
               </button>
               <motion.button
                 onClick={confirmOrder}
