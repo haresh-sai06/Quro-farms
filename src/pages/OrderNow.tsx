@@ -90,7 +90,7 @@ const OrderNow: React.FC = () => {
       if (customerInfo.city) message += `City: ${customerInfo.city}\n`;
       if (customerInfo.pincode) message += `PIN: ${customerInfo.pincode}\n\n`;
     }
-    
+    message += "Additional courier charges  apply.\n\n";
     message += "Please confirm this order. Thank you! 🙏";
 
     return message;
@@ -396,6 +396,7 @@ const OrderNow: React.FC = () => {
                 <div className="flex justify-between font-bold text-primary">
                   <span>Total:</span>
                   <span>₹{total.toFixed(2)}</span>
+                  <span>Courier charges will apply</span>
                 </div>
               </div>
             </div>
