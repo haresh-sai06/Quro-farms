@@ -70,10 +70,10 @@ const ProductsPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl md:text-6xl font-extrabold text-yellow-800 mb-6">
-              Our <span className="text-amber-500">Farm-Fresh</span> Products
+              Our <span className="text-amber-500">Products</span> 
             </h1>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              Every root tells a story of care, purity, and trust. From our farms to you, only the best of nature.
+              Natural, chemical-free products made at our farms and processed with quality you can trust.
             </p>
           </motion.div>
 

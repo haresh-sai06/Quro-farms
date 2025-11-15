@@ -49,7 +49,7 @@ const ProductPreview: React.FC = () => {
             <span className="text-yellow-600">Featured</span> Products
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            Crafted with care and sourced from one trusted origin — delivering purity you can rely on.
+            Discover our extensive collection of farm-made produce, delivered with love from our fields to your family.
           </p>
         </div>
 
@@ -145,7 +145,6 @@ const ProductPreview: React.FC = () => {
               <ArrowRight className="w-5 h-5" />
             </button>
           </Link>
-          <p className="text-neutral-600 mt-4">Other farm-fresh products also available</p>
         </div>
       </div>
     </section>

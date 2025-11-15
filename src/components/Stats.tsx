@@ -14,8 +14,8 @@ const productCategories = [
 		image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a",
 	},
 	{
-		title: "Powders",
-		count: "5",
+		title: "Average Rating",
+		count: "4.7/5",
 		description: "Nutritious wellness blends",
 		icon: Leaf,
 		color: "text-orange-600",
@@ -23,8 +23,8 @@ const productCategories = [
 		image: PowderPicture,
 	},
 	{
-		title: "Cold-Pressed Oils",
-		count: "1",
+		title: "Repeated Purchase rate",
+		count: "91%",
 		description: "Pure & unrefined coconut oil",
 		icon: Droplet,
 		color: "text-yellow-600",
@@ -46,10 +46,10 @@ const Stats: React.FC = () => {
 	return (
 		<section
 			id="products-section"
-			className="py-20 container-padding bg-gradient-to-b from-yellow-50/50 to-white"
+			className="py-4 container-padding bg-gradient-to-b from-yellow-50/50 to-white"
 		>
-			<div className="max-w-6xl mx-auto">
-				<div className="text-center mb-16">
+			<div className="max-w-7xl mx-auto">
+				{/* <div className="text-center mb-16">
 					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-700">
 						Our{" "}
 						<span className="text-yellow-600">Product Range</span>
@@ -58,7 +58,7 @@ const Stats: React.FC = () => {
 						Discover our extensive collection of farm-fresh produce, delivered
 						with love from our fields to your family.
 					</p>
-				</div>
+				</div> */}
 
 				<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
 					{productCategories.map((category) => (
@@ -79,40 +79,38 @@ const Stats: React.FC = () => {
 							</div>
 
 							{/* Content */}
-							<div className="relative z-10 p-8 h-64 flex flex-col justify-between">
-								<div className="text-center">
-									<div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 inline-block mb-4 group-hover:bg-white/30 transition-colors">
-										<category.icon
-											className={`w-8 h-8 ${category.color}`}
-										/>
-									</div>
-									<h3 className="font-bold text-xl mb-2 text-primary">
-										{category.title}
-									</h3>
-								</div>
+							<div className="relative z-10 p-8 h-56 flex flex-col justify-center items-center text-center gap-3">
+                                <div className="flex flex-col items-center">
+                                    <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 inline-block mb-4 group-hover:bg-white/30 transition-colors">
+                                        {/* <category.icon
+                                            className={`w-8 h-8 ${category.color}`}
+                                        /> */}
+                                    </div>
+                                    <div className={`text-5xl font-bold mb-1 ${category.color}`}>
+                                        {category.count}
+                                    </div>
+                                </div>
 
-								<div className="text-center">
-									<div
-										className={`text-4xl font-bold mb-1 ${category.color}`}
-									>
-										{category.count}
-									</div>
-									<p className="text-neutral-700 font-medium">
-										{category.description}
-									</p>
-								</div>
-							</div>
+                                <div className="text-center">
+                                    <h3 className="font-bold text-xl mb-2 text-primary py-4">
+                                        {category.title}
+                                    </h3>
+                                    {/* <p className="text-neutral-700 font-medium">
+                                        {category.description}
+                                    </p> */}
+                                </div>
+                            </div>
 						</div>
 					))}
 				</div>
 
-				<div className="text-center mt-16">
+				{/* <div className="text-center mt-16">
 					<Link to="/products">
 						<button className="btn-custom-color text-black px-10 py-4 rounded-full hover:bg-yellow-700 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
 							View All Products
 						</button>
 					</Link>
-				</div>
+				</div> */}
 			</div>
 		</section>
 	);

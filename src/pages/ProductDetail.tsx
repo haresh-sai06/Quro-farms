@@ -342,7 +342,7 @@ const ProductDetail = () => {
           <motion.div
   animate={{ y: [0, 10, 0] }}
   transition={{ duration: 2, repeat: Infinity }}
-  className="absolute bottom-20 left-44 sm:left-1/2 sm:-translate-x-1/2 text-white"
+  className="absolute bottom-10 left-44 sm:left-1/2 sm:-translate-x-1/2 text-white"
 >
   <div className="flex flex-col items-center">
     <span className="text-xs sm:text-sm mb-1 sm:mb-2">Scroll to explore</span>
@@ -507,7 +507,7 @@ const ProductDetail = () => {
             </AnimatedSection>
 
             {/* Processing Journey */}
-            <AnimatedSection delay={0.3} className="mb-12 sm:mb-20">
+            {/* <AnimatedSection delay={0.3} className="mb-12 sm:mb-20">
               <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-12 text-center">Processing Journey</h2>
               <div className="space-y-4 sm:space-y-8">
                 {product.processingJourney.map((step, index) => (
@@ -529,11 +529,11 @@ const ProductDetail = () => {
                   </motion.div>
                 ))}
               </div>
-            </AnimatedSection>
+            </AnimatedSection> */}
 
             {/* Unique Selling Points */}
             <AnimatedSection delay={0.5} className="mb-12 sm:mb-20">
-              <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-12 text-center">What Makes Us Special</h2>
+              <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-12 text-center">What Makes Our {product.name} Special</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-8">
                 {product.uniqueSellingPoints.map((point, index) => (
                   <motion.div
@@ -552,13 +552,13 @@ const ProductDetail = () => {
             </AnimatedSection>
 
             {/* Seasonal Availability & Storage */}
-            <AnimatedSection delay={0.6} className="mb-12 sm:mb-20">
+            {/* <AnimatedSection delay={0.6} className="mb-12 sm:mb-20">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-12">
                 <div className="bg-amber-50 p-4 sm:p-8 rounded-2xl">
-                  {/* <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-6">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-6">
                     <Clock className="w-5 sm:w-8 h-5 sm:h-8 text-amber-600" />
                     <h3 className="text-xl sm:text-2xl font-bold text-primary">Seasonal Availability</h3>
-                  </div> */}
+                  </div>
                   <p className="text-sm sm:text-lg text-neutral-700">{product.seasonalAvailability}</p>
                 </div>
                 <div className="bg-blue-50 p-4 sm:p-8 rounded-2xl">
@@ -569,7 +569,7 @@ const ProductDetail = () => {
                   <p className="text-sm sm:text-lg text-neutral-700">{product.storageInstructions}</p>
                 </div>
               </div>
-            </AnimatedSection>
+            </AnimatedSection> */}
 
             {/* Recipe Ideas */}
             <AnimatedSection delay={0.8} className="mb-12 sm:mb-20">

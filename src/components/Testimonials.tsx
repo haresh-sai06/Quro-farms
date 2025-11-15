@@ -36,7 +36,7 @@ const Testimonials: React.FC = () => {
 						What Our <span className="text-yellow-600">Customers Say</span>
 					</h2>
 					<p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-						Join thousands of families across India who trust us for their daily fresh produce needs.
+						Join thousands of families across the globe who trust us for their daily fresh produce needs.
 					</p>
 				</div>
 				<div className="grid md:grid-cols-3 gap-8">
