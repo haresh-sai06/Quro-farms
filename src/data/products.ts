@@ -25,10 +25,10 @@ export const products: Product[] = [
     description: 'Vibrant wholesome turmeric powder enhances wellness. Farm-fresh, potent, and versatile for daily use.',
     category: 'Powders',
     features: [
-      'Pure wholesome turmeric powder',
+      'Stone grounded & traditionally made',
       'High curcumin, anti-inflammatory',
-      'Versatile for cooking, skincare',
-      'Sustainably farmed, additive-free'
+      'Versatile for cooking & skincare',
+      'Sustainably farmed & additive-free'
     ],
     processingJourney: [
       'Sowing and Harvesting.',
@@ -38,10 +38,10 @@ export const products: Product[] = [
     ],
     whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
-      'Zero chemical pesticides',
-      'High curcumin content',
-      'Direct farm-to-table sourcing',
-      'Supports sustainable farming'
+      'Single-Origin harvests',
+      'Zero chemicals, additives or preservatives',
+      'Perfect for cooking & skin wellness',
+      'Naturally vibrant color'
     ],
     seasonalAvailability: 'Available year-round, peak quality from January to March',
     pairingSuggestions: ['Ginger', 'Black pepper', 'Honey', 'Warm milk'],
@@ -51,18 +51,18 @@ export const products: Product[] = [
     farmerStory: 'Rajesh, our lead farmer, carries forward a 50-year tradition of wholesome turmeric cultivation in Kerala.',
     productStory: 'Our wholesome turmeric powder grows in Kerala’s rich soil, hand-harvested using sustainable methods. Stone-ground for purity, it delivers farm-fresh curcumin power to your kitchen.',
     healthBenefits: [
-      'Boosts immunity wholesomely',
-      'Reduces inflammation effectively',
-      'Supports digestion, detox',
-      'Enhances skin glow'
+      'Boosts Immunity',
+      'Reduces Inflammation',
+      'Supports Digestion, Detox',
+      'Enhances Skin Glow'
     ],
     recipeIdeas: [
       { name: 'Golden Milk (Haldi Doodh)', method: 'A soothing bedtime drink made with warm milk and turmeric for immunity.' },
-      { name: 'Turmeric Rasam', method: 'A tangy South Indian soup flavored with tamarind, turmeric, and spices.' },
-      { name: 'Spiced Curry', method: 'Add turmeric powder to curries for rich color and flavor.' },
+      { name: 'Rasam', method: 'A tangy soup flavored with tamarind, turmeric, and spices.' },
+      { name: 'Turmeric Rice', method: 'Fragant yellow rice infused with turmeric for color and mild flavour.' },
       { name: 'Herbal Tea', method: 'Steep turmeric powder in hot water with ginger for daily wellness.' }
     ],
-    ecoFriendlyPractices: ['wholesome farming', 'Solar drying', 'Compost fertilization', 'Rainwater harvesting'],
+    ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
     customerSpotlight: 'Sarah loves our wholesome turmeric powder for her lattes, easing joint pain noticeably. "The fresh, vibrant taste is unmatched, and I trust its farm-to-table purity."',
     farmToTableImage: Scenary,
     inStock: true
@@ -76,14 +76,14 @@ export const products: Product[] = [
     image: CoconutOil,
     rating: 4.7,
     reviews: 89,
-    badge: 'Fresh',
+    badge: 'Cold Pressed',
     description: 'Pure coconut oil, cold-pressed for versatility. Nourishes body, meals with farm-fresh quality.',
     category: 'Oils',
     features: [
-      'Cold-pressed coconut oil',
-      'Multi-purpose for cooking',
-      'Sustainable',
-      'additive-free oil'
+      'Cold-pressed extraction',
+      'Ideal for multi-purposes',
+      'Rich in MCTs',
+      '100% Pure & Additive-free'
     ],
     processingJourney: [
       'Coconut Cutting & Drying',
@@ -93,23 +93,23 @@ export const products: Product[] = [
     ],
     whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
-      'Cold-pressed for nutrient retention',
-      'No additives or preservatives',
-      'Sustainably sourced',
-      'Versatile for multiple uses'
+      'First Pressed, Farm-Derived Oil',
+      'Stable Quality Across Seasons',
+      'Packed Fresh to Preserve Goodness',
+      'Multi-Purpose Daily Essential'
     ],
     seasonalAvailability: 'Available year-round, peak quality from November to February',
     pairingSuggestions: ['Curry spices', 'Vanilla', 'Shea butter', 'Coffee'],
     storageInstructions: 'Store coconut oil sealed, room temperature.',
     customerUseCases: ['Cooking stir-fries', 'Skincare', 'Hair nourishment', 'Energy snacks'],
-    sustainabilityImpact: 'Our authentic coconut farming supports ecosystems and reduces chemical runoff.',
+    sustainabilityImpact: 'Our wholesome practices reduce environmental impact and support local biodiversity.',
     farmerStory: 'Amit, our coconut farmer, hand-selects mature coconuts for the best oil quality.',
     productStory: 'Our coconut oil comes from coastal groves, cold-pressed from fresh nuts. Grown authentically, it’s pure nourishment from farm to bottle.',
     healthBenefits: [
-      'Boosts heart health',
-      'Enhances skin moisture',
-      'Rich in Antioxidants',
-      'Strengthens immunity authentically'
+      'Supports Heart Health',
+      'Enhances Skin Moisture',
+      'Natural Hair Elixir',
+      'Strengthens Immunity'
     ],
     recipeIdeas: [
       { name: 'Avial', method: 'A mixed vegetable curry cooked in coconut oil and flavored with curry leaves.' },
@@ -117,8 +117,8 @@ export const products: Product[] = [
       { name: 'Cabbage Thoran', method: 'Finely chopped cabbage stir-fried with coconut oil, grated coconut, and green chilies.' },
       { name: 'Puttu & Kadala Curry', method: 'Steamed rice flour cakes served with black chickpea curry tempered in coconut oil.' }
     ],
-    ecoFriendlyPractices: ['authentic farming', 'Cold-pressing', 'Eco-friendly packaging', 'Community farming'],
-    customerSpotlight: 'Lisa swears by our coconut oil for cooking and skincare, loving its authenticity. "My hair shines, and meals taste tropical!"',
+    ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
+    customerSpotlight: 'Siddharth relies on our coconut oil for his everyday cooking and natural self-care routine.\n "The aroma is real, the texture is clean, and it feels far more authentic than the refined oils I used before."',
     farmToTableImage: CoconutFarm,
     inStock: true
   },
@@ -131,7 +131,7 @@ export const products: Product[] = [
     image: MoringaPowder,
     rating: 4.6,
     reviews: 134,
-    badge: 'Popular',
+    badge: 'Bestseller',
     description: 'Genuine moringa powder fuels wellness genuinely. Farm-fresh, vitamin-rich for smoothies, teas.',
     category: 'Powders',
     features: [
@@ -148,32 +148,32 @@ export const products: Product[] = [
     ],
     whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
-      'High vitamin and mineral content',
-      'Shade-dried for nutrient retention',
-      'Additive-free',
-      'Single-sourced farm freshness'
+      'Made from Young, Tender Leaves',
+      'Shade-Dried For Nutrient Retention',
+      'Consistent Taste & Quality (Fine, Smooth Texture)',
+      'Sourced Directly From Our Farms.'
     ],
     seasonalAvailability: 'Available year-round, peak quality from March to June',
     pairingSuggestions: ['Spinach', 'Lemon', 'Honey', 'Banana'],
     storageInstructions: 'Keep genuine moringa powder airtight, refrigerated.',
     customerUseCases: ['Smoothies', 'Teas', 'Energy balls', 'Pesto sauces'],
-    sustainabilityImpact: 'Our genuine moringa farming promotes soil health and supports sustainable agriculture.',
+    sustainabilityImpact: 'Our wholesome practices reduce environmental impact and support local biodiversity.',
     farmerStory: 'Suresh, our moringa expert, ensures leaves are picked at peak freshness for optimal nutrition.',
     productStory: 'Our genuine moringa powder grows on nutrient-rich farms, hand-picked for potency. Gently dried and ground, it’s a superfood from our fields to you.',
     healthBenefits: [
-      'Boosts energy genuinely',
-      'Strengthens immune system',
-      'Supports blood sugar',
-      'Enhances skin, hair'
+      'Strengthens Bones',
+      'Boosts Immunity',
+      'Controls Blood Sugar',
+      'Nourishes Skin & Hair'
     ],
     recipeIdeas: [
       { name: 'Moringa Idli/Dosa', method: 'Traditional breakfast infused with moringa powder in the batter.' },
-      { name: 'Moringa Rasam', method: 'A South Indian tamarind-based soup enriched with moringa powder.' },
+      { name: 'Moringa Rasam', method: 'A tamarind-based soup enriched with moringa powder.' },
       { name: 'Moringa Lassi', method: 'A probiotic-rich yogurt drink flavored with moringa for cooling refreshment.' },
       { name: 'Moringa Tea', method: 'A soothing herbal tea brewed with moringa powder for daily wellness.' }
     ],
-    ecoFriendlyPractices: ['genuine cultivation', 'Shade drying', 'Eco-friendly packaging', 'Organic fertilization'],
-    customerSpotlight: 'Raj boosts his smoothies with genuine moringa powder, feeling energized daily. "The farm-fresh taste is amazing, and it’s helped my immunity."',
+    ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
+    customerSpotlight: 'Vanitha adds our moringa powder to her morning smoothies for a simple, steady wellness boost. "It blends so smoothly and tastes incredibly fresh finally a moringa powder that feels genuinely pure."',
     farmToTableImage: TractorImage,
     inStock: true
   },
@@ -186,14 +186,14 @@ export const products: Product[] = [
     image: RawBananaPowder,
     rating: 4.9,
     reviews: 245,
-    badge: 'Seasonal',
+    badge: 'Featured',
     description: 'Raw banana powder, perfect gluten-free flour. Supports gut health, sustainably sourced.',
     category: 'Powders',
     features: [
-      'Fiber-rich banana powder',
       'Gluten-free baking alternative',
-      'No Additives or Preservatives, 100% Natural',
-      'Made from Select, Fully Ripened Bananas'
+      'Low heat processed',
+      '100% Natural, Zero additives',
+      'Made from Handpicked Bananas'
     ],
     processingJourney: [
       'Cleaning & Peeling Thoroughly',
@@ -203,10 +203,10 @@ export const products: Product[] = [
     ],
     whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
-      'Gluten-free and fiber-rich',
-      'Low-temperature dehydration',
-      'Hygienically Processed',
-      'Versatile for cooking and baking'
+      'Assured Clean & Neutral Taste Profile',
+      'Smooth, Lump-Free Texture',
+      'Carefully Chosen, Hygienically Processed',
+      'Versatile for Cooking and Baking'
     ],
     seasonalAvailability: 'Available year-round, peak harvest from July to October',
     pairingSuggestions: ['Cinnamon', 'Honey', 'Nuts', 'Coconut milk'],
@@ -216,10 +216,10 @@ export const products: Product[] = [
     farmerStory: 'Tenzin, our banana farmer, carefully selects green bananas for optimal powder quality.',
     productStory: 'Our raw banana powder is made from green bananas grown freshly, dehydrated to preserve nutrients. It’s a versatile, gluten-free superfood.',
     healthBenefits: [
-      'Improves gut health',
-      'Stabilizes blood sugar',
+      'Improves Gut Health',
+      'Stabilizes Blood Sugar',
       'Ideal for Infant Nutrition',
-      'Boosts potassium intake'
+      'Sustains Energy Levels'
     ],
     recipeIdeas: [
   { 
@@ -232,15 +232,15 @@ export const products: Product[] = [
   },
   { 
     name: 'Banana White Sauce', 
-    method: 'A creamy white sauce prepared with banana powder, milk, butter, and a touch of flour—perfect for pastas or savory dishes.' 
+    method: 'A creamy white sauce prepared with banana powder, milk, butter, and a touch of flour perfect for pastas or savory dishes.' 
   },
   { 
     name: 'Raw Banana Roti', 
     method: 'Nutritious flatbreads made from banana powder and whole wheat flour, ideal for a wholesome meal.' 
   }
 ],
-    ecoFriendlyPractices: ['fresh farming', 'Low-energy dehydration', 'Composting waste', 'Nutrient Preservation Techniques'],
-    customerSpotlight: '"This banana powder is a game-changer for my gluten-free baking!" - Home baker testimonial',
+    ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
+    customerSpotlight: 'Arun uses our raw banana powder to make quick, wholesome porridges for her family. "The texture is so smooth and easy to mix, and I love that it tastes clean and natural every single time."',
     farmToTableImage: FarmImage,
     inStock: true
   },
@@ -253,14 +253,14 @@ export const products: Product[] = [
     image: ArrowRootPowder,
     rating: 4.7,
     reviews: 178,
-    badge: 'Fresh',
+    badge: 'Featured',
     description: 'Authentic and easily digestible Arrowroot Powder, known for its soothing properties and perfect as a wholesome thickener for soups, sauces, and desserts.',
     category: 'Powders',
     features: [
       'Easily digestible powder',
       'Gluten-free alternative',
       'Soothing properties',
-      'Authentic and additive-free'
+      'Authentic and chemical-free'
     ],
     processingJourney: [
       'Thorough Cleaning & Precise Cutting',
@@ -270,23 +270,23 @@ export const products: Product[] = [
     ],
     whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
-      'Gentle on digestion',
-      'Versatile for culinary use',
-      'Sustainably sourced',
-      'Free from additives'
+      'Extracted from Mature, Healthy Rhizomes',
+      'Neutral Taste for Versatile Use',
+      'Carefully Processed in Small Batches',
+      'Zero Additives Guarantee !'
     ],
     seasonalAvailability: 'Available year-round, peak quality from August to November',
     pairingSuggestions: ['Vanilla', 'Cinnamon', 'Coconut milk', 'Honey'],
     storageInstructions: 'Store arrowroot powder in airtight container, cool, dry.',
     customerUseCases: ['Soup thickening', 'Sauces', 'Desserts', 'Gluten-free baking'],
-    sustainabilityImpact: 'Our authentic arrowroot farming promotes soil health and sustainable agriculture.',
+    sustainabilityImpact: 'Our wholesome practices reduce environmental impact and support local biodiversity.',
     farmerStory: 'Lakshmi, our arrowroot farmer, ensures tubers are harvested at peak quality for the best powder.',
     productStory: 'Our arrowroot powder is sourced from authentic farms, processed authentically to retain its soothing properties.',
     healthBenefits: [
-      'Supports digestive health',
-      'helps cure UTI',
-      'Soothes stomach discomfort',
-      'Provides gentle energy'
+      'Supports Digestive Health',
+      'Helps Cure UTI',
+      'Soothes Stomach Irritation',
+      'Aids In Hydration Balance'
     ],
 recipeIdeas: [
   { 
@@ -295,20 +295,20 @@ recipeIdeas: [
   },
   { 
     name: 'Arrowroot Pancakes', 
-    method: 'Soft, gluten-free pancakes made with arrowroot powder, jaggery, and a hint of cardamom — perfect for a wholesome breakfast.' 
+    method: 'Soft, gluten-free pancakes made with arrowroot powder, jaggery, and a hint of cardamom perfect for a wholesome breakfast.' 
   },
   { 
     name: 'Arrowroot Soup Thickener', 
-    method: 'Used as a natural thickening agent in soups and gravies, adding a silky smooth consistency without altering flavor.' 
+    method: 'Use as a natural thickening agent in soups and gravies, adding a silky smooth consistency without altering flavor.' 
   },
   { 
     name: 'Arrowroot Lassi', 
-    method: 'Cooked in water to a light liquid form and blended with buttermilk, salt, and a tempering of your choice for a cooling, probiotic drink.' 
+    method: 'Cooked in water to a light liquid form and blended with buttermilk, salt, and tadka of your choice for a cooling, probiotic drink.' 
   }
 ],
 
-    ecoFriendlyPractices: ['authentic farming', 'Low-energy processing', 'Eco-friendly packaging', 'Composting'],
-    customerSpotlight: '"This arrowroot powder is perfect for my sensitive stomach and makes amazing sauces!"',
+    ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
+    customerSpotlight: 'Bindu trusts our arrowroot powder for light, easy-to-digest meals that suit his family’s daily needs. "It’s incredibly smooth, blends without any lumps, and has a clean taste that makes every recipe feel healthier."',
     farmToTableImage: Scenary,
     inStock: true
   },
@@ -321,14 +321,14 @@ recipeIdeas: [
     image: JackFruitPowder,
     rating: 4.7,
     reviews: 178,
-    badge: 'Authentic',
+    badge: 'Bestseller',
     description: 'Fiber-rich Jackfruit Powder, a versatile superfood for smoothies, baking, and traditional recipes.',
     category: 'Powders',
     features: [
       'Fiber-rich superfood',
-      'Plant-Based Nutrition Source',
+      'Plant-Based Nutrition',
       'Versatile for recipes',
-      'Authentic and additive-free'
+      'Smooth and fine textured'
     ],
     processingJourney: [
       'Careful Procurement & Selection',
@@ -338,23 +338,23 @@ recipeIdeas: [
     ],
     whyChooseOurProduct: 'Choose our products for their purity, sustainably sourced from our farms with no chemicals, ensuring farm-to-table freshness and quality.',
     uniqueSellingPoints: [
-      'High fiber content',
-      'Supports Digestive Wellness',
-      'Sustainably sourced',
+      'Traditionally Processed to Lock Nutrients',
+      'Made from Carefully Chosen Jackfruits',
+      'Consistent and Reliable Quality',
       'Rich in Essential Nutrients for Everyday Health'
     ],
     seasonalAvailability: 'Available year-round, peak harvest from April to July',
     pairingSuggestions: ['Coconut', 'Cardamom', 'Honey', 'Nuts'],
     storageInstructions: 'Store jackfruit powder in airtight container, cool, dry.',
     customerUseCases: ['Smoothies', 'Baking', 'Traditional desserts', 'Energy bars'],
-    sustainabilityImpact: 'Our honest jackfruit farming supports local communities and reduces food waste.',
+    sustainabilityImpact: 'Our wholesome practices reduce environmental impact and support local biodiversity.',
     farmerStory: 'Ravi, our jackfruit farmer, hand-selects ripe fruits for optimal flavor and nutrition.',
     productStory: 'Our jackfruit powder is made from honestly grown jackfruit, dehydrated to preserve its honest sweetness and nutrients.',
     healthBenefits: [
-      'Supports digestive health',
-      'Rich in fiber',
-      'Supports blood sugar management',
-      'Antioxidant properties'
+      'Supports Blood Sugar',
+      'Promotes Health Wellness',
+      'Supports Digestive Health',
+      'Antioxidant Properties'
     ],
    recipeIdeas: [
   { 
@@ -375,8 +375,8 @@ recipeIdeas: [
   }
 ],
 
-    ecoFriendlyPractices: ['Fresh farming methods', 'Low-energy dehydration', 'Sustainable sourcing', 'Community support'],
-    customerSpotlight: '"This jackfruit powder adds a healthy boost to my everyday meals!"',
+    ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
+    customerSpotlight: 'Haresh adds our jackfruit powder to her homemade batters and breakfast bowls for a balanced, wholesome touch. "I love its mild taste and smooth texture—so easy to use, and it blends into every recipe beautifully."',
     farmToTableImage: FarmImage,
     inStock: true
   }
