@@ -16,7 +16,6 @@ const featuresList = [
 		icon: Shield,
 		color: "text-blue-600",
 		bgColor: "bg-blue-50",
-<<<<<<< HEAD
 	},
 	{
 		title: "Consistent Premium Quality",
@@ -34,9 +33,6 @@ const featuresList = [
 		color: "text-yellow-600",
 		bgColor: "bg-yellow-50",
 	},
-=======
-	}
->>>>>>> ebf91de29d44f4b93030661aa6235f00b562710f
 ];
 
 const Features: React.FC = () => {
