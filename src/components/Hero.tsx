@@ -53,7 +53,6 @@ const Hero = () => {
   const headlineWords = [
     "From",
     "Our",
-    "Pure",
     "Farms",
     "To",
     "Your",
@@ -61,9 +60,9 @@ const Hero = () => {
   ];
 
   const heroFeatures = [
-    { icon: <Shield className="w-5 h-5" />, text: "Cultivated with Care" },
-    { icon: <Heart className="w-5 h-5" />, text: "Purity in Everyroot" },
-    { icon: <Truck className="w-5 h-5" />, text: "Farm-to-Home Delivery" },
+    { icon: <Heart className="w-5 h-5" />, text: "Crafted with Care" },
+    { icon: <Shield className="w-5 h-5" />, text: "Consistent Trusted Quality" },
+    { icon: <Leaf className="w-5 h-5" />, text: "Single Sourced" },
   ];
 
   return (
@@ -141,30 +140,37 @@ const Hero = () => {
         {/* Mobile View: Vertical Stack */}
         <div className="flex flex-col items-center sm:hidden">
           <div className="text-center mb-6">
-            <motion.h1 className="text-2xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-1">
-              {headlineWords.map((word, i) => (
-                <motion.span
-                  key={word + i}
-                  className="inline-block text-white text-shadow-lg drop-shadow-2xl"
-                  variants={headlineWordVariants}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
+            <motion.div
+              className="max-w-xs mx-auto mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h1 className="text-2xl font-bold leading-tight font-poppins flex flex-wrap justify-center gap-1">
+                {headlineWords.map((word, i) => (
+                  <motion.span
+                    key={word + i}
+                    className="inline-block text-white text-shadow-lg drop-shadow-2xl"
+                    variants={headlineWordVariants}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </motion.h1>
+            </motion.div>
 
             <motion.p
-              className="text-base text-white/90 mb-4 max-w-xs leading-relaxed text-shadow"
+              className="text-base text-white/90 mb-4 max-w-xs leading-relaxed text-shadow mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep.
+              Experience pure, natural products made in our farms and thoughtfully processed for your everyday use.
             </motion.p>
 
             <div className="flex justify-center w-full"> {/* Centers the feature list */}
               <motion.div 
-                className="flex flex-col flex-wrap gap-2 mb-4 w-fit md:w-1/2" /* Reduced width for the container */
+                className="flex flex-row flex-wrap gap-2 mb-4 w-fit md:w-1/2" /* Changed to flex-row for single line */
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.7 }}
@@ -226,25 +232,32 @@ const Hero = () => {
         {/* Desktop View: Side-by-Side Layout */}
         <div className="hidden sm:flex sm:flex-row justify-between items-center w-full">
           <div className="w-1/2 text-center pr-4">
-            <motion.h1 className="text-3xl lg:text-5xl font-bold mb-3 leading-tight font-poppins flex flex-wrap justify-center gap-2">
-              {headlineWords.map((word, i) => (
-                <motion.span
-                  key={word + i}
-                  className="inline-block text-white text-shadow-lg drop-shadow-2xl"
-                  variants={headlineWordVariants}
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
+            <motion.div
+              className="max-w-md mx-auto mb-3"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h1 className="text-3xl lg:text-5xl font-bold leading-tight font-poppins flex flex-wrap justify-center gap-2">
+                {headlineWords.map((word, i) => (
+                  <motion.span
+                    key={word + i}
+                    className="inline-block text-white text-shadow-lg drop-shadow-2xl"
+                    variants={headlineWordVariants}
+                  >
+                    {word}
+                  </motion.span>
+                ))}
+              </motion.h1>
+            </motion.div>
 
             <motion.p
-              className="text-lg lg:text-xl text-white/90 mb-4 max-w-md leading-relaxed text-shadow"
+              className="text-lg lg:text-xl text-white/90 mb-4 max-w-md leading-relaxed text-shadow mx-auto"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Experience the purity of farm-fresh products, harvested sustainably and delivered directly to your doorstep.
+              Experience pure, natural products made in our farms and thoughtfully processed for your everyday use.
             </motion.p>
 
             <motion.div 

@@ -46,8 +46,8 @@ const Footer: React.FC = () => {
           </div>
 
           <p className="text-black text-lg leading-relaxed mb-6 max-w-md mx-auto">
-            Bringing you 100% natural, chemical-free farm products directly from
-            our farms to your doorstep.
+            Bringing you 100% natural, chemical-free products directly from
+            our farm to your doorstep.
           </p>
 
           <div className="space-y-3 w-full max-w-sm">
@@ -70,10 +70,10 @@ const Footer: React.FC = () => {
         <div className="max-w-9xl mx-auto mt-12 pt-8 border-t border-black">
           <div className="text-center mb-8">
             <h3 className="text-2xl font-bold mb-4">
-              Stay Updated with Farm Fresh News
+              Stay Updated with Quro Farms
             </h3>
             <p className="text-black mb-6">
-              Get the latest updates on seasonal produce, special offers, and
+              Get the latest updates on our produce, special offers, health and
               farming tips.
             </p>
 
@@ -123,10 +123,9 @@ const Footer: React.FC = () => {
           {/* Footer Bottom */}
           <div className="text-center text-black">
             <p className="mb-2">
-              © 2025 Quro Farms. All rights reserved. | Made with ❤️ for healthy
-              living
+              © 2025 Quro Farms. All rights reserved. | Made with ❤️ from <a href="example.com"><i>Spigle.in</i></a>
             </p>
-            <p className="text-sm">
+            {/* <p className="text-sm">
               <a href="#" className="hover:text-black transition-colors">
                 Privacy Policy
               </a>{" "}
@@ -137,14 +136,7 @@ const Footer: React.FC = () => {
               >
                 Terms of Service
               </a>{" "}
-              •
-              <a
-                href="#"
-                className="hover:text-black transition-colors ml-2"
-              >
-                Freshly Harvested
-              </a>
-            </p>
+            </p> */}
           </div>
         </div>
       </div>

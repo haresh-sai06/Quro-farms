@@ -18,17 +18,17 @@ const featuresList = [
 		bgColor: "bg-blue-50",
 	},
 	{
-		title: "Farm-to-Home Delivery",
+		title: "Consistent Premium Quality",
 		description:
-			"Produced and delivered directly from our farms to your home, ensuring quality and care at every step.",
-		icon: Truck,
+			"Assured consistency in quality as all our products are from single source. Authenticity in every pinch !!",
+		icon: Heart,
 		color: "text-orange-600",
 		bgColor: "bg-orange-50",
 	},
 	{
-		title: "Freshly Harvested Guarantee",
+		title: "Made for Everyday Wellness",
 		description:
-			"All our products are harvested in small batches and delivered fresh to your doorstep.",
+			"With our culture of responsibility, we ensure our product has a mother's care and curation.",
 		icon: Leaf,
 		color: "text-yellow-600",
 		bgColor: "bg-yellow-50",
@@ -46,7 +46,7 @@ const Features: React.FC = () => {
 					</h2>
 					<p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
 						We're committed to bringing you the purest, healthiest products made
-						with care from our trusted farms.
+						with care from our farm.
 					</p>
 				</div>
 				<div className="grid md:grid-cols-2 gap-8">
