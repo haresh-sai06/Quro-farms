@@ -179,6 +179,11 @@ const ProductDetail = () => {
   const y = useTransform(scrollY, [0, 1000], [0, -200]);
   const opacity = useTransform(scrollY, [0, 500], [1, 0.3]);
 
+  // Scroll to top on component mount to ensure the page starts at the hero section
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   if (!product) {
     return (
       <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-white">

@@ -25,7 +25,7 @@ export const products: Product[] = [
     description: 'Vibrant wholesome turmeric powder enhances wellness. Farm-fresh, potent, and versatile for daily use.',
     category: 'Powders',
     features: [
-      'Stone grounded & traditionally made',
+      'Traditionally made',
       'High curcumin, anti-inflammatory',
       'Versatile for cooking & skincare',
       'Sustainably farmed & additive-free'

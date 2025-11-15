@@ -28,7 +28,7 @@ const featuresList = [
 	{
 		title: "Made for Everyday Wellness",
 		description:
-			"With our culture of responsibility, we ensure our product has a mother's care and curation.",
+			"Our culture of responsibility ensures that every product is created with exceptional care and quality.",
 		icon: Leaf,
 		color: "text-yellow-600",
 		bgColor: "bg-yellow-50",
