@@ -1,119 +1,136 @@
-import { Leaf, Apple, Truck, Users, Package, Droplet } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Leaf, Users, Package, Droplet } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { useParams } from "react-router-dom";
+
 import OilPicture from "/components/oil.webp";
 import PowderPicture from "/components/pic7.jpeg";
+import { products } from "../data/products";
 
 const productCategories = [
-	{
-		title: "Farm-Fresh Products",
-		count: "6",
-		description: "Wholesome powders & oils",
-		icon: Package,
-		color: "text-yellow-600",
-		bgGradient: "from-yellow-100 to-yellow-50",
-		image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a",
-	},
-	{
-		title: "Average Rating",
-		count: "4.7/5",
-		description: "Nutritious wellness blends",
-		icon: Leaf,
-		color: "text-orange-600",
-		bgGradient: "from-orange-100 to-orange-50",
-		image: PowderPicture,
-	},
-	{
-		title: "Repeated Purchase rate",
-		count: "91%",
-		description: "Pure & unrefined coconut oil",
-		icon: Droplet,
-		color: "text-yellow-600",
-		bgGradient: "from-yellow-100 to-yellow-50",
-		image: OilPicture,
-	},
-	{
-		title: "Happy Customers",
-		count: "5K+",
-		description: "Trusted across India",
-		icon: Users,
-		color: "text-purple-600",
-		bgGradient: "from-purple-100 to-purple-50",
-		image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23",
-	},
+  {
+    title: "Farm-Fresh Products",
+    count: "6",
+    color: "text-yellow-600",
+    bgGradient: "from-yellow-100 to-yellow-50",
+    image: "https://images.unsplash.com/photo-1493962853295-0fd70327578a",
+  },
+  {
+    title: "Average Rating",
+    count: "4.7/5",
+    color: "text-orange-600",
+    bgGradient: "from-orange-100 to-orange-50",
+    image: PowderPicture,
+  },
+  {
+    title: "Repeated Purchase rate",
+    count: "91%",
+    color: "text-yellow-600",
+    bgGradient: "from-yellow-100 to-yellow-50",
+    image: OilPicture,
+  },
+  {
+    title: "Happy Customers",
+    count: "5K+",
+    color: "text-purple-600",
+    bgGradient: "from-purple-100 to-purple-50",
+    image: "https://images.unsplash.com/photo-1517022812141-23620dba5c23",
+  },
 ];
 
-const Stats: React.FC = () => {
-	return (
-		<section
-			id="products-section"
-			className="py-4 container-padding bg-gradient-to-b from-yellow-50/50 to-white"
-		>
-			<div className="max-w-7xl mx-auto">
-				{/* <div className="text-center mb-16">
-					<h2 className="text-4xl md:text-5xl font-bold mb-6 text-yellow-700">
-						Our{" "}
-						<span className="text-yellow-600">Product Range</span>
-					</h2>
-					<p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-						Discover our extensive collection of farm-fresh produce, delivered
-						with love from our fields to your family.
-					</p>
-				</div> */}
+// ANIMATED WRAPPER
+const AnimatedSection = ({ children, className = "", delay = 0 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-				<div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-					{productCategories.map((category) => (
-						<div
-							key={category.title}
-							className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3"
-						>
-							{/* Background Image */}
-							<div className="absolute inset-0">
-								<img
-									src={category.image}
-									alt={category.title}
-									className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-								/>
-								<div
-									className={`absolute inset-0 bg-gradient-to-t ${category.bgGradient} opacity-90`}
-								></div>
-							</div>
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay, duration: 0.7 }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
-							{/* Content */}
-							<div className="relative z-10 p-8 h-56 flex flex-col justify-center items-center text-center gap-3">
-                                <div className="flex flex-col items-center">
-                                    <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-4 inline-block mb-4 group-hover:bg-white/30 transition-colors">
-                                        {/* <category.icon
-                                            className={`w-8 h-8 ${category.color}`}
-                                        /> */}
-                                    </div>
-                                    <div className={`text-5xl font-bold mb-1 ${category.color}`}>
-                                        {category.count}
-                                    </div>
-                                </div>
+// MAIN COMPONENT
+const Stats = () => {
+  const { id } = useParams();
+  const product = products.find((p) => p.id === id) || {
+    sustainabilityImpact: "",
+    ecoFriendlyPractices: [],
+  };
 
-                                <div className="text-center">
-                                    <h3 className="font-bold text-xl mb-2 text-primary py-4">
-                                        {category.title}
-                                    </h3>
-                                    {/* <p className="text-neutral-700 font-medium">
-                                        {category.description}
-                                    </p> */}
-                                </div>
-                            </div>
-						</div>
-					))}
-				</div>
+  return (
+    <section className="py-4 container-padding bg-gradient-to-b from-yellow-50/50 to-white">
+      <div className="max-w-7xl mx-auto">
 
-				{/* <div className="text-center mt-16">
-					<Link to="/products">
-						<button className="btn-custom-color text-black px-10 py-4 rounded-full hover:bg-yellow-700 transition-all duration-300 text-lg font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-							View All Products
-						</button>
-					</Link>
-				</div> */}
-			</div>
-		</section>
-	);
+        {/* CATEGORY CARDS */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {productCategories.map((category) => (
+            <div
+              key={category.title}
+              className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3"
+            >
+              {/* Background Image */}
+              <div className="absolute inset-0">
+                <img
+                  src={category.image}
+                  alt={category.title}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t ${category.bgGradient} opacity-90`}
+                ></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10 p-8 h-56 flex flex-col justify-center items-center text-center gap-3">
+                <div className="text-5xl font-bold mb-1 ${category.color}">
+                  {category.count}
+                </div>
+                <h3 className="font-bold text-xl mb-2 text-primary py-4">
+                  {category.title}
+                </h3>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* SUSTAINABILITY SECTION */}
+        <AnimatedSection delay={0.5} className="mt-28 mb-10">
+          <div className="bg-gradient-to-r from-yellow-100 to-blue-100 p-8 sm:p-12 rounded-3xl">
+            <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-6 sm:mb-10 text-center">
+              Sustainability Impact
+            </h2>
+
+            <p className="text-base sm:text-xl text-center text-neutral-700 mb-10 max-w-4xl mx-auto">
+              {product.sustainabilityImpact || "We focus on sustainable and eco-friendly production methods."}
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {(product.ecoFriendlyPractices.length ? product.ecoFriendlyPractices : ["Eco Friendly", "Reusable", "Chemical-Free", "Sustainable"]).map((practice, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl text-center shadow-lg"
+                >
+                  <Leaf className="w-8 h-8 text-yellow-600 mx-auto mb-4" />
+                  <p className="font-semibold text-primary">{practice}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+
+      </div>
+    </section>
+  );
 };
 
 export default Stats;

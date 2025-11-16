@@ -6,11 +6,10 @@ import RawBananaPowder from '/components/pic5.jpeg';
 import ArrowRootPowder from '/components/pic6.jpeg';
 import JackFruitPowder from '/components/pic7.jpeg';
 import CoconutFarm from '/components/coconutfarm.jpeg';
-import Scenary from '/components/scenary.jpeg';
 import JackFruit from '/components/jackfruit.jpeg';
 import ArrowRoot from '/components/arrowroot.jpeg';
 import Moringa from '/components/moringa.jpeg';
-import Banana from '/components/Banana.jpeg';
+import Banana from '/components/Banana.jpg';
 import Turmeric from '/components/turmeric.jpeg';
 
 export const products: Product[] = [
@@ -292,8 +291,8 @@ export const products: Product[] = [
     ],
 recipeIdeas: [
   { 
-    name: 'Arrowroot Kheer', 
-    method: 'A light and creamy pudding cooked with water, sugar, and arrowroot powder for a smooth texture.' 
+    name: 'Arrowroot Halwa', 
+    method: 'A soft and chewy sweet made by cooking arrowroot powder with ghee, sugar, and water until it turns glossy and firm, offering a light texture with mild sweetness.' 
   },
   { 
     name: 'Arrowroot Pancakes', 

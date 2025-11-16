@@ -601,29 +601,6 @@ const ProductDetail = () => {
             </AnimatedSection>
 
             {/* Sustainability Impact */}
-            <AnimatedSection delay={0.9} className="mb-12 sm:mb-20">
-              <div className="bg-gradient-to-r from-yellow-100 to-blue-100 p-4 sm:p-12 rounded-2xl sm:rounded-3xl">
-                <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 sm:mb-8 text-center">Sustainability Impact</h2>
-                <p className="text-base sm:text-xl text-center text-neutral-700 mb-4 sm:mb-12 max-w-xs sm:max-w-4xl mx-auto">
-                  {product.sustainabilityImpact}
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-6">
-                  {product.ecoFriendlyPractices.map((practice, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="bg-white/80 backdrop-blur-sm p-2 sm:p-6 rounded-2xl text-center shadow-lg"
-                    >
-                      <Leaf className="w-5 sm:w-8 h-5 sm:h-8 text-yellow-600 mx-auto mb-1 sm:mb-4" />
-                      <p className="font-semibold text-primary text-sm sm:text-base">{practice}</p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
 
             {/* Customer Spotlight */}
             <AnimatedSection delay={1.2} className="mb-12 sm:mb-20">
