@@ -1,17 +1,17 @@
 import { Product } from '../types/product';
 import TurmericPowder from '/components/pic1.jpeg';
-import PepperPowder from '/components/pic2.jpeg';
 import CoconutOil from '/components/pic3.jpeg';
 import MoringaPowder from '/components/pic4.jpeg';
 import RawBananaPowder from '/components/pic5.jpeg';
 import ArrowRootPowder from '/components/pic6.jpeg';
 import JackFruitPowder from '/components/pic7.jpeg';
 import CoconutFarm from '/components/coconutfarm.jpeg';
-import FarmImage from '/components/farmimage.jpeg';
-import TractorImage from '/components/tractorimage.jpeg';
 import Scenary from '/components/scenary.jpeg';
 import JackFruit from '/components/jackfruit.jpeg';
 import ArrowRoot from '/components/arrowroot.jpeg';
+import Moringa from '/components/moringa.jpeg';
+import Banana from '/components/Banana.jpeg';
+import Turmeric from '/components/turmeric.jpeg';
 
 export const products: Product[] = [
   {
@@ -66,7 +66,7 @@ export const products: Product[] = [
     ],
     ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
     customerSpotlight: 'Sarah loves our wholesome turmeric powder for her lattes, easing joint pain noticeably. "The fresh, vibrant taste is unmatched, and I trust its farm-to-table purity."',
-    farmToTableImage: Scenary,
+    farmToTableImage: Turmeric,
     inStock: true
   },
   {
@@ -176,7 +176,7 @@ export const products: Product[] = [
     ],
     ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
     customerSpotlight: 'Vanitha adds our moringa powder to her morning smoothies for a simple, steady wellness boost. "It blends so smoothly and tastes incredibly fresh finally a moringa powder that feels genuinely pure."',
-    farmToTableImage: TractorImage,
+    farmToTableImage: Moringa,
     inStock: true
   },
   {
@@ -243,7 +243,7 @@ export const products: Product[] = [
 ],
     ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
     customerSpotlight: 'Arun uses our raw banana powder to make quick, wholesome porridges for her family. "The texture is so smooth and easy to mix, and I love that it tastes clean and natural every single time."',
-    farmToTableImage: FarmImage,
+    farmToTableImage: Banana,
     inStock: true
   },
   {
