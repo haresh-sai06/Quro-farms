@@ -10,6 +10,8 @@ import CoconutFarm from '/components/coconutfarm.jpeg';
 import FarmImage from '/components/farmimage.jpeg';
 import TractorImage from '/components/tractorimage.jpeg';
 import Scenary from '/components/scenary.jpeg';
+import JackFruit from '/components/jackfruit.jpeg';
+import ArrowRoot from '/components/arrowroot.jpeg';
 
 export const products: Product[] = [
   {
@@ -309,7 +311,7 @@ recipeIdeas: [
 
     ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
     customerSpotlight: 'Bindu trusts our arrowroot powder for light, easy-to-digest meals that suit his family’s daily needs. "It’s incredibly smooth, blends without any lumps, and has a clean taste that makes every recipe feel healthier."',
-    farmToTableImage: Scenary,
+    farmToTableImage: ArrowRoot,
     inStock: true
   },
   {
@@ -377,7 +379,7 @@ recipeIdeas: [
 
     ecoFriendlyPractices: ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation'],
     customerSpotlight: 'Haresh adds our jackfruit powder to her homemade batters and breakfast bowls for a balanced, wholesome touch. "I love its mild taste and smooth texture—so easy to use, and it blends into every recipe beautifully."',
-    farmToTableImage: FarmImage,
+    farmToTableImage: JackFruit,
     inStock: true
   }
 ];
