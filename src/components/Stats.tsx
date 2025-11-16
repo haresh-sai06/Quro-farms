@@ -112,7 +112,7 @@ const Stats = () => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {(product.ecoFriendlyPractices.length ? product.ecoFriendlyPractices : ["Eco Friendly", "Reusable", "Chemical-Free", "Sustainable"]).map((practice, index) => (
+              {(product.ecoFriendlyPractices.length ? product.ecoFriendlyPractices : ['Regenerative Farming Techniques', 'Water-Consious Practices', 'Compost Fertilization (Zero Pesticides)', 'Biodiversity Friendly Cultivation']).map((practice, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, scale: 0.8 }}

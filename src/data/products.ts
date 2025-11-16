@@ -9,7 +9,7 @@ import CoconutFarm from '/components/coconutfarm.jpeg';
 import JackFruit from '/components/jackfruit.jpeg';
 import ArrowRoot from '/components/arrowroot.jpeg';
 import Moringa from '/components/moringa.jpeg';
-import Banana from '/components/Banana.jpg';
+import Banana from '/components/banana.jpeg';
 import Turmeric from '/components/turmeric.jpeg';
 
 export const products: Product[] = [
@@ -292,7 +292,7 @@ export const products: Product[] = [
 recipeIdeas: [
   { 
     name: 'Arrowroot Halwa', 
-    method: 'A soft and chewy sweet made by cooking arrowroot powder with ghee, sugar, and water until it turns glossy and firm, offering a light texture with mild sweetness.' 
+    method: 'A soft and chewy sweet made by cooking arrowroot powder with ghee, brown sugar, and water until it turns glossy and firm, offering a light texture with mild sweetness.' 
   },
   { 
     name: 'Arrowroot Pancakes', 
