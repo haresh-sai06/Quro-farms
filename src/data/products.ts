@@ -133,7 +133,7 @@ export const products: Product[] = [
     rating: 4.6,
     reviews: 134,
     badge: 'Bestseller',
-    description: 'Moringa powder fuels wellness. Farm-fresh, vitamin-rich for smoothies, teas.',
+    description: 'Clean, natural Moringa leaf Powder that supports immunity and blends effortlessly into your daily routine.',
     category: 'Powders',
     features: [
   'Handpicked from our Farms',
