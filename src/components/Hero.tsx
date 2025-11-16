@@ -169,19 +169,24 @@ const Hero = () => {
             </motion.p>
 
             <div className="flex justify-center w-full"> {/* Centers the feature list */}
-              <motion.div 
-                className="flex flex-row flex-wrap gap-2 mb-4 w-fit md:w-1/2" /* Changed to flex-row for single line */
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7 }}
-              >
-                {heroFeatures.map((feature, i) => (
-                  <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                    <span className="text-yellow-400">{feature.icon}</span>
-                    <span className="text-white text-sm">{feature.text}</span>
-                  </div>
-                ))}
-              </motion.div>
+<motion.div 
+  className="flex flex-row gap-3 mb-4 justify-start items-center w-full"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.7 }}
+>
+  {heroFeatures.map((feature, i) => (
+    <div 
+      key={feature.text + i} 
+      className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full whitespace-nowrap"
+    >
+      <span className="text-yellow-400">{feature.icon}</span>
+      <span className="text-white text-sm">{feature.text}</span>
+    </div>
+  ))}
+</motion.div>
+
+
             </div>
 
             <div className="flex flex-col items-center justify-center w-full py-3"> {/* Reduced py-6 to py-3 */}
@@ -230,7 +235,7 @@ const Hero = () => {
         </div>
 
         {/* Desktop View: Side-by-Side Layout */}
-        <div className="hidden sm:flex sm:flex-row justify-between items-center w-full">
+        <div className="hidden sm:flex sm:flex-row justify-between items-center w-full gap-16">
           <div className="w-1/2 text-center pr-4">
             <motion.div
               className="max-w-md mx-auto mb-3"
@@ -260,21 +265,26 @@ const Hero = () => {
               Experience pure, natural products made in our farms and thoughtfully processed for your everyday use.
             </motion.p>
 
-            <motion.div 
-              className="flex flex-row flex-wrap gap-3 mb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-            >
-              {heroFeatures.map((feature, i) => (
-                <div key={feature.text + i} className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full">
-                  <span className="text-yellow-400">{feature.icon}</span>
-                  <span className="text-white text-sm">{feature.text}</span>
-                </div>
-              ))}
-            </motion.div>
+<motion.div 
+  className="flex flex-row gap-3 mb-4 justify-start items-center w-full"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.7 }}
+>
+  {heroFeatures.map((feature, i) => (
+    <div 
+      key={feature.text + i} 
+      className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-2 py-1 rounded-full whitespace-nowrap"
+    >
+      <span className="text-yellow-400">{feature.icon}</span>
+      <span className="text-white text-sm">{feature.text}</span>
+    </div>
+  ))}
+</motion.div>
 
-            <div className="flex flex-row gap-4 mb-2 py-4"> {/* Reduced py-10 to py-4, mb-6 to mb-2 */}
+
+
+            <div className="flex flex-row gap-2 mb-2 py-4"> {/* Reduced py-10 to py-4, mb-6 to mb-2 */}
               <motion.button
                 className="btn-custom-color text-black px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-yellow-700 transition-colors relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
@@ -289,7 +299,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="w-1/2 flex flex-col items-center gap-2"> {/* Reduced gap-6 to gap-2 */}
+          <div className="w-1/2 flex flex-col items-center gap-6"> {/* Reduced gap-6 to gap-2 */}
             <motion.div 
               className="relative z-20"
               initial={{ opacity: 0, y: 50 }}
