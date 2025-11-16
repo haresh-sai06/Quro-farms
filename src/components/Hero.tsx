@@ -284,7 +284,7 @@ const Hero = () => {
 
 
 
-            <div className="flex flex-row gap-2 mb-2 py-4"> {/* Reduced py-10 to py-4, mb-6 to mb-2 */}
+            <div className="flex flex-row gap-2 mb-2 ml-12 py-4"> {/* Reduced py-10 to py-4, mb-6 to mb-2 */}
               <motion.button
                 className="btn-custom-color text-black px-6 py-3 rounded-full flex items-center gap-2 text-base font-semibold shadow-xl hover:bg-yellow-700 transition-colors relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
