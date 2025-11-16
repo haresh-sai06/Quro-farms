@@ -170,7 +170,7 @@ const Hero = () => {
 
             <div className="flex justify-center w-full"> {/* Centers the feature list */}
 <motion.div 
-  className="flex flex-row gap-3 mb-4 justify-start items-center w-full"
+  className="flex flex-row gap-3 mb-4 justify-center items-center flex-wrap"
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ delay: 0.7 }}
@@ -220,7 +220,7 @@ const Hero = () => {
                 <img
                   src={farmerImage}
                   alt="Our Farmer"
-                  className="w-[300px] h-[200px] object-cover rounded-2xl shadow-2xl border-4 border-white/30"
+                  className="w-full max-w-[300px] h-[200px] object-cover rounded-2xl shadow-2xl border-4 border-white/30"
                 />
               </motion.div>
               <motion.div 
@@ -266,7 +266,7 @@ const Hero = () => {
             </motion.p>
 
 <motion.div 
-  className="flex flex-row gap-3 mb-4 justify-start items-center w-full"
+  className="flex flex-row gap-3 mb-4 justify-center items-center flex-wrap"
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ delay: 0.7 }}
