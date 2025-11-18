@@ -36,6 +36,13 @@ const CartDropdown: React.FC = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  // Close dropdown automatically when cart becomes empty (e.g., after order placement)
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      setIsDropdownOpen(false);
+    }
+  }, [cartItems.length]);
+
   const handleQuantityChange = (productId: string, newQuantity: number) => {
     if (newQuantity >= 1) {
       updateQuantity(productId, newQuantity);
@@ -46,6 +53,7 @@ const CartDropdown: React.FC = () => {
     <div className="relative" ref={dropdownRef}>
       {/* Cart Icon with Badge */}
       <motion.button
+        type="button"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         className="relative p-2 text-black hover:text-yellow-300 transition-colors"
         whileHover={{ scale: 1.05 }}
@@ -95,6 +103,7 @@ const CartDropdown: React.FC = () => {
                 <div className="flex items-center gap-2">
                   {cartItems.length > 0 && (
                     <motion.button
+                      type="button"
                       onClick={clearCart}
                       className="text-xs text-red-600 hover:text-red-700 font-medium"
                       whileHover={{ scale: 1.05 }}
@@ -104,6 +113,7 @@ const CartDropdown: React.FC = () => {
                     </motion.button>
                   )}
                   <button
+                    type="button"
                     onClick={() => setIsDropdownOpen(false)}
                     className="p-1 hover:bg-neutral-100 rounded-full transition-colors"
                   >
@@ -164,6 +174,7 @@ const CartDropdown: React.FC = () => {
                             {/* Quantity Controls */}
                             <div className="flex items-center gap-2 mb-2">
                               <motion.button
+                                type="button"
                                 onClick={() => handleQuantityChange(item.product.id, item.quantity - 1)}
                                 className="p-1 hover:bg-neutral-200 rounded-full transition-colors"
                                 whileHover={{ scale: 1.1 }}
@@ -182,6 +193,7 @@ const CartDropdown: React.FC = () => {
                               />
                               
                               <motion.button
+                                type="button"
                                 onClick={() => handleQuantityChange(item.product.id, item.quantity + 1)}
                                 className="p-1 hover:bg-neutral-200 rounded-full transition-colors"
                                 whileHover={{ scale: 1.1 }}
@@ -200,6 +212,7 @@ const CartDropdown: React.FC = () => {
                           {/* Action Buttons */}
                           <div className="flex flex-col gap-1">
                             <motion.button
+                              type="button"
                               onClick={() => saveForLater(item.product.id)}
                               className="p-1 hover:bg-amber-100 rounded-full transition-colors"
                               whileHover={{ scale: 1.1 }}
@@ -209,6 +222,7 @@ const CartDropdown: React.FC = () => {
                               <Heart className="w-4 h-4 text-amber-500" />
                             </motion.button>
                             <motion.button
+                              type="button"
                               onClick={() => removeFromCart(item.product.id)}
                               className="p-1 hover:bg-red-100 rounded-full transition-colors"
                               whileHover={{ scale: 1.1 }}
@@ -249,6 +263,7 @@ const CartDropdown: React.FC = () => {
                           </div>
                           <div className="flex gap-1">
                             <motion.button
+                              type="button"
                               onClick={() => moveToCart(item.product.id)}
                               className="text-xs btn-custom-color text-white px-2 py-1 rounded hover:bg-yellow-700 transition-colors"
                               whileHover={{ scale: 1.05 }}
@@ -257,6 +272,7 @@ const CartDropdown: React.FC = () => {
                               Add
                             </motion.button>
                             <motion.button
+                              type="button"
                               onClick={() => removeSavedItem(item.product.id)}
                               className="p-1 hover:bg-red-100 rounded transition-colors"
                               whileHover={{ scale: 1.1 }}

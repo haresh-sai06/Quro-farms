@@ -131,7 +131,7 @@ export const useCart = () => {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [shouldClearOnLoad]);
 
-  // Reduce polling frequency to 5s and optimize (only if not already synced)
+  // Polling for same-tab sync, set to 1s for quicker updates (within a sec)
   useEffect(() => {
     if (!isLoaded) return;
 
@@ -139,26 +139,30 @@ export const useCart = () => {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
       const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
 
-      if (savedCart && JSON.stringify(JSON.parse(savedCart)) !== JSON.stringify(cartItems)) {
+      if (savedCart) {
         try {
           const parsedCart = JSON.parse(savedCart);
-          log('Cart refreshed from localStorage poll:', parsedCart);
-          setCartItems(parsedCart);
+          if (JSON.stringify(parsedCart) !== JSON.stringify(cartItems)) {
+            log('Cart refreshed from localStorage poll:', parsedCart);
+            setCartItems(parsedCart);
+          }
         } catch (error) {
           console.error('Error parsing cart from localStorage poll:', error);
         }
       }
 
-      if (savedItems && JSON.stringify(JSON.parse(savedItems)) !== JSON.stringify(savedForLater)) {
+      if (savedItems) {
         try {
           const parsedItems = JSON.parse(savedItems);
-          log('Saved items refreshed from localStorage poll:', parsedItems);
-          setSavedForLater(parsedItems);
+          if (JSON.stringify(parsedItems) !== JSON.stringify(savedForLater)) {
+            log('Saved items refreshed from localStorage poll:', parsedItems);
+            setSavedForLater(parsedItems);
+          }
         } catch (error) {
           console.error('Error parsing saved items from localStorage poll:', error);
         }
       }
-    }, 5000); // Increased to 5s for less overhead
+    }, 1000); // Set to 1s for near-instant sync without overload
 
     return () => clearInterval(interval);
   }, [cartItems, savedForLater, isLoaded]);
@@ -235,6 +239,9 @@ export const useCart = () => {
     localStorage.removeItem(SAVED_FOR_LATER_KEY);
     localStorage.setItem(CART_LAST_CLEARED_KEY, Date.now().toString());
     toast.success('Cart cleared');
+    // Dispatch a custom storage event to trigger immediate sync across tabs if needed
+    window.dispatchEvent(new StorageEvent('storage', { key: CART_STORAGE_KEY, newValue: null }));
+    window.dispatchEvent(new StorageEvent('storage', { key: SAVED_FOR_LATER_KEY, newValue: null }));
   }, []);
 
   const saveForLater = useCallback((productId: string) => {
