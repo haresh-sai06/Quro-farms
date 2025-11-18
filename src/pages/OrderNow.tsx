@@ -8,7 +8,7 @@ import { toast } from "sonner";
 const WHATSAPP_PHONE_NUMBER = "7558938256"; // Corrected with country code +91
 
 const OrderNow: React.FC = () => {
-  const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock } = useCartContext();
+  const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock, clearCart } = useCartContext();
   const [customerInfo, setCustomerInfo] = useState({
     name: '',
     email: '',
@@ -115,6 +115,8 @@ const OrderNow: React.FC = () => {
     window.open(whatsappUrl, "_blank");
     toast.success("Opening WhatsApp to send your order...");
     setIsModalOpen(false); // Close modal after opening WhatsApp
+    clearCart(); // Clear the cart after confirming the order
+    setCustomerInfo({ name: '', email: '', phone: '', address: '', city: '', pincode: '' }); // Reset form values
   };
 
   return (

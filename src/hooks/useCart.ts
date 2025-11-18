@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Product, CartItem } from '../types/product';
 import { toast } from 'sonner';
 
 const CART_STORAGE_KEY = 'quro-farms-cart';
 const SAVED_FOR_LATER_KEY = 'quro-farms-saved-for-later';
+const CART_LAST_CLEARED_KEY = 'quro-farms-cart-last-cleared'; // New key for session tracking
 
 // A custom logging function that is active only in development
 const log = (...args) => {
@@ -17,11 +18,40 @@ export const useCart = () => {
   const [savedForLater, setSavedForLater] = useState<CartItem[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load cart from localStorage on mount
+  // Helper to check if this is a "new session" (e.g., after 24 hours) and clear if so
+  const shouldClearOnLoad = useCallback(() => {
+    const lastCleared = localStorage.getItem(CART_LAST_CLEARED_KEY);
+    const now = Date.now();
+    const isNewSession = !lastCleared || (now - parseInt(lastCleared)) > 24 * 60 * 60 * 1000; // 24h threshold
+    return isNewSession;
+  }, []);
+
+  // Load cart from localStorage on mount, with new session clearing
   useEffect(() => {
+    const clearIfNewSession = () => {
+      if (shouldClearOnLoad()) {
+        localStorage.removeItem(CART_STORAGE_KEY);
+        localStorage.removeItem(SAVED_FOR_LATER_KEY);
+        localStorage.setItem(CART_LAST_CLEARED_KEY, Date.now().toString());
+        log('Cleared cart for new session on load');
+        setIsLoaded(true);
+        return { cart: [], saved: [] };
+      }
+      return null;
+    };
+
+    const clearedData = clearIfNewSession();
+    if (clearedData) {
+      setCartItems(clearedData.cart);
+      setSavedForLater(clearedData.saved);
+      return;
+    }
+
+    // Otherwise, load normally
     const savedCart = localStorage.getItem(CART_STORAGE_KEY);
     const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
     log('Raw localStorage cart:', savedCart);
+
     if (savedCart) {
       try {
         const parsed = JSON.parse(savedCart);
@@ -29,8 +59,10 @@ export const useCart = () => {
         setCartItems(parsed);
       } catch (error) {
         console.error('Error loading cart from localStorage:', error);
+        localStorage.removeItem(CART_STORAGE_KEY); // Clear invalid data
       }
     }
+
     if (savedItems) {
       try {
         const parsed = JSON.parse(savedItems);
@@ -38,22 +70,29 @@ export const useCart = () => {
         setSavedForLater(parsed);
       } catch (error) {
         console.error('Error loading saved items from localStorage:', error);
+        localStorage.removeItem(SAVED_FOR_LATER_KEY); // Clear invalid data
       }
     }
+
     setIsLoaded(true);
-  }, []);
+  }, [shouldClearOnLoad]);
 
   // Save cart to localStorage whenever it changes (only after loaded to avoid initial empty saves)
   useEffect(() => {
-    if (isLoaded) {
+    if (isLoaded && cartItems.length > 0) { // Only save if non-empty to avoid unnecessary writes
       localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartItems));
+      localStorage.setItem(CART_LAST_CLEARED_KEY, Date.now().toString()); // Update timestamp on any change
+    } else if (isLoaded && cartItems.length === 0) {
+      localStorage.removeItem(CART_STORAGE_KEY);
     }
   }, [cartItems, isLoaded]);
 
   // Save "saved for later" items to localStorage (only after loaded)
   useEffect(() => {
-    if (isLoaded) {
+    if (isLoaded && savedForLater.length > 0) {
       localStorage.setItem(SAVED_FOR_LATER_KEY, JSON.stringify(savedForLater));
+    } else if (isLoaded && savedForLater.length === 0) {
+      localStorage.removeItem(SAVED_FOR_LATER_KEY);
     }
   }, [savedForLater, isLoaded]);
 
@@ -78,13 +117,21 @@ export const useCart = () => {
           console.error('Error parsing saved items from storage event:', error);
         }
       }
+      if (e.key === CART_LAST_CLEARED_KEY) {
+        // Optionally react to manual clears from other tabs
+        const lastCleared = e.newValue ? parseInt(e.newValue) : 0;
+        if (shouldClearOnLoad()) { // Re-check if we need to clear here too
+          setCartItems([]);
+          setSavedForLater([]);
+        }
+      }
     };
 
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
+  }, [shouldClearOnLoad]);
 
-  // Poll localStorage every 2.5 seconds for updates (for same-tab sync and faster refresh)
+  // Reduce polling frequency to 5s and optimize (only if not already synced)
   useEffect(() => {
     if (!isLoaded) return;
 
@@ -92,35 +139,31 @@ export const useCart = () => {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
       const savedItems = localStorage.getItem(SAVED_FOR_LATER_KEY);
 
-      if (savedCart) {
+      if (savedCart && JSON.stringify(JSON.parse(savedCart)) !== JSON.stringify(cartItems)) {
         try {
           const parsedCart = JSON.parse(savedCart);
-          if (JSON.stringify(parsedCart) !== JSON.stringify(cartItems)) {
-            log('Cart refreshed from localStorage poll:', parsedCart);
-            setCartItems(parsedCart);
-          }
+          log('Cart refreshed from localStorage poll:', parsedCart);
+          setCartItems(parsedCart);
         } catch (error) {
           console.error('Error parsing cart from localStorage poll:', error);
         }
       }
 
-      if (savedItems) {
+      if (savedItems && JSON.stringify(JSON.parse(savedItems)) !== JSON.stringify(savedForLater)) {
         try {
           const parsedItems = JSON.parse(savedItems);
-          if (JSON.stringify(parsedItems) !== JSON.stringify(savedForLater)) {
-            log('Saved items refreshed from localStorage poll:', parsedItems);
-            setSavedForLater(parsedItems);
-          }
+          log('Saved items refreshed from localStorage poll:', parsedItems);
+          setSavedForLater(parsedItems);
         } catch (error) {
           console.error('Error parsing saved items from localStorage poll:', error);
         }
       }
-    }, 2500);
+    }, 5000); // Increased to 5s for less overhead
 
     return () => clearInterval(interval);
   }, [cartItems, savedForLater, isLoaded]);
 
-  const checkStock = (product: Product, requestedQuantity: number): boolean => {
+  const checkStock = useCallback((product: Product, requestedQuantity: number): boolean => {
     const currentCartQuantity = cartItems.find(item => item.product.id === product.id)?.quantity || 0;
     const totalRequested = currentCartQuantity + requestedQuantity;
     
@@ -135,9 +178,9 @@ export const useCart = () => {
     }
     
     return true;
-  };
+  }, [cartItems]);
 
-  const addToCart = (product: Product, quantity: number = 1) => {
+  const addToCart = useCallback((product: Product, quantity: number = 1) => {
     log('Adding to cart:', product, quantity);
     if (!checkStock(product, quantity)) {
       return false;
@@ -158,14 +201,14 @@ export const useCart = () => {
     });
     
     return true;
-  };
+  }, [checkStock]);
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = useCallback((productId: string) => {
     setCartItems(prevItems => prevItems.filter(item => item.product.id !== productId));
     toast.success('Item removed from cart');
-  };
+  }, []);
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = useCallback((productId: string, quantity: number) => {
     if (quantity <= 0) {
       removeFromCart(productId);
       return;
@@ -183,14 +226,18 @@ export const useCart = () => {
           : item
       )
     );
-  };
+  }, [cartItems, checkStock, removeFromCart]);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCartItems([]);
+    setSavedForLater([]); // Optionally clear saved items too, or keep separate
+    localStorage.removeItem(CART_STORAGE_KEY);
+    localStorage.removeItem(SAVED_FOR_LATER_KEY);
+    localStorage.setItem(CART_LAST_CLEARED_KEY, Date.now().toString());
     toast.success('Cart cleared');
-  };
+  }, []);
 
-  const saveForLater = (productId: string) => {
+  const saveForLater = useCallback((productId: string) => {
     const item = cartItems.find(item => item.product.id === productId);
     if (item) {
       setSavedForLater(prevItems => {
@@ -208,9 +255,9 @@ export const useCart = () => {
       removeFromCart(productId);
       toast.success('Item saved for later');
     }
-  };
+  }, [cartItems, removeFromCart]);
 
-  const moveToCart = (productId: string) => {
+  const moveToCart = useCallback((productId: string) => {
     const item = savedForLater.find(item => item.product.id === productId);
     if (item && checkStock(item.product, item.quantity)) {
       setCartItems(prevItems => {
@@ -228,26 +275,26 @@ export const useCart = () => {
       setSavedForLater(prevItems => prevItems.filter(saved => saved.product.id !== productId));
       toast.success('Item moved to cart');
     }
-  };
+  }, [savedForLater, checkStock]);
 
-  const removeSavedItem = (productId: string) => {
+  const removeSavedItem = useCallback((productId: string) => {
     setSavedForLater(prevItems => prevItems.filter(item => item.product.id !== productId));
     toast.success('Item removed from saved items');
-  };
+  }, []);
 
-  const getCartTotal = () => {
+  const getCartTotal = useCallback(() => {
     return cartItems.reduce((total, item) => {
       return total + (item.product.discountedPrice * item.quantity);
     }, 0);
-  };
+  }, [cartItems]);
 
-  const getCartItemsCount = () => {
+  const getCartItemsCount = useCallback(() => {
     return cartItems.reduce((count, item) => count + item.quantity, 0);
-  };
+  }, [cartItems]);
 
-  const getItemSubtotal = (item: CartItem) => {
+  const getItemSubtotal = useCallback((item: CartItem) => {
     return item.product.discountedPrice * item.quantity;
-  };
+  }, []);
 
   return {
     cartItems,
