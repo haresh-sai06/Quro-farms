@@ -142,14 +142,7 @@ const OrderNow: React.FC = () => {
   const confirmOrder = async () => {
     setIsSendingEmail(true);
     
-    // Send confirmation email
     const emailSent = await sendConfirmationEmail();
-    
-    // Open WhatsApp
-    const message = generateWhatsAppMessage();
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/+91${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`;
-    window.open(whatsappUrl, "_blank");
     
     setIsSendingEmail(false);
     setIsModalOpen(false);
