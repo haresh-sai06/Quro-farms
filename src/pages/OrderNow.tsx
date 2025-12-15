@@ -25,18 +25,28 @@ const OrderNow: React.FC = () => {
   const total = getCartTotal();
 
   const sendConfirmationEmail = async () => {
-    const orderItems = cartItems.map(item => 
-      `${item.product.name} (x${item.quantity}) - ₹${(item.product.discountedPrice * item.quantity).toFixed(2)}`
-    ).join('\n');
+    const orders = cartItems.map(item => ({
+      name: item.product.name,
+      units: item.quantity,
+      price: (item.product.discountedPrice * item.quantity).toFixed(2)
+    }));
+
+    const orderId = `QF${Date.now().toString(36).toUpperCase()}`;
 
     const templateParams = {
-      to_name: customerInfo.name,
-      to_email: customerInfo.email,
-      order_items: orderItems,
-      order_total: `₹${total.toFixed(2)}`,
-      customer_phone: customerInfo.phone,
-      customer_address: `${customerInfo.address}, ${customerInfo.city || ''} ${customerInfo.pincode || ''}`.trim(),
-      order_date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+      email: customerInfo.email,
+      orders: orders,
+      cost: {
+        total: total.toFixed(2)
+      },
+      customer: {
+        name: customerInfo.name,
+        phone: customerInfo.phone,
+        address: customerInfo.address,
+        city: customerInfo.city || 'N/A',
+        pin: customerInfo.pincode || 'N/A'
+      },
+      order_id: orderId
     };
 
     try {
