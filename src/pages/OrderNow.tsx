@@ -1,9 +1,10 @@
-import { motion } from "framer-motion";
-import { ShoppingCart, MessageCircle, MapPin, User, X } from "lucide-react"; // Added X for close button
+import { motion, AnimatePresence } from "framer-motion";
+import { ShoppingCart, MessageCircle, MapPin, User, X, CheckCircle, Mail } from "lucide-react";
 import { useState } from "react";
 import { useCartContext } from "../context/CardContext";
 import Header from "../components/Header";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 const WHATSAPP_PHONE_NUMBER = "7558938256"; // Corrected with country code +91
 
@@ -17,9 +18,40 @@ const OrderNow: React.FC = () => {
     city: '',
     pincode: '',
   });
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isSendingEmail, setIsSendingEmail] = useState(false);
 
   const total = getCartTotal();
+
+  const sendConfirmationEmail = async () => {
+    const orderItems = cartItems.map(item => 
+      `${item.product.name} (x${item.quantity}) - ₹${(item.product.discountedPrice * item.quantity).toFixed(2)}`
+    ).join('\n');
+
+    const templateParams = {
+      to_name: customerInfo.name,
+      to_email: customerInfo.email,
+      order_items: orderItems,
+      order_total: `₹${total.toFixed(2)}`,
+      customer_phone: customerInfo.phone,
+      customer_address: `${customerInfo.address}, ${customerInfo.city || ''} ${customerInfo.pincode || ''}`.trim(),
+      order_date: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+    };
+
+    try {
+      await emailjs.send(
+        'service_g2dj5s6',
+        'template_eyxa23j',
+        templateParams,
+        'QIbiW4pWnuX2Lmpv7'
+      );
+      return true;
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      return false;
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setCustomerInfo({
@@ -107,16 +139,30 @@ const OrderNow: React.FC = () => {
     setIsModalOpen(true); // Open confirmation modal
   };
 
-  const confirmOrder = () => {
+  const confirmOrder = async () => {
+    setIsSendingEmail(true);
+    
+    // Send confirmation email
+    const emailSent = await sendConfirmationEmail();
+    
+    // Open WhatsApp
     const message = generateWhatsAppMessage();
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/+91${WHATSAPP_PHONE_NUMBER}?text=${encodedMessage}`;
-    
     window.open(whatsappUrl, "_blank");
-    toast.success("Opening WhatsApp to send your order...");
-    setIsModalOpen(false); // Close modal after opening WhatsApp
-    clearCart(); // Clear the cart after confirming the order
-    setCustomerInfo({ name: '', email: '', phone: '', address: '', city: '', pincode: '' }); // Reset form values
+    
+    setIsSendingEmail(false);
+    setIsModalOpen(false);
+    setIsSuccessModalOpen(true);
+    
+    if (emailSent) {
+      toast.success("Confirmation email sent!");
+    } else {
+      toast.error("Email could not be sent, but your order is placed.");
+    }
+    
+    clearCart();
+    setCustomerInfo({ name: '', email: '', phone: '', address: '', city: '', pincode: '' });
   };
 
   return (
@@ -361,78 +407,160 @@ const OrderNow: React.FC = () => {
       </section>
 
       {/* Order Confirmation Modal */}
-      {isModalOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-          onClick={() => setIsModalOpen(false)} // Close on backdrop click
-        >
+      <AnimatePresence>
+        {isModalOpen && (
           <motion.div
-            initial={{ scale: 0.7, y: 50 }}
-            animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.7, y: 50 }}
-            className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full max-h-[80vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()} // Prevent closing on modal click
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+            onClick={() => setIsModalOpen(false)}
           >
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-primary">Confirm Your Order</h2>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-neutral-500 hover:text-neutral-700 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
+            <motion.div
+              initial={{ scale: 0.7, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.7, y: 50 }}
+              className="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full max-h-[80vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-xl sm:text-2xl font-bold text-primary">Confirm Your Order</h2>
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="text-neutral-500 hover:text-neutral-700 transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
 
-            <div className="space-y-4 mb-6">
-              <h3 className="font-semibold text-primary">Order Summary</h3>
-              {cartItems.map((item) => (
-                <div key={item.product.id} className="flex justify-between items-center">
-                  <span>{item.product.name} (x{item.quantity})</span>
-                  <span>₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</span>
-                </div>
-              ))}
-              <div className="border-t pt-2">
-                <div className="flex justify-between font-bold text-primary">
-                  <span>Total:</span>
-                  <span>₹{total.toFixed(2)}</span>
-                  <span>Courier charges will apply</span>
+              <div className="space-y-4 mb-6">
+                <h3 className="font-semibold text-primary">Order Summary</h3>
+                {cartItems.map((item) => (
+                  <div key={item.product.id} className="flex justify-between items-center">
+                    <span>{item.product.name} (x{item.quantity})</span>
+                    <span>₹{(item.product.discountedPrice * item.quantity).toFixed(2)}</span>
+                  </div>
+                ))}
+                <div className="border-t pt-2">
+                  <div className="flex justify-between font-bold text-primary">
+                    <span>Total:</span>
+                    <span>₹{total.toFixed(2)}</span>
+                  </div>
+                  <p className="text-sm text-neutral-500 mt-1">Courier charges will apply</p>
                 </div>
               </div>
-            </div>
 
-            <div className="space-y-4 mb-6">
-              <h3 className="font-semibold text-primary">Customer Details</h3>
-              <p><strong>Name:</strong> {customerInfo.name}</p>
-              <p><strong>Phone:</strong> {customerInfo.phone}</p>
-              <p><strong>Email:</strong> {customerInfo.email}</p>
-              <p><strong>Address:</strong> {customerInfo.address}</p>
-              <p><strong>City:</strong> {customerInfo.city || 'N/A'}</p>
-              <p><strong>PIN:</strong> {customerInfo.pincode || 'N/A'}</p>
-            </div>
+              <div className="space-y-2 mb-6">
+                <h3 className="font-semibold text-primary">Customer Details</h3>
+                <p><strong>Name:</strong> {customerInfo.name}</p>
+                <p><strong>Phone:</strong> {customerInfo.phone}</p>
+                <p><strong>Email:</strong> {customerInfo.email}</p>
+                <p><strong>Address:</strong> {customerInfo.address}</p>
+                <p><strong>City:</strong> {customerInfo.city || 'N/A'}</p>
+                <p><strong>PIN:</strong> {customerInfo.pincode || 'N/A'}</p>
+              </div>
 
-            <div className="flex justify-end gap-4">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 bg-neutral-200 text-neutral-800 rounded-xl hover:bg-neutral-300 transition-colors"
-              >
-                Back
-              </button>
-              <motion.button
-                onClick={confirmOrder}
-                className="px-4 py-2 bg-yellow-600 text-white rounded-xl hover:bg-yellow-700 transition-colors flex items-center gap-2"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <MessageCircle className="w-5 h-5" />
-                Confirm Order
-              </motion.button>
-            </div>
+              <div className="flex justify-end gap-4">
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  disabled={isSendingEmail}
+                  className="px-4 py-2 bg-neutral-200 text-neutral-800 rounded-xl hover:bg-neutral-300 transition-colors disabled:opacity-50"
+                >
+                  Back
+                </button>
+                <motion.button
+                  onClick={confirmOrder}
+                  disabled={isSendingEmail}
+                  className="px-4 py-2 bg-yellow-600 text-white rounded-xl hover:bg-yellow-700 transition-colors flex items-center gap-2 disabled:opacity-50"
+                  whileHover={{ scale: isSendingEmail ? 1 : 1.05 }}
+                  whileTap={{ scale: isSendingEmail ? 1 : 0.95 }}
+                >
+                  {isSendingEmail ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    <>
+                      <MessageCircle className="w-5 h-5" />
+                      Confirm Order
+                    </>
+                  )}
+                </motion.button>
+              </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
+
+      {/* Order Success Modal */}
+      <AnimatePresence>
+        {isSuccessModalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ type: "spring", damping: 15 }}
+              className="bg-white rounded-2xl p-8 max-w-md w-full text-center"
+            >
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: "spring", damping: 10 }}
+                className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6"
+              >
+                <CheckCircle className="w-12 h-12 text-green-600" />
+              </motion.div>
+              
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-2xl font-bold text-primary mb-2"
+              >
+                Order Placed Successfully!
+              </motion.h2>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-neutral-600 mb-4"
+              >
+                Thank you for your order. We've sent a confirmation email to your inbox.
+              </motion.p>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-center justify-center gap-2 text-sm text-neutral-500 mb-6"
+              >
+                <Mail className="w-4 h-4" />
+                <span>Check your email for payment details</span>
+              </motion.div>
+              
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                onClick={() => setIsSuccessModalOpen(false)}
+                className="w-full bg-yellow-600 text-white py-3 rounded-xl font-semibold hover:bg-yellow-700 transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Continue Shopping
+              </motion.button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
