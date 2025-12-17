@@ -5,6 +5,7 @@ import { useCartContext } from "../context/CardContext";
 import Header from "../components/Header";
 import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
+import { sendTelegramNotification, OrderDetails } from "../utils/telegram";
 
 const WHATSAPP_PHONE_NUMBER = "7558938256"; // Corrected with country code +91
 
@@ -24,14 +25,12 @@ const OrderNow: React.FC = () => {
 
   const total = getCartTotal();
 
-  const sendConfirmationEmail = async () => {
+  const sendConfirmationEmail = async (orderId: string) => {
     const orders = cartItems.map(item => ({
       name: item.product.name,
       units: item.quantity,
       price: (item.product.discountedPrice * item.quantity).toFixed(2)
     }));
-
-    const orderId = `QF${Date.now().toString(36).toUpperCase()}`;
 
     const templateParams = {
       email: customerInfo.email,
@@ -152,16 +151,42 @@ const OrderNow: React.FC = () => {
   const confirmOrder = async () => {
     setIsSendingEmail(true);
     
-    const emailSent = await sendConfirmationEmail();
+    const orderId = `QF${Date.now().toString(36).toUpperCase()}`;
+    const orderTimestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    
+    // Prepare order details for Telegram
+    const orderDetails: OrderDetails = {
+      orderId,
+      orderTimestamp,
+      customerName: customerInfo.name,
+      customerPhone: customerInfo.phone,
+      customerEmail: customerInfo.email,
+      deliveryAddress: customerInfo.address,
+      city: customerInfo.city || 'N/A',
+      pinCode: customerInfo.pincode || 'N/A',
+      paymentStatus: 'COD',
+      totalAmount: total,
+      orderItems: cartItems,
+    };
+    
+    // Send both email and Telegram notification in parallel
+    const [emailSent, telegramSent] = await Promise.all([
+      sendConfirmationEmail(orderId),
+      sendTelegramNotification(orderDetails),
+    ]);
     
     setIsSendingEmail(false);
     setIsModalOpen(false);
     setIsSuccessModalOpen(true);
     
-    if (emailSent) {
+    if (emailSent && telegramSent) {
+      toast.success("Order confirmed! Notifications sent.");
+    } else if (emailSent) {
       toast.success("Confirmation email sent!");
+    } else if (telegramSent) {
+      toast.success("Order notification sent to team!");
     } else {
-      toast.error("Email could not be sent, but your order is placed.");
+      toast.error("Notifications failed, but your order is placed.");
     }
     
     clearCart();
