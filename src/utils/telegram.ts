@@ -1,8 +1,8 @@
 import { CartItem } from '../types/product';
 
 // These will be exposed in frontend - user acknowledged the security tradeoff
-const TELEGRAM_BOT_TOKEN = import.meta.env.VITE_TELEGRAM_BOT_TOKEN || '';
-const TELEGRAM_CHAT_ID = import.meta.env.VITE_TELEGRAM_CHAT_ID || '';
+const TELEGRAM_BOT_TOKEN = '8504850632:AAEcH7THTh_otXANY-QXD5oA4Wk9iuhUvzQ';
+const TELEGRAM_CHAT_ID = '1554031863';
 
 export interface OrderDetails {
   orderId: string;
