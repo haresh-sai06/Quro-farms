@@ -7,7 +7,6 @@ import { toast } from "sonner";
 import emailjs from "@emailjs/browser";
 import { sendTelegramNotification, OrderDetails } from "../utils/telegram";
 
-const WHATSAPP_PHONE_NUMBER = "7558938256"; // Corrected with country code +91
 
 const OrderNow: React.FC = () => {
   const { cartItems, updateQuantity, removeFromCart, getCartTotal, getCartItemsCount, checkStock, clearCart } = useCartContext();
@@ -50,10 +49,10 @@ const OrderNow: React.FC = () => {
 
     try {
       await emailjs.send(
-        'service_g2dj5s6',
-        'template_eyxa23j',
+        'service_9q6d11x',
+        'template_dkui4n8',
         templateParams,
-        'QIbiW4pWnuX2Lmpv7'
+        'FI3QaiXp2okwJSoRz'
       );
       return true;
     } catch (error) {
@@ -105,37 +104,6 @@ const OrderNow: React.FC = () => {
     return true;
   };
 
-  const generateWhatsAppMessage = () => {
-    if (cartItems.length === 0) {
-      return "Hello! I'm interested in your products.";
-    }
-
-    let message = `🛒 *Order Details (${new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })})*\n\n`;
-    
-    cartItems.forEach((item) => {
-      message += `📦 *${item.product.name}*\n`;
-      message += `   Quantity: ${item.quantity}\n`;
-      message += `   Price: ₹${item.product.discountedPrice}/${item.product.unit}\n`;
-      message += `   Subtotal: ₹${(item.product.discountedPrice * item.quantity).toFixed(2)}\n\n`;
-    });
-
-    message += `💰 *Total Amount: ₹${total.toFixed(2)}*\n`;
-    message += `🛍 *Total Items: ${getCartItemsCount()}*\n\n`;
-    
-    if (customerInfo.name || customerInfo.email || customerInfo.phone || customerInfo.address || customerInfo.city || customerInfo.pincode) {
-      message += "📋 *Customer Details:*\n";
-      if (customerInfo.name) message += `Name: ${customerInfo.name}\n`;
-      if (customerInfo.email) message += `Email: ${customerInfo.email}\n`;
-      if (customerInfo.phone) message += `Phone: ${customerInfo.phone}\n`;
-      if (customerInfo.address) message += `Address: ${customerInfo.address}\n`;
-      if (customerInfo.city) message += `City: ${customerInfo.city}\n`;
-      if (customerInfo.pincode) message += `PIN: ${customerInfo.pincode}\n\n`;
-    }
-    message += "Additional courier charges  apply.\n\n";
-    message += "Please confirm this order. Thank you! 🙏";
-
-    return message;
-  };
 
   const handleWhatsAppOrder = () => {
     if (cartItems.length === 0) {

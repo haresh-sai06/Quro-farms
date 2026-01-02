@@ -2,7 +2,7 @@ import { CartItem } from '../types/product';
 
 // These will be exposed in frontend - user acknowledged the security tradeoff
 const TELEGRAM_BOT_TOKEN = '8504850632:AAEcH7THTh_otXANY-QXD5oA4Wk9iuhUvzQ';
-const TELEGRAM_CHAT_ID = '1554031863';
+const TELEGRAM_CHAT_ID = '-1003478532969';
 
 export interface OrderDetails {
   orderId: string;
